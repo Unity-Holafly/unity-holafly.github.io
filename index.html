@@ -2088,7 +2088,7 @@ body.paused *{-webkit-animation-play-state:paused !important;animation-play-stat
   &lt;div id=&quot;label&quot;&gt;Your bill so far&lt;/div&gt;
   &lt;div id=&quot;bill&quot;&gt;$0&lt;/div&gt;
   &lt;div id=&quot;meter&quot;&gt;&lt;div id=&quot;fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;div id=&quot;timer&quot;&gt;Bill grows for &lt;b&gt;0:25&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;timer&quot;&gt;Bill grows for &lt;b&gt;0:40&lt;/b&gt;&lt;/div&gt;
   &lt;button id=&quot;switch&quot; class=&quot;pulse&quot;&gt;STOP THE BILL &amp;rarr; Switch to Holafly&lt;/button&gt;
   &lt;div id=&quot;hint&quot;&gt;tap before it hurts&lt;/div&gt;
 &lt;/div&gt;
@@ -2108,7 +2108,7 @@ body.paused *{-webkit-animation-play-state:paused !important;animation-play-stat
 var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
 var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
 var started=false,done=false,running=false,AC=null;
-var DUR=25000,PLAN=6.90,elapsed=0,last=0,tickId=null,bill=0,TICK=100;
+var DUR=40000,PLAN=6.90,elapsed=0,last=0,tickId=null,bill=0,TICK=100;
 
 function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
 
@@ -2137,9 +2137,9 @@ function loop(){
   if(dt&gt;500)dt=500; /* clamp after throttled/background gaps */
   elapsed+=dt;
   var sec=elapsed/1000;
-  bill=0.5*sec*sec; /* accelerating roaming meter */
+  bill=0.35*sec*sec; /* accelerating roaming meter */
   document.getElementById(&quot;bill&quot;).textContent=&quot;$&quot;+Math.floor(bill);
-  var pct=Math.min(100,bill/300*100);
+  var pct=Math.min(100,bill/420*100);
   document.getElementById(&quot;fill&quot;).style.width=pct+&quot;%&quot;;
   var remain=DUR-elapsed;
   document.getElementById(&quot;timer&quot;).innerHTML=&quot;Bill grows for &lt;b&gt;&quot;+fmtTime(remain)+&quot;&lt;/b&gt;&quot;;
@@ -2206,7 +2206,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Roaming Bill<span class="live">LIVE</span></div><div class="fmt hot">URGENCY · 1 TAP</div><div class="hook">A roaming meter runs up a real bill on a 25 second timer, $0 to $300 and climbing. Tap to freeze it with a $6.90/day unlimited plan. Even when the timer runs out, the scary number makes the case.</div><div class="thesis"><b>Tests:</b> urgency and price anchoring, a climbing bill against one flat daily rate.</div><div class="file">Holafly_BeatRoaming_1T.html</div></div></div></div><h2>Product demo</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf6" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Roaming Bill<span class="live">LIVE</span></div><div class="fmt hot">URGENCY · 1 TAP</div><div class="hook">A roaming meter runs up a real bill on a 40 second timer, $0 to $500 and climbing. Tap to freeze it with a $6.90/day unlimited plan. Even when the timer runs out, the scary number makes the case.</div><div class="thesis"><b>Tests:</b> urgency and price anchoring, a climbing bill against one flat daily rate.</div><div class="file">Holafly_BeatRoaming_1T.html</div></div></div></div><h2>Product demo</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf6" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
