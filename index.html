@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holafly — Playable Creative Board</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#FFF6F4;color:#3C3C3C;padding:40px 4%}
+.wrap{max-width:1240px;margin:0 auto}
+h1{font-size:30px;font-weight:800}
+h1 .brand{color:#FF4E45}
+.sub{color:#777;font-size:15px;margin:6px 0 26px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+.stat{flex:1 1 200px;background:#fff;border:2px solid #E5E5E5;border-radius:16px;padding:18px 20px}
+.stat b{display:block;font-size:26px;color:#FF4E45;font-weight:800}
+.stat span{font-size:13px;color:#777;font-weight:600;line-height:1.4}
+h2{font-size:15px;font-weight:800;letter-spacing:1.5px;color:#AFAFAF;text-transform:uppercase;margin:36px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(580px,1fr));gap:18px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:2px solid #E5E5E5;border-bottom-width:5px;border-radius:18px;padding:20px;display:flex;gap:20px}
+@media(max-width:700px){.card{flex-direction:column;align-items:center}}
+.phonewrap{flex-shrink:0;text-align:center}
+.phone{width:300px;height:592px;border-radius:30px;border:4px solid #3C3C3C;overflow:hidden;position:relative;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.phone iframe{width:375px;height:740px;border:0;transform:scale(0.8);transform-origin:0 0;display:block}
+.replay{margin-top:8px;background:none;border:1.5px solid #E5E5E5;border-radius:10px;color:#AFAFAF;font-size:11px;font-weight:800;letter-spacing:.6px;padding:5px 12px;cursor:pointer}
+.replay:hover{color:#FF4E45;border-color:#FF4E45}
+.meta{flex:1;min-width:0}
+.name{font-size:18px;font-weight:800}
+.fmt{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;color:#1899D6;background:#DDF4FF;border-radius:8px;padding:3px 8px;margin:6px 0 10px}
+.fmt.hot{color:#CC7800;background:#FFF3D6}
+.hook{font-size:13.5px;color:#555;line-height:1.55;margin-bottom:10px}
+.thesis{font-size:12.5px;color:#8a8a8a;line-height:1.55}
+.thesis b{color:#D93A31}
+.file{font-size:10.5px;color:#AFAFAF;margin-top:10px;word-break:break-all;font-family:Menlo,monospace}
+.live{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:#FF4B4B;border-radius:6px;padding:2px 7px;letter-spacing:1px;vertical-align:3px;margin-left:8px}
+table{width:100%;border-collapse:collapse;background:#fff;border:2px solid #E5E5E5;border-radius:16px;overflow:hidden;font-size:13.5px}
+th{background:#FF4E45;color:#fff;font-weight:800;text-align:left;padding:11px 14px;font-size:12px;letter-spacing:.8px;text-transform:uppercase}
+td{padding:11px 14px;border-top:1px solid #EFEFEF;color:#555;vertical-align:top}
+td:first-child{font-weight:700;color:#3C3C3C;white-space:nowrap}
+.note{background:#FFF8E1;border:2px solid #FFC800;border-radius:14px;padding:16px 18px;font-size:13px;color:#7A5800;line-height:1.6;margin-top:30px}
+footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1><span class="brand">Holafly</span> × Unity Ads — Playable Creative Board</h1>
+<p class="sub">8 Unity-compliant playable creatives — <b>all demos below are live, tap and play them right here</b> · MRAID 3.0 · single file · &lt;5&nbsp;MB · portrait+landscape · iOS&nbsp;+&nbsp;Android CTAs — August 2026</p>
+<div class="stats"><div class="stat"><b>up to 16×</b><span>conversion vs. non-interactive formats (playable benchmark, 2025)</span></div><div class="stat"><b>2–3×</b><span>CTR vs. standard video/display</span></div><div class="stat"><b>15–80s</b><span>engagement window we see across narrative-driven interactive creatives, vs. 5–7s on standard video</span></div><div class="stat"><b>+30–40%</b><span>post-install retention when users try the value before installing</span></div></div>
+<h2>Your proven mechanic — rebuilt & evolved for Unity</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — SIM Flight&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#BFDCF5;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#game{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#hud{position:absolute;top:2.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud .logo{color:#F0384E;font-size:19px;font-weight:800;letter-spacing:-.5px;padding-right:12px;border-right:2px solid #F0F0F0}
+#hud .score{padding:0 14px 0 12px;border-right:2px solid #F0F0F0;text-align:center}
+#hud .score b{display:block;font-size:22px;line-height:1;color:#14213D;font-weight:800}
+#hud .score span{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px}
+#hud .route{padding-left:12px}
+#hud .route .km{font-size:12px;color:#14213D;font-weight:800}
+#hud .route .km i{font-style:normal;color:#F0384E}
+#hud .bar{width:110px;height:5px;background:#EDEFF3;border-radius:3px;margin:4px 0}
+#hud .bar div{height:100%;width:0;background:#F0384E;border-radius:3px}
+#hud .route .leg{font-size:10.5px;color:#5A6B82;font-weight:700}
+#hud2{position:absolute;bottom:3%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud2 .cell{padding:0 12px;border-right:2px solid #F0F0F0;text-align:center}
+#hud2 .cell:last-child{border-right:0}
+#hud2 .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block;margin-bottom:2px}
+#hud2 .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2 .hearts span{font-size:14px;letter-spacing:1px}
+#hud2 .chip{background:#FFE9EC;border:1px solid #F7B7C0;color:#E02D44;font-size:11px;font-weight:800;border-radius:10px;padding:5px 10px}
+#tap{position:absolute;left:50%;top:56%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:16px 36px;border:0;border-radius:14px;background:#F0384E;box-shadow:0 5px 0 #C22539;color:#fff;font-size:19px;font-weight:800;letter-spacing:1.2px;cursor:pointer}
+#toast{position:absolute;left:50%;top:20%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#FFE9EC;color:#E02D44;font-size:14px;font-weight:800;border-radius:18px;padding:7px 16px;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#toast.show{opacity:1}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .6s ease;transition:opacity .6s ease}
+#endcard.show{opacity:1;visibility:visible}
+#elogo{color:#F0384E;font-size:38px;font-weight:800;letter-spacing:-1px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+#ecollected{color:#5A4A52;font-size:16px;font-weight:700;margin-top:14px}
+#ecount{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin-top:6px}
+#ecount b{color:#3A2E35;font-size:30px;font-weight:800;letter-spacing:1px}
+#ecount .simicon{display:inline-block;width:34px;height:27px;background:#fff;border:2px solid #D8C7CE;border-radius:6px;margin-left:10px;position:relative}
+#ecount .simicon:after{content:&quot;&quot;;position:absolute;left:5px;top:6px;width:12px;height:11px;background:#E8B23A;border-radius:2px}
+#etag1{color:#0E8C8C;font-size:16px;font-weight:800;letter-spacing:.4px;margin-top:22px}
+#etag2{color:#F0384E;font-size:16px;font-weight:800;letter-spacing:.4px;margin-top:2px}
+#cta{margin-top:22px;padding:15px 44px;border:0;border-radius:26px;background:#3BB273;box-shadow:0 4px 0 #2E8F5C;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{margin-top:12px;padding:11px 34px;border:0;border-radius:22px;background:#F0384E;box-shadow:0 4px 0 #C22539;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pulse{-webkit-animation:pulse 1.2s ease-in-out infinite;animation:pulse 1.2s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translate(-50%,-50%) scale(1)}50%{-webkit-transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #hud .bar{width:90px}
+  #elogo{font-size:30px}
+  #ecount b{font-size:24px}
+  #etag1,#etag2{font-size:14px}
+  #cta{margin-top:14px;padding:12px 36px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;canvas id=&quot;game&quot;&gt;&lt;/canvas&gt;
+&lt;div id=&quot;hud&quot;&gt;
+  &lt;div class=&quot;logo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div class=&quot;score&quot;&gt;&lt;b id=&quot;score&quot;&gt;0&lt;/b&gt;&lt;span&gt;SCORE&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;route&quot;&gt;
+    &lt;div class=&quot;km&quot;&gt;&lt;i&gt;&amp;#9992;&lt;/i&gt; &lt;span id=&quot;km&quot;&gt;0 km&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;bar&quot;&gt;&lt;div id=&quot;kmbar&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;leg&quot; id=&quot;leg&quot;&gt;Istanbul &amp;gt; Marrakesh&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;hud2&quot;&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;SIMs COLLECTED&lt;/span&gt;&lt;span class=&quot;val&quot; id=&quot;sims&quot;&gt;0/22&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell hearts&quot;&gt;&lt;span class=&quot;lab&quot;&gt;LIVES&lt;/span&gt;&lt;span id=&quot;hearts&quot;&gt;&amp;#10084;&amp;#65039;&amp;#10084;&amp;#65039;&amp;#10084;&amp;#65039;&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;chip&quot;&gt;&amp;#128246; Stay connected&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;toast&quot;&gt;&lt;/div&gt;
+&lt;button id=&quot;tap&quot; class=&quot;pulse&quot;&gt;TAP TO FLY&lt;/button&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;elogo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div id=&quot;ecollected&quot;&gt;You collected:&lt;/div&gt;
+  &lt;div id=&quot;ecount&quot;&gt;&lt;b id=&quot;fsims&quot;&gt;0/22&lt;/b&gt;&lt;span class=&quot;simicon&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;etag1&quot;&gt;DON&amp;rsquo;T CHASE SIM CARDS.&lt;/div&gt;
+  &lt;div id=&quot;etag2&quot;&gt;GET CONNECTED IN ONE TAP.&lt;/div&gt;
+  &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;CHECK IT OUT &amp;rarr;&lt;/button&gt;
+  &lt;button id=&quot;retry&quot;&gt;RETRY &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,playing=false,over=false,AC=null;
+
+var cv=document.getElementById(&quot;game&quot;),ctx=cv.getContext(&quot;2d&quot;);
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+&quot;px&quot;;cv.style.height=H+&quot;px&quot;;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  if(plane)plane.x=Math.max(70,W*0.3);
+}
+
+/* ---------- themes &amp; legs ---------- */
+/* t=0 Istanbul/Morocco (cream minarets, carpets, lanterns) · t=1 Japan (pagodas, sakura) */
+var THEMES=[
+  {skyTop:[191,220,245],skyMid:[217,211,238],skyBot:[240,219,228],sil:[122,146,197]},
+  {skyTop:[246,217,232],skyMid:[228,212,240],skyBot:[250,228,222],sil:[168,138,182]}
+];
+var LEGS=[
+  {from:&quot;Istanbul&quot;,to:&quot;Marrakesh&quot;,km:1250,rate:115,theme:0,gates:7},
+  {from:&quot;Marrakesh&quot;,to:&quot;Tokyo&quot;,km:9500,rate:640,theme:1,gates:99}
+];
+var PLAY_CAP=26; /* seconds of active play before the end card */
+
+var GRAV=920,FLAP=-350,SPEED=150,PR=15,SIMR=15;
+var plane,obs,simcards,score,simsGot,lives,legIx,legDist,totalKm,spawnT,simT,inv,playT,themeMix,streak=0,unlimT=0,tick=null,last=0,bobT=0;
+var bg=[],extras=[],habT=2.5,ringT=3.5,cardT=6; /* background life + bonus collectibles */
+var TOTAL_SIMS=22,simsSpawned=0;
+
+function reset(){
+  plane={x:Math.max(70,W*0.3),y:H*0.45,vy:0,rot:0};
+  obs=[];simcards=[];score=0;simsGot=0;lives=3;legIx=0;legDist=0;totalKm=0;
+  spawnT=1.0;simT=0.6;inv=0;playT=0;themeMix=0;simsSpawned=0;streak=0;unlimT=0;
+  bg=[];extras=[];habT=2.5;ringT=3.5;cardT=6;
+  over=false;playing=false;
+  prepopulate();
+  document.getElementById(&quot;endcard&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;tap&quot;).style.display=&quot;&quot;;
+  updateHud();
+}
+
+function updateHud(){
+  document.getElementById(&quot;score&quot;).textContent=score;
+  document.getElementById(&quot;sims&quot;).textContent=simsGot+&quot;/&quot;+TOTAL_SIMS;
+  var h=&quot;&quot;,i;for(i=0;i&lt;3;i++){h+=i&lt;lives?&quot;❤️&quot;:&quot;🤍&quot;;}
+  document.getElementById(&quot;hearts&quot;).innerHTML=h;
+  var kmNow=Math.round(totalKm);
+  document.getElementById(&quot;km&quot;).textContent=(kmNow.toLocaleString?kmNow.toLocaleString():kmNow)+&quot; km&quot;;
+  var L=LEGS[legIx];
+  document.getElementById(&quot;kmbar&quot;).style.width=Math.min(100,legDist/L.km*100)+&quot;%&quot;;
+  document.getElementById(&quot;leg&quot;).innerHTML=L.from+&quot; &amp;gt; &quot;+L.to;
+}
+
+/* ---------- audio ---------- */
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;
+    o.frequency.value=kind===&quot;flap&quot;?520:kind===&quot;sim&quot;?880:220;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;hit&quot;?0.18:0.1,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;hit&quot;?0.3:0.14));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.32);
+  }catch(e){}
+}
+
+var toastT=null;
+function toast(msg){
+  var el=document.getElementById(&quot;toast&quot;);
+  el.textContent=msg;el.className=&quot;show&quot;;
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){el.className=&quot;&quot;;},1100);
+}
+
+/* ---------- spawning ---------- */
+var KINDS_T0_TOP=[&quot;carpet&quot;,&quot;lantern&quot;,&quot;column&quot;,&quot;plant&quot;],KINDS_T0_BOT=[&quot;minaret&quot;,&quot;tower&quot;];
+var KINDS_T1_TOP=[&quot;sakura&quot;,&quot;wave&quot;,&quot;lantern2&quot;],KINDS_T1_BOT=[&quot;pagoda&quot;,&quot;torii&quot;];
+var fromTopNext=true;
+function spawnObs(atX){
+  var th=LEGS[legIx].theme;
+  var top=fromTopNext;fromTopNext=!fromTopNext;
+  var kinds=top?(th===0?KINDS_T0_TOP:KINDS_T1_TOP):(th===0?KINDS_T0_BOT:KINDS_T1_BOT);
+  var kind=kinds[Math.floor(Math.random()*kinds.length)];
+  var w=kind===&quot;carpet&quot;?86:kind===&quot;plant&quot;?60:kind===&quot;lantern&quot;||kind===&quot;lantern2&quot;?52:72;
+  /* rubber-band: leave a clear passage on the other side of the plane */
+  var margin=115+Math.random()*70,h;
+  if(top){h=Math.max(70,Math.min(H-190,plane.y-margin));}
+  else{h=Math.max(70,Math.min(H-190,H-(plane.y+margin)));}
+  obs.push({x:(atX===undefined?W+w:atX),w:w,h:h,top:top,kind:kind,theme:th,passed:false});
+}
+function spawnSim(atX){
+  if(simsSpawned&gt;=TOTAL_SIMS)return;
+  var m=80,y=Math.max(m,Math.min(H-m,plane.y+(Math.random()*300-150)));
+  simcards.push({x:(atX===undefined?W+30:atX),y:y,taken:false});
+  simsSpawned++;
+}
+/* dress the scene so the very first frame looks alive */
+function prepopulate(){
+  var px=W*0.62,lastX=px;
+  while(px&lt;W*2.2){spawnObs(px);lastX=px;px+=SPEED*1.15;}
+  spawnT=(lastX-W)/SPEED+1.15;
+  var i;for(i=0;i&lt;8;i++){spawnSim(W*0.5+Math.random()*W*1.5);}
+  simT=0.8;
+  bg.push({kind:&quot;hab&quot;,x:W*0.72,y:H*0.2,s:42,hue:0});
+  bg.push({kind:&quot;hab&quot;,x:W*1.45,y:H*0.32,s:38,hue:1});
+  bg.push({kind:&quot;hab&quot;,x:W*1.9,y:H*0.16,s:34,hue:2});
+  bg.push({kind:&quot;birds&quot;,x:W*1.1,y:H*0.14,s:70});
+  bg.push({kind:&quot;birds&quot;,x:W*0.55,y:H*0.66,s:64});
+  extras.push({kind:&quot;ring&quot;,x:W*0.95,y:H*0.5,taken:false});
+  extras.push({kind:&quot;ring&quot;,x:W*1.7,y:H*0.34,taken:false});
+  extras.push({kind:&quot;card&quot;,x:W*1.35,y:H*0.4,taken:false});
+}
+
+/* ---------- update ---------- */
+function step(dt){
+  /* watchdog: board iframes can lay out at 0x0 until scrolled into view */
+  if(W!==window.innerWidth||H!==window.innerHeight){
+    resize();
+    if(!playing&amp;&amp;!over){obs=[];simcards=[];bg=[];extras=[];simsSpawned=0;plane.y=H*0.45;prepopulate();}
+  }
+  bobT+=dt;
+  if(!playing||over){draw();return;}
+  playT+=dt;
+  plane.vy+=GRAV*dt;plane.y+=plane.vy*dt;
+  plane.rot=Math.max(-0.45,Math.min(0.9,plane.vy/600));
+  if(inv&gt;0)inv-=dt;
+  if(unlimT&gt;0)unlimT-=dt;
+  var mul=unlimT&gt;0?1.4:1; /* UNLIMITED MODE: the world flies faster */
+
+  /* km + legs */
+  var L=LEGS[legIx];
+  legDist+=dt*L.rate*mul;totalKm+=dt*L.rate*mul;
+  if(legDist&gt;=L.km&amp;&amp;legIx&lt;LEGS.length-1){legIx++;legDist=0;toast(&quot;✈️ Next stop: &quot;+LEGS[legIx].to+&quot;!&quot;);}
+  themeMix+= (LEGS[legIx].theme-themeMix)*Math.min(1,dt*0.8); /* crossfade */
+
+  spawnT-=dt;if(spawnT&lt;=0){spawnObs();spawnT=1.15;}
+  simT-=dt;if(simT&lt;=0){spawnSim();simT=0.9;}
+  habT-=dt;if(habT&lt;=0){bg.push(Math.random()&lt;0.6?{kind:&quot;hab&quot;,x:W+60,y:H*(0.12+Math.random()*0.3),s:36+Math.random()*14,hue:Math.floor(Math.random()*3)}:{kind:&quot;birds&quot;,x:W+40,y:H*(0.08+Math.random()*0.2),s:70});habT=3.0;}
+  ringT-=dt;if(ringT&lt;=0){extras.push({kind:&quot;ring&quot;,x:W+30,y:Math.max(90,Math.min(H-90,plane.y+(Math.random()*260-130))),taken:false});ringT=3.2;}
+  cardT-=dt;if(cardT&lt;=0){extras.push({kind:&quot;card&quot;,x:W+30,y:Math.max(90,Math.min(H-90,plane.y+(Math.random()*300-150))),taken:false});cardT=4.8;}
+
+  var i;
+  for(i=0;i&lt;obs.length;i++){
+    var o=obs[i];o.x-=SPEED*mul*dt;
+    if(!o.passed&amp;&amp;o.x+o.w&lt;plane.x){o.passed=true;score++;updateHud();}
+    if(inv&lt;=0&amp;&amp;unlimT&lt;=0&amp;&amp;circRect(plane.x,plane.y,PR-2,o.x,o.top?0:H-o.h,o.w,o.h)){hit();}
+  }
+  while(obs.length&amp;&amp;obs[0].x&lt;-120)obs.shift();
+
+  for(i=0;i&lt;simcards.length;i++){
+    var s=simcards[i];if(s.taken)continue;
+    s.x-=SPEED*mul*dt;
+    var dx=s.x-plane.x,dy=s.y-plane.y;
+    if(unlimT&gt;0&amp;&amp;dx*dx+dy*dy&lt;230*230){s.x-=dx*3.2*dt;s.y-=dy*3.2*dt;dx=s.x-plane.x;dy=s.y-plane.y;} /* magnet */
+    if(dx*dx+dy*dy&lt;(SIMR+PR+6)*(SIMR+PR+6)){
+      s.taken=true;simsGot++;streak++;snd(&quot;sim&quot;);updateHud();
+      if(streak%3===0){unlimT=4.5;toast(&quot;🚀 UNLIMITED MODE — nothing can stop you!&quot;);}
+    }
+  }
+  while(simcards.length&amp;&amp;simcards[0].x&lt;-40)simcards.shift();
+
+  /* background drift (slower than world = parallax) */
+  for(i=0;i&lt;bg.length;i++){bg[i].x-=bg[i].s*dt;}
+  while(bg.length&amp;&amp;bg[0].x&lt;-120)bg.shift();
+
+  /* bonus collectibles */
+  for(i=0;i&lt;extras.length;i++){
+    var e=extras[i];if(e.taken)continue;
+    e.x-=SPEED*mul*dt;
+    var ex=e.x-plane.x,ey=e.y-plane.y;
+    if(ex*ex+ey*ey&lt;34*34){
+      e.taken=true;score+=2;snd(&quot;sim&quot;);updateHud();
+      if(e.kind===&quot;card&quot;){toast(&quot;📮 Postcard from &quot;+LEGS[legIx].to+&quot;! +2&quot;);}
+    }
+  }
+  while(extras.length&amp;&amp;extras[0].x&lt;-60)extras.shift();
+
+  /* soft floor/ceiling */
+  if(plane.y+PR&gt;H-6){plane.y=H-6-PR;plane.vy=FLAP*0.85;}
+  if(plane.y-PR&lt;6){plane.y=6+PR;plane.vy=40;}
+
+  if(playT&gt;=PLAY_CAP){finish();return;}
+  draw();
+}
+
+function circRect(cx,cy,r,rx,ry,rw,rh){
+  var nx=Math.max(rx,Math.min(cx,rx+rw)),ny=Math.max(ry,Math.min(cy,ry+rh));
+  var dx=cx-nx,dy=cy-ny;
+  return dx*dx+dy*dy&lt;r*r;
+}
+
+function hit(){
+  if(inv&gt;0)return;
+  lives--;inv=1.5;snd(&quot;hit&quot;);
+  toast(&quot;⚠️ Connection dropped!&quot;);
+  updateHud();
+  if(lives&lt;=0){finish();return;}
+  plane.vy=-120;
+}
+
+/* ---------- drawing ---------- */
+function lerpC(a,b,t){return [Math.round(a[0]+(b[0]-a[0])*t),Math.round(a[1]+(b[1]-a[1])*t),Math.round(a[2]+(b[2]-a[2])*t)];}
+function css(c,a){return a===undefined?&quot;rgb(&quot;+c[0]+&quot;,&quot;+c[1]+&quot;,&quot;+c[2]+&quot;)&quot;:&quot;rgba(&quot;+c[0]+&quot;,&quot;+c[1]+&quot;,&quot;+c[2]+&quot;,&quot;+a+&quot;)&quot;;}
+
+function draw(){
+  var A=THEMES[0],B=THEMES[1],t=themeMix;
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,css(lerpC(A.skyTop,B.skyTop,t)));
+  g.addColorStop(0.55,css(lerpC(A.skyMid,B.skyMid,t)));
+  g.addColorStop(1,css(lerpC(A.skyBot,B.skyBot,t)));
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+  /* clouds */
+  ctx.fillStyle=&quot;rgba(255,255,255,.7)&quot;;
+  var ct=(bobT*10)%(W+240)-120;
+  cloud(W-ct,H*0.15,30);cloud(W*0.35-ct*0.5+W*0.5,H*0.28,22);
+  cloud(W*0.75-ct*0.65+W*0.35,H*0.55,25);
+  ctx.fillStyle=&quot;rgba(255,255,255,.45)&quot;;
+  cloud(W*0.5-ct*0.25+W*0.45,H*0.07,34);cloud(W*0.1-ct*0.3+W*0.8,H*0.42,19);
+
+  /* skyline: crossfade Istanbul ↔ Japan silhouettes */
+  var sil=lerpC(A.sil,B.sil,t);
+  if(t&lt;0.999){ctx.fillStyle=css(sil,0.30*(1-t));istanbulSkyline(H*0.97);}
+  if(t&gt;0.001){ctx.fillStyle=css(sil,0.30*t);japanSkyline(H*0.97);}
+  ctx.fillStyle=css(lerpC(A.skyBot,B.skyBot,t),0.95);ctx.fillRect(0,H-6,W,6);
+
+  var i;
+  for(i=0;i&lt;bg.length;i++){var b=bg[i];if(b.kind===&quot;hab&quot;)hab(b.x,b.y+Math.sin(bobT*0.8+b.x*0.01)*8,b.hue);else birds(b.x,b.y);}
+  for(i=0;i&lt;obs.length;i++)drawObs(obs[i]);
+  for(i=0;i&lt;extras.length;i++){var e=extras[i];if(e.taken)continue;if(e.kind===&quot;ring&quot;)ring(e.x,e.y);else postcard(e.x,e.y+Math.sin(bobT*2.4+e.x*0.02)*5);}
+  for(i=0;i&lt;simcards.length;i++){var s=simcards[i];if(!s.taken)simcard(s.x,s.y+Math.sin(bobT*3+s.x*0.02)*4);}
+  if(!over&amp;&amp;unlimT&gt;0){
+    /* golden aura + sparkle trail */
+    ctx.fillStyle=&quot;rgba(255,199,66,.22)&quot;;
+    ctx.beginPath();ctx.arc(plane.x,plane.y,44+Math.sin(bobT*8)*5,0,6.283);ctx.fill();
+    ctx.strokeStyle=&quot;rgba(255,199,66,.85)&quot;;ctx.lineWidth=3;
+    ctx.beginPath();ctx.arc(plane.x,plane.y,34,0,6.283);ctx.stroke();
+    var k;for(k=1;k&lt;6;k++){
+      ctx.fillStyle=&quot;rgba(255,199,66,&quot;+(0.55-k*0.09)+&quot;)&quot;;
+      ctx.beginPath();ctx.arc(plane.x-24-k*17,plane.y+Math.sin(bobT*10+k)*7,8-k,0,6.283);ctx.fill();
+    }
+    ctx.fillStyle=&quot;#C8860A&quot;;ctx.font=&quot;bold 12px -apple-system,Segoe UI,Arial&quot;;ctx.textAlign=&quot;center&quot;;
+    ctx.fillText(&quot;⚡ UNLIMITED&quot;,plane.x,plane.y-52);
+    ctx.textAlign=&quot;start&quot;;
+  }
+  if(!over)drawPlane(plane.x,plane.y,plane.rot,inv&gt;0&amp;&amp;Math.floor(bobT*10)%2===0);
+
+  if(over)endScene();
+}
+
+function cloud(x,y,r){
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,6.283);ctx.arc(x+r*0.9,y+r*0.25,r*0.7,0,6.283);ctx.arc(x-r*0.9,y+r*0.3,r*0.6,0,6.283);
+  ctx.fill();
+}
+function istanbulSkyline(base){
+  ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,base-40);
+  /* mosque dome + minarets pattern repeated */
+  var x=0;
+  while(x&lt;W){
+    ctx.lineTo(x+10,base-40);ctx.lineTo(x+10,base-95);ctx.lineTo(x+16,base-105);ctx.lineTo(x+22,base-95);ctx.lineTo(x+22,base-40);
+    ctx.lineTo(x+40,base-40);
+    ctx.arc(x+80,base-40,40,3.14159,0,false);
+    ctx.lineTo(x+138,base-40);ctx.lineTo(x+138,base-95);ctx.lineTo(x+144,base-105);ctx.lineTo(x+150,base-95);ctx.lineTo(x+150,base-40);
+    ctx.lineTo(x+190,base-30);
+    x+=200;
+  }
+  ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+}
+function japanSkyline(base){
+  ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,base-30);
+  var x=0;
+  while(x&lt;W){
+    /* Fuji */
+    ctx.lineTo(x+20,base-30);ctx.lineTo(x+70,base-100);ctx.lineTo(x+120,base-30);
+    /* pagoda */
+    ctx.lineTo(x+150,base-30);ctx.lineTo(x+155,base-55);ctx.lineTo(x+145,base-55);ctx.lineTo(x+165,base-80);ctx.lineTo(x+185,base-55);ctx.lineTo(x+175,base-55);ctx.lineTo(x+180,base-30);
+    x+=220;
+  }
+  ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+}
+
+/* ---------- obstacle sprites (code-drawn) ---------- */
+function drawObs(o){
+  var x=o.x,w=o.w,h=o.h;
+  ctx.save();
+  if(o.top){
+    if(o.kind===&quot;carpet&quot;)carpet(x,0,w,h);
+    else if(o.kind===&quot;lantern&quot;||o.kind===&quot;lantern2&quot;)lantern(x,0,w,h,o.kind===&quot;lantern2&quot;);
+    else if(o.kind===&quot;plant&quot;)plant(x,0,w,h);
+    else if(o.kind===&quot;sakura&quot;)column(x,0,w,h,true,&quot;#F4C5D2&quot;,&quot;#E8949F&quot;,true);
+    else if(o.kind===&quot;wave&quot;)column(x,0,w,h,true,&quot;#F0D6C2&quot;,&quot;#7FB3D4&quot;,false);
+    else column(x,0,w,h,true,&quot;#F7F0E3&quot;,&quot;#7FB3D4&quot;,false);
+  }else{
+    var y=H-h;
+    if(o.kind===&quot;minaret&quot;)minaret(x,y,w,h);
+    else if(o.kind===&quot;pagoda&quot;)pagoda(x,y,w,h);
+    else if(o.kind===&quot;torii&quot;)torii(x,y,w,h);
+    else column(x,y,w,h,false,&quot;#F7F0E3&quot;,&quot;#C0392B&quot;,false);
+  }
+  ctx.restore();
+}
+function column(x,y,w,h,fromTop,body,band,blossoms){
+  ctx.fillStyle=body;ctx.fillRect(x,y,w,h);
+  ctx.fillStyle=&quot;rgba(20,33,61,.07)&quot;;ctx.fillRect(x+w-9,y,9,h);
+  ctx.fillStyle=band;
+  if(fromTop){ctx.fillRect(x,y+h-40,w,10);}else{ctx.fillRect(x,y+30,w,10);}
+  ctx.fillStyle=&quot;#F0384E&quot;;
+  if(fromTop){ctx.fillRect(x,y+h-26,w,3);}else{ctx.fillRect(x,y+24,w,3);}
+  ctx.fillStyle=&quot;#F2C9A8&quot;;
+  if(fromTop){ctx.beginPath();ctx.moveTo(x-5,y+h);ctx.quadraticCurveTo(x+w/2,y+h+22,x+w+5,y+h);ctx.closePath();ctx.fill();}
+  else{ctx.beginPath();ctx.moveTo(x-5,y);ctx.quadraticCurveTo(x+w/2,y-24,x+w+5,y);ctx.closePath();ctx.fill();}
+  if(blossoms){
+    ctx.fillStyle=&quot;#E8949F&quot;;
+    var i;for(i=0;i&lt;4;i++){ctx.beginPath();ctx.arc(x+10+((i*23)%(w-16)),y+(fromTop?h-60-i*26:40+i*26),5,0,6.283);ctx.fill();}
+  }
+}
+function carpet(x,y,w,h){
+  /* hanging rug on a rod */
+  ctx.fillStyle=&quot;#B08850&quot;;ctx.fillRect(x-6,y,w+12,6);
+  ctx.fillStyle=&quot;#6FA8C9&quot;;ctx.fillRect(x,y+6,w,h-18);
+  ctx.strokeStyle=&quot;#C0392B&quot;;ctx.lineWidth=5;ctx.strokeRect(x+7,y+13,w-14,h-32);
+  ctx.fillStyle=&quot;#C0392B&quot;;
+  ctx.beginPath();ctx.moveTo(x+w/2,y+h/2-22);ctx.lineTo(x+w/2+16,y+h/2);ctx.lineTo(x+w/2,y+h/2+22);ctx.lineTo(x+w/2-16,y+h/2);ctx.closePath();ctx.fill();
+  /* fringe */
+  ctx.fillStyle=&quot;#EFE6D5&quot;;
+  var i;for(i=0;i&lt;Math.floor(w/8);i++){ctx.fillRect(x+2+i*8,y+h-12,3,12);}
+}
+function lantern(x,y,w,h,jp){
+  ctx.strokeStyle=&quot;#8A6B3A&quot;;ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(x+w/2,y);ctx.lineTo(x+w/2,y+h-64);ctx.stroke();
+  ctx.fillStyle=jp?&quot;#E8949F&quot;:&quot;#F5E6BF&quot;;
+  ctx.beginPath();
+  ctx.moveTo(x+w/2-4,y+h-64);ctx.lineTo(x+w/2+4,y+h-64);
+  ctx.lineTo(x+w/2+w*0.42,y+h-46);ctx.lineTo(x+w/2+w*0.42,y+h-16);
+  ctx.lineTo(x+w/2+6,y+h);ctx.lineTo(x+w/2-6,y+h);
+  ctx.lineTo(x+w/2-w*0.42,y+h-16);ctx.lineTo(x+w/2-w*0.42,y+h-46);ctx.closePath();ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.35)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  ctx.strokeStyle=jp?&quot;#C0392B&quot;:&quot;#8A6B3A&quot;;
+  ctx.beginPath();ctx.moveTo(x+w/2-w*0.42,y+h-46);ctx.lineTo(x+w/2+w*0.42,y+h-46);ctx.moveTo(x+w/2-w*0.42,y+h-16);ctx.lineTo(x+w/2+w*0.42,y+h-16);ctx.stroke();
+}
+function plant(x,y,w,h){
+  ctx.strokeStyle=&quot;#8A6B3A&quot;;ctx.lineWidth=2.5;
+  ctx.beginPath();ctx.moveTo(x+w/2,y);ctx.lineTo(x+w/2,y+h-52);ctx.stroke();
+  ctx.fillStyle=&quot;#C96A4A&quot;;
+  ctx.beginPath();ctx.moveTo(x+6,y+h-38);ctx.lineTo(x+w-6,y+h-38);ctx.lineTo(x+w-14,y+h-8);ctx.lineTo(x+14,y+h-8);ctx.closePath();ctx.fill();
+  ctx.fillStyle=&quot;#4E9E58&quot;;
+  var i;for(i=0;i&lt;5;i++){
+    var a=-1.4+i*0.7;
+    ctx.beginPath();ctx.ellipse?ctx.ellipse(x+w/2+Math.cos(a)*16,y+h-46+Math.sin(a)*10-8,14,5,a,0,6.283):ctx.arc(x+w/2,y+h-50,12,0,6.283);ctx.fill();
+  }
+}
+function minaret(x,y,w,h){
+  ctx.fillStyle=&quot;#F7F0E3&quot;;ctx.fillRect(x+w*0.18,y+22,w*0.64,h-22);
+  ctx.fillStyle=&quot;rgba(20,33,61,.07)&quot;;ctx.fillRect(x+w*0.62,y+22,w*0.2,h-22);
+  /* dome cap */
+  ctx.fillStyle=&quot;#F2A88C&quot;;
+  ctx.beginPath();ctx.arc(x+w/2,y+22,w*0.34,3.14159,0,false);ctx.fill();
+  ctx.beginPath();ctx.moveTo(x+w/2,y);ctx.lineTo(x+w/2,y+6);ctx.stroke();
+  ctx.fillStyle=&quot;#5E9CC0&quot;;ctx.beginPath();ctx.arc(x+w/2,y+2,4,0,6.283);ctx.fill();
+  /* window + band */
+  ctx.fillStyle=&quot;#2E3A54&quot;;
+  ctx.beginPath();ctx.arc(x+w/2,y+58,7,3.14159,0,true);ctx.rect(x+w/2-7,y+58,14,16);ctx.fill();
+  ctx.fillStyle=&quot;#7FB3D4&quot;;ctx.fillRect(x+w*0.18,y+h*0.45,w*0.64,10);
+  ctx.fillStyle=&quot;#C0392B&quot;;ctx.fillRect(x+w*0.18,y+h*0.45+12,w*0.64,3);
+}
+function pagoda(x,y,w,h){
+  var levels=Math.max(2,Math.min(4,Math.floor(h/90))),lh=(h-20)/levels,i;
+  ctx.fillStyle=&quot;#F4EFE4&quot;;
+  ctx.fillRect(x+w*0.3,y+14,w*0.4,h-14);
+  for(i=0;i&lt;levels;i++){
+    var yy=y+14+i*lh;
+    ctx.fillStyle=&quot;#3E6E8E&quot;;
+    ctx.beginPath();
+    ctx.moveTo(x-4,yy+14);ctx.quadraticCurveTo(x+w/2,yy-16,x+w+4,yy+14);
+    ctx.lineTo(x+w-10,yy+20);ctx.lineTo(x+10,yy+20);ctx.closePath();ctx.fill();
+  }
+  ctx.strokeStyle=&quot;#8A6B3A&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(x+w/2,y);ctx.lineTo(x+w/2,y+16);ctx.stroke();
+}
+function torii(x,y,w,h){
+  ctx.fillStyle=&quot;#F4EFE4&quot;;ctx.fillRect(x+w*0.26,y+30,w*0.48,h-30);
+  ctx.fillStyle=&quot;#C0392B&quot;;
+  ctx.fillRect(x-4,y+8,w+8,10);
+  ctx.beginPath();ctx.moveTo(x-8,y+8);ctx.quadraticCurveTo(x+w/2,y-6,x+w+8,y+8);ctx.lineTo(x+w+8,y+14);ctx.quadraticCurveTo(x+w/2,y+2,x-8,y+14);ctx.closePath();ctx.fill();
+  ctx.fillRect(x+w*0.22,y+18,8,h-18);ctx.fillRect(x+w*0.7,y+18,8,h-18);
+}
+function hab(x,y,hue){
+  var cols=[[&quot;#F0384E&quot;,&quot;#F7D6C4&quot;],[&quot;#2FA9E0&quot;,&quot;#EAF4FA&quot;],[&quot;#F2B84B&quot;,&quot;#FBEFD8&quot;]],c=cols[hue%3];
+  ctx.save();ctx.globalAlpha=0.85;
+  ctx.fillStyle=c[0];
+  ctx.beginPath();ctx.arc(x,y,22,3.14159,0,false);
+  ctx.quadraticCurveTo(x+22,y+16,x+6,y+30);ctx.lineTo(x-6,y+30);
+  ctx.quadraticCurveTo(x-22,y+16,x-22,y);ctx.closePath();ctx.fill();
+  ctx.fillStyle=c[1];
+  ctx.beginPath();ctx.moveTo(x-8,y-21);ctx.quadraticCurveTo(x-11,y+8,x-3,y+29);ctx.lineTo(x+3,y+29);ctx.quadraticCurveTo(x+11,y+8,x+8,y-21);ctx.closePath();ctx.fill();
+  ctx.strokeStyle=&quot;rgba(90,70,60,.6)&quot;;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(x-6,y+30);ctx.lineTo(x-5,y+40);ctx.moveTo(x+6,y+30);ctx.lineTo(x+5,y+40);ctx.stroke();
+  ctx.fillStyle=&quot;#8A6B3A&quot;;
+  ctx.fillRect(x-7,y+40,14,10);
+  ctx.restore();
+}
+function birds(x,y){
+  ctx.strokeStyle=&quot;rgba(60,70,100,.55)&quot;;ctx.lineWidth=2;
+  var i;for(i=0;i&lt;3;i++){
+    var bx=x+i*16,by=y+(i%2)*7,f=Math.sin(bobT*9+i)*3;
+    ctx.beginPath();ctx.moveTo(bx-6,by+f);ctx.quadraticCurveTo(bx-2,by-4-f,bx,by);ctx.quadraticCurveTo(bx+2,by-4-f,bx+6,by+f);ctx.stroke();
+  }
+}
+function ring(x,y){
+  ctx.save();
+  ctx.strokeStyle=&quot;rgba(255,199,66,.35)&quot;;ctx.lineWidth=9;
+  ctx.beginPath();ctx.arc(x,y,24+Math.sin(bobT*5)*2,0,6.283);ctx.stroke();
+  ctx.strokeStyle=&quot;#E8B23A&quot;;ctx.lineWidth=4;
+  ctx.beginPath();ctx.arc(x,y,24+Math.sin(bobT*5)*2,0,6.283);ctx.stroke();
+  ctx.fillStyle=&quot;#C8860A&quot;;ctx.font=&quot;bold 11px Arial&quot;;ctx.textAlign=&quot;center&quot;;
+  ctx.fillText(&quot;+2&quot;,x,y+4);ctx.textAlign=&quot;start&quot;;
+  ctx.restore();
+}
+function postcard(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(-0.08+0.06*Math.sin(bobT*2+x));
+  rr(-20,-14,40,28,4);
+  ctx.fillStyle=&quot;#FFFDF6&quot;;ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.25)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle=&quot;#F0384E&quot;;ctx.fillRect(9,-10,8,9);
+  ctx.strokeStyle=&quot;rgba(20,33,61,.3)&quot;;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(-15,-2);ctx.lineTo(2,-2);ctx.moveTo(-15,4);ctx.lineTo(4,4);ctx.moveTo(-15,10);ctx.lineTo(-2,10);ctx.stroke();
+  ctx.restore();
+}
+function simcard(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.06*Math.sin(bobT*2+x));
+  var w=34,h=26;
+  rr(-w/2,-h/2,w,h,6);
+  ctx.fillStyle=&quot;#fff&quot;;ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.18)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  rr(1,-6,13,12,2.5);ctx.fillStyle=&quot;#E8B23A&quot;;ctx.fill();
+  ctx.strokeStyle=&quot;rgba(120,80,10,.5)&quot;;ctx.lineWidth=1;ctx.stroke();
+  ctx.strokeStyle=&quot;#F0384E&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(-11,-4);ctx.lineTo(-3,-4);ctx.moveTo(-7,-8);ctx.lineTo(-7,2);ctx.stroke();
+  ctx.restore();
+}
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+function drawPlane(x,y,rot,blink){
+  if(blink)return;
+  ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+  ctx.fillStyle=&quot;#fff&quot;;
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,26,10,0,0,6.283):ctx.arc(0,0,18,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.25)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle=&quot;#F0384E&quot;;
+  ctx.beginPath();ctx.moveTo(18,-8);ctx.quadraticCurveTo(32,-4,32,0);ctx.quadraticCurveTo(32,4,18,8);ctx.closePath();ctx.fill();
+  ctx.beginPath();ctx.moveTo(-16,-4);ctx.lineTo(-28,-18);ctx.lineTo(-20,-18);ctx.lineTo(-10,-6);ctx.closePath();ctx.fill();
+  ctx.fillStyle=&quot;#fff&quot;;ctx.font=&quot;bold 9px Arial&quot;;ctx.fillText(&quot;H&quot;,-24,-10);
+  ctx.fillStyle=&quot;#E8EFF7&quot;;
+  ctx.beginPath();ctx.moveTo(2,0);ctx.lineTo(-8,14);ctx.lineTo(2,14);ctx.lineTo(10,2);ctx.closePath();ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.2)&quot;;ctx.stroke();
+  ctx.fillStyle=&quot;#7FB3D4&quot;;
+  var i;for(i=0;i&lt;4;i++){ctx.beginPath();ctx.arc(-8+i*8,-3,2,0,6.283);ctx.fill();}
+  ctx.restore();
+}
+
+/* ---------- end scene: sunset panorama of all destinations ---------- */
+function endScene(){
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,&quot;#F8C8D8&quot;);g.addColorStop(0.45,&quot;#F6D9AE&quot;);g.addColorStop(1,&quot;#F0B490&quot;);
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  /* sun glow */
+  ctx.fillStyle=&quot;rgba(255,240,200,.55)&quot;;
+  ctx.beginPath();ctx.arc(W*0.5,H*0.42,Math.min(W,H)*0.3,0,6.283);ctx.fill();
+  /* far skyline */
+  ctx.fillStyle=&quot;rgba(150,100,120,.30)&quot;;istanbulSkyline(H*0.9);
+  ctx.fillStyle=&quot;rgba(150,100,120,.45)&quot;;japanSkyline(H*0.99);
+  /* foreground frame: palm left, torii right */
+  ctx.fillStyle=&quot;rgba(110,70,90,.55)&quot;;
+  palm(W*0.07,H*0.98);torii(W*0.86,H*0.72,70,H*0.26);
+}
+function palm(x,y){
+  ctx.save();ctx.strokeStyle=&quot;rgba(110,70,90,.55)&quot;;ctx.lineWidth=8;
+  ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+14,y-70,x+6,y-120);ctx.stroke();
+  ctx.lineWidth=5;
+  var i;for(i=0;i&lt;5;i++){
+    var a=-2.6+i*0.55;
+    ctx.beginPath();ctx.moveTo(x+6,y-120);ctx.quadraticCurveTo(x+6+Math.cos(a)*46,y-120+Math.sin(a)*30,x+6+Math.cos(a)*74,y-120+Math.sin(a)*52+14);ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/* ---------- flow ---------- */
+function flap(){
+  if(over||!started)return;
+  if(!playing){playing=true;document.getElementById(&quot;tap&quot;).style.display=&quot;none&quot;;}
+  plane.vy=FLAP;snd(&quot;flap&quot;);
+}
+function finish(){
+  over=true;playing=false;
+  document.getElementById(&quot;fsims&quot;).textContent=simsGot+&quot;/&quot;+TOTAL_SIMS;
+  document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;
+  draw();
+}
+function retry(){reset();draw();}
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+/* ---------- loop (setInterval — rAF freezes in throttled webviews) ---------- */
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt&gt;0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function bind(){
+  var press=function(ev){
+    var id=ev.target&amp;&amp;ev.target.id;
+    if(id===&quot;cta&quot;||id===&quot;retry&quot;)return;
+    ev.preventDefault&amp;&amp;ev.preventDefault();
+    flap();
+  };
+  document.addEventListener(&quot;touchstart&quot;,press,false);
+  document.addEventListener(&quot;mousedown&quot;,press,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;retry&quot;).addEventListener(&quot;click&quot;,retry,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;startLoop();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className=&quot;paused&quot;;stopLoop();if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();reset();bind();draw();
+  window.addEventListener(&quot;resize&quot;,resize,false);
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">SIM Flight: Unlimited<span class="live">LIVE</span></div><div class="fmt hot">FLY & COLLECT · ⚡ UNLIMITED MODE</div><div class="hook">The familiar flyer with a twist their original doesn’t have: every 3rd SIM ignites ⚡ UNLIMITED MODE — golden invincibility, magnet SIMs, the world speeds up. “Unlimited data” as a power-up you feel, plus live theme morphs Istanbul → Marrakesh → Tokyo.</div><div class="thesis"><b>Tests:</b> their proven mechanic + an unlimited-data power fantasy — does the streak loop lift engagement time?</div><div class="file">Holafly_SIMFlight_Game.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — The Roaming Bill Balloon&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#BFDCF5;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#game{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#hud{position:absolute;top:2.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud .logo{color:#F0384E;font-size:19px;font-weight:800;letter-spacing:-.5px;padding-right:12px;border-right:2px solid #F0F0F0}
+#hud .cell{padding:0 14px;border-right:2px solid #F0F0F0;text-align:center}
+#hud .cell:last-child{border-right:0}
+#hud .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block}
+#hud .bill{font-size:22px;line-height:1;color:#E02D44;font-weight:800;font-variant-numeric:tabular-nums}
+#hud .saved{font-size:22px;line-height:1;color:#2E9E6B;font-weight:800;font-variant-numeric:tabular-nums}
+#hud2{position:absolute;bottom:3%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud2 .cell{padding:0 12px;border-right:2px solid #F0F0F0;text-align:center}
+#hud2 .cell:last-child{border-right:0}
+#hud2 .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block;margin-bottom:2px}
+#hud2 .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2 .chip{background:#FFE9EC;border:1px solid #F7B7C0;color:#E02D44;font-size:11px;font-weight:800;border-radius:10px;padding:5px 10px}
+#tap{position:absolute;left:50%;top:56%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:16px 36px;border:0;border-radius:14px;background:#F0384E;box-shadow:0 5px 0 #C22539;color:#fff;font-size:19px;font-weight:800;letter-spacing:1.2px;cursor:pointer}
+#tapsub{position:absolute;left:50%;top:63%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#5A6B82;font-size:13px;font-weight:700;background:rgba(255,255,255,.8);border-radius:10px;padding:5px 12px;white-space:nowrap}
+#toast{position:absolute;left:50%;top:19%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#DFF7EA;color:#187A4B;font-size:14px;font-weight:800;border-radius:18px;padding:7px 16px;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#toast.show{opacity:1}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .6s ease;transition:opacity .6s ease}
+#endcard.show{opacity:1;visibility:visible}
+#elogo{color:#F0384E;font-size:36px;font-weight:800;letter-spacing:-1px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+#ebill{color:#3A2E35;font-size:19px;font-weight:800;margin-top:16px;text-align:center;padding:0 8%}
+#ebill b{color:#E02D44;font-size:26px}
+#esaved{color:#187A4B;font-size:15px;font-weight:800;margin-top:8px;background:rgba(255,255,255,.55);border-radius:12px;padding:7px 14px}
+#etag1{color:#0E8C8C;font-size:16px;font-weight:800;letter-spacing:.4px;margin-top:20px;text-align:center}
+#etag2{color:#F0384E;font-size:16px;font-weight:800;letter-spacing:.4px;margin-top:2px;text-align:center}
+#cta{margin-top:20px;padding:15px 44px;border:0;border-radius:26px;background:#3BB273;box-shadow:0 4px 0 #2E8F5C;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{margin-top:12px;padding:11px 34px;border:0;border-radius:22px;background:#F0384E;box-shadow:0 4px 0 #C22539;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pulse{-webkit-animation:pulse 1.2s ease-in-out infinite;animation:pulse 1.2s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translate(-50%,-50%) scale(1)}50%{-webkit-transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #elogo{font-size:28px}
+  #ebill{font-size:16px}#ebill b{font-size:21px}
+  #cta{margin-top:12px;padding:12px 36px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;canvas id=&quot;game&quot;&gt;&lt;/canvas&gt;
+&lt;div id=&quot;hud&quot;&gt;
+  &lt;div class=&quot;logo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;ROAMING BILL&lt;/span&gt;&lt;span class=&quot;bill&quot; id=&quot;bill&quot;&gt;$0&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;SAVED&lt;/span&gt;&lt;span class=&quot;saved&quot; id=&quot;saved&quot;&gt;$0&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;hud2&quot;&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;eSIMs GRABBED&lt;/span&gt;&lt;span class=&quot;val&quot; id=&quot;pops&quot;&gt;0&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;DISTANCE&lt;/span&gt;&lt;span class=&quot;val&quot; id=&quot;km&quot;&gt;0 km&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;chip&quot;&gt;&amp;#128246; Fly light&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;toast&quot;&gt;&lt;/div&gt;
+&lt;button id=&quot;tap&quot; class=&quot;pulse&quot;&gt;TAP TO FLY&lt;/button&gt;
+&lt;div id=&quot;tapsub&quot;&gt;&amp;#9888;&amp;#65039; roaming meter is ON &amp;mdash; grab green eSIMs to pop your bill&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;elogo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div id=&quot;ebill&quot;&gt;Roaming dragged you down&lt;br&gt;&lt;b id=&quot;fbill&quot;&gt;$412&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;esaved&quot;&gt;You popped it back to $0 &amp;times;&lt;span id=&quot;fpops&quot;&gt;3&lt;/span&gt; &amp;mdash; saved &lt;span id=&quot;fsaved&quot;&gt;$377&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;etag1&quot;&gt;DON&amp;rsquo;T FLY HEAVY.&lt;/div&gt;
+  &lt;div id=&quot;etag2&quot;&gt;UNLIMITED DATA &amp;middot; $6.90/DAY &amp;middot; &amp;euro;0 ROAMING.&lt;/div&gt;
+  &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;FLY LIGHT &amp;rarr;&lt;/button&gt;
+  &lt;button id=&quot;retry&quot;&gt;RETRY &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,playing=false,over=false,AC=null;
+
+var cv=document.getElementById(&quot;game&quot;),ctx=cv.getContext(&quot;2d&quot;);
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+&quot;px&quot;;cv.style.height=H+&quot;px&quot;;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  if(plane)plane.x=Math.max(70,W*0.3);
+}
+
+var GRAV=880,FLAP=-350,SPEED=150,PR=15;
+var BILL_RATE=13;          /* $/s while roaming */
+var PLAY_CAP=25;
+var plane,items,bill,saved,pops,totalBilled,km,spawnT,simT,flashT,playT,tick=null,last=0,bobT=0,balloonSw=0;
+
+function reset(){
+  plane={x:Math.max(70,W*0.3),y:H*0.42,vy:0,rot:0};
+  items=[];bill=0;saved=0;pops=0;totalBilled=0;km=0;
+  spawnT=1.3;simT=2.2;flashT=0;playT=0;
+  over=false;playing=false;
+  prepopulate();
+  document.getElementById(&quot;endcard&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;tap&quot;).style.display=&quot;&quot;;
+  document.getElementById(&quot;tapsub&quot;).style.display=&quot;&quot;;
+  updateHud();
+}
+
+function fmt(n){n=Math.round(n);return &quot;$&quot;+(n.toLocaleString?n.toLocaleString():n);}
+function updateHud(){
+  document.getElementById(&quot;bill&quot;).textContent=fmt(bill);
+  document.getElementById(&quot;saved&quot;).textContent=fmt(saved);
+  document.getElementById(&quot;pops&quot;).textContent=pops;
+  var k=Math.round(km);
+  document.getElementById(&quot;km&quot;).textContent=(k.toLocaleString?k.toLocaleString():k)+&quot; km&quot;;
+}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind===&quot;pop&quot;?&quot;triangle&quot;:&quot;sine&quot;;
+    o.frequency.value=kind===&quot;flap&quot;?520:kind===&quot;pop&quot;?990:200;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;zap&quot;?0.18:0.11,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;zap&quot;?0.3:0.16));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.32);
+  }catch(e){}
+}
+
+var toastT=null;
+function toast(msg,bad){
+  var el=document.getElementById(&quot;toast&quot;);
+  el.textContent=msg;
+  el.style.background=bad?&quot;#FFE9EC&quot;:&quot;#DFF7EA&quot;;
+  el.style.color=bad?&quot;#E02D44&quot;:&quot;#187A4B&quot;;
+  el.className=&quot;show&quot;;
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){el.className=&quot;&quot;;},1150);
+}
+
+/* items: {type:&quot;esim&quot;|&quot;cloud&quot;|&quot;tower&quot;, x,y,w,h} */
+function spawnObstacle(atX){
+  var r=Math.random();
+  if(r&lt;0.38){
+    /* $ roaming cloud from above-ish */
+    var y=60+Math.random()*(H*0.45);
+    items.push({type:&quot;cloud&quot;,x:(atX===undefined?W+60:atX),y:y,r:34});
+  }else if(r&lt;0.72){
+    var h=90+Math.random()*(H*0.3);
+    items.push({type:&quot;tower&quot;,x:(atX===undefined?W+40:atX),w:56,h:h});
+  }else{
+    /* roaming-charge drone patrolling up &amp; down */
+    items.push({type:&quot;drone&quot;,x:(atX===undefined?W+40:atX),y0:H*(0.25+Math.random()*0.4),amp:55+Math.random()*55,ph:Math.random()*6});
+  }
+}
+function spawnEsim(atX){
+  /* mercy targeting: the heavier the bill, the closer the eSIM spawns to the plane */
+  var spread=bill&gt;250?50:130;
+  var m=70,y=Math.max(m,Math.min(H-m,plane.y+(Math.random()*2-1)*spread));
+  items.push({type:&quot;esim&quot;,x:(atX===undefined?W+30:atX),y:y});
+}
+/* dress the scene so the very first frame looks alive */
+function prepopulate(){
+  var px=W*0.5,lastX=px;
+  while(px&lt;W*2.4){spawnObstacle(px);lastX=px;px+=SPEED*0.78;}
+  spawnT=(lastX-W)/SPEED+0.78;
+  spawnEsim(W*0.8);spawnEsim(W*1.35);spawnEsim(W*1.9);
+  simT=1.8;
+}
+
+function weight(){return 1+Math.min(1.15,bill/320);} /* the heavier the bill, the heavier the plane */
+
+function step(dt){
+  /* watchdog: board iframes can lay out at 0x0 until scrolled into view */
+  if(W!==window.innerWidth||H!==window.innerHeight){
+    resize();
+    if(!playing&amp;&amp;!over){items=[];plane.y=H*0.42;prepopulate();}
+  }
+  bobT+=dt;balloonSw+=dt;
+  if(!playing||over){draw();return;}
+  playT+=dt;
+  plane.vy+=GRAV*weight()*dt;
+  plane.y+=plane.vy*dt;
+  plane.rot=Math.max(-0.45,Math.min(0.9,plane.vy/600));
+
+  bill+=BILL_RATE*dt;totalBilled+=BILL_RATE*dt;
+  km+=dt*115;
+  if(flashT&gt;0)flashT-=dt;
+
+  spawnT-=dt;if(spawnT&lt;=0){spawnObstacle();spawnT=0.78;}
+  simT-=dt;if(simT&lt;=0){spawnEsim();simT=2.2;}
+
+  var i;
+  for(i=0;i&lt;items.length;i++){
+    var o=items[i];if(o.dead)continue;
+    o.x-=SPEED*dt;
+    if(o.type===&quot;esim&quot;){
+      var dx=o.x-plane.x,dy=o.y-plane.y;
+      if(dx*dx+dy*dy&lt;(27+PR)*(27+PR)){
+        o.dead=true;pops++;saved+=bill;
+        toast(&quot;💥 Bill popped! &quot;+fmt(bill)+&quot; → $0&quot;);
+        bill=0;snd(&quot;pop&quot;);updateHud();
+      }
+    }else if(o.type===&quot;cloud&quot;){
+      var dx2=o.x-plane.x,dy2=o.y-plane.y;
+      if(dx2*dx2+dy2*dy2&lt;(o.r+PR-4)*(o.r+PR-4)&amp;&amp;!o.hitDone){
+        o.hitDone=true;bill+=60;totalBilled+=60;flashT=0.35;snd(&quot;zap&quot;);
+        toast(&quot;⚡ Roaming surcharge +$60&quot;,true);updateHud();
+      }
+    }else if(o.type===&quot;drone&quot;){
+      var dyC=o.y0+Math.sin(bobT*2+o.ph)*o.amp;
+      var dx3=o.x-plane.x,dy3=dyC-plane.y;
+      if(dx3*dx3+dy3*dy3&lt;(26+PR)*(26+PR)&amp;&amp;!o.hitDone){
+        o.hitDone=true;bill+=60;totalBilled+=60;flashT=0.35;snd(&quot;zap&quot;);
+        toast(&quot;🛸 Data-charge drone +$60&quot;,true);updateHud();
+      }
+    }else{
+      var ty=H-o.h;
+      if(plane.x+PR&gt;o.x&amp;&amp;plane.x-PR&lt;o.x+o.w&amp;&amp;plane.y+PR&gt;ty&amp;&amp;!o.hitDone){
+        o.hitDone=true;bill+=60;totalBilled+=60;flashT=0.35;snd(&quot;zap&quot;);
+        toast(&quot;⚡ Roaming surcharge +$60&quot;,true);updateHud();
+      }
+    }
+  }
+  while(items.length&amp;&amp;items[0].x&lt;-120)items.shift();
+
+  if(plane.y+PR&gt;H-6){plane.y=H-6-PR;plane.vy=FLAP*0.8;}
+  if(plane.y-PR&lt;6){plane.y=6+PR;plane.vy=40;}
+
+  updateHud();
+  if(playT&gt;=PLAY_CAP){finish();return;}
+  draw();
+}
+
+/* ---------- drawing ---------- */
+function draw(){
+  /* sky gets subtly redder as the bill grows */
+  var heat=Math.min(1,bill/500);
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,&quot;rgb(&quot;+Math.round(191+40*heat)+&quot;,&quot;+Math.round(220-50*heat)+&quot;,&quot;+Math.round(245-60*heat)+&quot;)&quot;);
+  g.addColorStop(1,&quot;rgb(&quot;+Math.round(240+10*heat)+&quot;,&quot;+Math.round(219-40*heat)+&quot;,&quot;+Math.round(228-30*heat)+&quot;)&quot;);
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+  ctx.fillStyle=&quot;rgba(255,255,255,.7)&quot;;
+  var ct=(bobT*10)%(W+240)-120;
+  cloudShape(W-ct,H*0.14,28);cloudShape(W*0.4-ct*0.5+W*0.5,H*0.26,20);
+  cloudShape(W*0.8-ct*0.7+W*0.3,H*0.48,24);cloudShape(W*0.2-ct*0.35+W*0.7,H*0.62,17);
+  ctx.fillStyle=&quot;rgba(255,255,255,.45)&quot;;
+  cloudShape(W*0.55-ct*0.22+W*0.4,H*0.08,32);cloudShape(W*0.15-ct*0.28+W*0.85,H*0.36,22);
+
+  ctx.fillStyle=&quot;rgba(122,146,197,.25)&quot;;
+  skyline(H*0.97);
+  ctx.fillStyle=&quot;rgba(240,219,228,.95)&quot;;ctx.fillRect(0,H-6,W,6);
+
+  var i;
+  for(i=0;i&lt;items.length;i++){
+    var o=items[i];if(o.dead)continue;
+    if(o.type===&quot;esim&quot;)esim(o.x,o.y+Math.sin(bobT*3+o.x*0.02)*4);
+    else if(o.type===&quot;cloud&quot;)billCloud(o.x,o.y,o.r);
+    else if(o.type===&quot;drone&quot;)drone(o.x,o.y0+Math.sin(bobT*2+o.ph)*o.amp);
+    else roamTower(o.x,H-o.h,o.w,o.h);
+  }
+
+  if(!over){
+    balloon();
+    drawPlane(plane.x,plane.y,plane.rot);
+  }
+  if(flashT&gt;0){ctx.fillStyle=&quot;rgba(224,45,68,&quot;+(flashT*0.5)+&quot;)&quot;;ctx.fillRect(0,0,W,H);}
+  if(over)endScene();
+}
+function cloudShape(x,y,r){
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,6.283);ctx.arc(x+r*0.9,y+r*0.25,r*0.7,0,6.283);ctx.arc(x-r*0.9,y+r*0.3,r*0.6,0,6.283);
+  ctx.fill();
+}
+function skyline(base){
+  ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,base-30);
+  var x=0,n=0;
+  while(x&lt;W){
+    var w=50+((x*7919+n*104729)%70),h=20+((x*31+n*77)%50);
+    ctx.lineTo(x,base-h);ctx.lineTo(x+w,base-h);
+    x+=w;n++;
+  }
+  ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+}
+function billCloud(x,y,r){
+  ctx.fillStyle=&quot;#5A5064&quot;;
+  ctx.beginPath();
+  ctx.arc(x,y,r*0.8,0,6.283);ctx.arc(x+r*0.7,y+r*0.15,r*0.55,0,6.283);ctx.arc(x-r*0.7,y+r*0.2,r*0.5,0,6.283);
+  ctx.fill();
+  ctx.fillStyle=&quot;#FFD34D&quot;;ctx.font=&quot;bold &quot;+Math.round(r*0.85)+&quot;px Arial&quot;;ctx.textAlign=&quot;center&quot;;
+  ctx.fillText(&quot;$&quot;,x,y+r*0.32);
+  ctx.textAlign=&quot;start&quot;;
+  /* little zap */
+  ctx.strokeStyle=&quot;#FFD34D&quot;;ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(x-4,y+r*0.8);ctx.lineTo(x+3,y+r*1.1);ctx.lineTo(x-2,y+r*1.15);ctx.lineTo(x+5,y+r*1.5);ctx.stroke();
+}
+function roamTower(x,y,w,h){
+  ctx.fillStyle=&quot;#8D93A6&quot;;ctx.fillRect(x+w*0.42,y+18,w*0.16,h-18);
+  ctx.strokeStyle=&quot;#8D93A6&quot;;ctx.lineWidth=4;
+  ctx.beginPath();ctx.moveTo(x+4,y+h*0.55);ctx.lineTo(x+w/2,y+16);ctx.lineTo(x+w-4,y+h*0.55);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+8,y+h*0.85);ctx.lineTo(x+w/2,y+h*0.4);ctx.lineTo(x+w-8,y+h*0.85);ctx.stroke();
+  /* red beacon + $ sign */
+  ctx.fillStyle=&quot;#E02D44&quot;;ctx.beginPath();ctx.arc(x+w/2,y+10,7,0,6.283);ctx.fill();
+  ctx.fillStyle=&quot;#5A5064&quot;;ctx.font=&quot;bold 15px Arial&quot;;ctx.textAlign=&quot;center&quot;;
+  ctx.fillText(&quot;$/MB&quot;,x+w/2,y+h*0.72);
+  ctx.textAlign=&quot;start&quot;;
+}
+function drone(x,y){
+  ctx.save();ctx.translate(x,y);
+  /* rotors */
+  ctx.strokeStyle=&quot;#5A5064&quot;;ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(-16,-10);ctx.lineTo(-16,-15);ctx.moveTo(16,-10);ctx.lineTo(16,-15);ctx.stroke();
+  ctx.strokeStyle=&quot;rgba(90,80,100,.7)&quot;;ctx.lineWidth=2.5;
+  var sp=Math.sin(bobT*24)*10;
+  ctx.beginPath();ctx.moveTo(-16-10-sp,-16);ctx.lineTo(-16+10+sp,-16);ctx.moveTo(16-10+sp,-16);ctx.lineTo(16+10-sp,-16);ctx.stroke();
+  /* body */
+  rr(-18,-10,36,20,6);ctx.fillStyle=&quot;#5A5064&quot;;ctx.fill();
+  ctx.fillStyle=&quot;#FFD34D&quot;;ctx.font=&quot;bold 13px Arial&quot;;ctx.textAlign=&quot;center&quot;;
+  ctx.fillText(&quot;$&quot;,0,5);
+  /* hanging charge tag */
+  ctx.strokeStyle=&quot;#5A5064&quot;;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(0,10);ctx.lineTo(0,20);ctx.stroke();
+  rr(-15,20,30,15,4);ctx.fillStyle=&quot;#E02D44&quot;;ctx.fill();
+  ctx.fillStyle=&quot;#fff&quot;;ctx.font=&quot;bold 9px Arial&quot;;
+  ctx.fillText(&quot;$/MB&quot;,0,30);ctx.textAlign=&quot;start&quot;;
+  ctx.restore();
+}
+function esim(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.06*Math.sin(bobT*2+x));
+  /* glowing ring */
+  ctx.strokeStyle=&quot;rgba(59,178,115,.45)&quot;;ctx.lineWidth=5;
+  ctx.beginPath();ctx.arc(0,0,24+Math.sin(bobT*4)*2,0,6.283);ctx.stroke();
+  var w=36,h=27;
+  rr(-w/2,-h/2,w,h,6);
+  ctx.fillStyle=&quot;#EFFFF6&quot;;ctx.fill();
+  ctx.strokeStyle=&quot;#3BB273&quot;;ctx.lineWidth=2;ctx.stroke();
+  rr(1,-6,13,12,2.5);ctx.fillStyle=&quot;#E8B23A&quot;;ctx.fill();
+  ctx.fillStyle=&quot;#187A4B&quot;;ctx.font=&quot;bold 10px Arial&quot;;ctx.fillText(&quot;e&quot;,-10,3);
+  ctx.restore();
+}
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+function balloon(){
+  /* tethered bill balloon below/behind the plane; grows with bill */
+  var r=14+Math.min(46,bill*0.10);
+  var bx=plane.x-30+Math.sin(balloonSw*1.6)*6;
+  var by=plane.y+34+r*0.8+Math.cos(balloonSw*1.3)*4;
+  ctx.strokeStyle=&quot;rgba(90,80,100,.6)&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(plane.x-12,plane.y+6);ctx.quadraticCurveTo(bx+6,(plane.y+by)/2,bx,by-r);ctx.stroke();
+  var heat=Math.min(1,bill/500);
+  ctx.fillStyle=&quot;rgb(&quot;+Math.round(240-30*heat)+&quot;,&quot;+Math.round(120-60*heat)+&quot;,&quot;+Math.round(110-50*heat)+&quot;)&quot;;
+  ctx.beginPath();ctx.arc(bx,by,r,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(120,30,40,.5)&quot;;ctx.lineWidth=2;ctx.stroke();
+  /* knot */
+  ctx.beginPath();ctx.moveTo(bx-5,by-r);ctx.lineTo(bx+5,by-r);ctx.lineTo(bx,by-r-7);ctx.closePath();
+  ctx.fillStyle=&quot;rgba(120,30,40,.6)&quot;;ctx.fill();
+  ctx.fillStyle=&quot;#fff&quot;;ctx.font=&quot;bold &quot;+Math.max(11,Math.round(r*0.5))+&quot;px Arial&quot;;ctx.textAlign=&quot;center&quot;;
+  ctx.fillText(fmt(bill),bx,by+5);
+  ctx.textAlign=&quot;start&quot;;
+}
+function drawPlane(x,y,rot){
+  ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+  ctx.fillStyle=&quot;#fff&quot;;
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,26,10,0,0,6.283):ctx.arc(0,0,18,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.25)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle=&quot;#F0384E&quot;;
+  ctx.beginPath();ctx.moveTo(18,-8);ctx.quadraticCurveTo(32,-4,32,0);ctx.quadraticCurveTo(32,4,18,8);ctx.closePath();ctx.fill();
+  ctx.beginPath();ctx.moveTo(-16,-4);ctx.lineTo(-28,-18);ctx.lineTo(-20,-18);ctx.lineTo(-10,-6);ctx.closePath();ctx.fill();
+  ctx.fillStyle=&quot;#fff&quot;;ctx.font=&quot;bold 9px Arial&quot;;ctx.fillText(&quot;H&quot;,-24,-10);
+  ctx.fillStyle=&quot;#E8EFF7&quot;;
+  ctx.beginPath();ctx.moveTo(2,0);ctx.lineTo(-8,14);ctx.lineTo(2,14);ctx.lineTo(10,2);ctx.closePath();ctx.fill();
+  ctx.fillStyle=&quot;#7FB3D4&quot;;
+  var i;for(i=0;i&lt;4;i++){ctx.beginPath();ctx.arc(-8+i*8,-3,2,0,6.283);ctx.fill();}
+  ctx.restore();
+}
+function endScene(){
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,&quot;#F8C8D8&quot;);g.addColorStop(0.45,&quot;#F6D9AE&quot;);g.addColorStop(1,&quot;#F0B490&quot;);
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=&quot;rgba(255,240,200,.55)&quot;;
+  ctx.beginPath();ctx.arc(W*0.5,H*0.42,Math.min(W,H)*0.3,0,6.283);ctx.fill();
+  ctx.fillStyle=&quot;rgba(150,100,120,.35)&quot;;skyline(H*0.95);
+}
+
+/* ---------- flow ---------- */
+function flap(){
+  if(over||!started)return;
+  if(!playing){
+    playing=true;
+    document.getElementById(&quot;tap&quot;).style.display=&quot;none&quot;;
+    document.getElementById(&quot;tapsub&quot;).style.display=&quot;none&quot;;
+  }
+  plane.vy=FLAP;snd(&quot;flap&quot;);
+}
+function finish(){
+  over=true;playing=false;
+  document.getElementById(&quot;fbill&quot;).textContent=fmt(totalBilled);
+  if(pops&gt;0){
+    document.getElementById(&quot;esaved&quot;).innerHTML=&quot;You popped it back to $0 &amp;times;&quot;+pops+&quot; &amp;mdash; saved &quot;+fmt(saved);
+  }else{
+    document.getElementById(&quot;esaved&quot;).innerHTML=&quot;One Holafly eSIM would&amp;rsquo;ve made that a flat $6.90&quot;;
+  }
+  document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;
+  draw();
+}
+function retry(){reset();draw();}
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt&gt;0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function bind(){
+  var press=function(ev){
+    var id=ev.target&amp;&amp;ev.target.id;
+    if(id===&quot;cta&quot;||id===&quot;retry&quot;)return;
+    ev.preventDefault&amp;&amp;ev.preventDefault();
+    flap();
+  };
+  document.addEventListener(&quot;touchstart&quot;,press,false);
+  document.addEventListener(&quot;mousedown&quot;,press,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;retry&quot;).addEventListener(&quot;click&quot;,retry,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;startLoop();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className=&quot;paused&quot;;stopLoop();if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();reset();bind();draw();
+  window.addEventListener(&quot;resize&quot;,resize,false);
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">The Roaming Bill Balloon<span class="live">LIVE</span></div><div class="fmt hot">EVOLUTION · WEIGHT = BILL</div><div class="hook">Your plane drags an inflating $-balloon — the bigger your roaming bill, the heavier you fly. $-storm clouds add surcharges; grabbing a green Holafly eSIM pops it back to $0 and the sky calms down. “Roaming dragged you down $625 — DON’T FLY HEAVY.”</div><div class="thesis"><b>Tests:</b> loss-aversion you can feel in the controls — does making the pain physical beat showing it?</div><div class="file">Holafly_BillBalloon_Game.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — Choose Your Skies&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#BFDCF5;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#game{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#hud{position:absolute;top:2.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud .logo{color:#F0384E;font-size:19px;font-weight:800;letter-spacing:-.5px;padding-right:12px;border-right:2px solid #F0F0F0}
+#hud .cell{padding:0 13px;text-align:center;border-right:2px solid #F0F0F0}
+#hud .cell:last-child{border-right:0}
+#hud .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block}
+#hud .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2{position:absolute;bottom:3%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud2 .cell{padding:0 12px;border-right:2px solid #F0F0F0;text-align:center}
+#hud2 .cell:last-child{border-right:0}
+#hud2 .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block;margin-bottom:2px}
+#hud2 .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2 .chip{background:#FFE9EC;border:1px solid #F7B7C0;color:#E02D44;font-size:11px;font-weight:800;border-radius:10px;padding:5px 10px}
+#tap{position:absolute;left:50%;top:56%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:16px 36px;border:0;border-radius:14px;background:#F0384E;box-shadow:0 5px 0 #C22539;color:#fff;font-size:19px;font-weight:800;letter-spacing:1.2px;cursor:pointer}
+#tapsub{position:absolute;left:50%;top:63%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#5A6B82;font-size:13px;font-weight:700;background:rgba(255,255,255,.8);border-radius:10px;padding:5px 12px;white-space:nowrap}
+#toast{position:absolute;left:50%;top:19%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;color:#14213D;font-size:14px;font-weight:800;border-radius:18px;padding:7px 16px;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#toast.show{opacity:1}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .6s ease;transition:opacity .6s ease}
+#endcard.show{opacity:1;visibility:visible}
+#ebadge{font-size:52px;line-height:1.1}
+#elogo{color:#F0384E;font-size:26px;font-weight:800;letter-spacing:-.5px;margin-top:4px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+#eheadline{color:#3A2E35;font-size:26px;font-weight:800;margin-top:10px;text-align:center;padding:0 7%}
+#eroute{color:#5A4A52;font-size:14px;font-weight:700;margin-top:8px;background:rgba(255,255,255,.55);border-radius:12px;padding:7px 14px;text-align:center;max-width:84%}
+#eplan{color:#fff;font-size:14.5px;font-weight:800;margin-top:14px;background:rgba(20,33,61,.75);border-radius:12px;padding:9px 16px;text-align:center;max-width:84%;line-height:1.5}
+#cta{margin-top:18px;padding:15px 44px;border:0;border-radius:26px;background:#3BB273;box-shadow:0 4px 0 #2E8F5C;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{margin-top:12px;padding:11px 34px;border:0;border-radius:22px;background:#F0384E;box-shadow:0 4px 0 #C22539;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pulse{-webkit-animation:pulse 1.2s ease-in-out infinite;animation:pulse 1.2s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translate(-50%,-50%) scale(1)}50%{-webkit-transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #ebadge{font-size:40px}
+  #eheadline{font-size:20px}
+  #cta{margin-top:12px;padding:12px 36px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;canvas id=&quot;game&quot;&gt;&lt;/canvas&gt;
+&lt;div id=&quot;hud&quot;&gt;
+  &lt;div class=&quot;logo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;NEXT FORK&lt;/span&gt;&lt;span class=&quot;val&quot; id=&quot;fork&quot;&gt;1/3&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;YOUR ROUTE&lt;/span&gt;&lt;span class=&quot;val&quot; id=&quot;routes&quot;&gt;&amp;mdash;&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;hud2&quot;&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;lab&quot;&gt;SIMs COLLECTED&lt;/span&gt;&lt;span class=&quot;val&quot; id=&quot;sims&quot;&gt;0/18&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;cell&quot;&gt;&lt;span class=&quot;chip&quot;&gt;&amp;#9992;&amp;#65039; fly HIGH or LOW to choose&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;toast&quot;&gt;&lt;/div&gt;
+&lt;button id=&quot;tap&quot; class=&quot;pulse&quot;&gt;TAP TO FLY&lt;/button&gt;
+&lt;div id=&quot;tapsub&quot;&gt;your flying picks the route &amp;mdash; high or low at every fork&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;ebadge&quot;&gt;&amp;#127749;&lt;/div&gt;
+  &lt;div id=&quot;elogo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div id=&quot;eheadline&quot;&gt;You fly like a Night Owl!&lt;/div&gt;
+  &lt;div id=&quot;eroute&quot;&gt;Your route: Tokyo &amp;rarr; Nightlife &amp;rarr; Street food&lt;/div&gt;
+  &lt;div id=&quot;eplan&quot;&gt;Your plan: &lt;b&gt;Unlimited data in Japan&lt;/b&gt; &amp;#127471;&amp;#127477; &amp;mdash; live the minute you land, &amp;euro;0 roaming.&lt;/div&gt;
+  &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;START MY TRIP &amp;rarr;&lt;/button&gt;
+  &lt;button id=&quot;retry&quot;&gt;FLY A DIFFERENT ROUTE &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,playing=false,over=false,AC=null;
+
+var cv=document.getElementById(&quot;game&quot;),ctx=cv.getContext(&quot;2d&quot;);
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+&quot;px&quot;;cv.style.height=H+&quot;px&quot;;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  if(plane)plane.x=Math.max(70,W*0.3);
+}
+
+/* ---------- forks &amp; personas ---------- */
+/* palettes: [skyTop, skyMid, skyBot] */
+var PAL={
+  start:[[191,220,245],[217,211,238],[240,219,228]],
+  tokyo:[[246,205,225],[214,196,240],[250,214,214]],
+  bali:[[178,226,222],[214,232,204],[252,232,196]],
+  night:[[110,110,170],[150,120,190],[240,170,160]],
+  culture:[[236,214,190],[224,204,214],[246,226,206]],
+  food:[[248,214,184],[240,206,196],[250,230,200]],
+  scenic:[[196,222,246],[208,226,214],[250,238,214]]
+};
+var FORKS=[
+  {hi:{lb:&quot;🗼 TOKYO&quot;,key:&quot;tokyo&quot;,word:&quot;Tokyo&quot;},lo:{lb:&quot;🏝️ BALI&quot;,key:&quot;bali&quot;,word:&quot;Bali&quot;}},
+  {hi:{lb:&quot;🌃 NIGHTLIFE&quot;,key:&quot;night&quot;,word:&quot;Nightlife&quot;},lo:{lb:&quot;🖼️ CULTURE&quot;,key:&quot;culture&quot;,word:&quot;Culture&quot;}},
+  {hi:{lb:&quot;📸 SCENIC VIEWS&quot;,key:&quot;scenic&quot;,word:&quot;Scenic views&quot;},lo:{lb:&quot;🍜 STREET FOOD&quot;,key:&quot;food&quot;,word:&quot;Street food&quot;}}
+];
+/* persona = f(dest, vibe) */
+var PERSONAS={
+  &quot;tokyo-night&quot;:{em:&quot;🌃&quot;,h:&quot;You fly like a Night Owl!&quot;,dest:&quot;Japan&quot;,flag:&quot;🇯🇵&quot;},
+  &quot;tokyo-culture&quot;:{em:&quot;⛩️&quot;,h:&quot;You fly like a Culture Buff!&quot;,dest:&quot;Japan&quot;,flag:&quot;🇯🇵&quot;},
+  &quot;bali-night&quot;:{em:&quot;🔥&quot;,h:&quot;You fly like a Fiesta Chaser!&quot;,dest:&quot;Indonesia&quot;,flag:&quot;🇮🇩&quot;},
+  &quot;bali-culture&quot;:{em:&quot;🌺&quot;,h:&quot;You fly like an Island Soul!&quot;,dest:&quot;Indonesia&quot;,flag:&quot;🇮🇩&quot;}
+};
+
+var GRAV=880,FLAP=-345,SPEED=150,PR=15,SIMR=15;
+var TOTAL_SIMS=18;
+var plane,sims,gates,forkIx,choices,palFrom,palTo,palMix,simsGot,simsSpawned,simT,nextGateT,endT,tick=null,last=0,bobT=0;
+var lans=[],lanT=2.0,bumpCd=0,flashT=0; /* drifting lantern obstacles */
+
+function reset(){
+  plane={x:Math.max(70,W*0.3),y:H*0.45,vy:0,rot:0};
+  sims=[];gates=[];forkIx=0;choices=[];
+  palFrom=PAL.tokyo;palTo=PAL.tokyo;palMix=1; /* start IN Tokyo, not neutral sky */
+  simsGot=0;simsSpawned=0;simT=0.8;nextGateT=1.8;endT=-1;
+  lans=[];lanT=2.0;bumpCd=0;flashT=0;
+  over=false;playing=false;
+  prepopulate();
+  document.getElementById(&quot;endcard&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;tap&quot;).style.display=&quot;&quot;;
+  document.getElementById(&quot;tapsub&quot;).style.display=&quot;&quot;;
+  updateHud();
+}
+
+function updateHud(){
+  document.getElementById(&quot;fork&quot;).textContent=Math.min(forkIx+1,3)+&quot;/3&quot;;
+  document.getElementById(&quot;sims&quot;).textContent=simsGot+&quot;/&quot;+TOTAL_SIMS;
+  var r=&quot;&quot;,i;
+  for(i=0;i&lt;choices.length;i++){r+=(i?&quot; → &quot;:&quot;&quot;)+choices[i].word;}
+  document.getElementById(&quot;routes&quot;).textContent=r||&quot;—&quot;;
+}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;
+    o.frequency.value=kind===&quot;flap&quot;?520:kind===&quot;sim&quot;?880:kind===&quot;fork&quot;?740:kind===&quot;bump&quot;?220:660;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.12,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+    if(kind===&quot;fork&quot;){
+      var o2=AC.createOscillator(),g2=AC.createGain();
+      o2.type=&quot;sine&quot;;o2.frequency.value=988;
+      g2.gain.setValueAtTime(0.0001,t+0.12);
+      g2.gain.exponentialRampToValueAtTime(0.12,t+0.14);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.32);
+      o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.12);o2.stop(t+0.36);
+    }
+  }catch(e){}
+}
+
+var toastT=null;
+function toast(msg){
+  var el=document.getElementById(&quot;toast&quot;);
+  el.textContent=msg;el.className=&quot;show&quot;;
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){el.className=&quot;&quot;;},1400);
+}
+
+function spawnGate(){
+  if(forkIx&gt;=FORKS.length)return;
+  gates.push({x:W+150,f:FORKS[forkIx],done:false});
+}
+function spawnSim(atX){
+  if(simsSpawned&gt;=TOTAL_SIMS)return;
+  var m=90,y=Math.max(m,Math.min(H-m,plane.y+(Math.random()*280-140)));
+  sims.push({x:(atX===undefined?W+30:atX),y:y,taken:false});
+  simsSpawned++;
+}
+/* dress the scene so the very first frame looks alive */
+function prepopulate(){
+  var i;for(i=0;i&lt;10;i++){spawnSim(W*0.45+Math.random()*W*1.6);}
+  simT=1.0;
+  lans.push({x:W*0.62,y:H*0.3,ph:1.2});
+  lans.push({x:W*1.2,y:H*0.62,ph:3.6});
+  lans.push({x:W*1.75,y:H*0.4,ph:5.1});
+  lanT=2.2;
+  /* first fork gate is ON SCREEN from frame one */
+  gates.push({x:W*0.82,f:FORKS[0],done:false});
+  nextGateT=3.0;
+}
+
+function step(dt){
+  /* watchdog: board iframes can lay out at 0x0 until scrolled into view */
+  if(W!==window.innerWidth||H!==window.innerHeight){
+    resize();
+    if(!playing&amp;&amp;!over){sims=[];gates=[];lans=[];simsSpawned=0;plane.y=H*0.45;prepopulate();}
+  }
+  bobT+=dt;
+  if(!playing||over){draw();return;}
+  plane.vy+=GRAV*dt;plane.y+=plane.vy*dt;
+  plane.rot=Math.max(-0.45,Math.min(0.9,plane.vy/600));
+  if(palMix&lt;1)palMix=Math.min(1,palMix+dt*0.7);
+
+  simT-=dt;if(simT&lt;=0){spawnSim();simT=1.1;}
+  lanT-=dt;if(lanT&lt;=0){lans.push({x:W+40,y:H*(0.18+Math.random()*0.64),ph:Math.random()*6});lanT=2.4;}
+  if(bumpCd&gt;0)bumpCd-=dt;
+  if(flashT&gt;0)flashT-=dt;
+  if(forkIx&lt;FORKS.length){
+    nextGateT-=dt;
+    if(nextGateT&lt;=0&amp;&amp;!gates.length){spawnGate();nextGateT=3.2;}
+  }
+
+  var i;
+  for(i=0;i&lt;gates.length;i++){
+    var gt=gates[i];gt.x-=SPEED*dt;
+    if(!gt.done&amp;&amp;gt.x&lt;plane.x){
+      gt.done=true;
+      var hi=plane.y&lt;H/2,pick=hi?gt.f.hi:gt.f.lo;
+      choices.push(pick);
+      palFrom=curPal();palTo=PAL[pick.key];palMix=0;
+      forkIx++;
+      toast((hi?&quot;⬆️ &quot;:&quot;⬇️ &quot;)+pick.lb+&quot; — great choice!&quot;);
+      snd(&quot;fork&quot;);updateHud();
+      if(forkIx&gt;=FORKS.length){endT=3.2;}
+    }
+  }
+  while(gates.length&amp;&amp;gates[0].x&lt;-260)gates.shift();
+
+  for(i=0;i&lt;sims.length;i++){
+    var s=sims[i];if(s.taken)continue;
+    s.x-=SPEED*dt;
+    var dx=s.x-plane.x,dy=s.y-plane.y;
+    if(dx*dx+dy*dy&lt;(SIMR+PR+6)*(SIMR+PR+6)){s.taken=true;simsGot++;snd(&quot;sim&quot;);updateHud();}
+  }
+  while(sims.length&amp;&amp;sims[0].x&lt;-40)sims.shift();
+
+  /* lantern bumps: no lives here — you drop a SIM instead */
+  for(i=0;i&lt;lans.length;i++){
+    var L2=lans[i];L2.x-=SPEED*dt;
+    var ly=L2.y+Math.sin(bobT*1.6+L2.ph)*26;
+    var lx=L2.x-plane.x,lyd=ly-plane.y;
+    if(bumpCd&lt;=0&amp;&amp;lx*lx+lyd*lyd&lt;(26+PR)*(26+PR)){
+      bumpCd=1.1;flashT=0.3;
+      if(simsGot&gt;0){simsGot--;toast(&quot;🏮 Bumped a lantern — dropped a SIM!&quot;);}
+      else{toast(&quot;🏮 Careful — lanterns cost SIMs!&quot;);}
+      snd(&quot;bump&quot;);updateHud();
+    }
+  }
+  while(lans.length&amp;&amp;lans[0].x&lt;-60)lans.shift();
+
+  if(plane.y+PR&gt;H-6){plane.y=H-6-PR;plane.vy=FLAP*0.8;}
+  if(plane.y-PR&lt;6){plane.y=6+PR;plane.vy=40;}
+
+  if(endT&gt;0){endT-=dt;if(endT&lt;=0){finish();return;}}
+  draw();
+}
+
+function curPal(){
+  var a=palFrom,b=palTo,t=palMix,out=[],i;
+  for(i=0;i&lt;3;i++){out.push([Math.round(a[i][0]+(b[i][0]-a[i][0])*t),Math.round(a[i][1]+(b[i][1]-a[i][1])*t),Math.round(a[i][2]+(b[i][2]-a[i][2])*t)]);}
+  return out;
+}
+function css(c){return &quot;rgb(&quot;+c[0]+&quot;,&quot;+c[1]+&quot;,&quot;+c[2]+&quot;)&quot;;}
+
+function draw(){
+  var p=curPal();
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,css(p[0]));g.addColorStop(0.55,css(p[1]));g.addColorStop(1,css(p[2]));
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+  ctx.fillStyle=&quot;rgba(255,255,255,.65)&quot;;
+  var ct=(bobT*10)%(W+240)-120;
+  cloud(W-ct,H*0.15,28);cloud(W*0.4-ct*0.5+W*0.5,H*0.3,20);
+
+  ctx.fillStyle=&quot;rgba(110,110,150,.25)&quot;;
+  skyline(H*0.97);
+  ctx.fillStyle=&quot;rgba(255,255,255,.4)&quot;;ctx.fillRect(0,H-6,W,6);
+
+  var i;
+  for(i=0;i&lt;gates.length;i++)drawGate(gates[i]);
+  for(i=0;i&lt;lans.length;i++){var L3=lans[i];lantern(L3.x,L3.y+Math.sin(bobT*1.6+L3.ph)*26);}
+  for(i=0;i&lt;sims.length;i++){var s=sims[i];if(!s.taken)simcard(s.x,s.y+Math.sin(bobT*3+s.x*0.02)*4);}
+  if(!over)drawPlane(plane.x,plane.y,plane.rot);
+  if(flashT&gt;0){ctx.fillStyle=&quot;rgba(224,45,68,&quot;+(flashT*0.45)+&quot;)&quot;;ctx.fillRect(0,0,W,H);}
+  if(over)endScene();
+}
+function cloud(x,y,r){
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,6.283);ctx.arc(x+r*0.9,y+r*0.25,r*0.7,0,6.283);ctx.arc(x-r*0.9,y+r*0.3,r*0.6,0,6.283);
+  ctx.fill();
+}
+function skyline(base){
+  ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,base-30);
+  var x=0,n=0;
+  while(x&lt;W){
+    var w=50+((x*7919+n*104729)%70),h=20+((x*31+n*77)%55);
+    ctx.lineTo(x,base-h);ctx.lineTo(x+w,base-h);
+    x+=w;n++;
+  }
+  ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+}
+function drawGate(gt){
+  var x=gt.x;
+  /* divider bar mid-screen */
+  ctx.fillStyle=&quot;rgba(255,255,255,.85)&quot;;
+  ctx.fillRect(x-4,H*0.5-5,120,10);
+  ctx.strokeStyle=&quot;rgba(20,33,61,.2)&quot;;ctx.lineWidth=2;ctx.strokeRect(x-4,H*0.5-5,120,10);
+  /* top banner */
+  banner(x,H*0.24,gt.f.hi.lb,true);
+  banner(x,H*0.76,gt.f.lo.lb,false);
+  /* dashed vertical hints */
+  ctx.strokeStyle=&quot;rgba(255,255,255,.8)&quot;;ctx.lineWidth=3;
+  ctx.setLineDash&amp;&amp;ctx.setLineDash([8,9]);
+  ctx.beginPath();ctx.moveTo(x+56,10);ctx.lineTo(x+56,H*0.5-14);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+56,H*0.5+14);ctx.lineTo(x+56,H-10);ctx.stroke();
+  ctx.setLineDash&amp;&amp;ctx.setLineDash([]);
+}
+function banner(x,cy,label,hi){
+  ctx.font=&quot;bold 15px -apple-system,Segoe UI,Arial&quot;;
+  var tw=ctx.measureText(label).width,w=tw+34,h=38;
+  rr(x+56-w/2,cy-h/2,w,h,12);
+  ctx.fillStyle=hi?&quot;rgba(20,33,61,.85)&quot;:&quot;rgba(240,56,78,.9)&quot;;
+  ctx.fill();
+  ctx.fillStyle=&quot;#fff&quot;;ctx.textAlign=&quot;center&quot;;
+  ctx.fillText(label,x+56,cy+5);
+  ctx.textAlign=&quot;start&quot;;
+}
+function lantern(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.08*Math.sin(bobT*1.6+x*0.01));
+  ctx.strokeStyle=&quot;#8A6B3A&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(0,-34);ctx.lineTo(0,-22);ctx.stroke();
+  ctx.fillStyle=&quot;#E0452F&quot;;
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,20,24,0,0,6.283):ctx.arc(0,0,22,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(120,30,20,.5)&quot;;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,12,24,0,0,6.283):ctx.arc(0,0,12,0,6.283);ctx.stroke();
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,20,24,0,0,6.283):ctx.arc(0,0,20,0,6.283);ctx.stroke();
+  ctx.fillStyle=&quot;#F2B84B&quot;;
+  ctx.fillRect(-8,-27,16,6);ctx.fillRect(-8,21,16,6);
+  ctx.strokeStyle=&quot;#F2B84B&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(0,27);ctx.lineTo(0,38);ctx.stroke();
+  ctx.restore();
+}
+function simcard(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.06*Math.sin(bobT*2+x));
+  var w=34,h=26;
+  rr(-w/2,-h/2,w,h,6);
+  ctx.fillStyle=&quot;#fff&quot;;ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.18)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  rr(1,-6,13,12,2.5);ctx.fillStyle=&quot;#E8B23A&quot;;ctx.fill();
+  ctx.strokeStyle=&quot;#F0384E&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(-11,-4);ctx.lineTo(-3,-4);ctx.moveTo(-7,-8);ctx.lineTo(-7,2);ctx.stroke();
+  ctx.restore();
+}
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+function drawPlane(x,y,rot){
+  ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+  ctx.fillStyle=&quot;#fff&quot;;
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,26,10,0,0,6.283):ctx.arc(0,0,18,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(20,33,61,.25)&quot;;ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle=&quot;#F0384E&quot;;
+  ctx.beginPath();ctx.moveTo(18,-8);ctx.quadraticCurveTo(32,-4,32,0);ctx.quadraticCurveTo(32,4,18,8);ctx.closePath();ctx.fill();
+  ctx.beginPath();ctx.moveTo(-16,-4);ctx.lineTo(-28,-18);ctx.lineTo(-20,-18);ctx.lineTo(-10,-6);ctx.closePath();ctx.fill();
+  ctx.fillStyle=&quot;#fff&quot;;ctx.font=&quot;bold 9px Arial&quot;;ctx.fillText(&quot;H&quot;,-24,-10);
+  ctx.fillStyle=&quot;#E8EFF7&quot;;
+  ctx.beginPath();ctx.moveTo(2,0);ctx.lineTo(-8,14);ctx.lineTo(2,14);ctx.lineTo(10,2);ctx.closePath();ctx.fill();
+  ctx.fillStyle=&quot;#7FB3D4&quot;;
+  var i;for(i=0;i&lt;4;i++){ctx.beginPath();ctx.arc(-8+i*8,-3,2,0,6.283);ctx.fill();}
+  ctx.restore();
+}
+function endScene(){
+  var p=curPal();
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,css(p[0]));g.addColorStop(0.5,css(p[1]));g.addColorStop(1,css(p[2]));
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=&quot;rgba(255,244,214,.5)&quot;;
+  ctx.beginPath();ctx.arc(W*0.5,H*0.4,Math.min(W,H)*0.28,0,6.283);ctx.fill();
+  ctx.fillStyle=&quot;rgba(90,80,120,.35)&quot;;skyline(H*0.95);
+}
+
+/* ---------- flow ---------- */
+function flap(){
+  if(over||!started)return;
+  if(!playing){
+    playing=true;
+    document.getElementById(&quot;tap&quot;).style.display=&quot;none&quot;;
+    document.getElementById(&quot;tapsub&quot;).style.display=&quot;none&quot;;
+  }
+  plane.vy=FLAP;snd(&quot;flap&quot;);
+}
+function finish(){
+  over=true;playing=false;
+  var dest=choices[0]?choices[0]:FORKS[0].hi;
+  var vibe=choices[1]?choices[1]:FORKS[1].lo;
+  var key=(dest.key===&quot;tokyo&quot;?&quot;tokyo&quot;:&quot;bali&quot;)+&quot;-&quot;+(vibe.key===&quot;night&quot;?&quot;night&quot;:&quot;culture&quot;);
+  var P=PERSONAS[key]||PERSONAS[&quot;tokyo-night&quot;];
+  document.getElementById(&quot;ebadge&quot;).textContent=P.em;
+  document.getElementById(&quot;eheadline&quot;).textContent=P.h;
+  var r=&quot;&quot;,i;for(i=0;i&lt;choices.length;i++){r+=(i?&quot; → &quot;:&quot;&quot;)+choices[i].word;}
+  document.getElementById(&quot;eroute&quot;).textContent=&quot;Your route: &quot;+(r||&quot;Anywhere with a signal&quot;)+&quot; · SIMs: &quot;+simsGot+&quot;/&quot;+TOTAL_SIMS;
+  document.getElementById(&quot;eplan&quot;).innerHTML=&quot;Your plan: &lt;b&gt;Unlimited data in &quot;+P.dest+&quot;&lt;/b&gt; &quot;+P.flag+&quot; — live the minute you land, €0 roaming.&quot;;
+  document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;
+  draw();
+}
+function retry(){reset();draw();}
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt&gt;0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function bind(){
+  var press=function(ev){
+    var id=ev.target&amp;&amp;ev.target.id;
+    if(id===&quot;cta&quot;||id===&quot;retry&quot;)return;
+    ev.preventDefault&amp;&amp;ev.preventDefault();
+    flap();
+  };
+  document.addEventListener(&quot;touchstart&quot;,press,false);
+  document.addEventListener(&quot;mousedown&quot;,press,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;retry&quot;).addEventListener(&quot;click&quot;,retry,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;startLoop();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className=&quot;paused&quot;;stopLoop();if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();reset();bind();draw();
+  window.addEventListener(&quot;resize&quot;,resize,false);
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Choose Your Skies<span class="live">LIVE</span></div><div class="fmt hot">EVOLUTION · IDENTITY × FLIGHT</div><div class="hook">Fork gates mid-flight: fly HIGH → 🗼 Tokyo, dive LOW → 🏝️ Bali, then nightlife vs. culture, food vs. views — the sky morphs with every choice and the end card crowns your traveler type with a matched plan (“You fly like a Culture Buff!”).</div><div class="thesis"><b>Tests:</b> the personality-quiz hook played instead of tapped — self-segmentation inside a game loop.</div><div class="file">Holafly_RouteForks_Game.html</div></div></div></div><h2>Brand mechanics — the untested edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — Where Are You Going?&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#F4FAFF;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#dots{position:absolute;top:5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#D9E6F2;margin:0 5px}
+.dot.on{background:#FF4E45}
+#promptrow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin-bottom:5%}
+#ola{height:66px;width:66px;-webkit-flex-shrink:0;flex-shrink:0}
+#bubble{position:relative;margin-left:14px;background:#fff;border:2px solid #E5EAF0;border-radius:14px;padding:10px 14px;color:#14213D;font-size:16px;font-weight:700;max-width:230px}
+#bubble:before{content:&quot;&quot;;position:absolute;left:-9px;top:50%;margin-top:-7px;width:12px;height:12px;background:#fff;border-left:2px solid #E5EAF0;border-bottom:2px solid #E5EAF0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+#qwrap{width:88%;max-width:480px}
+#qtitle{color:#14213D;font-size:21px;font-weight:800;margin:0 0 5% 0;text-align:center}
+#opts{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:0 -5px}
+.opt{-webkit-flex:1 1 40%;flex:1 1 40%;box-sizing:border-box;margin:5px;padding:16px 8px;background:#fff;border:2px solid #E5EAF0;border-bottom-width:4px;border-radius:16px;text-align:center;cursor:pointer}
+.opt .em{font-size:36px;line-height:1.2;display:block}
+.opt .lb{color:#14213D;font-size:14px;font-weight:700;display:block;margin-top:6px}
+.opt.sel{background:#FFECEA;border-color:#FF4E45}
+#minicta{position:absolute;left:50%;bottom:4.5%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:12px 26px;border:0;border-radius:14px;background:#14213D;box-shadow:0 4px 0 #0A0F1F;color:#fff;font-size:14px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:60px;line-height:1.1}
+#eheadline{color:#fff;font-size:26px;font-weight:800;margin:8px 8% 4px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 9% 8px;text-align:center;max-width:340px;line-height:1.5}
+#eplan{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:14px;font-weight:700;padding:9px 16px;margin:6px 6% 18px;max-width:320px;line-height:1.45}
+#eplan b{font-weight:800}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.bounce{-webkit-animation:bounce .95s ease-in-out infinite;animation:bounce .95s ease-in-out infinite}
+@-webkit-keyframes bounce{0%,100%{-webkit-transform:translateY(0) rotate(-7deg) scale(1.02,.97)}50%{-webkit-transform:translateY(-15px) rotate(7deg) scale(.98,1.03)}}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-7deg) scale(1.02,.97)}50%{transform:translateY(-15px) rotate(7deg) scale(.98,1.03)}}
+.pulse{-webkit-animation:pulse 1.4s ease-in-out infinite;animation:pulse 1.4s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.confetti{position:absolute;width:10px;height:10px;border-radius:2px;pointer-events:none;opacity:0}
+.confetti.go{-webkit-animation:conf 1s ease-out forwards;animation:conf 1s ease-out forwards}
+@-webkit-keyframes conf{0%{opacity:1;-webkit-transform:translate(0,0) rotate(0)}100%{opacity:0;-webkit-transform:translate(0,-90px) rotate(200deg)}}
+@keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(0,-90px) rotate(200deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.bounce,.pulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #dots{top:4%}
+  #promptrow{margin-bottom:2%}
+  #ola{height:50px;width:50px}
+  #bubble{font-size:14px}
+  #qtitle{font-size:17px;margin-bottom:2%}
+  #opts{-webkit-flex-wrap:nowrap;flex-wrap:nowrap}
+  .opt{padding:10px 6px}
+  .opt .em{font-size:28px}
+  .opt .lb{font-size:12px}
+  #minicta{bottom:5%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:50px;margin-right:3%}
+  #eheadline{font-size:21px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;dots&quot;&gt;&lt;span class=&quot;dot on&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;promptrow&quot;&gt;
+    &lt;svg id=&quot;ola&quot; class=&quot;bounce&quot; viewBox=&quot;0 0 120 120&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Ola&quot;&gt;
+      &lt;circle cx=&quot;60&quot; cy=&quot;62&quot; r=&quot;46&quot; fill=&quot;#2FA9E0&quot;/&gt;
+      &lt;path d=&quot;M22 54 q12 -14 30 -7 q10 5 3 16 q-12 9 -26 4 q-12 -5 -7 -13z&quot; fill=&quot;#4BBE6B&quot;/&gt;
+      &lt;path d=&quot;M78 42 q16 -3 20 11 q2 12 -12 13 q-13 0 -13 -12 q0 -10 5 -12z&quot; fill=&quot;#4BBE6B&quot;/&gt;
+      &lt;path d=&quot;M54 88 q11 -4 20 2 q5 6 -5 11 q-13 5 -20 -4 q-2 -6 5 -9z&quot; fill=&quot;#4BBE6B&quot;/&gt;
+      &lt;circle cx=&quot;46&quot; cy=&quot;60&quot; r=&quot;7&quot; fill=&quot;#fff&quot;/&gt;&lt;circle cx=&quot;74&quot; cy=&quot;60&quot; r=&quot;7&quot; fill=&quot;#fff&quot;/&gt;
+      &lt;circle cx=&quot;47&quot; cy=&quot;61&quot; r=&quot;3.4&quot; fill=&quot;#14213D&quot;/&gt;&lt;circle cx=&quot;75&quot; cy=&quot;61&quot; r=&quot;3.4&quot; fill=&quot;#14213D&quot;/&gt;
+      &lt;path d=&quot;M44 76 q16 14 32 0&quot; stroke=&quot;#14213D&quot; stroke-width=&quot;4.5&quot; fill=&quot;none&quot; stroke-linecap=&quot;round&quot;/&gt;
+      &lt;path d=&quot;M92 20 l16 6 -7 5 2 9 -9 -6 -9 4 3 -9 -6 -7z&quot; fill=&quot;#FF4E45&quot;/&gt;
+    &lt;/svg&gt;
+    &lt;div id=&quot;bubble&quot;&gt;Let&amp;rsquo;s find your trip!&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;qwrap&quot;&gt;
+    &lt;p id=&quot;qtitle&quot;&gt;Where are you headed?&lt;/p&gt;
+    &lt;div id=&quot;opts&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button id=&quot;minicta&quot;&gt;GET HOLAFLY&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;rbadge&quot;&gt;🧭&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;div id=&quot;eheadline&quot;&gt;You&amp;rsquo;re a Culture Explorer!&lt;/div&gt;
+    &lt;div id=&quot;esub&quot;&gt;Always one wrong turn from the best day ever.&lt;/div&gt;
+    &lt;div id=&quot;eplan&quot;&gt;Your plan: &lt;b&gt;Unlimited data in Japan&lt;/b&gt; 🇯🇵 — live the minute you land, €0 roaming.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot; class=&quot;pulse&quot;&gt;GET MY eSIM&lt;/button&gt;
+    &lt;button id=&quot;eother&quot;&gt;or explore 270+ destinations&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,busy=false,AC=null;
+
+/* Q1 picks the destination; Q2 &amp; Q3 pick the persona */
+var DESTS={
+  jp:{name:&quot;Japan&quot;,flag:&quot;🇯🇵&quot;},
+  it:{name:&quot;Italy&quot;,flag:&quot;🇮🇹&quot;},
+  us:{name:&quot;the USA&quot;,flag:&quot;🇺🇸&quot;},
+  id:{name:&quot;Indonesia&quot;,flag:&quot;🇮🇩&quot;}
+};
+var QUESTIONS=[
+  {t:&quot;Where are you headed?&quot;,bubble:&quot;Let’s find your trip!&quot;,type:&quot;dest&quot;,o:[
+    {em:&quot;🗼&quot;,lb:&quot;Tokyo&quot;,d:&quot;jp&quot;},
+    {em:&quot;🍕&quot;,lb:&quot;Rome&quot;,d:&quot;it&quot;},
+    {em:&quot;🗽&quot;,lb:&quot;New York&quot;,d:&quot;us&quot;},
+    {em:&quot;🏝️&quot;,lb:&quot;Bali&quot;,d:&quot;id&quot;}]},
+  {t:&quot;Your travel style?&quot;,bubble:&quot;Ooh, nice pick…&quot;,type:&quot;persona&quot;,o:[
+    {em:&quot;🎒&quot;,lb:&quot;Backpack &amp; wing it&quot;,k:&quot;explorer&quot;},
+    {em:&quot;🛎️&quot;,lb:&quot;Boutique hotels&quot;,k:&quot;creator&quot;},
+    {em:&quot;🍜&quot;,lb:&quot;Eat everything&quot;,k:&quot;foodie&quot;},
+    {em:&quot;💻&quot;,lb:&quot;Work from anywhere&quot;,k:&quot;nomad&quot;}]},
+  {t:&quot;Off the plane, you first…&quot;,bubble:&quot;Last one, promise!&quot;,type:&quot;persona&quot;,o:[
+    {em:&quot;🗺️&quot;,lb:&quot;Open Maps&quot;,k:&quot;explorer&quot;},
+    {em:&quot;📸&quot;,lb:&quot;Post the view&quot;,k:&quot;creator&quot;},
+    {em:&quot;🍽️&quot;,lb:&quot;Find the local spot&quot;,k:&quot;foodie&quot;},
+    {em:&quot;📧&quot;,lb:&quot;Check work chat&quot;,k:&quot;nomad&quot;}]}
+];
+var RESULTS={
+  explorer:{em:&quot;🧭&quot;,h:&quot;You’re a Culture Explorer!&quot;,s:&quot;Always one wrong turn from the best day ever.&quot;},
+  creator:{em:&quot;📸&quot;,h:&quot;You’re a Scenic Creator!&quot;,s:&quot;Every view is content — and you never miss the light.&quot;},
+  foodie:{em:&quot;🍜&quot;,h:&quot;You’re a Flavor Chaser!&quot;,s:&quot;You travel on your stomach, and it never lets you down.&quot;},
+  nomad:{em:&quot;💻&quot;,h:&quot;You’re a Digital Nomad!&quot;,s:&quot;Today’s office: anywhere with a signal.&quot;}
+};
+
+var qi=0,dest=&quot;jp&quot;,votes={explorer:0,creator:0,foodie:0,nomad:0},lastVote={};
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function ding(){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,f=[659.25,880],i;
+    for(i=0;i&lt;f.length;i++){
+      var o=AC.createOscillator(),g=AC.createGain();
+      o.type=&quot;sine&quot;;o.frequency.value=f[i];
+      g.gain.setValueAtTime(0.0001,t+i*0.12);
+      g.gain.exponentialRampToValueAtTime(0.16,t+i*0.12+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+i*0.12+0.22);
+      o.connect(g);g.connect(AC.destination);
+      o.start(t+i*0.12);o.stop(t+i*0.12+0.28);
+    }
+  }catch(e){}
+}
+
+function confetti(x,y){
+  if(window.matchMedia&amp;&amp;matchMedia(&quot;(prefers-reduced-motion: reduce)&quot;).matches)return;
+  var colors=[&quot;#FF4E45&quot;,&quot;#2FA9E0&quot;,&quot;#FFC542&quot;,&quot;#16C784&quot;,&quot;#14213D&quot;],i;
+  for(i=0;i&lt;16;i++){
+    var d=document.createElement(&quot;div&quot;);
+    d.className=&quot;confetti&quot;;
+    d.style.background=colors[i%colors.length];
+    d.style.left=(x+(Math.random()*140-70))+&quot;px&quot;;
+    d.style.top=(y+(Math.random()*30-15))+&quot;px&quot;;
+    document.body.appendChild(d);
+    d.className=&quot;confetti go&quot;;
+    (function(el){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1100);})(d);
+  }
+}
+
+function renderQ(){
+  var q=QUESTIONS[qi];
+  document.getElementById(&quot;qtitle&quot;).textContent=q.t;
+  document.getElementById(&quot;bubble&quot;).textContent=q.bubble;
+  var dots=document.querySelectorAll(&quot;.dot&quot;),i;
+  for(i=0;i&lt;dots.length;i++){dots[i].className=i&lt;=qi?&quot;dot on&quot;:&quot;dot&quot;;}
+  var wrap=document.getElementById(&quot;opts&quot;);
+  wrap.innerHTML=&quot;&quot;;
+  for(i=0;i&lt;q.o.length;i++){
+    var b=document.createElement(&quot;button&quot;);
+    b.className=&quot;opt&quot;;
+    b.innerHTML=&#x27;&lt;span class=&quot;em&quot;&gt;&#x27;+q.o[i].em+&#x27;&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;&#x27;+q.o[i].lb+&#x27;&lt;/span&gt;&#x27;;
+    if(q.type===&quot;dest&quot;){b.setAttribute(&quot;data-d&quot;,q.o[i].d);}
+    else{b.setAttribute(&quot;data-k&quot;,q.o[i].k);}
+    b.addEventListener(&quot;click&quot;,onOpt,false);
+    wrap.appendChild(b);
+  }
+}
+
+function onOpt(ev){
+  if(!started||busy)return;
+  busy=true;
+  var el=ev.currentTarget,q=QUESTIONS[qi];
+  if(q.type===&quot;dest&quot;){dest=el.getAttribute(&quot;data-d&quot;);}
+  else{var k=el.getAttribute(&quot;data-k&quot;);votes[k]++;lastVote[k]=qi;}
+  el.className=&quot;opt sel&quot;;
+  ding();
+  setTimeout(function(){
+    busy=false;
+    if(qi&lt;QUESTIONS.length-1){qi++;renderQ();}
+    else{finish();}
+  },520);
+}
+
+function finish(){
+  var keys=[&quot;explorer&quot;,&quot;creator&quot;,&quot;foodie&quot;,&quot;nomad&quot;],best=keys[0],i;
+  for(i=0;i&lt;keys.length;i++){
+    var k=keys[i];
+    if(votes[k]&gt;votes[best])best=k;
+    else if(votes[k]===votes[best]&amp;&amp;votes[k]&gt;0&amp;&amp;(lastVote[k]||0)&gt;(lastVote[best]||0))best=k;
+  }
+  var r=RESULTS[best],d=DESTS[dest];
+  document.getElementById(&quot;rbadge&quot;).textContent=r.em;
+  document.getElementById(&quot;eheadline&quot;).textContent=r.h;
+  document.getElementById(&quot;esub&quot;).textContent=r.s;
+  document.getElementById(&quot;eplan&quot;).innerHTML=&quot;Your plan: &lt;b&gt;Unlimited data in &quot;+d.name+&quot;&lt;/b&gt; &quot;+d.flag+&quot; — live the minute you land, €0 roaming.&quot;;
+  confetti(window.innerWidth/2,window.innerHeight/3);
+  document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;
+}
+
+function bind(){
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;eother&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;minicta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();}
+function pauseAd(){document.body.className=&quot;paused&quot;;if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();renderQ();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Where Are You Going?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Pick a trip, a travel style, a landing-day habit → “You’re a Culture Explorer!” with a matched destination plan and personalized CTA.</div><div class="thesis"><b>Tests:</b> identity hook + self-segmentation — the result reveals the traveler type and destination to onboard.</div><div class="file">Holafly_DestinationQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — No Signal to Connected&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0E1830;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#loc{position:absolute;top:5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#AEB9D0;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+#loc b{color:#fff}
+#ring{width:190px;height:190px;border-radius:50%;background:#182545;border:3px solid #2A3A63;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-transition:background .5s,border-color .5s;transition:background .5s,border-color .5s}
+#ring.ok{background:#0E3A2C;border-color:#16C784}
+#bars{display:-webkit-flex;display:flex;-webkit-align-items:flex-end;align-items:flex-end;height:56px}
+.bar{width:14px;margin:0 4px;border-radius:3px;background:#3A4A72;-webkit-transition:background .25s;transition:background .25s}
+.bar.b1{height:22px}.bar.b2{height:34px}.bar.b3{height:46px}.bar.b4{height:56px}
+.bar.lit{background:#16C784}
+#status{margin-top:12px;font-size:16px;font-weight:800;color:#FF6B6B;-webkit-transition:color .4s;transition:color .4s}
+#status.ok{color:#16C784}
+#warn{margin-top:20px;background:rgba(255,77,69,.14);border:1px solid rgba(255,107,107,.5);color:#FFC1BD;border-radius:12px;padding:9px 16px;font-size:13.5px;font-weight:700;text-align:center;line-height:1.4;-webkit-transition:opacity .3s;transition:opacity .3s}
+#warn.hide{opacity:0}
+#goodchip{position:absolute;margin-top:20px;background:rgba(22,199,132,.16);border:1px solid rgba(22,199,132,.6);color:#9BF0D0;border-radius:12px;padding:9px 16px;font-size:13.5px;font-weight:800;text-align:center;opacity:0;-webkit-transition:opacity .4s;transition:opacity .4s}
+#goodchip.show{opacity:1}
+#activate{position:absolute;left:50%;bottom:12%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:17px 34px;border:0;border-radius:16px;background:#FF4E45;box-shadow:0 5px 0 #C9362E;color:#fff;font-size:17px;font-weight:800;letter-spacing:.6px;cursor:pointer;white-space:nowrap}
+#activate.busy{background:#8A94AD;box-shadow:0 5px 0 #6B7488;pointer-events:none}
+#hint{position:absolute;bottom:8%;left:0;right:0;text-align:center;color:#8A94AD;font-size:12px;font-weight:600;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:58px;line-height:1.1}
+#eheadline{color:#fff;font-size:26px;font-weight:800;margin:8px 8% 6px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 10% 20px;text-align:center;max-width:330px;line-height:1.5}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.pulse{-webkit-animation:pulse 1.3s ease-in-out infinite;animation:pulse 1.3s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.spin{-webkit-animation:spin .8s linear infinite;animation:spin .8s linear infinite}
+@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #ring{width:150px;height:150px}
+  #bars{height:44px}.bar.b4{height:44px}.bar.b3{height:36px}.bar.b2{height:27px}.bar.b1{height:18px}
+  #activate{bottom:10%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:48px;margin-right:3%}
+  #eheadline{font-size:21px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;loc&quot;&gt;📍 Just landed in &lt;b&gt;Tokyo&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;ring&quot;&gt;
+    &lt;div id=&quot;bars&quot;&gt;&lt;span class=&quot;bar b1&quot;&gt;&lt;/span&gt;&lt;span class=&quot;bar b2&quot;&gt;&lt;/span&gt;&lt;span class=&quot;bar b3&quot;&gt;&lt;/span&gt;&lt;span class=&quot;bar b4&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;div id=&quot;status&quot;&gt;No Service ✕&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;warn&quot;&gt;⚠️ Roaming active — &lt;b&gt;$15/MB&lt;/b&gt;&lt;br&gt;One map + a few stories = a nasty bill.&lt;/div&gt;
+  &lt;div id=&quot;goodchip&quot;&gt;€0 roaming · Unlimited data&lt;/div&gt;
+  &lt;button id=&quot;activate&quot; class=&quot;pulse&quot;&gt;Activate Holafly eSIM&lt;/button&gt;
+  &lt;div id=&quot;hint&quot;&gt;tap to connect&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;rbadge&quot;&gt;🎉&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;div id=&quot;eheadline&quot;&gt;You&amp;rsquo;re connected!&lt;/div&gt;
+    &lt;div id=&quot;esub&quot;&gt;Unlimited data in Japan the minute you land — no roaming, no SIM swap, no bill shock.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;GET CONNECTED&lt;/button&gt;
+    &lt;button id=&quot;eother&quot;&gt;works in 270+ destinations&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,busy=false,done=false,AC=null,timers=[];
+
+function T(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
+function clearTimers(){var i;for(i=0;i&lt;timers.length;i++)clearTimeout(timers[i]);timers=[];}
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;o.frequency.value=hi?880:587.33;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.14,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+  }catch(e){}
+}
+
+function activate(){
+  if(!started||busy||done)return;
+  busy=true;
+  var btn=document.getElementById(&quot;activate&quot;);
+  btn.className=&quot;&quot;;btn.classList.add(&quot;busy&quot;);
+  btn.innerHTML=&#x27;&lt;span class=&quot;spin&quot; style=&quot;display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;vertical-align:-2px&quot;&gt;&lt;/span&gt;&amp;nbsp; Activating…&#x27;;
+  document.getElementById(&quot;warn&quot;).className=&quot;hide&quot;;
+  document.getElementById(&quot;hint&quot;).style.opacity=&quot;0&quot;;
+  var bars=document.querySelectorAll(&quot;.bar&quot;),i;
+  for(i=0;i&lt;bars.length;i++){
+    (function(b,idx){T(function(){b.classList.add(&quot;lit&quot;);ding(idx&gt;=2);},700+idx*260);})(bars[i],i);
+  }
+  T(function(){
+    document.getElementById(&quot;ring&quot;).className=&quot;ok&quot;;
+    document.getElementById(&quot;status&quot;).className=&quot;ok&quot;;
+    document.getElementById(&quot;status&quot;).textContent=&quot;Holafly · Unlimited&quot;;
+    document.getElementById(&quot;goodchip&quot;).className=&quot;show&quot;;
+    ding(true);
+  },700+4*260);
+  T(finish,700+4*260+900);
+}
+
+function finish(){
+  done=true;
+  document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;
+}
+
+function bind(){
+  document.getElementById(&quot;activate&quot;).addEventListener(&quot;click&quot;,activate,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;eother&quot;).addEventListener(&quot;click&quot;,openStore,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();}
+function pauseAd(){document.body.className=&quot;paused&quot;;if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">No Signal → Connected<span class="live">LIVE</span></div><div class="fmt hot">RELIEF MOMENT · 1 TAP</div><div class="hook">“No Service · Roaming $15/MB” → one tap fills the bars green: “Holafly · Unlimited · €0 roaming.” The landing-abroad panic, solved.</div><div class="thesis"><b>Tests:</b> loss-aversion / relief — the core emotional payoff of an eSIM in a single tap.</div><div class="file">Holafly_NoSignal_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf5" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — Beat the Roaming Bill&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#1A0E12;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#head{position:absolute;top:6%;left:0;right:0;text-align:center;color:#F4C7C4;font-size:15px;font-weight:800;letter-spacing:.3px}
+#head span{display:block;color:#9E7C7C;font-size:12px;font-weight:600;margin-top:3px}
+#label{color:#E88;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+#bill{color:#FF5B4F;font-size:66px;font-weight:800;line-height:1;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+#meter{width:80%;max-width:360px;height:14px;background:#33202A;border-radius:8px;overflow:hidden;margin-top:20px}
+#fill{height:100%;width:0;background:-webkit-linear-gradient(left,#FFC542,#FF5B4F);background:linear-gradient(90deg,#FFC542,#FF5B4F);border-radius:8px;-webkit-transition:width .12s linear;transition:width .12s linear}
+#timer{margin-top:16px;color:#F4C7C4;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+#timer b{color:#FFC542}
+#switch{position:absolute;left:50%;bottom:11%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:17px 30px;border:0;border-radius:16px;background:#16C784;box-shadow:0 5px 0 #0FA968;color:#06251A;font-size:16px;font-weight:800;letter-spacing:.4px;cursor:pointer;white-space:nowrap}
+#hint{position:absolute;bottom:7.5%;left:0;right:0;text-align:center;color:#7C6A6A;font-size:12px;font-weight:600}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#16C784;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.fail{background:#FF4E45}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:56px;line-height:1.1}
+#eheadline{color:#fff;font-size:25px;font-weight:800;margin:8px 7% 4px;text-align:center}
+#esub{color:#EAFff4;color:rgba(255,255,255,.9);font-size:15px;font-weight:600;margin:0 9% 8px;text-align:center;max-width:330px;line-height:1.5}
+#eplan{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:12px;color:#fff;font-size:14px;font-weight:800;padding:9px 16px;margin:6px 8% 18px;max-width:320px;line-height:1.45}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 rgba(0,0,0,.18);color:#0FA968;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#endcard.fail #cta{color:#FF4E45}
+#eother{background:none;border:0;color:rgba(255,255,255,.85);font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.pulse{-webkit-animation:pulse 1.15s ease-in-out infinite;animation:pulse 1.15s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.shake{-webkit-animation:shake .5s ease-in-out infinite;animation:shake .5s ease-in-out infinite}
+@-webkit-keyframes shake{0%,100%{-webkit-transform:translateX(0)}25%{-webkit-transform:translateX(-3px)}75%{-webkit-transform:translateX(3px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.shake,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #bill{font-size:50px}
+  #switch{bottom:9%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:58%}
+  #rbadge{font-size:46px;margin-right:3%}
+  #eheadline{font-size:20px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;head&quot;&gt;Roaming meter · Tokyo&lt;span&gt;Standard carrier roaming, live count&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;label&quot;&gt;Your bill so far&lt;/div&gt;
+  &lt;div id=&quot;bill&quot;&gt;$0&lt;/div&gt;
+  &lt;div id=&quot;meter&quot;&gt;&lt;div id=&quot;fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;timer&quot;&gt;Bill grows for &lt;b&gt;0:25&lt;/b&gt;&lt;/div&gt;
+  &lt;button id=&quot;switch&quot; class=&quot;pulse&quot;&gt;STOP THE BILL &amp;rarr; Switch to Holafly&lt;/button&gt;
+  &lt;div id=&quot;hint&quot;&gt;tap before it hurts&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;rbadge&quot;&gt;💸&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;div id=&quot;eheadline&quot;&gt;Bill frozen!&lt;/div&gt;
+    &lt;div id=&quot;esub&quot;&gt;You switched to Holafly and killed the meter on the spot.&lt;/div&gt;
+    &lt;div id=&quot;eplan&quot;&gt;$6.90/day · &lt;b&gt;unlimited data&lt;/b&gt; · €0 roaming&lt;/div&gt;
+    &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;GET HOLAFLY&lt;/button&gt;
+    &lt;button id=&quot;eother&quot;&gt;unlimited plans in 270+ destinations&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,done=false,running=false,AC=null;
+var DUR=25000,PLAN=6.90,elapsed=0,last=0,tickId=null,bill=0,TICK=100;
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;o.frequency.value=hi?784:392;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.13,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.22);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.26);
+  }catch(e){}
+}
+
+function fmtTime(ms){
+  var s=Math.max(0,Math.ceil(ms/1000)),m=Math.floor(s/60);s=s%60;
+  return m+&quot;:&quot;+(s&lt;10?&quot;0&quot;:&quot;&quot;)+s;
+}
+
+function loop(){
+  if(!running||done)return;
+  var now=new Date().getTime(),dt=now-last;last=now;
+  if(dt&gt;500)dt=500; /* clamp after throttled/background gaps */
+  elapsed+=dt;
+  var sec=elapsed/1000;
+  bill=0.5*sec*sec; /* accelerating roaming meter */
+  document.getElementById(&quot;bill&quot;).textContent=&quot;$&quot;+Math.floor(bill);
+  var pct=Math.min(100,bill/300*100);
+  document.getElementById(&quot;fill&quot;).style.width=pct+&quot;%&quot;;
+  var remain=DUR-elapsed;
+  document.getElementById(&quot;timer&quot;).innerHTML=&quot;Bill grows for &lt;b&gt;&quot;+fmtTime(remain)+&quot;&lt;/b&gt;&quot;;
+  if(remain&lt;=0){expire();return;}
+}
+
+function startLoop(){
+  if(done||running)return;
+  running=true;last=new Date().getTime();
+  document.getElementById(&quot;switch&quot;).className=&quot;pulse&quot;;
+  tickId=setInterval(loop,TICK);
+}
+function stopLoop(){running=false;if(tickId){clearInterval(tickId);tickId=null;}}
+
+function switchNow(){
+  if(!started||done)return;
+  done=true;stopLoop();
+  ding(true);
+  var saved=Math.max(0,Math.round(bill-PLAN));
+  document.getElementById(&quot;eheadline&quot;).textContent=&quot;Bill frozen!&quot;;
+  document.getElementById(&quot;esub&quot;).textContent=&quot;You switched to Holafly and killed the meter — you just dodged about $&quot;+saved+&quot;.&quot;;
+  document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;
+}
+
+function expire(){
+  if(done)return;
+  done=true;stopLoop();
+  ding(false);
+  document.getElementById(&quot;bill&quot;).className=&quot;shake&quot;;
+  var ec=document.getElementById(&quot;endcard&quot;);
+  ec.className=&quot;fail&quot;;
+  document.getElementById(&quot;rbadge&quot;).textContent=&quot;😱&quot;;
+  document.getElementById(&quot;eheadline&quot;).textContent=&quot;Roaming would&#x27;ve cost $&quot;+Math.floor(bill);
+  document.getElementById(&quot;esub&quot;).textContent=&quot;That&#x27;s a real carrier roaming bill for one day abroad. It&#x27;s never too late to switch.&quot;;
+  document.getElementById(&quot;eplan&quot;).innerHTML=&quot;Holafly: $6.90/day · &lt;b&gt;unlimited data&lt;/b&gt; · €0 roaming&quot;;
+  ec.className=&quot;fail show&quot;;
+}
+
+function bind(){
+  document.getElementById(&quot;switch&quot;).addEventListener(&quot;click&quot;,switchNow,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;eother&quot;).addEventListener(&quot;click&quot;,openStore,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;startLoop();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();if(!done)startLoop();}
+function pauseAd(){document.body.className=&quot;paused&quot;;stopLoop();if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Roaming Bill<span class="live">LIVE</span></div><div class="fmt hot">URGENCY · 1 TAP</div><div class="hook">A live roaming meter races up ($0 → $300+) on a 25s timer. Tap to freeze it at $6.90/day unlimited. Miss the timer? The scary bill still converts.</div><div class="thesis"><b>Tests:</b> urgency + price anchoring — a climbing cost vs. a flat unlimited plan.</div><div class="file">Holafly_BeatRoaming_1T.html</div></div></div></div><h2>Product demo — the proven core</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf6" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — Install in 60 Seconds&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#F4FAFF;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#steps{position:absolute;top:5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#8AA0B8;font-size:12px;font-weight:800;letter-spacing:1.5px}
+#steps b{color:#FF4E45}
+.panel{width:88%;max-width:460px;display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center}
+.panel.on{display:-webkit-flex;display:flex}
+#promptrow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin-bottom:8%}
+#ola{height:60px;width:60px;-webkit-flex-shrink:0;flex-shrink:0}
+#bubble{position:relative;margin-left:14px;background:#fff;border:2px solid #E5EAF0;border-radius:14px;padding:10px 14px;color:#14213D;font-size:16px;font-weight:700;max-width:220px}
+#bubble:before{content:&quot;&quot;;position:absolute;left:-9px;top:50%;margin-top:-7px;width:12px;height:12px;background:#fff;border-left:2px solid #E5EAF0;border-bottom:2px solid #E5EAF0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+#dgrid{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:0 -5px;width:100%}
+.dcard{-webkit-flex:1 1 40%;flex:1 1 40%;box-sizing:border-box;margin:5px;padding:16px 8px;background:#fff;border:2px solid #E5EAF0;border-bottom-width:4px;border-radius:16px;text-align:center;cursor:pointer}
+.dcard .em{font-size:34px;display:block}
+.dcard .lb{color:#14213D;font-size:14px;font-weight:700;display:block;margin-top:6px}
+.dcard.sel{background:#FFECEA;border-color:#FF4E45}
+#phone{width:196px;height:300px;border-radius:26px;border:4px solid #14213D;background:#fff;position:relative;overflow:hidden;box-shadow:0 8px 22px rgba(20,33,61,.18)}
+#pnotch{position:absolute;top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);width:64px;height:16px;background:#14213D;border-radius:0 0 10px 10px}
+#pbody{position:absolute;top:16px;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;padding:0 14px}
+#qrwrap{position:relative;width:132px;height:132px;background:#fff;border:2px solid #E5EAF0;border-radius:12px;padding:8px}
+#scanline{position:absolute;left:6px;right:6px;top:8px;height:3px;background:#16C784;box-shadow:0 0 10px 2px rgba(22,199,132,.8);border-radius:2px;opacity:0}
+#scanline.go{-webkit-animation:scan 1.2s ease-in-out forwards;animation:scan 1.2s ease-in-out forwards}
+@-webkit-keyframes scan{0%{opacity:1;top:8px}100%{opacity:1;top:120px}}
+@keyframes scan{0%{opacity:1;top:8px}100%{opacity:1;top:120px}}
+#qrcap{color:#14213D;font-size:13px;font-weight:700;margin-top:12px;text-align:center;line-height:1.4}
+#install{display:none;width:100%;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center}
+#install.on{display:-webkit-flex;display:flex}
+#instico{font-size:44px;margin-bottom:6px}
+#insttxt{color:#14213D;font-size:15px;font-weight:800;margin-bottom:14px;min-height:20px;text-align:center}
+#pbar{width:78%;height:12px;background:#E5EAF0;border-radius:7px;overflow:hidden}
+#pbarfill{height:100%;width:0;background:#16C784;border-radius:7px;-webkit-transition:width .18s linear;transition:width .18s linear}
+#pct{color:#8AA0B8;font-size:12px;font-weight:800;margin-top:8px}
+#scanbtn{position:absolute;left:50%;bottom:8%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:16px 34px;border:0;border-radius:16px;background:#FF4E45;box-shadow:0 5px 0 #C9362E;color:#fff;font-size:16px;font-weight:800;letter-spacing:.5px;cursor:pointer;display:none;white-space:nowrap}
+#scanbtn.on{display:block}
+#scanbtn.busy{background:#8A94AD;box-shadow:0 5px 0 #6B7488;pointer-events:none}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:56px;line-height:1.1}
+#eheadline{color:#fff;font-size:25px;font-weight:800;margin:8px 8% 4px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 10% 20px;text-align:center;max-width:330px;line-height:1.5}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.pulse{-webkit-animation:pulse 1.3s ease-in-out infinite;animation:pulse 1.3s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.bounce{-webkit-animation:bounce .95s ease-in-out infinite;animation:bounce .95s ease-in-out infinite}
+@-webkit-keyframes bounce{0%,100%{-webkit-transform:translateY(0) rotate(-6deg)}50%{-webkit-transform:translateY(-12px) rotate(6deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse,.bounce{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #promptrow{margin-bottom:2%}
+  #phone{width:150px;height:230px}
+  #qrwrap{width:104px;height:104px}
+  #scanbtn{bottom:7%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:46px;margin-right:3%}
+  #eheadline{font-size:20px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;steps&quot;&gt;STEP &lt;b&gt;&lt;span id=&quot;stepnum&quot;&gt;1&lt;/span&gt;&lt;/b&gt; OF 2&lt;/div&gt;
+
+  &lt;div id=&quot;p1&quot; class=&quot;panel on&quot;&gt;
+    &lt;div id=&quot;promptrow&quot;&gt;
+      &lt;svg id=&quot;ola&quot; class=&quot;bounce&quot; viewBox=&quot;0 0 120 120&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-label=&quot;Ola&quot;&gt;
+        &lt;circle cx=&quot;60&quot; cy=&quot;62&quot; r=&quot;46&quot; fill=&quot;#2FA9E0&quot;/&gt;
+        &lt;path d=&quot;M22 54 q12 -14 30 -7 q10 5 3 16 q-12 9 -26 4 q-12 -5 -7 -13z&quot; fill=&quot;#4BBE6B&quot;/&gt;
+        &lt;path d=&quot;M78 42 q16 -3 20 11 q2 12 -12 13 q-13 0 -13 -12 q0 -10 5 -12z&quot; fill=&quot;#4BBE6B&quot;/&gt;
+        &lt;path d=&quot;M54 88 q11 -4 20 2 q5 6 -5 11 q-13 5 -20 -4 q-2 -6 5 -9z&quot; fill=&quot;#4BBE6B&quot;/&gt;
+        &lt;circle cx=&quot;46&quot; cy=&quot;60&quot; r=&quot;7&quot; fill=&quot;#fff&quot;/&gt;&lt;circle cx=&quot;74&quot; cy=&quot;60&quot; r=&quot;7&quot; fill=&quot;#fff&quot;/&gt;
+        &lt;circle cx=&quot;47&quot; cy=&quot;61&quot; r=&quot;3.4&quot; fill=&quot;#14213D&quot;/&gt;&lt;circle cx=&quot;75&quot; cy=&quot;61&quot; r=&quot;3.4&quot; fill=&quot;#14213D&quot;/&gt;
+        &lt;path d=&quot;M44 76 q16 14 32 0&quot; stroke=&quot;#14213D&quot; stroke-width=&quot;4.5&quot; fill=&quot;none&quot; stroke-linecap=&quot;round&quot;/&gt;
+      &lt;/svg&gt;
+      &lt;div id=&quot;bubble&quot;&gt;Where to? Pick a destination.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;dgrid&quot;&gt;
+      &lt;div class=&quot;dcard&quot; data-c=&quot;Japan&quot;&gt;&lt;span class=&quot;em&quot;&gt;🗼&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;Japan&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;dcard&quot; data-c=&quot;Italy&quot;&gt;&lt;span class=&quot;em&quot;&gt;🍕&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;Italy&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;dcard&quot; data-c=&quot;the USA&quot;&gt;&lt;span class=&quot;em&quot;&gt;🗽&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;USA&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;dcard&quot; data-c=&quot;Thailand&quot;&gt;&lt;span class=&quot;em&quot;&gt;🏝️&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;Thailand&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;p2&quot; class=&quot;panel&quot;&gt;
+    &lt;div id=&quot;phone&quot;&gt;
+      &lt;div id=&quot;pnotch&quot;&gt;&lt;/div&gt;
+      &lt;div id=&quot;pbody&quot;&gt;
+        &lt;div id=&quot;qrview&quot;&gt;
+          &lt;div id=&quot;qrwrap&quot;&gt;
+            &lt;div id=&quot;scanline&quot;&gt;&lt;/div&gt;
+            &lt;svg viewBox=&quot;0 0 116 116&quot; width=&quot;116&quot; height=&quot;116&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+              &lt;rect width=&quot;116&quot; height=&quot;116&quot; fill=&quot;#fff&quot;/&gt;
+              &lt;path fill=&quot;#14213D&quot; d=&quot;M8 8h28v28H8zM14 14h16v16H14zM80 8h28v28H80zM86 14h16v16H86zM8 80h28v28H8zM14 86h16v16H14z&quot;/&gt;
+              &lt;path fill=&quot;#14213D&quot; d=&quot;M44 8h8v8h-8zM60 8h8v16h-8zM44 20h8v8h-8zM44 32h16v8H44zM68 32h8v8h-8zM44 44h8v8h-8zM60 44h16v8H60zM8 44h28v8H8zM8 60h8v8H8zM20 60h8v16h-8zM32 60h8v8h-8zM44 60h8v8h-8zM60 60h16v8H60zM80 44h28v8H80zM100 60h8v16h-8zM80 68h8v8h-8zM88 76h8v8h-8zM44 76h8v16h-8zM60 80h16v8H60zM64 92h8v16h-8zM80 92h8v8h-8zM96 92h12v8H96zM44 100h8v8h-8z&quot;/&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div id=&quot;qrcap&quot;&gt;Holafly eSIM for &lt;b id=&quot;destname&quot;&gt;Japan&lt;/b&gt;&lt;br&gt;Scan to install&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;install&quot;&gt;
+          &lt;div id=&quot;instico&quot;&gt;📲&lt;/div&gt;
+          &lt;div id=&quot;insttxt&quot;&gt;Installing eSIM…&lt;/div&gt;
+          &lt;div id=&quot;pbar&quot;&gt;&lt;div id=&quot;pbarfill&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;div id=&quot;pct&quot;&gt;0%&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button id=&quot;scanbtn&quot;&gt;Scan QR to install&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;rbadge&quot;&gt;✅&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;div id=&quot;eheadline&quot;&gt;Installed in under a minute&lt;/div&gt;
+    &lt;div id=&quot;esub&quot;&gt;No SIM swap, no store visit — scan once and your unlimited data is live the second you land.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;DO IT FOR REAL&lt;/button&gt;
+    &lt;button id=&quot;eother&quot;&gt;available in 270+ destinations&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,busy=false,done=false,running=false,AC=null;
+var dest=&quot;Japan&quot;,prog=0,progId=null,progActive=false;
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;o.frequency.value=hi?880:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.13,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+  }catch(e){}
+}
+
+function pickDest(ev){
+  if(!started||busy)return;
+  busy=true;
+  var el=ev.currentTarget;
+  dest=el.getAttribute(&quot;data-c&quot;);
+  el.className=&quot;dcard sel&quot;;
+  ding(false);
+  document.getElementById(&quot;destname&quot;).textContent=dest;
+  setTimeout(function(){
+    busy=false;
+    document.getElementById(&quot;p1&quot;).className=&quot;panel&quot;;
+    document.getElementById(&quot;p2&quot;).className=&quot;panel on&quot;;
+    document.getElementById(&quot;stepnum&quot;).textContent=&quot;2&quot;;
+    var sb=document.getElementById(&quot;scanbtn&quot;);
+    sb.className=&quot;on pulse&quot;;
+  },520);
+}
+
+function doScan(){
+  if(!started||busy||done)return;
+  busy=true;
+  var sb=document.getElementById(&quot;scanbtn&quot;);
+  sb.className=&quot;on busy&quot;;sb.textContent=&quot;Scanning…&quot;;
+  document.getElementById(&quot;scanline&quot;).className=&quot;go&quot;;
+  ding(false);
+  setTimeout(function(){
+    document.getElementById(&quot;qrview&quot;).style.display=&quot;none&quot;;
+    document.getElementById(&quot;install&quot;).className=&quot;on&quot;;
+    sb.style.display=&quot;none&quot;;
+    prog=0;progActive=true;runProg();
+  },1250);
+}
+
+function runProg(){
+  if(!running||done){return;}
+  if(!progActive)return;
+  prog+=2;
+  if(prog&gt;100)prog=100;
+  document.getElementById(&quot;pbarfill&quot;).style.width=prog+&quot;%&quot;;
+  document.getElementById(&quot;pct&quot;).textContent=prog+&quot;%&quot;;
+  var txt=document.getElementById(&quot;insttxt&quot;),ico=document.getElementById(&quot;instico&quot;);
+  if(prog&lt;45){txt.textContent=&quot;Installing eSIM…&quot;;}
+  else if(prog&lt;85){txt.textContent=&quot;Connecting to local network…&quot;;ico.textContent=&quot;📶&quot;;}
+  else{txt.textContent=&quot;Data is live 🎉&quot;;ico.textContent=&quot;🌐&quot;;}
+  if(prog&gt;=100){progActive=false;ding(true);setTimeout(finish,650);return;}
+  progId=setTimeout(runProg,60);
+}
+
+function finish(){done=true;document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;}
+
+function bind(){
+  var cards=document.querySelectorAll(&quot;.dcard&quot;),i;
+  for(i=0;i&lt;cards.length;i++){cards[i].addEventListener(&quot;click&quot;,pickDest,false);}
+  document.getElementById(&quot;scanbtn&quot;).addEventListener(&quot;click&quot;,doScan,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;eother&quot;).addEventListener(&quot;click&quot;,openStore,false);
+}
+
+function showAd(){started=true;running=true;document.body.className=&quot;&quot;;}
+function resumeAd(){running=true;document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();if(progActive)runProg();}
+function pauseAd(){running=false;document.body.className=&quot;paused&quot;;if(progId){clearTimeout(progId);progId=null;}if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf6');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Install in 60 Seconds<span class="live">LIVE</span></div><div class="fmt">SCAN & GO · 2 TAPS</div><div class="hook">Pick a destination → scan the QR → watch the eSIM install and data go live. A faithful run-through of the real onboarding.</div><div class="thesis"><b>Tests:</b> real-utility demo — showing how fast and simple activation is de-risks the install.</div><div class="file">Holafly_ScanGo_2plus.html</div></div></div></div><h2>Coverage & discovery — the travel edge</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable — Tap the World&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0B1C3A;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#title{position:absolute;top:5.5%;left:0;right:0;text-align:center;color:#fff;font-size:20px;font-weight:800;padding:0 8%}
+#title span{display:block;color:#8FA6C8;font-size:13px;font-weight:600;margin-top:4px}
+#chip{position:absolute;top:16%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#16C784;color:#06251A;font-size:14px;font-weight:800;border-radius:20px;padding:8px 16px;white-space:nowrap;opacity:0;-webkit-transition:opacity .25s,-webkit-transform .25s;transition:opacity .25s,transform .25s;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#chip.show{opacity:1}
+#maparea{position:relative;width:94%;max-width:480px}
+#map{width:100%;height:auto;display:block}
+.land{fill:#24406E}
+.land.flood{fill:#1E7F5C;-webkit-transition:fill .5s;transition:fill .5s}
+.pin{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;cursor:pointer;border:0;background:none;padding:0}
+.pin .dot{position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;background:#FF4E45;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.pin .ripple{position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:2px solid #FF4E45;-webkit-animation:ripple 1.6s ease-out infinite;animation:ripple 1.6s ease-out infinite}
+@-webkit-keyframes ripple{0%{-webkit-transform:scale(1);opacity:.7}100%{-webkit-transform:scale(2.6);opacity:0}}
+@keyframes ripple{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
+.pin.lit .dot{background:#16C784}
+.pin.lit .ripple{display:none}
+.pin.lit .check{position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;color:#fff;font-size:11px;font-weight:800;line-height:16px;text-align:center}
+#counter{position:absolute;bottom:13%;left:0;right:0;text-align:center;color:#fff;font-size:15px;font-weight:800}
+#counter b{color:#16C784;font-size:22px}
+#hint{position:absolute;bottom:9%;left:0;right:0;text-align:center;color:#8FA6C8;font-size:12px;font-weight:600}
+#seeall{position:absolute;left:50%;bottom:8.5%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:16px 32px;border:0;border-radius:16px;background:#FF4E45;box-shadow:0 5px 0 #C9362E;color:#fff;font-size:16px;font-weight:800;letter-spacing:.5px;cursor:pointer;display:none;white-space:nowrap}
+#seeall.on{display:block}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:56px;line-height:1.1}
+#eheadline{color:#fff;font-size:26px;font-weight:800;margin:8px 7% 4px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 10% 20px;text-align:center;max-width:330px;line-height:1.5}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sapulse{-webkit-animation:sapulse 1.3s ease-in-out infinite;animation:sapulse 1.3s ease-in-out infinite}
+@-webkit-keyframes sapulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes sapulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.ripple,.ctapulse,.sapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #title{top:4%;font-size:17px}
+  #maparea{max-width:380px}
+  #counter{bottom:16%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:46px;margin-right:3%}
+  #eheadline{font-size:21px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;title&quot;&gt;Tap the world&lt;span&gt;Wherever you land, you&amp;rsquo;re covered&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;chip&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;maparea&quot;&gt;
+    &lt;svg id=&quot;map&quot; viewBox=&quot;0 0 480 250&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+      &lt;!-- stylized continents (decorative, not to scale) --&gt;
+      &lt;path class=&quot;land&quot; d=&quot;M40 60 q30 -22 70 -14 q34 8 30 34 q-6 24 -40 26 q10 20 -6 34 q-20 14 -40 2 q-16 -12 -10 -32 q-24 -8 -20 -30 q2 -16 26 -20z&quot;/&gt;
+      &lt;path class=&quot;land&quot; d=&quot;M120 150 q22 -10 34 8 q10 20 -4 44 q-12 26 -30 22 q-16 -6 -14 -30 q-10 -30 14 -44z&quot;/&gt;
+      &lt;path class=&quot;land&quot; d=&quot;M210 66 q40 -20 78 -8 q20 8 14 26 q30 4 40 26 q6 20 -18 28 q-30 8 -54 -6 q-30 6 -50 -10 q-20 -18 -10 -40 q0 -30 24 -34z&quot; transform=&quot;translate(-8,0)&quot;/&gt;
+      &lt;path class=&quot;land&quot; d=&quot;M250 150 q30 -12 44 10 q10 22 -6 46 q-16 24 -34 18 q-16 -8 -14 -32 q-8 -28 10 -42z&quot;/&gt;
+      &lt;path class=&quot;land&quot; d=&quot;M300 96 q34 -8 60 4 q22 12 14 32 q-10 22 -44 20 q-34 -2 -42 -24 q-6 -22 12 -32z&quot;/&gt;
+      &lt;path class=&quot;land&quot; d=&quot;M380 176 q26 -8 40 8 q10 16 -6 30 q-20 14 -38 4 q-14 -12 -6 -28 q4 -10 10 -14z&quot;/&gt;
+    &lt;/svg&gt;
+    &lt;!-- pins positioned by % over the map --&gt;
+    &lt;button class=&quot;pin&quot; style=&quot;left:19%;top:34%&quot; data-f=&quot;🇺🇸&quot; data-n=&quot;USA&quot; data-p=&quot;$4.90/day&quot;&gt;&lt;span class=&quot;ripple&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;span class=&quot;check&quot;&gt;✓&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;pin&quot; style=&quot;left:29%;top:72%&quot; data-f=&quot;🇧🇷&quot; data-n=&quot;Brazil&quot; data-p=&quot;$5.50/day&quot;&gt;&lt;span class=&quot;ripple&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;span class=&quot;check&quot;&gt;✓&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;pin&quot; style=&quot;left:52%;top:36%&quot; data-f=&quot;🇮🇹&quot; data-n=&quot;Italy&quot; data-p=&quot;$4.30/day&quot;&gt;&lt;span class=&quot;ripple&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;span class=&quot;check&quot;&gt;✓&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;pin&quot; style=&quot;left:72%;top:44%&quot; data-f=&quot;🇯🇵&quot; data-n=&quot;Japan&quot; data-p=&quot;$6.90/day&quot;&gt;&lt;span class=&quot;ripple&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;span class=&quot;check&quot;&gt;✓&lt;/span&gt;&lt;/button&gt;
+    &lt;button class=&quot;pin&quot; style=&quot;left:84%;top:78%&quot; data-f=&quot;🇦🇺&quot; data-n=&quot;Australia&quot; data-p=&quot;$5.90/day&quot;&gt;&lt;span class=&quot;ripple&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dot&quot;&gt;&lt;/span&gt;&lt;span class=&quot;check&quot;&gt;✓&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;counter&quot;&gt;Destinations covered: &lt;b id=&quot;cnum&quot;&gt;0&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;hint&quot;&gt;tap the glowing pins&lt;/div&gt;
+  &lt;button id=&quot;seeall&quot; class=&quot;sapulse&quot;&gt;SEE ALL 270+ DESTINATIONS&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;endcard&quot;&gt;
+  &lt;div id=&quot;rbadge&quot;&gt;🌍&lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;div id=&quot;eheadline&quot;&gt;Covered in 270+ destinations&lt;/div&gt;
+    &lt;div id=&quot;esub&quot;&gt;One Holafly eSIM, unlimited data almost anywhere you land — no roaming, no local SIM hunt.&lt;/div&gt;
+    &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;FIND YOUR DESTINATION&lt;/button&gt;
+    &lt;button id=&quot;eother&quot;&gt;plans from $4.30/day&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,done=false,AC=null;
+var lit=0,total=5,chipTimer=null;
+var STEPS=[0,42,110,198,240,270]; /* counter jumps as pins light, ending 270+ */
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;o.frequency.value=hi?880:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.13,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+  }catch(e){}
+}
+
+function showChip(txt){
+  var c=document.getElementById(&quot;chip&quot;);
+  c.textContent=txt;c.className=&quot;show&quot;;
+  if(chipTimer)clearTimeout(chipTimer);
+  chipTimer=setTimeout(function(){c.className=&quot;&quot;;},1600);
+}
+
+function onPin(ev){
+  if(!started||done)return;
+  var el=ev.currentTarget;
+  if(el.className.indexOf(&quot;lit&quot;)&gt;-1)return;
+  el.className=&quot;pin lit&quot;;
+  lit++;
+  ding(lit&gt;=3);
+  showChip(el.getAttribute(&quot;data-f&quot;)+&quot; &quot;+el.getAttribute(&quot;data-n&quot;)+&quot; · Unlimited ✓ · &quot;+el.getAttribute(&quot;data-p&quot;));
+  var target=STEPS[Math.min(lit,STEPS.length-1)];
+  animateCount(target,lit&gt;=total);
+  if(lit&gt;=3){
+    var sb=document.getElementById(&quot;seeall&quot;);
+    if(sb.className.indexOf(&quot;on&quot;)===-1)sb.className=&quot;on sapulse&quot;;
+    document.getElementById(&quot;hint&quot;).style.opacity=&quot;0&quot;;
+  }
+  if(lit&gt;=total){
+    floodMap();
+    setTimeout(finish,900);
+  }
+}
+
+var countRAF=null;
+function animateCount(target,plus){
+  var el=document.getElementById(&quot;cnum&quot;);
+  var cur=parseInt(el.textContent,10)||0;
+  if(countRAF)clearInterval(countRAF);
+  countRAF=setInterval(function(){
+    cur+=Math.max(1,Math.ceil((target-cur)/6));
+    if(cur&gt;=target){cur=target;clearInterval(countRAF);el.textContent=plus?target+&quot;+&quot;:target;return;}
+    el.textContent=cur;
+  },40);
+}
+
+function floodMap(){
+  var lands=document.querySelectorAll(&quot;.land&quot;),i;
+  for(i=0;i&lt;lands.length;i++){lands[i].setAttribute(&quot;class&quot;,&quot;land flood&quot;);}
+}
+
+function finish(){done=true;document.getElementById(&quot;endcard&quot;).className=&quot;show&quot;;}
+
+function bind(){
+  var pins=document.querySelectorAll(&quot;.pin&quot;),i;
+  for(i=0;i&lt;pins.length;i++){pins[i].addEventListener(&quot;click&quot;,onPin,false);}
+  document.getElementById(&quot;seeall&quot;).addEventListener(&quot;click&quot;,finish,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;eother&quot;).addEventListener(&quot;click&quot;,openStore,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();}
+function pauseAd(){document.body.className=&quot;paused&quot;;if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf7');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap glowing pins across the map — each lights up “Unlimited ✓” with a local price, and the counter climbs to “270+ destinations.”</div><div class="thesis"><b>Tests:</b> breadth of coverage — turning “works almost everywhere” into an interactive proof point.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A — Friction</td><td>No Signal 1T vs. Scan & Go 2T</td><td>Does a one-tap relief beat a full onboarding walkthrough?</td><td>IPM → install rate</td></tr><tr><td>B — Hook</td><td>Destination Quiz vs. Beat the Roaming Bill</td><td>Identity vs. urgency — which framing drives the tap?</td><td>CTR → CVR</td></tr><tr><td>C — Promise</td><td>No Signal vs. Tap the World</td><td>Sell the single moment of relief, or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D — Geo</td><td>Quiz / Scan destination cards</td><td>Which destinations self-select the highest-intent travelers?</td><td>CVR by destination</td></tr><tr><td>E — Format</td><td>SIM Flight vs. best static/video</td><td>Does your proven flyer mechanic outperform on Unity like it does on Luna?</td><td>IPM → CPA parity</td></tr><tr><td>F — Evolution</td><td>SIM Flight vs. Bill Balloon vs. Choose Your Skies</td><td>Clone, loss-aversion twist, or identity twist — which flyer wins?</td><td>CTR → CVR → D7</td></tr></table>
+<div class="note"><b>About these builds:</b> everything on this page is a working concept build — final versions ship with Holafly’s official brand assets and approved copy (logo, brand coral, mascot, plan prices). Both store CTAs are already wired with automatic iOS/Android detection, and every creative is fully Unity-spec compliant (MRAID 3.0 · single file · &lt;5&nbsp;MB · both orientations) — ready to move into campaign QA as soon as concepts are approved.</div>
+<footer>Benchmarks: AppAgent “State of Playable Ads 2025”; Admiral Media playable UA guide. Prices shown are placeholders pending Holafly’s current plan rates.</footer>
+</div>
+</body>
+</html>
