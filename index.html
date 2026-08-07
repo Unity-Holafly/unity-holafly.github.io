@@ -2984,46 +2984,52 @@ function draw(){
   ctx.globalAlpha=1;
 
   var R=Math.min(W,H)*0.37,cx=W/2,cy=H*0.47;
-  /* halo */
-  ctx.fillStyle=&quot;rgba(255,91,110,.10)&quot;;
-  ctx.beginPath();ctx.arc(cx,cy,R*1.16,0,6.283);ctx.fill();
+  /* atmosphere glow */
+  var ag=ctx.createRadialGradient(cx,cy,R*0.92,cx,cy,R*1.35);
+  ag.addColorStop(0,&quot;rgba(150,110,255,.28)&quot;);
+  ag.addColorStop(0.5,&quot;rgba(255,91,110,.10)&quot;);
+  ag.addColorStop(1,&quot;rgba(255,91,110,0)&quot;);
+  ctx.fillStyle=ag;
+  ctx.beginPath();ctx.arc(cx,cy,R*1.35,0,6.283);ctx.fill();
   /* ocean */
-  var og=ctx.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.15,cx,cy,R);
-  og.addColorStop(0,&quot;#43307A&quot;);og.addColorStop(0.7,&quot;#2C2058&quot;);og.addColorStop(1,&quot;#221748&quot;);
+  var og=ctx.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.1,cx,cy,R);
+  og.addColorStop(0,&quot;#5D48A6&quot;);og.addColorStop(0.55,&quot;#42307E&quot;);og.addColorStop(1,&quot;#2C1F5E&quot;);
   ctx.fillStyle=og;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
 
-  /* graticule wireframe */
-  if(ctx.ellipse){
-    ctx.strokeStyle=&quot;rgba(190,170,240,.12)&quot;;ctx.lineWidth=1;
-    var gg;
-    for(gg=-60;gg&lt;=60;gg+=30){
-      var pr=R*Math.cos(gg*Math.PI/180),pyy=cy-R*Math.sin(gg*Math.PI/180)*0.0; /* parallels */
-      ctx.beginPath();ctx.ellipse(cx,cy-R*Math.sin(gg*Math.PI/180),pr,pr*0.16,0,0,6.283);ctx.stroke();
-    }
-    for(gg=0;gg&lt;6;gg++){
-      var ml=(gg*Math.PI/3+rot)%(Math.PI*2);
-      ctx.beginPath();ctx.ellipse(cx,cy,Math.abs(Math.sin(ml))*R,R,0,0,6.283);ctx.stroke();
-    }
+  /* clean parallels only (no pole clutter) */
+  ctx.strokeStyle=&quot;rgba(200,180,255,.14)&quot;;ctx.lineWidth=1;
+  var gg;
+  for(gg=-60;gg&lt;=60;gg+=30){
+    var sy=cy-R*Math.sin(gg*Math.PI/180)*0.96;
+    var hw=R*Math.cos(gg*Math.PI/180)*0.985;
+    ctx.globalAlpha=gg===0?0.22:0.13;
+    ctx.beginPath();ctx.moveTo(cx-hw,sy);ctx.lineTo(cx+hw,sy);ctx.stroke();
   }
+  ctx.globalAlpha=1;
 
-  /* land dots (orthographic projection) */
+  /* land dots (orthographic projection, additive glow) */
+  ctx.globalCompositeOperation=&quot;lighter&quot;;
   for(i=0;i&lt;DOTS.length;i++){
     var lat=DOTS[i][0],lon=DOTS[i][1]+rot;
     var cosl=Math.cos(lat);
     var x3=cosl*Math.sin(lon),z3=cosl*Math.cos(lon),y3=Math.sin(lat);
     if(z3&lt;=0.02)continue;
     var px=cx+x3*R*0.96,py=cy-y3*R*0.96;
-    ctx.fillStyle=&quot;rgba(255,214,166,&quot;+(0.45+0.5*z3)+&quot;)&quot;;
+    /* soft under-glow + bright core */
+    ctx.fillStyle=&quot;rgba(255,150,90,&quot;+(0.10+0.12*z3)+&quot;)&quot;;
+    ctx.beginPath();ctx.arc(px,py,3.6+3.2*z3,0,6.283);ctx.fill();
+    ctx.fillStyle=&quot;rgba(255,224,178,&quot;+(0.55+0.45*z3)+&quot;)&quot;;
     ctx.beginPath();ctx.arc(px,py,1.7+1.9*z3,0,6.283);ctx.fill();
   }
+  ctx.globalCompositeOperation=&quot;source-over&quot;;
 
-  /* day/night shading + rim light */
+  /* soft day-side light + gentle night edge */
   var tg=ctx.createRadialGradient(cx-R*0.5,cy-R*0.35,R*0.2,cx+R*0.25,cy+R*0.15,R*1.25);
-  tg.addColorStop(0,&quot;rgba(255,255,255,.06)&quot;);tg.addColorStop(0.55,&quot;rgba(0,0,0,0)&quot;);tg.addColorStop(1,&quot;rgba(8,4,20,.5)&quot;);
+  tg.addColorStop(0,&quot;rgba(255,255,255,.09)&quot;);tg.addColorStop(0.55,&quot;rgba(0,0,0,0)&quot;);tg.addColorStop(1,&quot;rgba(8,4,20,.32)&quot;);
   ctx.fillStyle=tg;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
-  ctx.strokeStyle=&quot;rgba(255,170,180,.4)&quot;;ctx.lineWidth=2;
+  ctx.strokeStyle=&quot;rgba(255,180,190,.5)&quot;;ctx.lineWidth=2;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
 
   /* pins */
