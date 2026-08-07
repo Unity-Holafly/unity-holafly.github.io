@@ -2898,8 +2898,8 @@ var BLOBS=[
 var DOTS=[];
 (function(){
   var lat,lon,i;
-  for(lat=-60;lat&lt;=70;lat+=5.6){
-    for(lon=-180;lon&lt;180;lon+=5.6){
+  for(lat=-60;lat&lt;=70;lat+=4.6){
+    for(lon=-180;lon&lt;180;lon+=4.6){
       for(i=0;i&lt;BLOBS.length;i++){
         var b=BLOBS[i];
         var dla=(lat-b[0])/b[2],dlo=(lon-b[1])/b[3];
@@ -2922,7 +2922,7 @@ var DESTS=[
   {name:&quot;Bali&quot;,flag:&quot;🇮🇩&quot;,lat:-8,lon:115,base:5.50},
   {name:&quot;Brazil&quot;,flag:&quot;🇧🇷&quot;,lat:-23,lon:-43,base:5.90}
 ];
-var rot=0,spinV=0.35,dragging=false,dragMoved=0,lastX=0,screenPins=[];
+var rot=0,spinV=0.13,dragging=false,dragMoved=0,lastX=0,screenPins=[];
 var di=0,days=7,trav=1;
 
 function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
@@ -2989,11 +2989,23 @@ function draw(){
   ctx.beginPath();ctx.arc(cx,cy,R*1.16,0,6.283);ctx.fill();
   /* ocean */
   var og=ctx.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.15,cx,cy,R);
-  og.addColorStop(0,&quot;#3D2C6E&quot;);og.addColorStop(1,&quot;#251A4E&quot;);
+  og.addColorStop(0,&quot;#43307A&quot;);og.addColorStop(0.7,&quot;#2C2058&quot;);og.addColorStop(1,&quot;#221748&quot;);
   ctx.fillStyle=og;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
-  ctx.strokeStyle=&quot;rgba(255,170,180,.35)&quot;;ctx.lineWidth=2;
-  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
+
+  /* graticule wireframe */
+  if(ctx.ellipse){
+    ctx.strokeStyle=&quot;rgba(190,170,240,.12)&quot;;ctx.lineWidth=1;
+    var gg;
+    for(gg=-60;gg&lt;=60;gg+=30){
+      var pr=R*Math.cos(gg*Math.PI/180),pyy=cy-R*Math.sin(gg*Math.PI/180)*0.0; /* parallels */
+      ctx.beginPath();ctx.ellipse(cx,cy-R*Math.sin(gg*Math.PI/180),pr,pr*0.16,0,0,6.283);ctx.stroke();
+    }
+    for(gg=0;gg&lt;6;gg++){
+      var ml=(gg*Math.PI/3+rot)%(Math.PI*2);
+      ctx.beginPath();ctx.ellipse(cx,cy,Math.abs(Math.sin(ml))*R,R,0,0,6.283);ctx.stroke();
+    }
+  }
 
   /* land dots (orthographic projection) */
   for(i=0;i&lt;DOTS.length;i++){
@@ -3002,9 +3014,17 @@ function draw(){
     var x3=cosl*Math.sin(lon),z3=cosl*Math.cos(lon),y3=Math.sin(lat);
     if(z3&lt;=0.02)continue;
     var px=cx+x3*R*0.96,py=cy-y3*R*0.96;
-    ctx.fillStyle=&quot;rgba(255,200,150,&quot;+(0.35+0.55*z3)+&quot;)&quot;;
-    ctx.beginPath();ctx.arc(px,py,1.4+1.5*z3,0,6.283);ctx.fill();
+    ctx.fillStyle=&quot;rgba(255,214,166,&quot;+(0.45+0.5*z3)+&quot;)&quot;;
+    ctx.beginPath();ctx.arc(px,py,1.7+1.9*z3,0,6.283);ctx.fill();
   }
+
+  /* day/night shading + rim light */
+  var tg=ctx.createRadialGradient(cx-R*0.5,cy-R*0.35,R*0.2,cx+R*0.25,cy+R*0.15,R*1.25);
+  tg.addColorStop(0,&quot;rgba(255,255,255,.06)&quot;);tg.addColorStop(0.55,&quot;rgba(0,0,0,0)&quot;);tg.addColorStop(1,&quot;rgba(8,4,20,.5)&quot;);
+  ctx.fillStyle=tg;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(255,170,180,.4)&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
 
   /* pins */
   screenPins=[];
@@ -3027,8 +3047,30 @@ function draw(){
     ctx.beginPath();ctx.moveTo(px2-6*s,py2-6*s);ctx.lineTo(px2,py2+4*s);ctx.lineTo(px2+6*s,py2-6*s);ctx.closePath();ctx.fill();
     ctx.fillStyle=&quot;#fff&quot;;
     ctx.beginPath();ctx.arc(px2,py2-10*s,3.2*s,0,6.283);ctx.fill();
-    screenPins.push({x:px2,y:py2-10*s,r:22*s,i:i});
+    /* country label pill */
+    if(Z&gt;0.25){
+      var la2=0.35+0.65*Z;
+      ctx.font=&quot;bold 11px -apple-system,Segoe UI,Arial&quot;;
+      var tw=ctx.measureText(D.name).width,lw=tw+14,lh=18;
+      var lx=px2+12*s,ly=py2-10*s-lh/2;
+      if(lx+lw&gt;W-6)lx=px2-12*s-lw;
+      ctx.globalAlpha=la2;
+      rr2(lx,ly,lw,lh,9);
+      ctx.fillStyle=&quot;#FFFDF9&quot;;ctx.fill();
+      ctx.fillStyle=&quot;#14213D&quot;;ctx.textAlign=&quot;left&quot;;
+      ctx.fillText(D.name,lx+7,ly+13);
+      ctx.globalAlpha=1;
+    }
+    screenPins.push({x:px2,y:py2-10*s,r:24*s,i:i});
   }
+}
+
+function rr2(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
 }
 
 /* ---------- interaction ---------- */
@@ -3042,8 +3084,8 @@ function onMove(ev){
   var x=ev.touches?ev.touches[0].clientX:ev.clientX;
   var dx=x-lastX;lastX=x;
   dragMoved+=Math.abs(dx);
-  rot+=dx*0.008;
-  spinV=dx*0.22;
+  rot+=dx*0.006;
+  spinV=dx*0.12;
   ev.preventDefault&amp;&amp;ev.preventDefault();
 }
 function onUp(ev){
@@ -3116,7 +3158,7 @@ function step(dt){
   if(!dragging){
     rot+=spinV*dt;
     /* ease back to idle speed */
-    spinV+=(0.35-spinV)*Math.min(1,dt*1.4);
+    spinV+=(0.13-spinV)*Math.min(1,dt*1.4);
   }
   draw();
 }
