@@ -2769,12 +2769,12 @@ start();
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
 &lt;title&gt;Holafly Playable · Spin the Globe&lt;/title&gt;
 &lt;style&gt;
-html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#150D2E;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0A1424;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
 #globe{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
 #brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px;pointer-events:none}
-#brand span{display:block;color:#B7A8E0;font-size:13.5px;font-weight:700;margin-top:3px}
+#brand span{display:block;color:#A9C4E4;font-size:13.5px;font-weight:700;margin-top:3px}
 #destpill{position:absolute;top:13%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(255,91,110,.14);border:1px solid rgba(255,91,110,.55);color:#FFAAB4;font-size:12.5px;font-weight:700;border-radius:16px;padding:6px 14px;white-space:nowrap;pointer-events:none}
-#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8F7FC0;font-size:13px;font-weight:700;pointer-events:none}
+#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8FB0D4;font-size:13px;font-weight:700;pointer-events:none}
 /* plan sheet */
 #sheet{position:absolute;left:0;right:0;bottom:0;background:#FFFDF9;border-radius:22px 22px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.5);-webkit-transform:translateY(112%);transform:translateY(112%);-webkit-transition:-webkit-transform .35s cubic-bezier(.2,.9,.3,1);transition:transform .35s cubic-bezier(.2,.9,.3,1);padding:12px 20px 18px;max-width:420px;margin:0 auto}
 #sheet.on{-webkit-transform:translateY(0);transform:translateY(0)}
@@ -2799,12 +2799,12 @@ html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#
 #spr span{display:block;font-size:9.5px;color:#8A94A6;font-weight:700;letter-spacing:1px}
 #connect{display:block;margin-top:12px;width:100%;padding:15px 10px;border:0;border-radius:14px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
 /* success */
-#success{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 40%,circle,#241647 0%,#150D2E 70%);background:radial-gradient(circle at 50% 40%,#241647 0%,#150D2E 70%);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .45s;transition:opacity .45s}
+#success{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 40%,circle,#143154 0%,#0A1424 70%);background:radial-gradient(circle at 50% 40%,#143154 0%,#0A1424 70%);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .45s;transition:opacity .45s}
 #success.on{opacity:1;visibility:visible}
 #okball{width:96px;height:96px;border-radius:50%;background:#2EE6A8;color:#0A2A1E;font-size:52px;font-weight:800;text-align:center;line-height:96px;box-shadow:0 0 44px rgba(46,230,168,.5)}
 #oklogo{color:#FF5B6E;font-size:26px;font-weight:800;margin-top:16px}
 #okh{color:#fff;font-size:24px;font-weight:800;margin-top:6px}
-#okd{color:#B7A8E0;font-size:14px;font-weight:700;margin-top:4px}
+#okd{color:#A9C4E4;font-size:14px;font-weight:700;margin-top:4px}
 #oks{color:#2EE6A8;font-size:13.5px;font-weight:800;margin-top:8px}
 #bars{display:-webkit-flex;display:flex;-webkit-align-items:flex-end;align-items:flex-end;height:34px;margin-top:16px}
 #bars span{width:9px;margin:0 3px;border-radius:2px;background:#2EE6A8;opacity:.25}
@@ -2970,7 +2970,7 @@ function draw(){
   ctx.clearRect(0,0,W,H);
   /* space glow */
   var bg=ctx.createRadialGradient(W/2,H*0.47,10,W/2,H*0.47,Math.max(W,H)*0.75);
-  bg.addColorStop(0,&quot;#241647&quot;);bg.addColorStop(0.6,&quot;#150D2E&quot;);bg.addColorStop(1,&quot;#100A22&quot;);
+  bg.addColorStop(0,&quot;#122A4A&quot;);bg.addColorStop(0.6,&quot;#0A1424&quot;);bg.addColorStop(1,&quot;#070E1C&quot;);
   ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
   /* stars */
   var i;
@@ -2986,19 +2986,19 @@ function draw(){
   var R=Math.min(W,H)*0.37,cx=W/2,cy=H*0.47;
   /* atmosphere glow */
   var ag=ctx.createRadialGradient(cx,cy,R*0.92,cx,cy,R*1.35);
-  ag.addColorStop(0,&quot;rgba(150,110,255,.28)&quot;);
-  ag.addColorStop(0.5,&quot;rgba(255,91,110,.10)&quot;);
-  ag.addColorStop(1,&quot;rgba(255,91,110,0)&quot;);
+  ag.addColorStop(0,&quot;rgba(110,190,255,.30)&quot;);
+  ag.addColorStop(0.5,&quot;rgba(90,160,255,.10)&quot;);
+  ag.addColorStop(1,&quot;rgba(90,160,255,0)&quot;);
   ctx.fillStyle=ag;
   ctx.beginPath();ctx.arc(cx,cy,R*1.35,0,6.283);ctx.fill();
   /* ocean */
   var og=ctx.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.1,cx,cy,R);
-  og.addColorStop(0,&quot;#5D48A6&quot;);og.addColorStop(0.55,&quot;#42307E&quot;);og.addColorStop(1,&quot;#2C1F5E&quot;);
+  og.addColorStop(0,&quot;#4FA3E0&quot;);og.addColorStop(0.55,&quot;#2E6FB5&quot;);og.addColorStop(1,&quot;#1B4A85&quot;);
   ctx.fillStyle=og;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
 
   /* clean parallels only (no pole clutter) */
-  ctx.strokeStyle=&quot;rgba(200,180,255,.14)&quot;;ctx.lineWidth=1;
+  ctx.strokeStyle=&quot;rgba(220,240,255,.16)&quot;;ctx.lineWidth=1;
   var gg;
   for(gg=-60;gg&lt;=60;gg+=30){
     var sy=cy-R*Math.sin(gg*Math.PI/180)*0.96;
@@ -3008,28 +3008,27 @@ function draw(){
   }
   ctx.globalAlpha=1;
 
-  /* land dots (orthographic projection, additive glow) */
-  ctx.globalCompositeOperation=&quot;lighter&quot;;
+  /* land dots (orthographic projection, real earth greens) */
   for(i=0;i&lt;DOTS.length;i++){
     var lat=DOTS[i][0],lon=DOTS[i][1]+rot;
     var cosl=Math.cos(lat);
     var x3=cosl*Math.sin(lon),z3=cosl*Math.cos(lon),y3=Math.sin(lat);
     if(z3&lt;=0.02)continue;
     var px=cx+x3*R*0.96,py=cy-y3*R*0.96;
-    /* soft under-glow + bright core */
-    ctx.fillStyle=&quot;rgba(255,150,90,&quot;+(0.10+0.12*z3)+&quot;)&quot;;
-    ctx.beginPath();ctx.arc(px,py,3.6+3.2*z3,0,6.283);ctx.fill();
-    ctx.fillStyle=&quot;rgba(255,224,178,&quot;+(0.55+0.45*z3)+&quot;)&quot;;
-    ctx.beginPath();ctx.arc(px,py,1.7+1.9*z3,0,6.283);ctx.fill();
+    /* deep green base + leafy core, warmer near the equator */
+    var warm=1-Math.min(1,Math.abs(lat)/1.05);
+    ctx.fillStyle=&quot;rgba(24,110,60,&quot;+(0.35+0.3*z3)+&quot;)&quot;;
+    ctx.beginPath();ctx.arc(px,py,3.1+2.6*z3,0,6.283);ctx.fill();
+    ctx.fillStyle=&quot;rgba(&quot;+Math.round(96+60*warm)+&quot;,&quot;+Math.round(190+20*warm)+&quot;,&quot;+Math.round(96-20*warm)+&quot;,&quot;+(0.75+0.25*z3)+&quot;)&quot;;
+    ctx.beginPath();ctx.arc(px,py,1.8+2.0*z3,0,6.283);ctx.fill();
   }
-  ctx.globalCompositeOperation=&quot;source-over&quot;;
 
   /* soft day-side light + gentle night edge */
   var tg=ctx.createRadialGradient(cx-R*0.5,cy-R*0.35,R*0.2,cx+R*0.25,cy+R*0.15,R*1.25);
   tg.addColorStop(0,&quot;rgba(255,255,255,.09)&quot;);tg.addColorStop(0.55,&quot;rgba(0,0,0,0)&quot;);tg.addColorStop(1,&quot;rgba(8,4,20,.32)&quot;);
   ctx.fillStyle=tg;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
-  ctx.strokeStyle=&quot;rgba(255,180,190,.5)&quot;;ctx.lineWidth=2;
+  ctx.strokeStyle=&quot;rgba(180,220,255,.55)&quot;;ctx.lineWidth=2;
   ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
 
   /* pins */
