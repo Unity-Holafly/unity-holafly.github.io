@@ -45,7 +45,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 <body>
 <div class="wrap">
 <h1><span class="brand">Holafly</span> × Unity Ads · Playable Creative Board</h1>
-<p class="sub">8 playable ads built for Holafly. <b>All demos below are live, tap and play them right here.</b> MRAID 3.0 · single file · under 5 MB · portrait and landscape · iOS and Android store links wired. August 2026</p>
+<p class="sub">9 playable ads built for Holafly. <b>All demos below are live, tap and play them right here.</b> MRAID 3.0 · single file · under 5 MB · portrait and landscape · iOS and Android store links wired. August 2026</p>
 <div class="stats"><div class="stat"><b>up to 16x</b><span>conversion vs static and video formats (2025 playable benchmarks)</span></div><div class="stat"><b>2 to 3x</b><span>CTR vs standard video and display</span></div><div class="stat"><b>15 to 80s</b><span>time people actually spend playing, vs 5 to 7 seconds on a skippable video</span></div><div class="stat"><b>+30 to 40%</b><span>post install retention when users try the value before installing</span></div></div>
 <h2>Your flyer, rebuilt and evolved for Unity</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -2211,6 +2211,325 @@ start();
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable · Boarding Pass&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0A1526;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+/* starfield */
+#sky{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 120%,circle,#14294A 0%,#0A1526 60%);background:radial-gradient(circle at 50% 120%,#14294A 0%,#0A1526 60%)}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7}
+.star.tw{-webkit-animation:tw 2.4s ease-in-out infinite;animation:tw 2.4s ease-in-out infinite}
+@-webkit-keyframes tw{0%,100%{opacity:.2}50%{opacity:.9}}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:.9}}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px}
+#brand span{display:block;color:#8FA6C8;font-size:13px;font-weight:600;letter-spacing:.3px;margin-top:3px}
+#pill{position:absolute;top:12.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(22,199,132,.15);border:1px solid rgba(22,199,132,.5);color:#5EE2AC;font-size:12.5px;font-weight:700;border-radius:16px;padding:6px 14px;white-space:nowrap}
+/* screen 1: destinations */
+.panel{width:88%;max-width:400px;display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center}
+.panel.on{display:-webkit-flex;display:flex}
+#q{color:#fff;font-size:21px;font-weight:800;margin-bottom:18px;text-align:center}
+#dgrid{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:0 -5px;width:100%}
+.dcard{-webkit-flex:1 1 40%;flex:1 1 40%;box-sizing:border-box;margin:5px;padding:16px 8px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.14);border-radius:16px;text-align:center;cursor:pointer}
+.dcard .em{font-size:34px;display:block}
+.dcard .lb{color:#fff;font-size:14px;font-weight:700;display:block;margin-top:6px}
+.dcard .pr{color:#8FA6C8;font-size:11px;font-weight:600;display:block;margin-top:2px}
+.dcard.sel{background:rgba(255,91,110,.18);border-color:#FF5B6E}
+/* screen 2: boarding pass */
+#pass{width:92%;max-width:380px;background:#FDFBF7;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+#phead{background:#FF5B6E;color:#fff;padding:10px 16px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#phead b{font-size:13px;letter-spacing:1.5px}
+#phead span{font-size:10px;font-weight:800;letter-spacing:1px;opacity:.85}
+#route{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between;padding:14px 20px 8px}
+.city{text-align:center}
+.city b{display:block;font-size:30px;color:#14213D;font-weight:800;letter-spacing:1px}
+.city span{display:block;font-size:10.5px;color:#8A94A6;font-weight:700;letter-spacing:.5px;margin-top:2px}
+#plane{color:#FF5B6E;font-size:20px}
+#dots{-webkit-flex:1;flex:1;border-top:2px dashed #D8D2C8;margin:0 10px;position:relative;top:-6px}
+#benef{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;padding:2px 10px 10px}
+#benef span{font-size:10.5px;color:#187A4B;font-weight:800;margin:0 7px;white-space:nowrap}
+#perf{border-top:2px dashed #D8D2C8;position:relative;margin:0 0 4px}
+#perf:before,#perf:after{content:&quot;&quot;;position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:#0A1526}
+#perf:before{left:-8px}#perf:after{right:-8px}
+.row{padding:10px 20px 0}
+.rlab{font-size:10px;color:#8A94A6;font-weight:800;letter-spacing:1.2px;margin-bottom:7px}
+.rlab i{font-style:normal;color:#B8AE9E;font-weight:600;letter-spacing:.2px;text-transform:none}
+/* days slider */
+#track{position:relative;height:34px;cursor:pointer}
+#rail{position:absolute;left:0;right:0;top:15px;height:6px;border-radius:4px;background:#EDE7DC}
+#railfill{position:absolute;left:0;top:15px;height:6px;border-radius:4px;background:-webkit-linear-gradient(left,#FFB3BC,#FF5B6E);background:linear-gradient(90deg,#FFB3BC,#FF5B6E);width:30%}
+#thumb{position:absolute;top:1px;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:#FF5B6E;box-shadow:0 3px 8px rgba(255,91,110,.5);border:3px solid #fff;color:#fff;font-size:12px;font-weight:800;text-align:center;line-height:28px}
+/* travelers stepper */
+#trav{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center}
+.step{width:38px;height:38px;border-radius:12px;border:2px solid #EDE7DC;background:#fff;color:#14213D;font-size:20px;font-weight:800;cursor:pointer;line-height:1}
+#tnum{-webkit-flex:1;flex:1;text-align:center;font-size:18px;color:#14213D;font-weight:800}
+/* price */
+#pricebox{margin:12px 16px 14px;background:#F4EFE6;border-radius:12px;padding:10px 14px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#prate b{display:block;font-size:24px;color:#14213D;font-weight:800}
+#prate span{font-size:10.5px;color:#8A94A6;font-weight:700}
+#ptot{text-align:right}
+#ptot b{display:block;font-size:15px;color:#187A4B;font-weight:800}
+#ptot span{font-size:10px;color:#8A94A6;font-weight:700}
+#lock{display:block;margin:0 16px 16px;width:auto;padding:15px 10px;border:0;border-radius:14px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer;text-align:center;width:calc(100% - 32px)}
+/* stamp + end state */
+#stamp{position:absolute;top:34%;left:50%;-webkit-transform:translate(-50%,-50%) rotate(-14deg) scale(3);transform:translate(-50%,-50%) rotate(-14deg) scale(3);border:4px solid #16A06B;color:#16A06B;font-size:24px;font-weight:800;letter-spacing:2px;padding:8px 18px;border-radius:10px;opacity:0;pointer-events:none;background:rgba(253,251,247,.7)}
+#stamp.on{opacity:1;-webkit-transform:translate(-50%,-50%) rotate(-14deg) scale(1);transform:translate(-50%,-50%) rotate(-14deg) scale(1);-webkit-transition:all .28s cubic-bezier(.2,2,.4,1);transition:all .28s cubic-bezier(.2,2,.4,1)}
+#after{display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;margin-top:14px}
+#after.on{display:-webkit-flex;display:flex}
+#contxt{color:#5EE2AC;font-size:14px;font-weight:800;margin-bottom:10px}
+#cta{padding:15px 42px;border:0;border-radius:16px;background:#16C784;box-shadow:0 4px 0 #0FA968;color:#06251A;font-size:17px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{background:none;border:0;color:#8FA6C8;font-size:13px;font-weight:700;margin-top:11px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.tw,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{top:2.5%;font-size:17px}#brand span{font-size:11px}
+  #pill{display:none}
+  #pass{max-width:340px}
+  .city b{font-size:22px}
+  #pricebox{margin:8px 16px 10px;padding:7px 12px}
+  #prate b{font-size:19px}
+  #lock{padding:11px 10px;margin-bottom:12px}
+  #q{font-size:17px;margin-bottom:10px}
+  .dcard{padding:9px 6px}.dcard .em{font-size:26px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;div id=&quot;sky&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;brand&quot;&gt;Holafly&lt;span&gt;Build your trip, watch the price&lt;/span&gt;&lt;/div&gt;
+  &lt;div id=&quot;pill&quot;&gt;&amp;#9989; Unlimited data in 270+ destinations&lt;/div&gt;
+
+  &lt;div id=&quot;p1&quot; class=&quot;panel on&quot;&gt;
+    &lt;div id=&quot;q&quot;&gt;Where to next?&lt;/div&gt;
+    &lt;div id=&quot;dgrid&quot;&gt;
+      &lt;div class=&quot;dcard&quot; data-i=&quot;0&quot;&gt;&lt;span class=&quot;em&quot;&gt;🗼&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;Japan&lt;/span&gt;&lt;span class=&quot;pr&quot;&gt;from $3.90/day&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;dcard&quot; data-i=&quot;1&quot;&gt;&lt;span class=&quot;em&quot;&gt;🍕&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;Italy&lt;/span&gt;&lt;span class=&quot;pr&quot;&gt;from $2.90/day&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;dcard&quot; data-i=&quot;2&quot;&gt;&lt;span class=&quot;em&quot;&gt;🗽&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;USA&lt;/span&gt;&lt;span class=&quot;pr&quot;&gt;from $3.20/day&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;dcard&quot; data-i=&quot;3&quot;&gt;&lt;span class=&quot;em&quot;&gt;🏝️&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;Bali&lt;/span&gt;&lt;span class=&quot;pr&quot;&gt;from $3.40/day&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;p2&quot; class=&quot;panel&quot;&gt;
+    &lt;div id=&quot;pass&quot;&gt;
+      &lt;div id=&quot;phead&quot;&gt;&lt;b&gt;HOLAFLY AIR&lt;/b&gt;&lt;span&gt;eSIM BOARDING PASS&lt;/span&gt;&lt;/div&gt;
+      &lt;div id=&quot;route&quot;&gt;
+        &lt;div class=&quot;city&quot;&gt;&lt;b&gt;YOU&lt;/b&gt;&lt;span&gt;HOME&lt;/span&gt;&lt;/div&gt;
+        &lt;div id=&quot;dots&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;plane&quot;&gt;&amp;#9992;&amp;#65039;&lt;/div&gt;
+        &lt;div id=&quot;dots&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;city&quot;&gt;&lt;b id=&quot;dcode&quot;&gt;TYO&lt;/b&gt;&lt;span id=&quot;dname&quot;&gt;JAPAN 🇯🇵&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;benef&quot;&gt;&lt;span&gt;&amp;#10003; Unlimited data&lt;/span&gt;&lt;span&gt;&amp;#10003; &amp;euro;0 roaming&lt;/span&gt;&lt;span&gt;&amp;#10003; 5G / LTE&lt;/span&gt;&lt;/div&gt;
+      &lt;div id=&quot;perf&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;rlab&quot;&gt;TRIP LENGTH: &lt;span id=&quot;dayn&quot;&gt;7 DAYS&lt;/span&gt; &amp;nbsp;&lt;i&gt;longer trips drop the daily rate&lt;/i&gt;&lt;/div&gt;
+        &lt;div id=&quot;track&quot;&gt;
+          &lt;div id=&quot;rail&quot;&gt;&lt;/div&gt;&lt;div id=&quot;railfill&quot;&gt;&lt;/div&gt;&lt;div id=&quot;thumb&quot;&gt;7&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;rlab&quot;&gt;TRAVELERS &lt;i&gt;(one eSIM each)&lt;/i&gt;&lt;/div&gt;
+        &lt;div id=&quot;trav&quot;&gt;
+          &lt;button class=&quot;step&quot; id=&quot;tminus&quot;&gt;&amp;minus;&lt;/button&gt;
+          &lt;span id=&quot;tnum&quot;&gt;1&lt;/span&gt;
+          &lt;button class=&quot;step&quot; id=&quot;tplus&quot;&gt;+&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;pricebox&quot;&gt;
+        &lt;div id=&quot;prate&quot;&gt;&lt;b id=&quot;rate&quot;&gt;$5.18/day&lt;/b&gt;&lt;span&gt;per traveler&lt;/span&gt;&lt;/div&gt;
+        &lt;div id=&quot;ptot&quot;&gt;&lt;b id=&quot;total&quot;&gt;Total $36.26&lt;/b&gt;&lt;span id=&quot;tsub&quot;&gt;7 days &amp;middot; 1 eSIM&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button id=&quot;lock&quot;&gt;LOCK IT IN &amp;#128274;&lt;/button&gt;
+      &lt;div id=&quot;stamp&quot;&gt;CONNECTED &amp;#10003;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;after&quot;&gt;
+      &lt;div id=&quot;contxt&quot;&gt;Connected in 3 seconds &amp;#10003; No SIM swap, no roaming.&lt;/div&gt;
+      &lt;button id=&quot;cta&quot; class=&quot;ctapulse&quot;&gt;GET HOLAFLY&lt;/button&gt;
+      &lt;button id=&quot;retry&quot;&gt;plan another trip &amp;#8635;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,locked=false,AC=null;
+
+var DESTS=[
+  {code:&quot;TYO&quot;,name:&quot;JAPAN 🇯🇵&quot;,base:6.90},
+  {code:&quot;ROM&quot;,name:&quot;ITALY 🇮🇹&quot;,base:4.30},
+  {code:&quot;NYC&quot;,name:&quot;USA 🇺🇸&quot;,base:4.90},
+  {code:&quot;DPS&quot;,name:&quot;BALI 🇮🇩&quot;,base:5.50}
+];
+var di=0,days=7,trav=1,MAXD=30;
+
+/* stars */
+(function(){
+  var sky=document.getElementById(&quot;sky&quot;),i;
+  for(i=0;i&lt;46;i++){
+    var s=document.createElement(&quot;div&quot;);
+    s.className=i%3?&quot;star&quot;:&quot;star tw&quot;;
+    s.style.left=(Math.random()*100)+&quot;%&quot;;
+    s.style.top=(Math.random()*100)+&quot;%&quot;;
+    s.style.opacity=(0.15+Math.random()*0.6);
+    if(i%3===0)s.style.animationDelay=(Math.random()*2)+&quot;s&quot;;
+    sky.appendChild(s);
+  }
+})();
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind===&quot;stamp&quot;?&quot;triangle&quot;:&quot;sine&quot;;
+    o.frequency.value=kind===&quot;tick&quot;?740:kind===&quot;stamp&quot;?300:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;stamp&quot;?0.2:0.09,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;stamp&quot;?0.35:0.1));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.4);
+  }catch(e){}
+}
+
+/* pricing: longer trips drop the daily rate (max 45% off) */
+function rateFor(d){
+  var disc=Math.min(0.45,(days-1)*0.018);
+  return DESTS[d].base*(1-disc);
+}
+function money(n){return &quot;$&quot;+(Math.round(n*100)/100).toFixed(2);}
+
+function render(){
+  var D=DESTS[di],r=rateFor(di),tot=r*days*trav;
+  document.getElementById(&quot;dcode&quot;).textContent=D.code;
+  document.getElementById(&quot;dname&quot;).innerHTML=D.name;
+  document.getElementById(&quot;dayn&quot;).textContent=days+(days===1?&quot; DAY&quot;:&quot; DAYS&quot;);
+  document.getElementById(&quot;tnum&quot;).textContent=trav;
+  document.getElementById(&quot;rate&quot;).textContent=money(r)+&quot;/day&quot;;
+  document.getElementById(&quot;total&quot;).textContent=&quot;Total &quot;+money(tot);
+  document.getElementById(&quot;tsub&quot;).innerHTML=days+(days===1?&quot; day&quot;:&quot; days&quot;)+&quot; &amp;middot; &quot;+trav+(trav===1?&quot; eSIM&quot;:&quot; eSIMs&quot;);
+  var pct=(days-1)/(MAXD-1)*100;
+  document.getElementById(&quot;railfill&quot;).style.width=pct+&quot;%&quot;;
+  var th=document.getElementById(&quot;thumb&quot;);
+  th.style.left=pct+&quot;%&quot;;
+  th.textContent=days;
+}
+
+/* slider */
+var dragging=false,lastTickDays=7;
+function setFromX(clientX){
+  var tr=document.getElementById(&quot;track&quot;),rc=tr.getBoundingClientRect();
+  var f=(clientX-rc.left)/rc.width;
+  f=Math.max(0,Math.min(1,f));
+  var d=Math.round(1+f*(MAXD-1));
+  if(d!==days){days=d;render();if(Math.abs(d-lastTickDays)&gt;=1){snd(&quot;tick&quot;);lastTickDays=d;}}
+}
+function bindSlider(){
+  var tr=document.getElementById(&quot;track&quot;);
+  var down=function(ev){
+    if(!started||locked)return;
+    dragging=true;
+    var x=ev.touches?ev.touches[0].clientX:ev.clientX;
+    setFromX(x);
+    ev.preventDefault&amp;&amp;ev.preventDefault();
+  };
+  var move=function(ev){
+    if(!dragging)return;
+    var x=ev.touches?ev.touches[0].clientX:ev.clientX;
+    setFromX(x);
+    ev.preventDefault&amp;&amp;ev.preventDefault();
+  };
+  var up=function(){dragging=false;};
+  tr.addEventListener(&quot;touchstart&quot;,down,false);
+  tr.addEventListener(&quot;mousedown&quot;,down,false);
+  document.addEventListener(&quot;touchmove&quot;,move,false);
+  document.addEventListener(&quot;mousemove&quot;,move,false);
+  document.addEventListener(&quot;touchend&quot;,up,false);
+  document.addEventListener(&quot;mouseup&quot;,up,false);
+}
+
+function pickDest(ev){
+  if(!started||locked)return;
+  var el=ev.currentTarget;
+  di=parseInt(el.getAttribute(&quot;data-i&quot;),10);
+  el.className=&quot;dcard sel&quot;;
+  snd(&quot;pick&quot;);
+  render();
+  setTimeout(function(){
+    document.getElementById(&quot;p1&quot;).className=&quot;panel&quot;;
+    document.getElementById(&quot;p2&quot;).className=&quot;panel on&quot;;
+    document.getElementById(&quot;pill&quot;).style.display=&quot;none&quot;;
+  },420);
+}
+
+function lockIn(){
+  if(!started||locked)return;
+  locked=true;
+  snd(&quot;stamp&quot;);
+  document.getElementById(&quot;stamp&quot;).className=&quot;on&quot;;
+  document.getElementById(&quot;lock&quot;).style.opacity=&quot;0.35&quot;;
+  document.getElementById(&quot;lock&quot;).style.pointerEvents=&quot;none&quot;;
+  setTimeout(function(){document.getElementById(&quot;after&quot;).className=&quot;on&quot;;},450);
+}
+
+function retry(){
+  locked=false;days=7;trav=1;lastTickDays=7;
+  document.getElementById(&quot;stamp&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;after&quot;).className=&quot;&quot;;
+  var lk=document.getElementById(&quot;lock&quot;);
+  lk.style.opacity=&quot;&quot;;lk.style.pointerEvents=&quot;&quot;;
+  var cards=document.querySelectorAll(&quot;.dcard&quot;),i;
+  for(i=0;i&lt;cards.length;i++){cards[i].className=&quot;dcard&quot;;}
+  document.getElementById(&quot;p2&quot;).className=&quot;panel&quot;;
+  document.getElementById(&quot;p1&quot;).className=&quot;panel on&quot;;
+  document.getElementById(&quot;pill&quot;).style.display=&quot;&quot;;
+  render();
+}
+
+function bind(){
+  var cards=document.querySelectorAll(&quot;.dcard&quot;),i;
+  for(i=0;i&lt;cards.length;i++){cards[i].addEventListener(&quot;click&quot;,pickDest,false);}
+  document.getElementById(&quot;tminus&quot;).addEventListener(&quot;click&quot;,function(){if(!started||locked)return;if(trav&gt;1){trav--;snd(&quot;tick&quot;);render();}},false);
+  document.getElementById(&quot;tplus&quot;).addEventListener(&quot;click&quot;,function(){if(!started||locked)return;if(trav&lt;6){trav++;snd(&quot;tick&quot;);render();}},false);
+  document.getElementById(&quot;lock&quot;).addEventListener(&quot;click&quot;,lockIn,false);
+  document.getElementById(&quot;cta&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;retry&quot;).addEventListener(&quot;click&quot;,retry,false);
+  bindSlider();
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();}
+function pauseAd(){document.body.className=&quot;paused&quot;;if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();render();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf6');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Boarding Pass<span class="live">LIVE</span></div><div class="fmt hot">TRIP BUILDER · LIVE PRICING</div><div class="hook">Inspired by your top AppLovin performer, rebuilt as a boarding pass. Pick a destination, drag the trip length slider and watch the daily rate drop, add travelers, then LOCK IT IN and the pass gets stamped CONNECTED. You build your own plan before you ever see the store.</div><div class="thesis"><b>Tests:</b> the plan configurator hook from your best converting creative, in a new body. Does building the plan beat watching a demo?</div><div class="file">Holafly_BoardingPass_3plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
 &lt;title&gt;Holafly Playable · Install in 60 Seconds&lt;/title&gt;
 &lt;style&gt;
 html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#F4FAFF;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
@@ -2443,7 +2762,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf6');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Install in 60 Seconds<span class="live">LIVE</span></div><div class="fmt">SCAN & GO · 2 TAPS</div><div class="hook">Pick a destination, scan the QR, watch the eSIM install and the data go live. The real Holafly onboarding, compressed into a few seconds of play.</div><div class="thesis"><b>Tests:</b> showing how fast setup is removes the biggest hesitation before install.</div><div class="file">Holafly_ScanGo_2plus.html</div></div></div></div><h2>Coverage</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf7" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf7');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Install in 60 Seconds<span class="live">LIVE</span></div><div class="fmt">SCAN & GO · 2 TAPS</div><div class="hook">Pick a destination, scan the QR, watch the eSIM install and the data go live. The real Holafly onboarding, compressed into a few seconds of play.</div><div class="thesis"><b>Tests:</b> showing how fast setup is removes the biggest hesitation before install.</div><div class="file">Holafly_ScanGo_2plus.html</div></div></div></div><h2>Coverage</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf8" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -2636,8 +2955,8 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf7');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap the pins and light up the map. Every pin shows unlimited data with the local daily price, and the counter climbs to 270+ destinations.</div><div class="thesis"><b>Tests:</b> coverage as something you play with, not a claim you read.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
-<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A · Friction</td><td>No Signal 1T vs Scan & Go 2T</td><td>One tap of relief or the full setup walkthrough, which converts better?</td><td>IPM → install rate</td></tr><tr><td>B · Hook</td><td>Destination Quiz vs Beat the Roaming Bill</td><td>Identity or urgency, which framing gets the tap?</td><td>CTR → CVR</td></tr><tr><td>C · Promise</td><td>No Signal vs Tap the World</td><td>Sell the single moment of relief or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D · Geo</td><td>Quiz and Scan destination cards</td><td>Which destinations pull the highest intent travelers?</td><td>CVR by destination</td></tr><tr><td>E · Format</td><td>SIM Flight vs your best static and video</td><td>Does the flyer win on Unity the way it wins on your current channels?</td><td>IPM → CPA parity</td></tr><tr><td>F · Game twist</td><td>SIM Flight vs Bill Balloon vs Choose Your Skies</td><td>Straight rebuild, the bill balloon or the route forks. Which flyer wins?</td><td>CTR → CVR → D7</td></tr></table>
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf8');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap the pins and light up the map. Every pin shows unlimited data with the local daily price, and the counter climbs to 270+ destinations.</div><div class="thesis"><b>Tests:</b> coverage as something you play with, not a claim you read.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A · Friction</td><td>No Signal 1T vs Scan & Go 2T</td><td>One tap of relief or the full setup walkthrough, which converts better?</td><td>IPM → install rate</td></tr><tr><td>B · Hook</td><td>Destination Quiz vs Beat the Roaming Bill</td><td>Identity or urgency, which framing gets the tap?</td><td>CTR → CVR</td></tr><tr><td>C · Promise</td><td>No Signal vs Tap the World</td><td>Sell the single moment of relief or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D · Geo</td><td>Quiz and Scan destination cards</td><td>Which destinations pull the highest intent travelers?</td><td>CVR by destination</td></tr><tr><td>E · Format</td><td>SIM Flight vs your best static and video</td><td>Does the flyer win on Unity the way it wins on your current channels?</td><td>IPM → CPA parity</td></tr><tr><td>F · Game twist</td><td>SIM Flight vs Bill Balloon vs Choose Your Skies</td><td>Straight rebuild, the bill balloon or the route forks. Which flyer wins?</td><td>CTR → CVR → D7</td></tr><tr><td>G · Configurator</td><td>Boarding Pass vs Scan & Go</td><td>Building your own plan vs watching the setup. Which drives more purchases?</td><td>CVR → purchase rate</td></tr></table>
 <div class="note"><b>About these builds:</b> everything on this page is a working concept. Final versions ship with Holafly's official brand assets and approved copy (logo, brand colors, real plan prices). Store links are already wired for iOS and Android, and every creative meets Unity spec: MRAID 3.0, single file, under 5 MB, both orientations. Once you approve concepts, these move straight into campaign QA.</div>
 <footer>Benchmarks: AppAgent State of Playable Ads 2025 · Admiral Media playable UA guide. Prices shown are placeholders until we plug in Holafly's current rates.</footer>
 </div>
