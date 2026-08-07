@@ -45,7 +45,7 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 <body>
 <div class="wrap">
 <h1><span class="brand">Holafly</span> × Unity Ads · Playable Creative Board</h1>
-<p class="sub">9 playable ads built for Holafly. <b>All demos below are live, tap and play them right here.</b> MRAID 3.0 · single file · under 5 MB · portrait and landscape · iOS and Android store links wired. August 2026</p>
+<p class="sub">10 playable ads built for Holafly. <b>All demos below are live, tap and play them right here.</b> MRAID 3.0 · single file · under 5 MB · portrait and landscape · iOS and Android store links wired. August 2026</p>
 <div class="stats"><div class="stat"><b>up to 16x</b><span>conversion vs static and video formats (2025 playable benchmarks)</span></div><div class="stat"><b>2 to 3x</b><span>CTR vs standard video and display</span></div><div class="stat"><b>15 to 80s</b><span>time people actually spend playing, vs 5 to 7 seconds on a skippable video</span></div><div class="stat"><b>+30 to 40%</b><span>post install retention when users try the value before installing</span></div></div>
 <h2>Your flyer, rebuilt and evolved for Unity</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -2767,6 +2767,398 @@ start();
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable · Spin the Globe&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#150D2E;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#globe{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px;pointer-events:none}
+#brand span{display:block;color:#B7A8E0;font-size:13.5px;font-weight:700;margin-top:3px}
+#destpill{position:absolute;top:13%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(255,91,110,.14);border:1px solid rgba(255,91,110,.55);color:#FFAAB4;font-size:12.5px;font-weight:700;border-radius:16px;padding:6px 14px;white-space:nowrap;pointer-events:none}
+#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8F7FC0;font-size:13px;font-weight:700;pointer-events:none}
+/* plan sheet */
+#sheet{position:absolute;left:0;right:0;bottom:0;background:#FFFDF9;border-radius:22px 22px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.5);-webkit-transform:translateY(112%);transform:translateY(112%);-webkit-transition:-webkit-transform .35s cubic-bezier(.2,.9,.3,1);transition:transform .35s cubic-bezier(.2,.9,.3,1);padding:12px 20px 18px;max-width:420px;margin:0 auto}
+#sheet.on{-webkit-transform:translateY(0);transform:translateY(0)}
+#grab{width:44px;height:5px;border-radius:3px;background:#E5DED2;margin:0 auto 8px}
+#shx{position:absolute;top:12px;right:14px;width:30px;height:30px;border-radius:50%;border:0;background:#F1EBDF;color:#8A94A6;font-size:15px;font-weight:800;cursor:pointer;line-height:1}
+#sflag{width:56px;height:56px;border-radius:50%;background:#F4EFE6;margin:0 auto;text-align:center;line-height:56px;font-size:30px}
+#sname{text-align:center;font-size:22px;color:#14213D;font-weight:800;margin-top:6px}
+#ssub{text-align:center;font-size:11.5px;color:#8A94A6;font-weight:700;margin-top:2px}
+#ssub b{color:#16A06B}
+#schecks{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;margin:10px 0 4px}
+#schecks span{font-size:11px;color:#187A4B;font-weight:800;margin:0 7px;white-space:nowrap}
+.srow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between;margin-top:10px}
+.slab b{display:block;font-size:13.5px;color:#14213D;font-weight:800}
+.slab span{font-size:10.5px;color:#8A94A6;font-weight:600}
+.ctrl{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;background:#F4EFE6;border-radius:12px}
+.step{width:40px;height:40px;border:0;background:none;color:#FF5B6E;font-size:22px;font-weight:800;cursor:pointer;line-height:1}
+.num{width:34px;text-align:center;font-size:17px;color:#14213D;font-weight:800}
+#sprice{margin-top:12px;background:#F4EFE6;border-radius:12px;padding:9px 14px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#spl b{display:block;font-size:13px;color:#14213D;font-weight:800}
+#spl span{font-size:10.5px;color:#16A06B;font-weight:800;background:#DDF5E9;border-radius:8px;padding:2px 7px;display:inline-block;margin-top:3px}
+#spr{text-align:right;font-size:25px;color:#14213D;font-weight:800}
+#spr span{display:block;font-size:9.5px;color:#8A94A6;font-weight:700;letter-spacing:1px}
+#connect{display:block;margin-top:12px;width:100%;padding:15px 10px;border:0;border-radius:14px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+/* success */
+#success{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 40%,circle,#241647 0%,#150D2E 70%);background:radial-gradient(circle at 50% 40%,#241647 0%,#150D2E 70%);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .45s;transition:opacity .45s}
+#success.on{opacity:1;visibility:visible}
+#okball{width:96px;height:96px;border-radius:50%;background:#2EE6A8;color:#0A2A1E;font-size:52px;font-weight:800;text-align:center;line-height:96px;box-shadow:0 0 44px rgba(46,230,168,.5)}
+#oklogo{color:#FF5B6E;font-size:26px;font-weight:800;margin-top:16px}
+#okh{color:#fff;font-size:24px;font-weight:800;margin-top:6px}
+#okd{color:#B7A8E0;font-size:14px;font-weight:700;margin-top:4px}
+#oks{color:#2EE6A8;font-size:13.5px;font-weight:800;margin-top:8px}
+#bars{display:-webkit-flex;display:flex;-webkit-align-items:flex-end;align-items:flex-end;height:34px;margin-top:16px}
+#bars span{width:9px;margin:0 3px;border-radius:2px;background:#2EE6A8;opacity:.25}
+#bars span.lit{opacity:1}
+#dl{margin-top:20px;padding:15px 44px;border:0;border-radius:16px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#more{background:none;border:0;color:#B7A8E0;font-size:13px;font-weight:700;margin-top:12px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{font-size:16px}#brand span{font-size:11px}
+  #destpill{display:none}
+  #sheet{max-width:340px;padding:8px 16px 12px}
+  #sflag{width:40px;height:40px;line-height:40px;font-size:22px}
+  #sname{font-size:17px;margin-top:3px}
+  #schecks{margin:6px 0 0}
+  .srow{margin-top:6px}
+  .step{width:32px;height:32px;font-size:18px}
+  #sprice{margin-top:8px;padding:6px 12px}#spr{font-size:19px}
+  #connect{margin-top:8px;padding:11px 10px}
+  #okball{width:70px;height:70px;line-height:70px;font-size:38px}
+  #okh{font-size:19px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};&lt;/script&gt;
+&lt;canvas id=&quot;globe&quot;&gt;&lt;/canvas&gt;
+&lt;div id=&quot;brand&quot;&gt;Holafly&lt;span&gt;Where are you flying next?&lt;/span&gt;&lt;/div&gt;
+&lt;div id=&quot;destpill&quot;&gt;&amp;#127760; Unlimited data in 270+ destinations&lt;/div&gt;
+&lt;div id=&quot;hint&quot;&gt;spin the globe &amp;middot; tap a pin to connect&lt;/div&gt;
+
+&lt;div id=&quot;sheet&quot;&gt;
+  &lt;div id=&quot;grab&quot;&gt;&lt;/div&gt;
+  &lt;button id=&quot;shx&quot;&gt;&amp;#10005;&lt;/button&gt;
+  &lt;div id=&quot;sflag&quot;&gt;🇯🇵&lt;/div&gt;
+  &lt;div id=&quot;sname&quot;&gt;Japan&lt;/div&gt;
+  &lt;div id=&quot;ssub&quot;&gt;LTE / 5G &amp;middot; &lt;b&gt;Instant activation&lt;/b&gt;&lt;/div&gt;
+  &lt;div id=&quot;schecks&quot;&gt;&lt;span&gt;&amp;#10003; Unlimited data&lt;/span&gt;&lt;span&gt;&amp;#10003; &amp;euro;0 roaming&lt;/span&gt;&lt;span&gt;&amp;#10003; 5G / LTE&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;srow&quot;&gt;
+    &lt;div class=&quot;slab&quot;&gt;&lt;b&gt;Days&lt;/b&gt;&lt;span&gt;more days, lower daily rate&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;ctrl&quot;&gt;&lt;button class=&quot;step&quot; id=&quot;dm&quot;&gt;&amp;minus;&lt;/button&gt;&lt;span class=&quot;num&quot; id=&quot;dn&quot;&gt;7&lt;/span&gt;&lt;button class=&quot;step&quot; id=&quot;dp&quot;&gt;+&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;srow&quot;&gt;
+    &lt;div class=&quot;slab&quot;&gt;&lt;b&gt;Travelers&lt;/b&gt;&lt;span&gt;one eSIM each&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;ctrl&quot;&gt;&lt;button class=&quot;step&quot; id=&quot;tm&quot;&gt;&amp;minus;&lt;/button&gt;&lt;span class=&quot;num&quot; id=&quot;tn&quot;&gt;1&lt;/span&gt;&lt;button class=&quot;step&quot; id=&quot;tp&quot;&gt;+&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;sprice&quot;&gt;
+    &lt;div id=&quot;spl&quot;&gt;&lt;b id=&quot;psum&quot;&gt;7 days &amp;middot; 1 eSIM&lt;/b&gt;&lt;span id=&quot;prate&quot;&gt;from $5.18/day&lt;/span&gt;&lt;/div&gt;
+    &lt;div id=&quot;spr&quot;&gt;&lt;span&gt;TOTAL&lt;/span&gt;&lt;span id=&quot;ptot&quot; style=&quot;display:block;font-size:25px;color:#14213D;font-weight:800&quot;&gt;$36.26&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button id=&quot;connect&quot;&gt;CONNECT &amp;#10142; &lt;span id=&quot;cprice&quot;&gt;$36.26&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;success&quot;&gt;
+  &lt;div id=&quot;okball&quot;&gt;&amp;#10003;&lt;/div&gt;
+  &lt;div id=&quot;oklogo&quot;&gt;Holafly&lt;/div&gt;
+  &lt;div id=&quot;okh&quot;&gt;You&amp;rsquo;re connected!&lt;/div&gt;
+  &lt;div id=&quot;okd&quot;&gt;Japan&lt;/div&gt;
+  &lt;div id=&quot;oks&quot;&gt;Connected in 3 seconds &amp;#10003;&lt;/div&gt;
+  &lt;div id=&quot;bars&quot;&gt;&lt;span style=&quot;height:10px&quot;&gt;&lt;/span&gt;&lt;span style=&quot;height:17px&quot;&gt;&lt;/span&gt;&lt;span style=&quot;height:24px&quot;&gt;&lt;/span&gt;&lt;span style=&quot;height:32px&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;button id=&quot;dl&quot; class=&quot;ctapulse&quot;&gt;DOWNLOAD HOLAFLY&lt;/button&gt;
+  &lt;button id=&quot;more&quot;&gt;explore more destinations &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,sheetOpen=false,doneUp=false,AC=null,tick=null,last=0,bobT=0;
+
+var cv=document.getElementById(&quot;globe&quot;),ctx=cv.getContext(&quot;2d&quot;);
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+&quot;px&quot;;cv.style.height=H+&quot;px&quot;;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+
+/* ---------- land dots (rough continents on a lat/lon grid) ---------- */
+var BLOBS=[
+  [40,-95,26,34],   /* N America: lat, lon, latR, lonR */
+  [-20,-58,32,22],  /* S America */
+  [50,15,13,26],    /* Europe */
+  [2,20,32,26],     /* Africa */
+  [38,90,28,44],    /* Asia */
+  [-25,133,12,20]   /* Australia */
+];
+var DOTS=[];
+(function(){
+  var lat,lon,i;
+  for(lat=-60;lat&lt;=70;lat+=5.6){
+    for(lon=-180;lon&lt;180;lon+=5.6){
+      for(i=0;i&lt;BLOBS.length;i++){
+        var b=BLOBS[i];
+        var dla=(lat-b[0])/b[2],dlo=(lon-b[1])/b[3];
+        if(dla*dla+dlo*dlo&lt;1){
+          /* soften edges: skip some rim dots for organic coastline */
+          if(dla*dla+dlo*dlo&gt;0.72&amp;&amp;((lat*7+lon*13)%3===0))continue;
+          DOTS.push([lat*Math.PI/180,lon*Math.PI/180]);
+          break;
+        }
+      }
+    }
+  }
+})();
+
+/* ---------- destinations (pins) ---------- */
+var DESTS=[
+  {name:&quot;Japan&quot;,flag:&quot;🇯🇵&quot;,lat:35,lon:139,base:6.90},
+  {name:&quot;Italy&quot;,flag:&quot;🇮🇹&quot;,lat:42,lon:12,base:4.30},
+  {name:&quot;USA&quot;,flag:&quot;🇺🇸&quot;,lat:40,lon:-74,base:4.90},
+  {name:&quot;Bali&quot;,flag:&quot;🇮🇩&quot;,lat:-8,lon:115,base:5.50},
+  {name:&quot;Brazil&quot;,flag:&quot;🇧🇷&quot;,lat:-23,lon:-43,base:5.90}
+];
+var rot=0,spinV=0.35,dragging=false,dragMoved=0,lastX=0,screenPins=[];
+var di=0,days=7,trav=1;
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind===&quot;ok&quot;?&quot;triangle&quot;:&quot;sine&quot;;
+    o.frequency.value=kind===&quot;tick&quot;?740:kind===&quot;ok&quot;?520:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;ok&quot;?0.16:0.09,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;ok&quot;?0.4:0.1));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.45);
+    if(kind===&quot;ok&quot;){
+      var o2=AC.createOscillator(),g2=AC.createGain();
+      o2.type=&quot;triangle&quot;;o2.frequency.value=784;
+      g2.gain.setValueAtTime(0.0001,t+0.16);
+      g2.gain.exponentialRampToValueAtTime(0.14,t+0.18);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.5);
+      o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.16);o2.stop(t+0.55);
+    }
+  }catch(e){}
+}
+
+/* ---------- pricing ---------- */
+function rate(){var d=Math.min(0.45,(days-1)*0.018);return DESTS[di].base*(1-d);}
+function money(n){return &quot;$&quot;+(Math.round(n*100)/100).toFixed(2);}
+function renderSheet(){
+  var D=DESTS[di],r=rate(),tot=r*days*trav;
+  document.getElementById(&quot;sflag&quot;).textContent=D.flag;
+  document.getElementById(&quot;sname&quot;).textContent=D.name;
+  document.getElementById(&quot;dn&quot;).textContent=days;
+  document.getElementById(&quot;tn&quot;).textContent=trav;
+  document.getElementById(&quot;psum&quot;).innerHTML=days+(days===1?&quot; day&quot;:&quot; days&quot;)+&quot; &amp;middot; &quot;+trav+(trav===1?&quot; eSIM&quot;:&quot; eSIMs&quot;);
+  document.getElementById(&quot;prate&quot;).textContent=&quot;from &quot;+money(r)+&quot;/day&quot;;
+  document.getElementById(&quot;ptot&quot;).textContent=money(tot);
+  document.getElementById(&quot;cprice&quot;).textContent=money(tot);
+}
+
+/* ---------- globe drawing ---------- */
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  /* space glow */
+  var bg=ctx.createRadialGradient(W/2,H*0.47,10,W/2,H*0.47,Math.max(W,H)*0.75);
+  bg.addColorStop(0,&quot;#241647&quot;);bg.addColorStop(0.6,&quot;#150D2E&quot;);bg.addColorStop(1,&quot;#100A22&quot;);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  /* stars */
+  var i;
+  ctx.fillStyle=&quot;rgba(255,255,255,.5)&quot;;
+  for(i=0;i&lt;40;i++){
+    var sx=((i*971)%100)/100*W,sy=((i*563)%100)/100*H;
+    var a=0.15+0.4*Math.abs(Math.sin(bobT*1.4+i));
+    ctx.globalAlpha=a;
+    ctx.fillRect(sx,sy,2,2);
+  }
+  ctx.globalAlpha=1;
+
+  var R=Math.min(W,H)*0.37,cx=W/2,cy=H*0.47;
+  /* halo */
+  ctx.fillStyle=&quot;rgba(255,91,110,.10)&quot;;
+  ctx.beginPath();ctx.arc(cx,cy,R*1.16,0,6.283);ctx.fill();
+  /* ocean */
+  var og=ctx.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.15,cx,cy,R);
+  og.addColorStop(0,&quot;#3D2C6E&quot;);og.addColorStop(1,&quot;#251A4E&quot;);
+  ctx.fillStyle=og;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
+  ctx.strokeStyle=&quot;rgba(255,170,180,.35)&quot;;ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
+
+  /* land dots (orthographic projection) */
+  for(i=0;i&lt;DOTS.length;i++){
+    var lat=DOTS[i][0],lon=DOTS[i][1]+rot;
+    var cosl=Math.cos(lat);
+    var x3=cosl*Math.sin(lon),z3=cosl*Math.cos(lon),y3=Math.sin(lat);
+    if(z3&lt;=0.02)continue;
+    var px=cx+x3*R*0.96,py=cy-y3*R*0.96;
+    ctx.fillStyle=&quot;rgba(255,200,150,&quot;+(0.35+0.55*z3)+&quot;)&quot;;
+    ctx.beginPath();ctx.arc(px,py,1.4+1.5*z3,0,6.283);ctx.fill();
+  }
+
+  /* pins */
+  screenPins=[];
+  for(i=0;i&lt;DESTS.length;i++){
+    var D=DESTS[i];
+    var la=D.lat*Math.PI/180,lo=D.lon*Math.PI/180+rot;
+    var cl=Math.cos(la);
+    var X=cl*Math.sin(lo),Z=cl*Math.cos(lo),Y=Math.sin(la);
+    if(Z&lt;=0.05)continue;
+    var px2=cx+X*R*0.96,py2=cy-Y*R*0.96;
+    var s=0.8+0.5*Z;
+    /* ripple */
+    var rp=(bobT*1.2+i*0.7)%1;
+    ctx.strokeStyle=&quot;rgba(255,91,110,&quot;+(0.5*(1-rp))+&quot;)&quot;;
+    ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(px2,py2-10*s,(8+16*rp)*s,0,6.283);ctx.stroke();
+    /* pin */
+    ctx.fillStyle=&quot;#FF5B6E&quot;;
+    ctx.beginPath();ctx.arc(px2,py2-10*s,8*s,0,6.283);ctx.fill();
+    ctx.beginPath();ctx.moveTo(px2-6*s,py2-6*s);ctx.lineTo(px2,py2+4*s);ctx.lineTo(px2+6*s,py2-6*s);ctx.closePath();ctx.fill();
+    ctx.fillStyle=&quot;#fff&quot;;
+    ctx.beginPath();ctx.arc(px2,py2-10*s,3.2*s,0,6.283);ctx.fill();
+    screenPins.push({x:px2,y:py2-10*s,r:22*s,i:i});
+  }
+}
+
+/* ---------- interaction ---------- */
+function onDown(ev){
+  if(!started||sheetOpen||doneUp)return;
+  dragging=true;dragMoved=0;
+  lastX=ev.touches?ev.touches[0].clientX:ev.clientX;
+}
+function onMove(ev){
+  if(!dragging)return;
+  var x=ev.touches?ev.touches[0].clientX:ev.clientX;
+  var dx=x-lastX;lastX=x;
+  dragMoved+=Math.abs(dx);
+  rot+=dx*0.008;
+  spinV=dx*0.22;
+  ev.preventDefault&amp;&amp;ev.preventDefault();
+}
+function onUp(ev){
+  if(!dragging)return;
+  dragging=false;
+  if(dragMoved&lt;9){
+    var t=ev.changedTouches?ev.changedTouches[0]:ev;
+    var x=t.clientX,y=t.clientY,i,best=-1,bd=1e9;
+    for(i=0;i&lt;screenPins.length;i++){
+      var p=screenPins[i],dx=p.x-x,dy=p.y-y,d=dx*dx+dy*dy;
+      if(d&lt;p.r*p.r&amp;&amp;d&lt;bd){bd=d;best=p.i;}
+    }
+    if(best&gt;=0){openSheet(best);}
+  }
+}
+function openSheet(i){
+  di=i;days=7;trav=1;
+  renderSheet();
+  sheetOpen=true;
+  snd(&quot;pick&quot;);
+  document.getElementById(&quot;sheet&quot;).className=&quot;on&quot;;
+  document.getElementById(&quot;hint&quot;).style.opacity=&quot;0&quot;;
+}
+function closeSheet(){
+  sheetOpen=false;
+  document.getElementById(&quot;sheet&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;hint&quot;).style.opacity=&quot;&quot;;
+}
+function connect(){
+  if(doneUp)return;
+  doneUp=true;
+  document.getElementById(&quot;sheet&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;okd&quot;).textContent=DESTS[di].name;
+  document.getElementById(&quot;success&quot;).className=&quot;on&quot;;
+  snd(&quot;ok&quot;);
+  var bars=document.querySelectorAll(&quot;#bars span&quot;),i;
+  for(i=0;i&lt;bars.length;i++){
+    (function(b,idx){setTimeout(function(){b.className=&quot;lit&quot;;},350+idx*260);})(bars[i],i);
+  }
+}
+function again(){
+  doneUp=false;sheetOpen=false;
+  document.getElementById(&quot;success&quot;).className=&quot;&quot;;
+  var bars=document.querySelectorAll(&quot;#bars span&quot;),i;
+  for(i=0;i&lt;bars.length;i++){bars[i].className=&quot;&quot;;}
+  document.getElementById(&quot;hint&quot;).style.opacity=&quot;&quot;;
+}
+
+function bind(){
+  cv.addEventListener(&quot;touchstart&quot;,onDown,false);
+  cv.addEventListener(&quot;mousedown&quot;,onDown,false);
+  document.addEventListener(&quot;touchmove&quot;,onMove,false);
+  document.addEventListener(&quot;mousemove&quot;,onMove,false);
+  document.addEventListener(&quot;touchend&quot;,onUp,false);
+  document.addEventListener(&quot;mouseup&quot;,onUp,false);
+  document.getElementById(&quot;shx&quot;).addEventListener(&quot;click&quot;,closeSheet,false);
+  document.getElementById(&quot;dm&quot;).addEventListener(&quot;click&quot;,function(){if(days&gt;1){days--;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;dp&quot;).addEventListener(&quot;click&quot;,function(){if(days&lt;30){days++;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;tm&quot;).addEventListener(&quot;click&quot;,function(){if(trav&gt;1){trav--;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;tp&quot;).addEventListener(&quot;click&quot;,function(){if(trav&lt;6){trav++;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;connect&quot;).addEventListener(&quot;click&quot;,connect,false);
+  document.getElementById(&quot;dl&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;more&quot;).addEventListener(&quot;click&quot;,again,false);
+}
+
+/* ---------- loop ---------- */
+function step(dt){
+  if(W!==window.innerWidth||H!==window.innerHeight){resize();}
+  bobT+=dt;
+  if(!dragging){
+    rot+=spinV*dt;
+    /* ease back to idle speed */
+    spinV+=(0.35-spinV)*Math.min(1,dt*1.4);
+  }
+  draw();
+}
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt&gt;0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;startLoop();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className=&quot;paused&quot;;stopLoop();if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();bind();renderSheet();draw();
+  window.addEventListener(&quot;resize&quot;,resize,false);
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf8');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Spin the Globe<span class="live">LIVE</span></div><div class="fmt hot">GLOBE · YOUR PROVEN FLOW</div><div class="hook">The flow from your best AppLovin creative, brought to Unity in a new skin. Spin a glowing dot matrix globe, tap a coral pin, build your plan with days and travelers while the price updates live, then connect: "You're connected in 3 seconds."</div><div class="thesis"><b>Tests:</b> your top converting flow on Unity inventory, with a look that is clearly Holafly and clearly new.</div><div class="file">Holafly_SpinGlobe_2plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf9" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
 &lt;title&gt;Holafly Playable · Tap the World&lt;/title&gt;
 &lt;style&gt;
 html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0B1C3A;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
@@ -2955,8 +3347,8 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf8');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap the pins and light up the map. Every pin shows unlimited data with the local daily price, and the counter climbs to 270+ destinations.</div><div class="thesis"><b>Tests:</b> coverage as something you play with, not a claim you read.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
-<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A · Friction</td><td>No Signal 1T vs Scan & Go 2T</td><td>One tap of relief or the full setup walkthrough, which converts better?</td><td>IPM → install rate</td></tr><tr><td>B · Hook</td><td>Destination Quiz vs Beat the Roaming Bill</td><td>Identity or urgency, which framing gets the tap?</td><td>CTR → CVR</td></tr><tr><td>C · Promise</td><td>No Signal vs Tap the World</td><td>Sell the single moment of relief or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D · Geo</td><td>Quiz and Scan destination cards</td><td>Which destinations pull the highest intent travelers?</td><td>CVR by destination</td></tr><tr><td>E · Format</td><td>SIM Flight vs your best static and video</td><td>Does the flyer win on Unity the way it wins on your current channels?</td><td>IPM → CPA parity</td></tr><tr><td>F · Game twist</td><td>SIM Flight vs Bill Balloon vs Choose Your Skies</td><td>Straight rebuild, the bill balloon or the route forks. Which flyer wins?</td><td>CTR → CVR → D7</td></tr><tr><td>G · Configurator</td><td>Boarding Pass vs Scan & Go</td><td>Building your own plan vs watching the setup. Which drives more purchases?</td><td>CVR → purchase rate</td></tr></table>
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf9');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap the pins and light up the map. Every pin shows unlimited data with the local daily price, and the counter climbs to 270+ destinations.</div><div class="thesis"><b>Tests:</b> coverage as something you play with, not a claim you read.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A · Friction</td><td>No Signal 1T vs Scan & Go 2T</td><td>One tap of relief or the full setup walkthrough, which converts better?</td><td>IPM → install rate</td></tr><tr><td>B · Hook</td><td>Destination Quiz vs Beat the Roaming Bill</td><td>Identity or urgency, which framing gets the tap?</td><td>CTR → CVR</td></tr><tr><td>C · Promise</td><td>No Signal vs Tap the World</td><td>Sell the single moment of relief or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D · Geo</td><td>Quiz and Scan destination cards</td><td>Which destinations pull the highest intent travelers?</td><td>CVR by destination</td></tr><tr><td>E · Format</td><td>SIM Flight vs your best static and video</td><td>Does the flyer win on Unity the way it wins on your current channels?</td><td>IPM → CPA parity</td></tr><tr><td>F · Game twist</td><td>SIM Flight vs Bill Balloon vs Choose Your Skies</td><td>Straight rebuild, the bill balloon or the route forks. Which flyer wins?</td><td>CTR → CVR → D7</td></tr><tr><td>G · Configurator</td><td>Boarding Pass vs Scan & Go</td><td>Building your own plan vs watching the setup. Which drives more purchases?</td><td>CVR → purchase rate</td></tr><tr><td>H · Proven flow</td><td>Spin the Globe vs Boarding Pass</td><td>Your AppLovin flow in a fresh skin vs our boarding pass twist. Which configurator wins on Unity?</td><td>CTR → CVR → purchase rate</td></tr></table>
 <div class="note"><b>About these builds:</b> everything on this page is a working concept. Final versions ship with Holafly's official brand assets and approved copy (logo, brand colors, real plan prices). Store links are already wired for iOS and Android, and every creative meets Unity spec: MRAID 3.0, single file, under 5 MB, both orientations. Once you approve concepts, these move straight into campaign QA.</div>
 <footer>Benchmarks: AppAgent State of Playable Ads 2025 · Admiral Media playable UA guide. Prices shown are placeholders until we plug in Holafly's current rates.</footer>
 </div>
