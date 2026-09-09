@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly إعلان تفاعلي · إلى أين أنت مسافر؟</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#F4FAFF;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#dots{position:absolute;top:5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#D9E6F2;margin:0 5px}
+.dot.on{background:#FF4E45}
+#promptrow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin-bottom:5%}
+#ola{height:66px;width:66px;-webkit-flex-shrink:0;flex-shrink:0}
+#bubble{position:relative;margin-left:14px;background:#fff;border:2px solid #E5EAF0;border-radius:14px;padding:10px 14px;color:#14213D;font-size:16px;font-weight:700;max-width:230px}
+#bubble:before{content:"";position:absolute;left:-9px;top:50%;margin-top:-7px;width:12px;height:12px;background:#fff;border-left:2px solid #E5EAF0;border-bottom:2px solid #E5EAF0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+#qwrap{width:88%;max-width:480px}
+#qtitle{color:#14213D;font-size:21px;font-weight:800;margin:0 0 5% 0;text-align:center}
+#opts{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:0 -5px}
+.opt{-webkit-flex:1 1 40%;flex:1 1 40%;box-sizing:border-box;margin:5px;padding:16px 8px;background:#fff;border:2px solid #E5EAF0;border-bottom-width:4px;border-radius:16px;text-align:center;cursor:pointer}
+.opt .em{font-size:36px;line-height:1.2;display:block}
+.opt .lb{color:#14213D;font-size:14px;font-weight:700;display:block;margin-top:6px}
+.opt.sel{background:#FFECEA;border-color:#FF4E45}
+#minicta{position:absolute;left:50%;bottom:4.5%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:12px 26px;border:0;border-radius:14px;background:#14213D;box-shadow:0 4px 0 #0A0F1F;color:#fff;font-size:14px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:60px;line-height:1.1}
+#eheadline{color:#fff;font-size:26px;font-weight:800;margin:8px 8% 4px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 9% 8px;text-align:center;max-width:340px;line-height:1.5}
+#eplan{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:12px;color:#fff;font-size:14px;font-weight:700;padding:9px 16px;margin:6px 6% 18px;max-width:320px;line-height:1.45}
+#eplan b{font-weight:800}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.bounce{-webkit-animation:bounce .95s ease-in-out infinite;animation:bounce .95s ease-in-out infinite}
+@-webkit-keyframes bounce{0%,100%{-webkit-transform:translateY(0) rotate(-7deg) scale(1.02,.97)}50%{-webkit-transform:translateY(-15px) rotate(7deg) scale(.98,1.03)}}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-7deg) scale(1.02,.97)}50%{transform:translateY(-15px) rotate(7deg) scale(.98,1.03)}}
+.pulse{-webkit-animation:pulse 1.4s ease-in-out infinite;animation:pulse 1.4s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.confetti{position:absolute;width:10px;height:10px;border-radius:2px;pointer-events:none;opacity:0}
+.confetti.go{-webkit-animation:conf 1s ease-out forwards;animation:conf 1s ease-out forwards}
+@-webkit-keyframes conf{0%{opacity:1;-webkit-transform:translate(0,0) rotate(0)}100%{opacity:0;-webkit-transform:translate(0,-90px) rotate(200deg)}}
+@keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(0,-90px) rotate(200deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.bounce,.pulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #dots{top:4%}
+  #promptrow{margin-bottom:2%}
+  #ola{height:50px;width:50px}
+  #bubble{font-size:14px}
+  #qtitle{font-size:17px;margin-bottom:2%}
+  #opts{-webkit-flex-wrap:nowrap;flex-wrap:nowrap}
+  .opt{padding:10px 6px}
+  .opt .em{font-size:28px}
+  .opt .lb{font-size:12px}
+  #minicta{bottom:5%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:50px;margin-right:3%}
+  #eheadline{font-size:21px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="stage">
+  <div id="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+  <div id="promptrow">
+    <svg id="ola" class="bounce" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Ola">
+      <circle cx="60" cy="62" r="46" fill="#2FA9E0"/>
+      <path d="M22 54 q12 -14 30 -7 q10 5 3 16 q-12 9 -26 4 q-12 -5 -7 -13z" fill="#4BBE6B"/>
+      <path d="M78 42 q16 -3 20 11 q2 12 -12 13 q-13 0 -13 -12 q0 -10 5 -12z" fill="#4BBE6B"/>
+      <path d="M54 88 q11 -4 20 2 q5 6 -5 11 q-13 5 -20 -4 q-2 -6 5 -9z" fill="#4BBE6B"/>
+      <circle cx="46" cy="60" r="7" fill="#fff"/><circle cx="74" cy="60" r="7" fill="#fff"/>
+      <circle cx="47" cy="61" r="3.4" fill="#14213D"/><circle cx="75" cy="61" r="3.4" fill="#14213D"/>
+      <path d="M44 76 q16 14 32 0" stroke="#14213D" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      <path d="M92 20 l16 6 -7 5 2 9 -9 -6 -9 4 3 -9 -6 -7z" fill="#FF4E45"/>
+    </svg>
+    <div id="bubble">لنكتشف رحلتك!</div>
+  </div>
+  <div id="qwrap">
+    <p id="qtitle">إلى أين وجهتك؟</p>
+    <div id="opts"></div>
+  </div>
+  <button id="minicta">حمّل Holafly</button>
+</div>
+<div id="endcard">
+  <div id="rbadge">🧭</div>
+  <div class="col">
+    <div id="eheadline">أنت مستكشف الثقافات!</div>
+    <div id="esub">دائمًا على بُعد منعطف خاطئ واحد من أجمل يوم في حياتك.</div>
+    <div id="eplan">باقتك: <b>بيانات غير محدودة في اليابان</b> 🇯🇵، تعمل لحظة وصولك، تجوال بـ 0€.</div>
+    <button id="cta" class="pulse">احصل على شريحتي eSIM</button>
+    <button id="eother">أو استكشف أكثر من 270 وجهة</button>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,busy=false,AC=null;
+
+/* Q1 picks the destination; Q2 & Q3 pick the persona */
+var DESTS={
+  jp:{name:"اليابان",flag:"🇯🇵"},
+  it:{name:"إيطاليا",flag:"🇮🇹"},
+  us:{name:"أمريكا",flag:"🇺🇸"},
+  id:{name:"إندونيسيا",flag:"🇮🇩"}
+};
+var QUESTIONS=[
+  {t:"إلى أين وجهتك؟",bubble:"لنكتشف رحلتك!",type:"dest",o:[
+    {em:"🗼",lb:"طوكيو",d:"jp"},
+    {em:"🍕",lb:"روما",d:"it"},
+    {em:"🗽",lb:"نيويورك",d:"us"},
+    {em:"🏝️",lb:"بالي",d:"id"}]},
+  {t:"ما أسلوبك في السفر؟",bubble:"يا سلام، اختيار موفّق…",type:"persona",o:[
+    {em:"🎒",lb:"حقيبة ظهر وعفوية",k:"explorer"},
+    {em:"🛎️",lb:"فنادق بوتيك",k:"creator"},
+    {em:"🍜",lb:"تذوّق كل شيء",k:"foodie"},
+    {em:"💻",lb:"العمل من أي مكان",k:"nomad"}]},
+  {t:"أول ما تنزل من الطائرة…",bubble:"آخر سؤال، أعدك!",type:"persona",o:[
+    {em:"🗺️",lb:"فتح الخرائط",k:"explorer"},
+    {em:"📸",lb:"نشر الإطلالة",k:"creator"},
+    {em:"🍽️",lb:"البحث عن مطعم محلي",k:"foodie"},
+    {em:"📧",lb:"تفقّد رسائل العمل",k:"nomad"}]}
+];
+var RESULTS={
+  explorer:{em:"🧭",h:"أنت مستكشف الثقافات!",s:"دائمًا على بُعد منعطف خاطئ واحد من أجمل يوم في حياتك."},
+  creator:{em:"📸",h:"أنت صانع المشاهد!",s:"كل إطلالة محتوى، ولا تفوّتك الإضاءة المثالية أبدًا."},
+  foodie:{em:"🍜",h:"أنت مطارد النكهات!",s:"تسافر خلف معدتك، وهي لا تخذلك أبدًا."},
+  nomad:{em:"💻",h:"أنت رحّالة رقمي!",s:"مكتب اليوم: أي مكان فيه إشارة."}
+};
+
+var qi=0,dest="jp",votes={explorer:0,creator:0,foodie:0,nomad:0},lastVote={};
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function ding(){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,f=[659.25,880],i;
+    for(i=0;i<f.length;i++){
+      var o=AC.createOscillator(),g=AC.createGain();
+      o.type="sine";o.frequency.value=f[i];
+      g.gain.setValueAtTime(0.0001,t+i*0.12);
+      g.gain.exponentialRampToValueAtTime(0.16,t+i*0.12+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+i*0.12+0.22);
+      o.connect(g);g.connect(AC.destination);
+      o.start(t+i*0.12);o.stop(t+i*0.12+0.28);
+    }
+  }catch(e){}
+}
+
+function confetti(x,y){
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var colors=["#FF4E45","#2FA9E0","#FFC542","#16C784","#14213D"],i;
+  for(i=0;i<16;i++){
+    var d=document.createElement("div");
+    d.className="confetti";
+    d.style.background=colors[i%colors.length];
+    d.style.left=(x+(Math.random()*140-70))+"px";
+    d.style.top=(y+(Math.random()*30-15))+"px";
+    document.body.appendChild(d);
+    d.className="confetti go";
+    (function(el){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1100);})(d);
+  }
+}
+
+function renderQ(){
+  var q=QUESTIONS[qi];
+  document.getElementById("qtitle").textContent=q.t;
+  document.getElementById("bubble").textContent=q.bubble;
+  var dots=document.querySelectorAll(".dot"),i;
+  for(i=0;i<dots.length;i++){dots[i].className=i<=qi?"dot on":"dot";}
+  var wrap=document.getElementById("opts");
+  wrap.innerHTML="";
+  for(i=0;i<q.o.length;i++){
+    var b=document.createElement("button");
+    b.className="opt";
+    b.innerHTML='<span class="em">'+q.o[i].em+'</span><span class="lb">'+q.o[i].lb+'</span>';
+    if(q.type==="dest"){b.setAttribute("data-d",q.o[i].d);}
+    else{b.setAttribute("data-k",q.o[i].k);}
+    b.addEventListener("click",onOpt,false);
+    wrap.appendChild(b);
+  }
+}
+
+function onOpt(ev){
+  if(!started||busy)return;
+  busy=true;
+  var el=ev.currentTarget,q=QUESTIONS[qi];
+  if(q.type==="dest"){dest=el.getAttribute("data-d");}
+  else{var k=el.getAttribute("data-k");votes[k]++;lastVote[k]=qi;}
+  el.className="opt sel";
+  ding();
+  setTimeout(function(){
+    busy=false;
+    if(qi<QUESTIONS.length-1){qi++;renderQ();}
+    else{finish();}
+  },520);
+}
+
+function finish(){
+  var keys=["explorer","creator","foodie","nomad"],best=keys[0],i;
+  for(i=0;i<keys.length;i++){
+    var k=keys[i];
+    if(votes[k]>votes[best])best=k;
+    else if(votes[k]===votes[best]&&votes[k]>0&&(lastVote[k]||0)>(lastVote[best]||0))best=k;
+  }
+  var r=RESULTS[best],d=DESTS[dest];
+  document.getElementById("rbadge").textContent=r.em;
+  document.getElementById("eheadline").textContent=r.h;
+  document.getElementById("esub").textContent=r.s;
+  document.getElementById("eplan").innerHTML="باقتك: <b>بيانات غير محدودة في "+d.name+"</b> "+d.flag+"، تعمل لحظة وصولك، تجوال بـ 0€.";
+  confetti(window.innerWidth/2,window.innerHeight/3);
+  document.getElementById("endcard").className="show";
+}
+
+function bind(){
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("eother").addEventListener("click",openStore,false);
+  document.getElementById("minicta").addEventListener("click",openStore,false);
+}
+
+function showAd(){started=true;document.body.className="";}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();}
+function pauseAd(){document.body.className="paused";if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();renderQ();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

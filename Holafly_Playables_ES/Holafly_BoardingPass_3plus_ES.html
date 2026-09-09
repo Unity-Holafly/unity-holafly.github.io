@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly Playable · Pase de Abordar</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0A1526;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+/* starfield */
+#sky{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 120%,circle,#14294A 0%,#0A1526 60%);background:radial-gradient(circle at 50% 120%,#14294A 0%,#0A1526 60%)}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7}
+.star.tw{-webkit-animation:tw 2.4s ease-in-out infinite;animation:tw 2.4s ease-in-out infinite}
+@-webkit-keyframes tw{0%,100%{opacity:.2}50%{opacity:.9}}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:.9}}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px}
+#brand span{display:block;color:#8FA6C8;font-size:13px;font-weight:600;letter-spacing:.3px;margin-top:3px}
+#pill{position:absolute;top:12.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(22,199,132,.15);border:1px solid rgba(22,199,132,.5);color:#5EE2AC;font-size:12.5px;font-weight:700;border-radius:16px;padding:6px 14px;white-space:nowrap}
+/* screen 1: destinations */
+.panel{width:88%;max-width:400px;display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center}
+.panel.on{display:-webkit-flex;display:flex}
+#q{color:#fff;font-size:21px;font-weight:800;margin-bottom:18px;text-align:center}
+#dgrid{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:0 -5px;width:100%}
+.dcard{-webkit-flex:1 1 40%;flex:1 1 40%;box-sizing:border-box;margin:5px;padding:16px 8px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.14);border-radius:16px;text-align:center;cursor:pointer}
+.dcard .em{font-size:34px;display:block}
+.dcard .lb{color:#fff;font-size:14px;font-weight:700;display:block;margin-top:6px}
+.dcard .pr{color:#8FA6C8;font-size:11px;font-weight:600;display:block;margin-top:2px}
+.dcard.sel{background:rgba(255,91,110,.18);border-color:#FF5B6E}
+/* screen 2: boarding pass */
+#pass{width:92%;max-width:380px;background:#FDFBF7;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+#phead{background:#FF5B6E;color:#fff;padding:10px 16px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#phead b{font-size:13px;letter-spacing:1.5px}
+#phead span{font-size:10px;font-weight:800;letter-spacing:1px;opacity:.85}
+#route{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between;padding:14px 20px 8px}
+.city{text-align:center}
+.city b{display:block;font-size:30px;color:#14213D;font-weight:800;letter-spacing:1px}
+.city span{display:block;font-size:10.5px;color:#8A94A6;font-weight:700;letter-spacing:.5px;margin-top:2px}
+#plane{color:#FF5B6E;font-size:20px}
+#dots{-webkit-flex:1;flex:1;border-top:2px dashed #D8D2C8;margin:0 10px;position:relative;top:-6px}
+#benef{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;padding:2px 10px 10px}
+#benef span{font-size:10.5px;color:#187A4B;font-weight:800;margin:0 7px;white-space:nowrap}
+#perf{border-top:2px dashed #D8D2C8;position:relative;margin:0 0 4px}
+#perf:before,#perf:after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:#0A1526}
+#perf:before{left:-8px}#perf:after{right:-8px}
+.row{padding:10px 20px 0}
+.rlab{font-size:10px;color:#8A94A6;font-weight:800;letter-spacing:1.2px;margin-bottom:7px}
+.rlab i{font-style:normal;color:#B8AE9E;font-weight:600;letter-spacing:.2px;text-transform:none}
+/* days slider */
+#track{position:relative;height:34px;cursor:pointer}
+#rail{position:absolute;left:0;right:0;top:15px;height:6px;border-radius:4px;background:#EDE7DC}
+#railfill{position:absolute;left:0;top:15px;height:6px;border-radius:4px;background:-webkit-linear-gradient(left,#FFB3BC,#FF5B6E);background:linear-gradient(90deg,#FFB3BC,#FF5B6E);width:30%}
+#thumb{position:absolute;top:1px;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:#FF5B6E;box-shadow:0 3px 8px rgba(255,91,110,.5);border:3px solid #fff;color:#fff;font-size:12px;font-weight:800;text-align:center;line-height:28px}
+/* travelers stepper */
+#trav{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center}
+.step{width:38px;height:38px;border-radius:12px;border:2px solid #EDE7DC;background:#fff;color:#14213D;font-size:20px;font-weight:800;cursor:pointer;line-height:1}
+#tnum{-webkit-flex:1;flex:1;text-align:center;font-size:18px;color:#14213D;font-weight:800}
+/* price */
+#pricebox{margin:12px 16px 14px;background:#F4EFE6;border-radius:12px;padding:10px 14px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#prate b{display:block;font-size:24px;color:#14213D;font-weight:800}
+#prate span{font-size:10.5px;color:#8A94A6;font-weight:700}
+#ptot{text-align:right}
+#ptot b{display:block;font-size:15px;color:#187A4B;font-weight:800}
+#ptot span{font-size:10px;color:#8A94A6;font-weight:700}
+#lock{display:block;margin:0 16px 16px;width:auto;padding:15px 10px;border:0;border-radius:14px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer;text-align:center;width:calc(100% - 32px)}
+/* stamp + end state */
+#stamp{position:absolute;top:34%;left:50%;-webkit-transform:translate(-50%,-50%) rotate(-14deg) scale(3);transform:translate(-50%,-50%) rotate(-14deg) scale(3);border:4px solid #16A06B;color:#16A06B;font-size:24px;font-weight:800;letter-spacing:2px;padding:8px 18px;border-radius:10px;opacity:0;pointer-events:none;background:rgba(253,251,247,.7)}
+#stamp.on{opacity:1;-webkit-transform:translate(-50%,-50%) rotate(-14deg) scale(1);transform:translate(-50%,-50%) rotate(-14deg) scale(1);-webkit-transition:all .28s cubic-bezier(.2,2,.4,1);transition:all .28s cubic-bezier(.2,2,.4,1)}
+#after{display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;margin-top:14px}
+#after.on{display:-webkit-flex;display:flex}
+#contxt{color:#5EE2AC;font-size:14px;font-weight:800;margin-bottom:10px}
+#cta{padding:15px 42px;border:0;border-radius:16px;background:#16C784;box-shadow:0 4px 0 #0FA968;color:#06251A;font-size:17px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{background:none;border:0;color:#8FA6C8;font-size:13px;font-weight:700;margin-top:11px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.tw,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{top:2.5%;font-size:17px}#brand span{font-size:11px}
+  #pill{display:none}
+  #pass{max-width:340px}
+  .city b{font-size:22px}
+  #pricebox{margin:8px 16px 10px;padding:7px 12px}
+  #prate b{font-size:19px}
+  #lock{padding:11px 10px;margin-bottom:12px}
+  #q{font-size:17px;margin-bottom:10px}
+  .dcard{padding:9px 6px}.dcard .em{font-size:26px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="sky"></div>
+<div id="stage">
+  <div id="brand">Holafly<span>Arma tu viaje y mira el precio</span></div>
+  <div id="pill">&#9989; Datos ilimitados en 270+ destinos</div>
+
+  <div id="p1" class="panel on">
+    <div id="q">¿Próximo destino?</div>
+    <div id="dgrid">
+      <div class="dcard" data-i="0"><span class="em">🗼</span><span class="lb">Japón</span><span class="pr">desde €3.90/día</span></div>
+      <div class="dcard" data-i="1"><span class="em">🍕</span><span class="lb">Italia</span><span class="pr">desde €2.90/día</span></div>
+      <div class="dcard" data-i="2"><span class="em">🗽</span><span class="lb">EE.UU.</span><span class="pr">desde €3.20/día</span></div>
+      <div class="dcard" data-i="3"><span class="em">🏝️</span><span class="lb">Bali</span><span class="pr">desde €3.40/día</span></div>
+    </div>
+  </div>
+
+  <div id="p2" class="panel">
+    <div id="pass">
+      <div id="phead"><b>HOLAFLY AIR</b><span>PASE DE ABORDAR eSIM</span></div>
+      <div id="route">
+        <div class="city"><b>TÚ</b><span>CASA</span></div>
+        <div id="dots"></div>
+        <div id="plane">&#9992;&#65039;</div>
+        <div id="dots"></div>
+        <div class="city"><b id="dcode">TYO</b><span id="dname">JAPÓN 🇯🇵</span></div>
+      </div>
+      <div id="benef"><span>&#10003; Datos ilimitados</span><span>&#10003; &euro;0 roaming</span><span>&#10003; 5G / LTE</span></div>
+      <div id="perf"></div>
+      <div class="row">
+        <div class="rlab">DURACIÓN: <span id="dayn">7 DÍAS</span> &nbsp;<i>viajes más largos bajan la tarifa diaria</i></div>
+        <div id="track">
+          <div id="rail"></div><div id="railfill"></div><div id="thumb">7</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rlab">VIAJEROS <i>(una eSIM cada uno)</i></div>
+        <div id="trav">
+          <button class="step" id="tminus">&minus;</button>
+          <span id="tnum">1</span>
+          <button class="step" id="tplus">+</button>
+        </div>
+      </div>
+      <div id="pricebox">
+        <div id="prate"><b id="rate">€5.18/día</b><span>por viajero</span></div>
+        <div id="ptot"><b id="total">Total €36.26</b><span id="tsub">7 días &middot; 1 eSIM</span></div>
+      </div>
+      <button id="lock">RESÉRVALO &#128274;</button>
+      <div id="stamp">CONECTADO &#10003;</div>
+    </div>
+    <div id="after">
+      <div id="contxt">Conectado en 3 segundos &#10003; Sin cambiar de SIM, sin roaming.</div>
+      <button id="cta" class="ctapulse">DESCARGA HOLAFLY</button>
+      <button id="retry">planea otro viaje &#8635;</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,locked=false,AC=null;
+
+var DESTS=[
+  {code:"TYO",name:"JAPÓN 🇯🇵",base:6.90},
+  {code:"ROM",name:"ITALIA 🇮🇹",base:4.30},
+  {code:"NYC",name:"EE.UU. 🇺🇸",base:4.90},
+  {code:"DPS",name:"BALI 🇮🇩",base:5.50}
+];
+var di=0,days=7,trav=1,MAXD=30;
+
+/* stars */
+(function(){
+  var sky=document.getElementById("sky"),i;
+  for(i=0;i<46;i++){
+    var s=document.createElement("div");
+    s.className=i%3?"star":"star tw";
+    s.style.left=(Math.random()*100)+"%";
+    s.style.top=(Math.random()*100)+"%";
+    s.style.opacity=(0.15+Math.random()*0.6);
+    if(i%3===0)s.style.animationDelay=(Math.random()*2)+"s";
+    sky.appendChild(s);
+  }
+})();
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind==="stamp"?"triangle":"sine";
+    o.frequency.value=kind==="tick"?740:kind==="stamp"?300:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind==="stamp"?0.2:0.09,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind==="stamp"?0.35:0.1));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.4);
+  }catch(e){}
+}
+
+/* pricing: longer trips drop the daily rate (max 45% off) */
+function rateFor(d){
+  var disc=Math.min(0.45,(days-1)*0.018);
+  return DESTS[d].base*(1-disc);
+}
+function money(n){return "€"+(Math.round(n*100)/100).toFixed(2);}
+
+function render(){
+  var D=DESTS[di],r=rateFor(di),tot=r*days*trav;
+  document.getElementById("dcode").textContent=D.code;
+  document.getElementById("dname").innerHTML=D.name;
+  document.getElementById("dayn").textContent=days+(days===1?" DÍA":" DÍAS");
+  document.getElementById("tnum").textContent=trav;
+  document.getElementById("rate").textContent=money(r)+"/día";
+  document.getElementById("total").textContent="Total "+money(tot);
+  document.getElementById("tsub").innerHTML=days+(days===1?" día":" días")+" &middot; "+trav+(trav===1?" eSIM":" eSIMs");
+  var pct=(days-1)/(MAXD-1)*100;
+  document.getElementById("railfill").style.width=pct+"%";
+  var th=document.getElementById("thumb");
+  th.style.left=pct+"%";
+  th.textContent=days;
+}
+
+/* slider */
+var dragging=false,lastTickDays=7;
+function setFromX(clientX){
+  var tr=document.getElementById("track"),rc=tr.getBoundingClientRect();
+  var f=(clientX-rc.left)/rc.width;
+  f=Math.max(0,Math.min(1,f));
+  var d=Math.round(1+f*(MAXD-1));
+  if(d!==days){days=d;render();if(Math.abs(d-lastTickDays)>=1){snd("tick");lastTickDays=d;}}
+}
+function bindSlider(){
+  var tr=document.getElementById("track");
+  var down=function(ev){
+    if(!started||locked)return;
+    dragging=true;
+    var x=ev.touches?ev.touches[0].clientX:ev.clientX;
+    setFromX(x);
+    ev.preventDefault&&ev.preventDefault();
+  };
+  var move=function(ev){
+    if(!dragging)return;
+    var x=ev.touches?ev.touches[0].clientX:ev.clientX;
+    setFromX(x);
+    ev.preventDefault&&ev.preventDefault();
+  };
+  var up=function(){dragging=false;};
+  tr.addEventListener("touchstart",down,false);
+  tr.addEventListener("mousedown",down,false);
+  document.addEventListener("touchmove",move,false);
+  document.addEventListener("mousemove",move,false);
+  document.addEventListener("touchend",up,false);
+  document.addEventListener("mouseup",up,false);
+}
+
+function pickDest(ev){
+  if(!started||locked)return;
+  var el=ev.currentTarget;
+  di=parseInt(el.getAttribute("data-i"),10);
+  el.className="dcard sel";
+  snd("pick");
+  render();
+  setTimeout(function(){
+    document.getElementById("p1").className="panel";
+    document.getElementById("p2").className="panel on";
+    document.getElementById("pill").style.display="none";
+  },420);
+}
+
+function lockIn(){
+  if(!started||locked)return;
+  locked=true;
+  snd("stamp");
+  document.getElementById("stamp").className="on";
+  document.getElementById("lock").style.opacity="0.35";
+  document.getElementById("lock").style.pointerEvents="none";
+  setTimeout(function(){document.getElementById("after").className="on";},450);
+}
+
+function retry(){
+  locked=false;days=7;trav=1;lastTickDays=7;
+  document.getElementById("stamp").className="";
+  document.getElementById("after").className="";
+  var lk=document.getElementById("lock");
+  lk.style.opacity="";lk.style.pointerEvents="";
+  var cards=document.querySelectorAll(".dcard"),i;
+  for(i=0;i<cards.length;i++){cards[i].className="dcard";}
+  document.getElementById("p2").className="panel";
+  document.getElementById("p1").className="panel on";
+  document.getElementById("pill").style.display="";
+  render();
+}
+
+function bind(){
+  var cards=document.querySelectorAll(".dcard"),i;
+  for(i=0;i<cards.length;i++){cards[i].addEventListener("click",pickDest,false);}
+  document.getElementById("tminus").addEventListener("click",function(){if(!started||locked)return;if(trav>1){trav--;snd("tick");render();}},false);
+  document.getElementById("tplus").addEventListener("click",function(){if(!started||locked)return;if(trav<6){trav++;snd("tick");render();}},false);
+  document.getElementById("lock").addEventListener("click",lockIn,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("retry").addEventListener("click",retry,false);
+  bindSlider();
+}
+
+function showAd(){started=true;document.body.className="";}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();}
+function pauseAd(){document.body.className="paused";if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();render();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

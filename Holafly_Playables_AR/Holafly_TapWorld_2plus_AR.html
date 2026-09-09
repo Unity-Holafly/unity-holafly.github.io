@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly إعلان تفاعلي · اضغط على العالم</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0B1C3A;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#title{position:absolute;top:5.5%;left:0;right:0;text-align:center;color:#fff;font-size:20px;font-weight:800;padding:0 8%}
+#title span{display:block;color:#8FA6C8;font-size:13px;font-weight:600;margin-top:4px}
+#chip{position:absolute;top:16%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#16C784;color:#06251A;font-size:14px;font-weight:800;border-radius:20px;padding:8px 16px;white-space:nowrap;opacity:0;-webkit-transition:opacity .25s,-webkit-transform .25s;transition:opacity .25s,transform .25s;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#chip.show{opacity:1}
+#maparea{position:relative;width:94%;max-width:480px}
+#map{width:100%;height:auto;display:block}
+.land{fill:#24406E}
+.land.flood{fill:#1E7F5C;-webkit-transition:fill .5s;transition:fill .5s}
+.pin{position:absolute;width:34px;height:34px;margin:-17px 0 0 -17px;cursor:pointer;border:0;background:none;padding:0}
+.pin .dot{position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;background:#FF4E45;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.pin .ripple{position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:2px solid #FF4E45;-webkit-animation:ripple 1.6s ease-out infinite;animation:ripple 1.6s ease-out infinite}
+@-webkit-keyframes ripple{0%{-webkit-transform:scale(1);opacity:.7}100%{-webkit-transform:scale(2.6);opacity:0}}
+@keyframes ripple{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
+.pin.lit .dot{background:#16C784}
+.pin.lit .ripple{display:none}
+.pin.lit .check{position:absolute;top:50%;left:50%;width:16px;height:16px;margin:-8px 0 0 -8px;color:#fff;font-size:11px;font-weight:800;line-height:16px;text-align:center}
+#counter{position:absolute;bottom:13%;left:0;right:0;text-align:center;color:#fff;font-size:15px;font-weight:800}
+#counter b{color:#16C784;font-size:22px}
+#hint{position:absolute;bottom:9%;left:0;right:0;text-align:center;color:#8FA6C8;font-size:12px;font-weight:600}
+#seeall{position:absolute;left:50%;bottom:8.5%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:16px 32px;border:0;border-radius:16px;background:#FF4E45;box-shadow:0 5px 0 #C9362E;color:#fff;font-size:16px;font-weight:800;letter-spacing:.5px;cursor:pointer;display:none;white-space:nowrap}
+#seeall.on{display:block}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:56px;line-height:1.1}
+#eheadline{color:#fff;font-size:26px;font-weight:800;margin:8px 7% 4px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 10% 20px;text-align:center;max-width:330px;line-height:1.5}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.sapulse{-webkit-animation:sapulse 1.3s ease-in-out infinite;animation:sapulse 1.3s ease-in-out infinite}
+@-webkit-keyframes sapulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes sapulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.ripple,.ctapulse,.sapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #title{top:4%;font-size:17px}
+  #maparea{max-width:380px}
+  #counter{bottom:16%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:46px;margin-right:3%}
+  #eheadline{font-size:21px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="stage">
+  <div id="title">اضغط على العالم<span>أينما هبطت، أنت مغطّى</span></div>
+  <div id="chip"></div>
+  <div id="maparea">
+    <svg id="map" viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
+      <!-- stylized continents (decorative, not to scale) -->
+      <path class="land" d="M40 60 q30 -22 70 -14 q34 8 30 34 q-6 24 -40 26 q10 20 -6 34 q-20 14 -40 2 q-16 -12 -10 -32 q-24 -8 -20 -30 q2 -16 26 -20z"/>
+      <path class="land" d="M120 150 q22 -10 34 8 q10 20 -4 44 q-12 26 -30 22 q-16 -6 -14 -30 q-10 -30 14 -44z"/>
+      <path class="land" d="M210 66 q40 -20 78 -8 q20 8 14 26 q30 4 40 26 q6 20 -18 28 q-30 8 -54 -6 q-30 6 -50 -10 q-20 -18 -10 -40 q0 -30 24 -34z" transform="translate(-8,0)"/>
+      <path class="land" d="M250 150 q30 -12 44 10 q10 22 -6 46 q-16 24 -34 18 q-16 -8 -14 -32 q-8 -28 10 -42z"/>
+      <path class="land" d="M300 96 q34 -8 60 4 q22 12 14 32 q-10 22 -44 20 q-34 -2 -42 -24 q-6 -22 12 -32z"/>
+      <path class="land" d="M380 176 q26 -8 40 8 q10 16 -6 30 q-20 14 -38 4 q-14 -12 -6 -28 q4 -10 10 -14z"/>
+    </svg>
+    <!-- pins positioned by % over the map -->
+    <button class="pin" style="left:19%;top:34%" data-f="🇺🇸" data-n="أمريكا" data-p="$4.90/day"><span class="ripple"></span><span class="dot"></span><span class="check">✓</span></button>
+    <button class="pin" style="left:29%;top:72%" data-f="🇧🇷" data-n="البرازيل" data-p="$5.50/day"><span class="ripple"></span><span class="dot"></span><span class="check">✓</span></button>
+    <button class="pin" style="left:52%;top:36%" data-f="🇮🇹" data-n="إيطاليا" data-p="$4.30/day"><span class="ripple"></span><span class="dot"></span><span class="check">✓</span></button>
+    <button class="pin" style="left:72%;top:44%" data-f="🇯🇵" data-n="اليابان" data-p="$6.90/day"><span class="ripple"></span><span class="dot"></span><span class="check">✓</span></button>
+    <button class="pin" style="left:84%;top:78%" data-f="🇦🇺" data-n="أستراليا" data-p="$5.90/day"><span class="ripple"></span><span class="dot"></span><span class="check">✓</span></button>
+  </div>
+  <div id="counter">الوجهات المغطّاة: <b id="cnum">0</b></div>
+  <div id="hint">اضغط على الدبابيس المضيئة</div>
+  <button id="seeall" class="sapulse">شاهد كل الوجهات +270</button>
+</div>
+<div id="endcard">
+  <div id="rbadge">🌍</div>
+  <div class="col">
+    <div id="eheadline">تغطية في أكثر من 270 وجهة</div>
+    <div id="esub">شريحة Holafly eSIM واحدة، وبيانات غير محدودة في أي مكان تهبط فيه تقريبًا. لا تجوال، ولا بحث عن شريحة محلية.</div>
+    <button id="cta" class="ctapulse">اعثر على وجهتك</button>
+    <button id="eother">باقات تبدأ من 4.30$ يوميًا</button>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,done=false,AC=null;
+var lit=0,total=5,chipTimer=null;
+var STEPS=[0,42,110,198,240,270]; /* counter jumps as pins light, ending 270+ */
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type="sine";o.frequency.value=hi?880:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.13,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+  }catch(e){}
+}
+
+function showChip(txt){
+  var c=document.getElementById("chip");
+  c.textContent=txt;c.className="show";
+  if(chipTimer)clearTimeout(chipTimer);
+  chipTimer=setTimeout(function(){c.className="";},1600);
+}
+
+function onPin(ev){
+  if(!started||done)return;
+  var el=ev.currentTarget;
+  if(el.className.indexOf("lit")>-1)return;
+  el.className="pin lit";
+  lit++;
+  ding(lit>=3);
+  showChip(el.getAttribute("data-f")+" "+el.getAttribute("data-n")+" · غير محدود ✓ · "+el.getAttribute("data-p"));
+  var target=STEPS[Math.min(lit,STEPS.length-1)];
+  animateCount(target,lit>=total);
+  if(lit>=3){
+    var sb=document.getElementById("seeall");
+    if(sb.className.indexOf("on")===-1)sb.className="on sapulse";
+    document.getElementById("hint").style.opacity="0";
+  }
+  if(lit>=total){
+    floodMap();
+    setTimeout(finish,900);
+  }
+}
+
+var countRAF=null;
+function animateCount(target,plus){
+  var el=document.getElementById("cnum");
+  var cur=parseInt(el.textContent,10)||0;
+  if(countRAF)clearInterval(countRAF);
+  countRAF=setInterval(function(){
+    cur+=Math.max(1,Math.ceil((target-cur)/6));
+    if(cur>=target){cur=target;clearInterval(countRAF);el.textContent=plus?target+"+":target;return;}
+    el.textContent=cur;
+  },40);
+}
+
+function floodMap(){
+  var lands=document.querySelectorAll(".land"),i;
+  for(i=0;i<lands.length;i++){lands[i].setAttribute("class","land flood");}
+}
+
+function finish(){done=true;document.getElementById("endcard").className="show";}
+
+function bind(){
+  var pins=document.querySelectorAll(".pin"),i;
+  for(i=0;i<pins.length;i++){pins[i].addEventListener("click",onPin,false);}
+  document.getElementById("seeall").addEventListener("click",finish,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("eother").addEventListener("click",openStore,false);
+}
+
+function showAd(){started=true;document.body.className="";}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();}
+function pauseAd(){document.body.className="paused";if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

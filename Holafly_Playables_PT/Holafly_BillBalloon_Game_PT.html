@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly Playable · O Balão da Conta de Roaming</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#BFDCF5;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#game{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#hud{position:absolute;top:2.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud .logo{color:#F0384E;font-size:19px;font-weight:800;letter-spacing:-.5px;padding-right:12px;border-right:2px solid #F0F0F0}
+#hud .cell{padding:0 14px;border-right:2px solid #F0F0F0;text-align:center}
+#hud .cell:last-child{border-right:0}
+#hud .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block}
+#hud .bill{font-size:22px;line-height:1;color:#E02D44;font-weight:800;font-variant-numeric:tabular-nums}
+#hud .saved{font-size:22px;line-height:1;color:#2E9E6B;font-weight:800;font-variant-numeric:tabular-nums}
+#hud2{position:absolute;bottom:3%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud2 .cell{padding:0 12px;border-right:2px solid #F0F0F0;text-align:center}
+#hud2 .cell:last-child{border-right:0}
+#hud2 .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block;margin-bottom:2px}
+#hud2 .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2 .chip{background:#FFE9EC;border:1px solid #F7B7C0;color:#E02D44;font-size:11px;font-weight:800;border-radius:10px;padding:5px 10px}
+#tap{position:absolute;left:50%;top:56%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:16px 36px;border:0;border-radius:14px;background:#F0384E;box-shadow:0 5px 0 #C22539;color:#fff;font-size:19px;font-weight:800;letter-spacing:1.2px;cursor:pointer}
+#tapsub{position:absolute;left:50%;top:63%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#5A6B82;font-size:13px;font-weight:700;background:rgba(255,255,255,.8);border-radius:10px;padding:5px 12px;white-space:nowrap}
+#toast{position:absolute;left:50%;top:19%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#DFF7EA;color:#187A4B;font-size:14px;font-weight:800;border-radius:18px;padding:7px 16px;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#toast.show{opacity:1}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .6s ease;transition:opacity .6s ease}
+#endcard.show{opacity:1;visibility:visible}
+#elogo{color:#F0384E;font-size:36px;font-weight:800;letter-spacing:-1px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+#ebill{color:#3A2E35;font-size:19px;font-weight:800;margin-top:16px;text-align:center;padding:0 8%}
+#ebill b{color:#E02D44;font-size:26px}
+#esaved{color:#187A4B;font-size:15px;font-weight:800;margin-top:8px;background:rgba(255,255,255,.55);border-radius:12px;padding:7px 14px}
+#etag1{color:#0E8C8C;font-size:16px;font-weight:800;letter-spacing:.4px;margin-top:20px;text-align:center}
+#etag2{color:#F0384E;font-size:16px;font-weight:800;letter-spacing:.4px;margin-top:2px;text-align:center}
+#cta{margin-top:20px;padding:15px 44px;border:0;border-radius:26px;background:#3BB273;box-shadow:0 4px 0 #2E8F5C;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{margin-top:12px;padding:11px 34px;border:0;border-radius:22px;background:#F0384E;box-shadow:0 4px 0 #C22539;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pulse{-webkit-animation:pulse 1.2s ease-in-out infinite;animation:pulse 1.2s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translate(-50%,-50%) scale(1)}50%{-webkit-transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #elogo{font-size:28px}
+  #ebill{font-size:16px}#ebill b{font-size:21px}
+  #cta{margin-top:12px;padding:12px 36px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<canvas id="game"></canvas>
+<div id="hud">
+  <div class="logo">Holafly</div>
+  <div class="cell"><span class="lab">CONTA DE ROAMING</span><span class="bill" id="bill">€0</span></div>
+  <div class="cell"><span class="lab">ECONOMIA</span><span class="saved" id="saved">€0</span></div>
+</div>
+<div id="hud2">
+  <div class="cell"><span class="lab">eSIMs PEGOS</span><span class="val" id="pops">0</span></div>
+  <div class="cell"><span class="lab">DISTÂNCIA</span><span class="val" id="km">0 km</span></div>
+  <div class="cell"><span class="chip">&#128246; Voe leve</span></div>
+</div>
+<div id="toast"></div>
+<button id="tap" class="pulse">TOQUE PARA VOAR</button>
+<div id="tapsub">&#9888;&#65039; o medidor de roaming está LIGADO. Pegue eSIMs verdes para estourar a conta</div>
+<div id="endcard">
+  <div id="elogo">Holafly</div>
+  <div id="ebill">O roaming te puxou para baixo<br><b id="fbill">€412</b></div>
+  <div id="esaved">Você estourou a conta de volta a €0 &times;<span id="fpops">3</span> e economizou <span id="fsaved">€377</span></div>
+  <div id="etag1">NÃO VOE PESADO.</div>
+  <div id="etag2">DADOS ILIMITADOS &middot; €6.90/DIA &middot; ROAMING &euro;0.</div>
+  <button id="cta" class="ctapulse">VOE LEVE &rarr;</button>
+  <button id="retry">DE NOVO &#8635;</button>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,playing=false,over=false,AC=null;
+
+var cv=document.getElementById("game"),ctx=cv.getContext("2d");
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+"px";cv.style.height=H+"px";
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  if(plane)plane.x=Math.max(70,W*0.3);
+}
+
+var GRAV=880,FLAP=-350,SPEED=150,PR=15;
+var BILL_RATE=13;          /* $/s while roaming */
+var PLAY_CAP=25;
+var plane,items,bill,saved,pops,totalBilled,km,spawnT,simT,flashT,playT,tick=null,last=0,bobT=0,balloonSw=0;
+
+function reset(){
+  plane={x:Math.max(70,W*0.3),y:H*0.42,vy:0,rot:0};
+  items=[];bill=0;saved=0;pops=0;totalBilled=0;km=0;
+  spawnT=1.3;simT=2.2;flashT=0;playT=0;
+  over=false;playing=false;
+  prepopulate();
+  document.getElementById("endcard").className="";
+  document.getElementById("tap").style.display="";
+  document.getElementById("tapsub").style.display="";
+  updateHud();
+}
+
+function fmt(n){n=Math.round(n);return "€"+(n.toLocaleString?n.toLocaleString():n);}
+function updateHud(){
+  document.getElementById("bill").textContent=fmt(bill);
+  document.getElementById("saved").textContent=fmt(saved);
+  document.getElementById("pops").textContent=pops;
+  var k=Math.round(km);
+  document.getElementById("km").textContent=(k.toLocaleString?k.toLocaleString():k)+" km";
+}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind==="pop"?"triangle":"sine";
+    o.frequency.value=kind==="flap"?520:kind==="pop"?990:200;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind==="zap"?0.18:0.11,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind==="zap"?0.3:0.16));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.32);
+  }catch(e){}
+}
+
+var toastT=null;
+function toast(msg,bad){
+  var el=document.getElementById("toast");
+  el.textContent=msg;
+  el.style.background=bad?"#FFE9EC":"#DFF7EA";
+  el.style.color=bad?"#E02D44":"#187A4B";
+  el.className="show";
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){el.className="";},1150);
+}
+
+/* items: {type:"esim"|"cloud"|"tower", x,y,w,h} */
+function spawnObstacle(atX){
+  var r=Math.random();
+  if(r<0.38){
+    /* $ roaming cloud from above-ish */
+    var y=60+Math.random()*(H*0.45);
+    items.push({type:"cloud",x:(atX===undefined?W+60:atX),y:y,r:34});
+  }else if(r<0.72){
+    var h=90+Math.random()*(H*0.3);
+    items.push({type:"tower",x:(atX===undefined?W+40:atX),w:56,h:h});
+  }else{
+    /* roaming-charge drone patrolling up & down */
+    items.push({type:"drone",x:(atX===undefined?W+40:atX),y0:H*(0.25+Math.random()*0.4),amp:55+Math.random()*55,ph:Math.random()*6});
+  }
+}
+function spawnEsim(atX){
+  /* mercy targeting: the heavier the bill, the closer the eSIM spawns to the plane */
+  var spread=bill>250?50:130;
+  var m=70,y=Math.max(m,Math.min(H-m,plane.y+(Math.random()*2-1)*spread));
+  items.push({type:"esim",x:(atX===undefined?W+30:atX),y:y});
+}
+/* dress the scene so the very first frame looks alive */
+function prepopulate(){
+  var px=W*0.5,lastX=px;
+  while(px<W*2.4){spawnObstacle(px);lastX=px;px+=SPEED*0.78;}
+  spawnT=(lastX-W)/SPEED+0.78;
+  spawnEsim(W*0.8);spawnEsim(W*1.35);spawnEsim(W*1.9);
+  simT=1.8;
+}
+
+function weight(){return 1+Math.min(1.15,bill/320);} /* the heavier the bill, the heavier the plane */
+
+function step(dt){
+  /* watchdog: board iframes can lay out at 0x0 until scrolled into view */
+  if(W!==window.innerWidth||H!==window.innerHeight){
+    resize();
+    if(!playing&&!over){items=[];plane.y=H*0.42;prepopulate();}
+  }
+  bobT+=dt;balloonSw+=dt;
+  if(!playing||over){draw();return;}
+  playT+=dt;
+  plane.vy+=GRAV*weight()*dt;
+  plane.y+=plane.vy*dt;
+  plane.rot=Math.max(-0.45,Math.min(0.9,plane.vy/600));
+
+  bill+=BILL_RATE*dt;totalBilled+=BILL_RATE*dt;
+  km+=dt*115;
+  if(flashT>0)flashT-=dt;
+
+  spawnT-=dt;if(spawnT<=0){spawnObstacle();spawnT=0.78;}
+  simT-=dt;if(simT<=0){spawnEsim();simT=2.2;}
+
+  var i;
+  for(i=0;i<items.length;i++){
+    var o=items[i];if(o.dead)continue;
+    o.x-=SPEED*dt;
+    if(o.type==="esim"){
+      var dx=o.x-plane.x,dy=o.y-plane.y;
+      if(dx*dx+dy*dy<(27+PR)*(27+PR)){
+        o.dead=true;pops++;saved+=bill;
+        toast("💥 Conta estourada! "+fmt(bill)+" → €0");
+        bill=0;snd("pop");updateHud();
+      }
+    }else if(o.type==="cloud"){
+      var dx2=o.x-plane.x,dy2=o.y-plane.y;
+      if(dx2*dx2+dy2*dy2<(o.r+PR-4)*(o.r+PR-4)&&!o.hitDone){
+        o.hitDone=true;bill+=60;totalBilled+=60;flashT=0.35;snd("zap");
+        toast("⚡ Taxa de roaming +€60",true);updateHud();
+      }
+    }else if(o.type==="drone"){
+      var dyC=o.y0+Math.sin(bobT*2+o.ph)*o.amp;
+      var dx3=o.x-plane.x,dy3=dyC-plane.y;
+      if(dx3*dx3+dy3*dy3<(26+PR)*(26+PR)&&!o.hitDone){
+        o.hitDone=true;bill+=60;totalBilled+=60;flashT=0.35;snd("zap");
+        toast("🛸 Drone cobrador de dados +€60",true);updateHud();
+      }
+    }else{
+      var ty=H-o.h;
+      if(plane.x+PR>o.x&&plane.x-PR<o.x+o.w&&plane.y+PR>ty&&!o.hitDone){
+        o.hitDone=true;bill+=60;totalBilled+=60;flashT=0.35;snd("zap");
+        toast("⚡ Taxa de roaming +€60",true);updateHud();
+      }
+    }
+  }
+  while(items.length&&items[0].x<-120)items.shift();
+
+  if(plane.y+PR>H-6){plane.y=H-6-PR;plane.vy=FLAP*0.8;}
+  if(plane.y-PR<6){plane.y=6+PR;plane.vy=40;}
+
+  updateHud();
+  if(playT>=PLAY_CAP){finish();return;}
+  draw();
+}
+
+/* ---------- drawing ---------- */
+function draw(){
+  /* sky gets subtly redder as the bill grows */
+  var heat=Math.min(1,bill/500);
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,"rgb("+Math.round(191+40*heat)+","+Math.round(220-50*heat)+","+Math.round(245-60*heat)+")");
+  g.addColorStop(1,"rgb("+Math.round(240+10*heat)+","+Math.round(219-40*heat)+","+Math.round(228-30*heat)+")");
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+  ctx.fillStyle="rgba(255,255,255,.7)";
+  var ct=(bobT*10)%(W+240)-120;
+  cloudShape(W-ct,H*0.14,28);cloudShape(W*0.4-ct*0.5+W*0.5,H*0.26,20);
+  cloudShape(W*0.8-ct*0.7+W*0.3,H*0.48,24);cloudShape(W*0.2-ct*0.35+W*0.7,H*0.62,17);
+  ctx.fillStyle="rgba(255,255,255,.45)";
+  cloudShape(W*0.55-ct*0.22+W*0.4,H*0.08,32);cloudShape(W*0.15-ct*0.28+W*0.85,H*0.36,22);
+
+  ctx.fillStyle="rgba(122,146,197,.25)";
+  skyline(H*0.97);
+  ctx.fillStyle="rgba(240,219,228,.95)";ctx.fillRect(0,H-6,W,6);
+
+  var i;
+  for(i=0;i<items.length;i++){
+    var o=items[i];if(o.dead)continue;
+    if(o.type==="esim")esim(o.x,o.y+Math.sin(bobT*3+o.x*0.02)*4);
+    else if(o.type==="cloud")billCloud(o.x,o.y,o.r);
+    else if(o.type==="drone")drone(o.x,o.y0+Math.sin(bobT*2+o.ph)*o.amp);
+    else roamTower(o.x,H-o.h,o.w,o.h);
+  }
+
+  if(!over){
+    balloon();
+    drawPlane(plane.x,plane.y,plane.rot);
+  }
+  if(flashT>0){ctx.fillStyle="rgba(224,45,68,"+(flashT*0.5)+")";ctx.fillRect(0,0,W,H);}
+  if(over)endScene();
+}
+function cloudShape(x,y,r){
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,6.283);ctx.arc(x+r*0.9,y+r*0.25,r*0.7,0,6.283);ctx.arc(x-r*0.9,y+r*0.3,r*0.6,0,6.283);
+  ctx.fill();
+}
+function skyline(base){
+  ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,base-30);
+  var x=0,n=0;
+  while(x<W){
+    var w=50+((x*7919+n*104729)%70),h=20+((x*31+n*77)%50);
+    ctx.lineTo(x,base-h);ctx.lineTo(x+w,base-h);
+    x+=w;n++;
+  }
+  ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+}
+function billCloud(x,y,r){
+  ctx.fillStyle="#5A5064";
+  ctx.beginPath();
+  ctx.arc(x,y,r*0.8,0,6.283);ctx.arc(x+r*0.7,y+r*0.15,r*0.55,0,6.283);ctx.arc(x-r*0.7,y+r*0.2,r*0.5,0,6.283);
+  ctx.fill();
+  ctx.fillStyle="#FFD34D";ctx.font="bold "+Math.round(r*0.85)+"px Arial";ctx.textAlign="center";
+  ctx.fillText("€",x,y+r*0.32);
+  ctx.textAlign="start";
+  /* little zap */
+  ctx.strokeStyle="#FFD34D";ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(x-4,y+r*0.8);ctx.lineTo(x+3,y+r*1.1);ctx.lineTo(x-2,y+r*1.15);ctx.lineTo(x+5,y+r*1.5);ctx.stroke();
+}
+function roamTower(x,y,w,h){
+  ctx.fillStyle="#8D93A6";ctx.fillRect(x+w*0.42,y+18,w*0.16,h-18);
+  ctx.strokeStyle="#8D93A6";ctx.lineWidth=4;
+  ctx.beginPath();ctx.moveTo(x+4,y+h*0.55);ctx.lineTo(x+w/2,y+16);ctx.lineTo(x+w-4,y+h*0.55);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+8,y+h*0.85);ctx.lineTo(x+w/2,y+h*0.4);ctx.lineTo(x+w-8,y+h*0.85);ctx.stroke();
+  /* red beacon + $ sign */
+  ctx.fillStyle="#E02D44";ctx.beginPath();ctx.arc(x+w/2,y+10,7,0,6.283);ctx.fill();
+  ctx.fillStyle="#5A5064";ctx.font="bold 15px Arial";ctx.textAlign="center";
+  ctx.fillText("€/MB",x+w/2,y+h*0.72);
+  ctx.textAlign="start";
+}
+function drone(x,y){
+  ctx.save();ctx.translate(x,y);
+  /* rotors */
+  ctx.strokeStyle="#5A5064";ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(-16,-10);ctx.lineTo(-16,-15);ctx.moveTo(16,-10);ctx.lineTo(16,-15);ctx.stroke();
+  ctx.strokeStyle="rgba(90,80,100,.7)";ctx.lineWidth=2.5;
+  var sp=Math.sin(bobT*24)*10;
+  ctx.beginPath();ctx.moveTo(-16-10-sp,-16);ctx.lineTo(-16+10+sp,-16);ctx.moveTo(16-10+sp,-16);ctx.lineTo(16+10-sp,-16);ctx.stroke();
+  /* body */
+  rr(-18,-10,36,20,6);ctx.fillStyle="#5A5064";ctx.fill();
+  ctx.fillStyle="#FFD34D";ctx.font="bold 13px Arial";ctx.textAlign="center";
+  ctx.fillText("€",0,5);
+  /* hanging charge tag */
+  ctx.strokeStyle="#5A5064";ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(0,10);ctx.lineTo(0,20);ctx.stroke();
+  rr(-15,20,30,15,4);ctx.fillStyle="#E02D44";ctx.fill();
+  ctx.fillStyle="#fff";ctx.font="bold 9px Arial";
+  ctx.fillText("€/MB",0,30);ctx.textAlign="start";
+  ctx.restore();
+}
+function esim(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.06*Math.sin(bobT*2+x));
+  /* glowing ring */
+  ctx.strokeStyle="rgba(59,178,115,.45)";ctx.lineWidth=5;
+  ctx.beginPath();ctx.arc(0,0,24+Math.sin(bobT*4)*2,0,6.283);ctx.stroke();
+  var w=36,h=27;
+  rr(-w/2,-h/2,w,h,6);
+  ctx.fillStyle="#EFFFF6";ctx.fill();
+  ctx.strokeStyle="#3BB273";ctx.lineWidth=2;ctx.stroke();
+  rr(1,-6,13,12,2.5);ctx.fillStyle="#E8B23A";ctx.fill();
+  ctx.fillStyle="#187A4B";ctx.font="bold 10px Arial";ctx.fillText("e",-10,3);
+  ctx.restore();
+}
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+function balloon(){
+  /* tethered bill balloon below/behind the plane; grows with bill */
+  var r=14+Math.min(46,bill*0.10);
+  var bx=plane.x-30+Math.sin(balloonSw*1.6)*6;
+  var by=plane.y+34+r*0.8+Math.cos(balloonSw*1.3)*4;
+  ctx.strokeStyle="rgba(90,80,100,.6)";ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(plane.x-12,plane.y+6);ctx.quadraticCurveTo(bx+6,(plane.y+by)/2,bx,by-r);ctx.stroke();
+  var heat=Math.min(1,bill/500);
+  ctx.fillStyle="rgb("+Math.round(240-30*heat)+","+Math.round(120-60*heat)+","+Math.round(110-50*heat)+")";
+  ctx.beginPath();ctx.arc(bx,by,r,0,6.283);ctx.fill();
+  ctx.strokeStyle="rgba(120,30,40,.5)";ctx.lineWidth=2;ctx.stroke();
+  /* knot */
+  ctx.beginPath();ctx.moveTo(bx-5,by-r);ctx.lineTo(bx+5,by-r);ctx.lineTo(bx,by-r-7);ctx.closePath();
+  ctx.fillStyle="rgba(120,30,40,.6)";ctx.fill();
+  ctx.fillStyle="#fff";ctx.font="bold "+Math.max(11,Math.round(r*0.5))+"px Arial";ctx.textAlign="center";
+  ctx.fillText(fmt(bill),bx,by+5);
+  ctx.textAlign="start";
+}
+function drawPlane(x,y,rot){
+  ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+  ctx.fillStyle="#fff";
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,26,10,0,0,6.283):ctx.arc(0,0,18,0,6.283);ctx.fill();
+  ctx.strokeStyle="rgba(20,33,61,.25)";ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle="#F0384E";
+  ctx.beginPath();ctx.moveTo(18,-8);ctx.quadraticCurveTo(32,-4,32,0);ctx.quadraticCurveTo(32,4,18,8);ctx.closePath();ctx.fill();
+  ctx.beginPath();ctx.moveTo(-16,-4);ctx.lineTo(-28,-18);ctx.lineTo(-20,-18);ctx.lineTo(-10,-6);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#fff";ctx.font="bold 9px Arial";ctx.fillText("H",-24,-10);
+  ctx.fillStyle="#E8EFF7";
+  ctx.beginPath();ctx.moveTo(2,0);ctx.lineTo(-8,14);ctx.lineTo(2,14);ctx.lineTo(10,2);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#7FB3D4";
+  var i;for(i=0;i<4;i++){ctx.beginPath();ctx.arc(-8+i*8,-3,2,0,6.283);ctx.fill();}
+  ctx.restore();
+}
+function endScene(){
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,"#F8C8D8");g.addColorStop(0.45,"#F6D9AE");g.addColorStop(1,"#F0B490");
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="rgba(255,240,200,.55)";
+  ctx.beginPath();ctx.arc(W*0.5,H*0.42,Math.min(W,H)*0.3,0,6.283);ctx.fill();
+  ctx.fillStyle="rgba(150,100,120,.35)";skyline(H*0.95);
+}
+
+/* ---------- flow ---------- */
+function flap(){
+  if(over||!started)return;
+  if(!playing){
+    playing=true;
+    document.getElementById("tap").style.display="none";
+    document.getElementById("tapsub").style.display="none";
+  }
+  plane.vy=FLAP;snd("flap");
+}
+function finish(){
+  over=true;playing=false;
+  document.getElementById("fbill").textContent=fmt(totalBilled);
+  if(pops>0){
+    document.getElementById("esaved").innerHTML="Você estourou a conta de volta a €0 &times;"+pops+" e economizou "+fmt(saved);
+  }else{
+    document.getElementById("esaved").innerHTML="Um eSIM Holafly teria deixado isso em €6.90 fixos";
+  }
+  document.getElementById("endcard").className="show";
+  draw();
+}
+function retry(){reset();draw();}
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt>0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function bind(){
+  var press=function(ev){
+    var id=ev.target&&ev.target.id;
+    if(id==="cta"||id==="retry")return;
+    ev.preventDefault&&ev.preventDefault();
+    flap();
+  };
+  document.addEventListener("touchstart",press,false);
+  document.addEventListener("mousedown",press,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("retry").addEventListener("click",retry,false);
+}
+
+function showAd(){started=true;document.body.className="";startLoop();}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className="paused";stopLoop();if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();reset();bind();draw();
+  window.addEventListener("resize",resize,false);
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly إعلان تفاعلي · التثبيت في 60 ثانية</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#F4FAFF;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#steps{position:absolute;top:5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#8AA0B8;font-size:12px;font-weight:800;letter-spacing:1.5px}
+#steps b{color:#FF4E45}
+.panel{width:88%;max-width:460px;display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center}
+.panel.on{display:-webkit-flex;display:flex}
+#promptrow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin-bottom:8%}
+#ola{height:60px;width:60px;-webkit-flex-shrink:0;flex-shrink:0}
+#bubble{position:relative;margin-left:14px;background:#fff;border:2px solid #E5EAF0;border-radius:14px;padding:10px 14px;color:#14213D;font-size:16px;font-weight:700;max-width:220px}
+#bubble:before{content:"";position:absolute;left:-9px;top:50%;margin-top:-7px;width:12px;height:12px;background:#fff;border-left:2px solid #E5EAF0;border-bottom:2px solid #E5EAF0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+#dgrid{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;margin:0 -5px;width:100%}
+.dcard{-webkit-flex:1 1 40%;flex:1 1 40%;box-sizing:border-box;margin:5px;padding:16px 8px;background:#fff;border:2px solid #E5EAF0;border-bottom-width:4px;border-radius:16px;text-align:center;cursor:pointer}
+.dcard .em{font-size:34px;display:block}
+.dcard .lb{color:#14213D;font-size:14px;font-weight:700;display:block;margin-top:6px}
+.dcard.sel{background:#FFECEA;border-color:#FF4E45}
+#phone{width:196px;height:300px;border-radius:26px;border:4px solid #14213D;background:#fff;position:relative;overflow:hidden;box-shadow:0 8px 22px rgba(20,33,61,.18)}
+#pnotch{position:absolute;top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);width:64px;height:16px;background:#14213D;border-radius:0 0 10px 10px}
+#pbody{position:absolute;top:16px;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;padding:0 14px}
+#qrwrap{position:relative;width:132px;height:132px;background:#fff;border:2px solid #E5EAF0;border-radius:12px;padding:8px}
+#scanline{position:absolute;left:6px;right:6px;top:8px;height:3px;background:#16C784;box-shadow:0 0 10px 2px rgba(22,199,132,.8);border-radius:2px;opacity:0}
+#scanline.go{-webkit-animation:scan 1.2s ease-in-out forwards;animation:scan 1.2s ease-in-out forwards}
+@-webkit-keyframes scan{0%{opacity:1;top:8px}100%{opacity:1;top:120px}}
+@keyframes scan{0%{opacity:1;top:8px}100%{opacity:1;top:120px}}
+#qrcap{color:#14213D;font-size:13px;font-weight:700;margin-top:12px;text-align:center;line-height:1.4}
+#install{display:none;width:100%;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center}
+#install.on{display:-webkit-flex;display:flex}
+#instico{font-size:44px;margin-bottom:6px}
+#insttxt{color:#14213D;font-size:15px;font-weight:800;margin-bottom:14px;min-height:20px;text-align:center}
+#pbar{width:78%;height:12px;background:#E5EAF0;border-radius:7px;overflow:hidden}
+#pbarfill{height:100%;width:0;background:#16C784;border-radius:7px;-webkit-transition:width .18s linear;transition:width .18s linear}
+#pct{color:#8AA0B8;font-size:12px;font-weight:800;margin-top:8px}
+#scanbtn{position:absolute;left:50%;bottom:8%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:16px 34px;border:0;border-radius:16px;background:#FF4E45;box-shadow:0 5px 0 #C9362E;color:#fff;font-size:16px;font-weight:800;letter-spacing:.5px;cursor:pointer;display:none;white-space:nowrap}
+#scanbtn.on{display:block}
+#scanbtn.busy{background:#8A94AD;box-shadow:0 5px 0 #6B7488;pointer-events:none}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:56px;line-height:1.1}
+#eheadline{color:#fff;font-size:25px;font-weight:800;margin:8px 8% 4px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 10% 20px;text-align:center;max-width:330px;line-height:1.5}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.pulse{-webkit-animation:pulse 1.3s ease-in-out infinite;animation:pulse 1.3s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.bounce{-webkit-animation:bounce .95s ease-in-out infinite;animation:bounce .95s ease-in-out infinite}
+@-webkit-keyframes bounce{0%,100%{-webkit-transform:translateY(0) rotate(-6deg)}50%{-webkit-transform:translateY(-12px) rotate(6deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-12px) rotate(6deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse,.bounce{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #promptrow{margin-bottom:2%}
+  #phone{width:150px;height:230px}
+  #qrwrap{width:104px;height:104px}
+  #scanbtn{bottom:7%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:46px;margin-right:3%}
+  #eheadline{font-size:20px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="stage">
+  <div id="steps">الخطوة <b><span id="stepnum">1</span></b> من 2</div>
+
+  <div id="p1" class="panel on">
+    <div id="promptrow">
+      <svg id="ola" class="bounce" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Ola">
+        <circle cx="60" cy="62" r="46" fill="#2FA9E0"/>
+        <path d="M22 54 q12 -14 30 -7 q10 5 3 16 q-12 9 -26 4 q-12 -5 -7 -13z" fill="#4BBE6B"/>
+        <path d="M78 42 q16 -3 20 11 q2 12 -12 13 q-13 0 -13 -12 q0 -10 5 -12z" fill="#4BBE6B"/>
+        <path d="M54 88 q11 -4 20 2 q5 6 -5 11 q-13 5 -20 -4 q-2 -6 5 -9z" fill="#4BBE6B"/>
+        <circle cx="46" cy="60" r="7" fill="#fff"/><circle cx="74" cy="60" r="7" fill="#fff"/>
+        <circle cx="47" cy="61" r="3.4" fill="#14213D"/><circle cx="75" cy="61" r="3.4" fill="#14213D"/>
+        <path d="M44 76 q16 14 32 0" stroke="#14213D" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div id="bubble">إلى أين؟ اختر وجهتك.</div>
+    </div>
+    <div id="dgrid">
+      <div class="dcard" data-c="اليابان"><span class="em">🗼</span><span class="lb">اليابان</span></div>
+      <div class="dcard" data-c="إيطاليا"><span class="em">🍕</span><span class="lb">إيطاليا</span></div>
+      <div class="dcard" data-c="أمريكا"><span class="em">🗽</span><span class="lb">أمريكا</span></div>
+      <div class="dcard" data-c="تايلاند"><span class="em">🏝️</span><span class="lb">تايلاند</span></div>
+    </div>
+  </div>
+
+  <div id="p2" class="panel">
+    <div id="phone">
+      <div id="pnotch"></div>
+      <div id="pbody">
+        <div id="qrview">
+          <div id="qrwrap">
+            <div id="scanline"></div>
+            <svg viewBox="0 0 116 116" width="116" height="116" xmlns="http://www.w3.org/2000/svg">
+              <rect width="116" height="116" fill="#fff"/>
+              <path fill="#14213D" d="M8 8h28v28H8zM14 14h16v16H14zM80 8h28v28H80zM86 14h16v16H86zM8 80h28v28H8zM14 86h16v16H14z"/>
+              <path fill="#14213D" d="M44 8h8v8h-8zM60 8h8v16h-8zM44 20h8v8h-8zM44 32h16v8H44zM68 32h8v8h-8zM44 44h8v8h-8zM60 44h16v8H60zM8 44h28v8H8zM8 60h8v8H8zM20 60h8v16h-8zM32 60h8v8h-8zM44 60h8v8h-8zM60 60h16v8H60zM80 44h28v8H80zM100 60h8v16h-8zM80 68h8v8h-8zM88 76h8v8h-8zM44 76h8v16h-8zM60 80h16v8H60zM64 92h8v16h-8zM80 92h8v8h-8zM96 92h12v8H96zM44 100h8v8h-8z"/>
+            </svg>
+          </div>
+          <div id="qrcap">شريحة Holafly eSIM لوجهة <b id="destname">اليابان</b><br>امسح الرمز للتثبيت</div>
+        </div>
+        <div id="install">
+          <div id="instico">📲</div>
+          <div id="insttxt">جارٍ تثبيت الشريحة…</div>
+          <div id="pbar"><div id="pbarfill"></div></div>
+          <div id="pct">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button id="scanbtn">امسح رمز QR للتثبيت</button>
+</div>
+<div id="endcard">
+  <div id="rbadge">✅</div>
+  <div class="col">
+    <div id="eheadline">تم التثبيت في أقل من دقيقة</div>
+    <div id="esub">لا تبديل شريحة، ولا زيارة متجر. امسح الرمز مرة واحدة وبياناتك غير المحدودة تعمل لحظة وصولك.</div>
+    <button id="cta" class="ctapulse">جرّبها على أرض الواقع</button>
+    <button id="eother">متوفرة في أكثر من 270 وجهة</button>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,busy=false,done=false,running=false,AC=null;
+var dest="اليابان",prog=0,progId=null,progActive=false;
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type="sine";o.frequency.value=hi?880:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.13,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+  }catch(e){}
+}
+
+function pickDest(ev){
+  if(!started||busy)return;
+  busy=true;
+  var el=ev.currentTarget;
+  dest=el.getAttribute("data-c");
+  el.className="dcard sel";
+  ding(false);
+  document.getElementById("destname").textContent=dest;
+  setTimeout(function(){
+    busy=false;
+    document.getElementById("p1").className="panel";
+    document.getElementById("p2").className="panel on";
+    document.getElementById("stepnum").textContent="2";
+    var sb=document.getElementById("scanbtn");
+    sb.className="on pulse";
+  },520);
+}
+
+function doScan(){
+  if(!started||busy||done)return;
+  busy=true;
+  var sb=document.getElementById("scanbtn");
+  sb.className="on busy";sb.textContent="جارٍ المسح…";
+  document.getElementById("scanline").className="go";
+  ding(false);
+  setTimeout(function(){
+    document.getElementById("qrview").style.display="none";
+    document.getElementById("install").className="on";
+    sb.style.display="none";
+    prog=0;progActive=true;runProg();
+  },1250);
+}
+
+function runProg(){
+  if(!running||done){return;}
+  if(!progActive)return;
+  prog+=2;
+  if(prog>100)prog=100;
+  document.getElementById("pbarfill").style.width=prog+"%";
+  document.getElementById("pct").textContent=prog+"%";
+  var txt=document.getElementById("insttxt"),ico=document.getElementById("instico");
+  if(prog<45){txt.textContent="جارٍ تثبيت الشريحة…";}
+  else if(prog<85){txt.textContent="جارٍ الاتصال بالشبكة المحلية…";ico.textContent="📶";}
+  else{txt.textContent="البيانات تعمل الآن 🎉";ico.textContent="🌐";}
+  if(prog>=100){progActive=false;ding(true);setTimeout(finish,650);return;}
+  progId=setTimeout(runProg,60);
+}
+
+function finish(){done=true;document.getElementById("endcard").className="show";}
+
+function bind(){
+  var cards=document.querySelectorAll(".dcard"),i;
+  for(i=0;i<cards.length;i++){cards[i].addEventListener("click",pickDest,false);}
+  document.getElementById("scanbtn").addEventListener("click",doScan,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("eother").addEventListener("click",openStore,false);
+}
+
+function showAd(){started=true;running=true;document.body.className="";}
+function resumeAd(){running=true;document.body.className="";if(AC&&AC.resume)AC.resume();if(progActive)runProg();}
+function pauseAd(){running=false;document.body.className="paused";if(progId){clearTimeout(progId);progId=null;}if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

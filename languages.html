@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holafly Playables · All Languages</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#FFF6F4;color:#3C3C3C;padding:36px 5%}
+h1{font-size:26px;font-weight:800}
+h1 span{color:#FF4E45}
+p.sub{color:#777;font-size:14px;margin:6px 0 26px}
+.langs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:#fff;border:2px solid #E5E5E5;border-bottom-width:5px;border-radius:16px;padding:18px 20px}
+.card h2{font-size:17px;font-weight:800;margin-bottom:3px}
+.card .tag{font-size:11px;color:#999;font-weight:700;margin-bottom:12px}
+.card a{display:block;font-size:13px;color:#D93A31;font-weight:700;text-decoration:none;padding:5px 0;border-bottom:1px solid #F3F3F3}
+.card a:hover{color:#8f1f19;background:#FFF1EF}
+.card a:last-child{border-bottom:0}
+</style>
+</head>
+<body>
+<h1><span>Holafly</span> Playables · All Languages</h1>
+<p class="sub">Click any creative to play it right here in the browser. 6 languages, 11 creatives each. Every file also uploads to the Unity dashboard as-is.</p>
+<div class="langs" id="langs"></div>
+<script>
+var LANGS=[
+  ["🇬🇧 English","Holafly_Playables",""],
+  ["🇪🇸 Español","Holafly_Playables_ES","_ES"],
+  ["🇮🇹 Italiano","Holafly_Playables_IT","_IT"],
+  ["🇧🇷 Português","Holafly_Playables_PT","_PT"],
+  ["🇯🇵 日本語","Holafly_Playables_JA","_JA"],
+  ["🇸🇦 العربية","Holafly_Playables_AR","_AR"]
+];
+var FILES=[
+  ["Holafly_SIMFlight_Game","SIM Flight: Unlimited"],
+  ["Holafly_BillBalloon_Game","The Roaming Bill Balloon"],
+  ["Holafly_RouteForks_Game","Choose Your Skies"],
+  ["Holafly_SpinGlobe_Earth_2plus","Spin the Globe · Earth"],
+  ["Holafly_SpinGlobe_Night_2plus","Spin the Globe · Night"],
+  ["Holafly_BoardingPass_3plus","Boarding Pass"],
+  ["Holafly_DestinationQuiz_3T","Where Are You Going?"],
+  ["Holafly_NoSignal_1T","No Signal, Then Connected"],
+  ["Holafly_BeatRoaming_1T","Beat the Roaming Bill"],
+  ["Holafly_ScanGo_2plus","Install in 60 Seconds"],
+  ["Holafly_TapWorld_2plus","Tap the World"]
+];
+var out="",i,j;
+for(i=0;i<LANGS.length;i++){
+  var L=LANGS[i];
+  out+='<div class="card"><h2>'+L[0]+'</h2><div class="tag">'+L[1]+'/</div>';
+  for(j=0;j<FILES.length;j++){
+    out+='<a href="'+L[1]+'/'+FILES[j][0]+L[2]+'.html" target="_blank">'+FILES[j][1]+'</a>';
+  }
+  out+='</div>';
+}
+document.getElementById("langs").innerHTML=out;
+</script>
+</body>
+</html>
