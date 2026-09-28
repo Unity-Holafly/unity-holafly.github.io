@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly Playable · Kies Je Luchtruim</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#BFDCF5;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#game{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#hud{position:absolute;top:2.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud .logo{color:#F0384E;font-size:19px;font-weight:800;letter-spacing:-.5px;padding-right:12px;border-right:2px solid #F0F0F0}
+#hud .cell{padding:0 13px;text-align:center;border-right:2px solid #F0F0F0}
+#hud .cell:last-child{border-right:0}
+#hud .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block}
+#hud .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2{position:absolute;bottom:3%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(20,33,61,.14);padding:8px 16px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;white-space:nowrap}
+#hud2 .cell{padding:0 12px;border-right:2px solid #F0F0F0;text-align:center}
+#hud2 .cell:last-child{border-right:0}
+#hud2 .lab{font-size:8.5px;color:#9AA6B8;font-weight:800;letter-spacing:1px;display:block;margin-bottom:2px}
+#hud2 .val{font-size:15px;color:#14213D;font-weight:800}
+#hud2 .chip{background:#FFE9EC;border:1px solid #F7B7C0;color:#E02D44;font-size:11px;font-weight:800;border-radius:10px;padding:5px 10px}
+#tap{position:absolute;left:50%;top:56%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:16px 36px;border:0;border-radius:14px;background:#F0384E;box-shadow:0 5px 0 #C22539;color:#fff;font-size:19px;font-weight:800;letter-spacing:1.2px;cursor:pointer}
+#tapsub{position:absolute;left:50%;top:63%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#5A6B82;font-size:13px;font-weight:700;background:rgba(255,255,255,.8);border-radius:10px;padding:5px 12px;white-space:nowrap}
+#toast{position:absolute;left:50%;top:19%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:#fff;color:#14213D;font-size:14px;font-weight:800;border-radius:18px;padding:7px 16px;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#toast.show{opacity:1}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .6s ease;transition:opacity .6s ease}
+#endcard.show{opacity:1;visibility:visible}
+#ebadge{font-size:52px;line-height:1.1}
+#elogo{color:#F0384E;font-size:26px;font-weight:800;letter-spacing:-.5px;margin-top:4px;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+#eheadline{color:#3A2E35;font-size:26px;font-weight:800;margin-top:10px;text-align:center;padding:0 7%}
+#eroute{color:#5A4A52;font-size:14px;font-weight:700;margin-top:8px;background:rgba(255,255,255,.55);border-radius:12px;padding:7px 14px;text-align:center;max-width:84%}
+#eplan{color:#fff;font-size:14.5px;font-weight:800;margin-top:14px;background:rgba(20,33,61,.75);border-radius:12px;padding:9px 16px;text-align:center;max-width:84%;line-height:1.5}
+#cta{margin-top:18px;padding:15px 44px;border:0;border-radius:26px;background:#3BB273;box-shadow:0 4px 0 #2E8F5C;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#retry{margin-top:12px;padding:11px 34px;border:0;border-radius:22px;background:#F0384E;box-shadow:0 4px 0 #C22539;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pulse{-webkit-animation:pulse 1.2s ease-in-out infinite;animation:pulse 1.2s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translate(-50%,-50%) scale(1)}50%{-webkit-transform:translate(-50%,-50%) scale(1.06)}}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #ebadge{font-size:40px}
+  #eheadline{font-size:20px}
+  #cta{margin-top:12px;padding:12px 36px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<canvas id="game"></canvas>
+<div id="hud">
+  <div class="logo">Holafly</div>
+  <div class="cell"><span class="lab">VOLGENDE SPLITSING</span><span class="val" id="fork">1/3</span></div>
+  <div class="cell"><span class="lab">JOUW ROUTE</span><span class="val" id="routes">...</span></div>
+</div>
+<div id="hud2">
+  <div class="cell"><span class="lab">SIM'S VERZAMELD</span><span class="val" id="sims">0/18</span></div>
+  <div class="cell"><span class="chip">&#9992;&#65039; vlieg HOOG of LAAG om te kiezen</span></div>
+</div>
+<div id="toast"></div>
+<button id="tap" class="pulse">TIK OM TE VLIEGEN</button>
+<div id="tapsub">jouw vliegen bepaalt de route. Vlieg hoog of laag bij elke splitsing</div>
+<div id="endcard">
+  <div id="ebadge">&#127749;</div>
+  <div id="elogo">Holafly</div>
+  <div id="eheadline">Jij vliegt als een Nachtuil!</div>
+  <div id="eroute">Jouw route: Tokio &rarr; Nachtleven &rarr; Streetfood</div>
+  <div id="eplan">Jouw plan: <b>Onbeperkt data in Japan</b> &#127471;&#127477;, actief zodra je landt, &euro;0 roaming.</div>
+  <button id="cta" class="ctapulse">START MIJN REIS &rarr;</button>
+  <button id="retry">VLIEG EEN ANDERE ROUTE &#8635;</button>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,playing=false,over=false,AC=null;
+
+var cv=document.getElementById("game"),ctx=cv.getContext("2d");
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+"px";cv.style.height=H+"px";
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  if(plane)plane.x=Math.max(70,W*0.3);
+}
+
+/* ---------- forks & personas ---------- */
+/* palettes: [skyTop, skyMid, skyBot] */
+var PAL={
+  start:[[191,220,245],[217,211,238],[240,219,228]],
+  tokyo:[[246,205,225],[214,196,240],[250,214,214]],
+  bali:[[178,226,222],[214,232,204],[252,232,196]],
+  night:[[110,110,170],[150,120,190],[240,170,160]],
+  culture:[[236,214,190],[224,204,214],[246,226,206]],
+  food:[[248,214,184],[240,206,196],[250,230,200]],
+  scenic:[[196,222,246],[208,226,214],[250,238,214]]
+};
+var FORKS=[
+  {hi:{lb:"🗼 TOKIO",key:"tokyo",word:"Tokio"},lo:{lb:"🏝️ BALI",key:"bali",word:"Bali"}},
+  {hi:{lb:"🌃 NACHTLEVEN",key:"night",word:"Nachtleven"},lo:{lb:"🖼️ CULTUUR",key:"culture",word:"Cultuur"}},
+  {hi:{lb:"📸 UITZICHTEN",key:"scenic",word:"Uitzichten"},lo:{lb:"🍜 STREETFOOD",key:"food",word:"Streetfood"}}
+];
+/* persona = f(dest, vibe) */
+var PERSONAS={
+  "tokyo-night":{em:"🌃",h:"Jij vliegt als een Nachtuil!",dest:"Japan",flag:"🇯🇵"},
+  "tokyo-culture":{em:"⛩️",h:"Jij vliegt als een Cultuurkenner!",dest:"Japan",flag:"🇯🇵"},
+  "bali-night":{em:"🔥",h:"Jij vliegt als een Feestbeest!",dest:"Indonesië",flag:"🇮🇩"},
+  "bali-culture":{em:"🌺",h:"Jij vliegt als een Eilandziel!",dest:"Indonesië",flag:"🇮🇩"}
+};
+
+var GRAV=880,FLAP=-345,SPEED=150,PR=15,SIMR=15;
+var TOTAL_SIMS=18;
+var plane,sims,gates,forkIx,choices,palFrom,palTo,palMix,simsGot,simsSpawned,simT,nextGateT,endT,tick=null,last=0,bobT=0;
+var lans=[],lanT=2.0,bumpCd=0,flashT=0; /* drifting lantern obstacles */
+
+function reset(){
+  plane={x:Math.max(70,W*0.3),y:H*0.45,vy:0,rot:0};
+  sims=[];gates=[];forkIx=0;choices=[];
+  palFrom=PAL.tokyo;palTo=PAL.tokyo;palMix=1; /* start IN Tokyo, not neutral sky */
+  simsGot=0;simsSpawned=0;simT=0.8;nextGateT=1.8;endT=-1;
+  lans=[];lanT=2.0;bumpCd=0;flashT=0;
+  over=false;playing=false;
+  prepopulate();
+  document.getElementById("endcard").className="";
+  document.getElementById("tap").style.display="";
+  document.getElementById("tapsub").style.display="";
+  updateHud();
+}
+
+function updateHud(){
+  document.getElementById("fork").textContent=Math.min(forkIx+1,3)+"/3";
+  document.getElementById("sims").textContent=simsGot+"/"+TOTAL_SIMS;
+  var r="",i;
+  for(i=0;i<choices.length;i++){r+=(i?" → ":"")+choices[i].word;}
+  document.getElementById("routes").textContent=r||"...";
+}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type="sine";
+    o.frequency.value=kind==="flap"?520:kind==="sim"?880:kind==="fork"?740:kind==="bump"?220:660;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.12,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+    if(kind==="fork"){
+      var o2=AC.createOscillator(),g2=AC.createGain();
+      o2.type="sine";o2.frequency.value=988;
+      g2.gain.setValueAtTime(0.0001,t+0.12);
+      g2.gain.exponentialRampToValueAtTime(0.12,t+0.14);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.32);
+      o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.12);o2.stop(t+0.36);
+    }
+  }catch(e){}
+}
+
+var toastT=null;
+function toast(msg){
+  var el=document.getElementById("toast");
+  el.textContent=msg;el.className="show";
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){el.className="";},1400);
+}
+
+function spawnGate(){
+  if(forkIx>=FORKS.length)return;
+  gates.push({x:W+150,f:FORKS[forkIx],done:false});
+}
+function spawnSim(atX){
+  if(simsSpawned>=TOTAL_SIMS)return;
+  var m=90,y=Math.max(m,Math.min(H-m,plane.y+(Math.random()*280-140)));
+  sims.push({x:(atX===undefined?W+30:atX),y:y,taken:false});
+  simsSpawned++;
+}
+/* dress the scene so the very first frame looks alive */
+function prepopulate(){
+  var i;for(i=0;i<10;i++){spawnSim(W*0.45+Math.random()*W*1.6);}
+  simT=1.0;
+  lans.push({x:W*0.62,y:H*0.3,ph:1.2});
+  lans.push({x:W*1.2,y:H*0.62,ph:3.6});
+  lans.push({x:W*1.75,y:H*0.4,ph:5.1});
+  lanT=2.2;
+  /* first fork gate is ON SCREEN from frame one */
+  gates.push({x:W*0.82,f:FORKS[0],done:false});
+  nextGateT=3.0;
+}
+
+function step(dt){
+  /* watchdog: board iframes can lay out at 0x0 until scrolled into view */
+  if(W!==window.innerWidth||H!==window.innerHeight){
+    resize();
+    if(!playing&&!over){sims=[];gates=[];lans=[];simsSpawned=0;plane.y=H*0.45;prepopulate();}
+  }
+  bobT+=dt;
+  if(!playing||over){draw();return;}
+  plane.vy+=GRAV*dt;plane.y+=plane.vy*dt;
+  plane.rot=Math.max(-0.45,Math.min(0.9,plane.vy/600));
+  if(palMix<1)palMix=Math.min(1,palMix+dt*0.7);
+
+  simT-=dt;if(simT<=0){spawnSim();simT=1.1;}
+  lanT-=dt;if(lanT<=0){lans.push({x:W+40,y:H*(0.18+Math.random()*0.64),ph:Math.random()*6});lanT=2.4;}
+  if(bumpCd>0)bumpCd-=dt;
+  if(flashT>0)flashT-=dt;
+  if(forkIx<FORKS.length){
+    nextGateT-=dt;
+    if(nextGateT<=0&&!gates.length){spawnGate();nextGateT=3.2;}
+  }
+
+  var i;
+  for(i=0;i<gates.length;i++){
+    var gt=gates[i];gt.x-=SPEED*dt;
+    if(!gt.done&&gt.x<plane.x){
+      gt.done=true;
+      var hi=plane.y<H/2,pick=hi?gt.f.hi:gt.f.lo;
+      choices.push(pick);
+      palFrom=curPal();palTo=PAL[pick.key];palMix=0;
+      forkIx++;
+      toast((hi?"⬆️ ":"⬇️ ")+pick.lb+". Goede keuze!");
+      snd("fork");updateHud();
+      if(forkIx>=FORKS.length){endT=3.2;}
+    }
+  }
+  while(gates.length&&gates[0].x<-260)gates.shift();
+
+  for(i=0;i<sims.length;i++){
+    var s=sims[i];if(s.taken)continue;
+    s.x-=SPEED*dt;
+    var dx=s.x-plane.x,dy=s.y-plane.y;
+    if(dx*dx+dy*dy<(SIMR+PR+6)*(SIMR+PR+6)){s.taken=true;simsGot++;snd("sim");updateHud();}
+  }
+  while(sims.length&&sims[0].x<-40)sims.shift();
+
+  /* lantern bumps: no lives here — you drop a SIM instead */
+  for(i=0;i<lans.length;i++){
+    var L2=lans[i];L2.x-=SPEED*dt;
+    var ly=L2.y+Math.sin(bobT*1.6+L2.ph)*26;
+    var lx=L2.x-plane.x,lyd=ly-plane.y;
+    if(bumpCd<=0&&lx*lx+lyd*lyd<(26+PR)*(26+PR)){
+      bumpCd=1.1;flashT=0.3;
+      if(simsGot>0){simsGot--;toast("🏮 Lantaarn geraakt, SIM verloren!");}
+      else{toast("🏮 Pas op, lantaarns kosten SIM's!");}
+      snd("bump");updateHud();
+    }
+  }
+  while(lans.length&&lans[0].x<-60)lans.shift();
+
+  if(plane.y+PR>H-6){plane.y=H-6-PR;plane.vy=FLAP*0.8;}
+  if(plane.y-PR<6){plane.y=6+PR;plane.vy=40;}
+
+  if(endT>0){endT-=dt;if(endT<=0){finish();return;}}
+  draw();
+}
+
+function curPal(){
+  var a=palFrom,b=palTo,t=palMix,out=[],i;
+  for(i=0;i<3;i++){out.push([Math.round(a[i][0]+(b[i][0]-a[i][0])*t),Math.round(a[i][1]+(b[i][1]-a[i][1])*t),Math.round(a[i][2]+(b[i][2]-a[i][2])*t)]);}
+  return out;
+}
+function css(c){return "rgb("+c[0]+","+c[1]+","+c[2]+")";}
+
+function draw(){
+  var p=curPal();
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,css(p[0]));g.addColorStop(0.55,css(p[1]));g.addColorStop(1,css(p[2]));
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+  ctx.fillStyle="rgba(255,255,255,.65)";
+  var ct=(bobT*10)%(W+240)-120;
+  cloud(W-ct,H*0.15,28);cloud(W*0.4-ct*0.5+W*0.5,H*0.3,20);
+
+  ctx.fillStyle="rgba(110,110,150,.25)";
+  skyline(H*0.97);
+  ctx.fillStyle="rgba(255,255,255,.4)";ctx.fillRect(0,H-6,W,6);
+
+  var i;
+  for(i=0;i<gates.length;i++)drawGate(gates[i]);
+  for(i=0;i<lans.length;i++){var L3=lans[i];lantern(L3.x,L3.y+Math.sin(bobT*1.6+L3.ph)*26);}
+  for(i=0;i<sims.length;i++){var s=sims[i];if(!s.taken)simcard(s.x,s.y+Math.sin(bobT*3+s.x*0.02)*4);}
+  if(!over)drawPlane(plane.x,plane.y,plane.rot);
+  if(flashT>0){ctx.fillStyle="rgba(224,45,68,"+(flashT*0.45)+")";ctx.fillRect(0,0,W,H);}
+  if(over)endScene();
+}
+function cloud(x,y,r){
+  ctx.beginPath();
+  ctx.arc(x,y,r,0,6.283);ctx.arc(x+r*0.9,y+r*0.25,r*0.7,0,6.283);ctx.arc(x-r*0.9,y+r*0.3,r*0.6,0,6.283);
+  ctx.fill();
+}
+function skyline(base){
+  ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,base-30);
+  var x=0,n=0;
+  while(x<W){
+    var w=50+((x*7919+n*104729)%70),h=20+((x*31+n*77)%55);
+    ctx.lineTo(x,base-h);ctx.lineTo(x+w,base-h);
+    x+=w;n++;
+  }
+  ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+}
+function drawGate(gt){
+  var x=gt.x;
+  /* divider bar mid-screen */
+  ctx.fillStyle="rgba(255,255,255,.85)";
+  ctx.fillRect(x-4,H*0.5-5,120,10);
+  ctx.strokeStyle="rgba(20,33,61,.2)";ctx.lineWidth=2;ctx.strokeRect(x-4,H*0.5-5,120,10);
+  /* top banner */
+  banner(x,H*0.24,gt.f.hi.lb,true);
+  banner(x,H*0.76,gt.f.lo.lb,false);
+  /* dashed vertical hints */
+  ctx.strokeStyle="rgba(255,255,255,.8)";ctx.lineWidth=3;
+  ctx.setLineDash&&ctx.setLineDash([8,9]);
+  ctx.beginPath();ctx.moveTo(x+56,10);ctx.lineTo(x+56,H*0.5-14);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x+56,H*0.5+14);ctx.lineTo(x+56,H-10);ctx.stroke();
+  ctx.setLineDash&&ctx.setLineDash([]);
+}
+function banner(x,cy,label,hi){
+  ctx.font="bold 15px -apple-system,Segoe UI,Arial";
+  var tw=ctx.measureText(label).width,w=tw+34,h=38;
+  rr(x+56-w/2,cy-h/2,w,h,12);
+  ctx.fillStyle=hi?"rgba(20,33,61,.85)":"rgba(240,56,78,.9)";
+  ctx.fill();
+  ctx.fillStyle="#fff";ctx.textAlign="center";
+  ctx.fillText(label,x+56,cy+5);
+  ctx.textAlign="start";
+}
+function lantern(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.08*Math.sin(bobT*1.6+x*0.01));
+  ctx.strokeStyle="#8A6B3A";ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(0,-34);ctx.lineTo(0,-22);ctx.stroke();
+  ctx.fillStyle="#E0452F";
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,20,24,0,0,6.283):ctx.arc(0,0,22,0,6.283);ctx.fill();
+  ctx.strokeStyle="rgba(120,30,20,.5)";ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,12,24,0,0,6.283):ctx.arc(0,0,12,0,6.283);ctx.stroke();
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,20,24,0,0,6.283):ctx.arc(0,0,20,0,6.283);ctx.stroke();
+  ctx.fillStyle="#F2B84B";
+  ctx.fillRect(-8,-27,16,6);ctx.fillRect(-8,21,16,6);
+  ctx.strokeStyle="#F2B84B";ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(0,27);ctx.lineTo(0,38);ctx.stroke();
+  ctx.restore();
+}
+function simcard(x,y){
+  ctx.save();ctx.translate(x,y);ctx.rotate(0.06*Math.sin(bobT*2+x));
+  var w=34,h=26;
+  rr(-w/2,-h/2,w,h,6);
+  ctx.fillStyle="#fff";ctx.fill();
+  ctx.strokeStyle="rgba(20,33,61,.18)";ctx.lineWidth=1.5;ctx.stroke();
+  rr(1,-6,13,12,2.5);ctx.fillStyle="#E8B23A";ctx.fill();
+  ctx.strokeStyle="#F0384E";ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(-11,-4);ctx.lineTo(-3,-4);ctx.moveTo(-7,-8);ctx.lineTo(-7,2);ctx.stroke();
+  ctx.restore();
+}
+function rr(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+function drawPlane(x,y,rot){
+  ctx.save();ctx.translate(x,y);ctx.rotate(rot);
+  ctx.fillStyle="#fff";
+  ctx.beginPath();ctx.ellipse?ctx.ellipse(0,0,26,10,0,0,6.283):ctx.arc(0,0,18,0,6.283);ctx.fill();
+  ctx.strokeStyle="rgba(20,33,61,.25)";ctx.lineWidth=1.5;ctx.stroke();
+  ctx.fillStyle="#F0384E";
+  ctx.beginPath();ctx.moveTo(18,-8);ctx.quadraticCurveTo(32,-4,32,0);ctx.quadraticCurveTo(32,4,18,8);ctx.closePath();ctx.fill();
+  ctx.beginPath();ctx.moveTo(-16,-4);ctx.lineTo(-28,-18);ctx.lineTo(-20,-18);ctx.lineTo(-10,-6);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#fff";ctx.font="bold 9px Arial";ctx.fillText("H",-24,-10);
+  ctx.fillStyle="#E8EFF7";
+  ctx.beginPath();ctx.moveTo(2,0);ctx.lineTo(-8,14);ctx.lineTo(2,14);ctx.lineTo(10,2);ctx.closePath();ctx.fill();
+  ctx.fillStyle="#7FB3D4";
+  var i;for(i=0;i<4;i++){ctx.beginPath();ctx.arc(-8+i*8,-3,2,0,6.283);ctx.fill();}
+  ctx.restore();
+}
+function endScene(){
+  var p=curPal();
+  var g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,css(p[0]));g.addColorStop(0.5,css(p[1]));g.addColorStop(1,css(p[2]));
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle="rgba(255,244,214,.5)";
+  ctx.beginPath();ctx.arc(W*0.5,H*0.4,Math.min(W,H)*0.28,0,6.283);ctx.fill();
+  ctx.fillStyle="rgba(90,80,120,.35)";skyline(H*0.95);
+}
+
+/* ---------- flow ---------- */
+function flap(){
+  if(over||!started)return;
+  if(!playing){
+    playing=true;
+    document.getElementById("tap").style.display="none";
+    document.getElementById("tapsub").style.display="none";
+  }
+  plane.vy=FLAP;snd("flap");
+}
+function finish(){
+  over=true;playing=false;
+  var dest=choices[0]?choices[0]:FORKS[0].hi;
+  var vibe=choices[1]?choices[1]:FORKS[1].lo;
+  var key=(dest.key==="tokyo"?"tokyo":"bali")+"-"+(vibe.key==="night"?"night":"culture");
+  var P=PERSONAS[key]||PERSONAS["tokyo-night"];
+  document.getElementById("ebadge").textContent=P.em;
+  document.getElementById("eheadline").textContent=P.h;
+  var r="",i;for(i=0;i<choices.length;i++){r+=(i?" → ":"")+choices[i].word;}
+  document.getElementById("eroute").textContent="Jouw route: "+(r||"Overal waar signaal is")+" · SIM's: "+simsGot+"/"+TOTAL_SIMS;
+  document.getElementById("eplan").innerHTML="Jouw plan: <b>Onbeperkt data in "+P.dest+"</b> "+P.flag+", actief zodra je landt, €0 roaming.";
+  document.getElementById("endcard").className="show";
+  draw();
+}
+function retry(){reset();draw();}
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt>0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function bind(){
+  var press=function(ev){
+    var id=ev.target&&ev.target.id;
+    if(id==="cta"||id==="retry")return;
+    ev.preventDefault&&ev.preventDefault();
+    flap();
+  };
+  document.addEventListener("touchstart",press,false);
+  document.addEventListener("mousedown",press,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("retry").addEventListener("click",retry,false);
+}
+
+function showAd(){started=true;document.body.className="";startLoop();}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className="paused";stopLoop();if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();reset();bind();draw();
+  window.addEventListener("resize",resize,false);
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

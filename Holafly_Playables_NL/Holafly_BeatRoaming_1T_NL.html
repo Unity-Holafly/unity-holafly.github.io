@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly Playable · Versla de Roamingrekening</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#1A0E12;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#head{position:absolute;top:6%;left:0;right:0;text-align:center;color:#F4C7C4;font-size:15px;font-weight:800;letter-spacing:.3px}
+#head span{display:block;color:#9E7C7C;font-size:12px;font-weight:600;margin-top:3px}
+#label{color:#E88;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+#bill{color:#FF5B4F;font-size:66px;font-weight:800;line-height:1;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+#meter{width:80%;max-width:360px;height:14px;background:#33202A;border-radius:8px;overflow:hidden;margin-top:20px}
+#fill{height:100%;width:0;background:-webkit-linear-gradient(left,#FFC542,#FF5B4F);background:linear-gradient(90deg,#FFC542,#FF5B4F);border-radius:8px;-webkit-transition:width .12s linear;transition:width .12s linear}
+#timer{margin-top:16px;color:#F4C7C4;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+#timer b{color:#FFC542}
+#switch{position:absolute;left:50%;bottom:11%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:17px 30px;border:0;border-radius:16px;background:#16C784;box-shadow:0 5px 0 #0FA968;color:#06251A;font-size:16px;font-weight:800;letter-spacing:.4px;cursor:pointer;white-space:nowrap}
+#hint{position:absolute;bottom:7.5%;left:0;right:0;text-align:center;color:#7C6A6A;font-size:12px;font-weight:600}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#16C784;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.fail{background:#FF4E45}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:56px;line-height:1.1}
+#eheadline{color:#fff;font-size:25px;font-weight:800;margin:8px 7% 4px;text-align:center}
+#esub{color:#EAFff4;color:rgba(255,255,255,.9);font-size:15px;font-weight:600;margin:0 9% 8px;text-align:center;max-width:330px;line-height:1.5}
+#eplan{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:12px;color:#fff;font-size:14px;font-weight:800;padding:9px 16px;margin:6px 8% 18px;max-width:320px;line-height:1.45}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 rgba(0,0,0,.18);color:#0FA968;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#endcard.fail #cta{color:#FF4E45}
+#eother{background:none;border:0;color:rgba(255,255,255,.85);font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.pulse{-webkit-animation:pulse 1.15s ease-in-out infinite;animation:pulse 1.15s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.shake{-webkit-animation:shake .5s ease-in-out infinite;animation:shake .5s ease-in-out infinite}
+@-webkit-keyframes shake{0%,100%{-webkit-transform:translateX(0)}25%{-webkit-transform:translateX(-3px)}75%{-webkit-transform:translateX(3px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.shake,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #bill{font-size:50px}
+  #switch{bottom:9%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:58%}
+  #rbadge{font-size:46px;margin-right:3%}
+  #eheadline{font-size:20px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="stage">
+  <div id="head">Roamingmeter · Tokio<span>Standaard provider-roaming, live teller</span></div>
+  <div id="label">Jouw rekening tot nu toe</div>
+  <div id="bill">€0</div>
+  <div id="meter"><div id="fill"></div></div>
+  <div id="timer">Rekening loopt nog <b>0:40</b></div>
+  <button id="switch" class="pulse">STOP DE REKENING &rarr; Ga naar Holafly</button>
+  <div id="hint">tik voor het pijn doet</div>
+</div>
+<div id="endcard">
+  <div id="rbadge">💸</div>
+  <div class="col">
+    <div id="eheadline">Rekening bevroren!</div>
+    <div id="esub">Je stapte over naar Holafly en de meter stond meteen stil.</div>
+    <div id="eplan">€6.90/dag · <b>onbeperkt data</b> · €0 roaming</div>
+    <button id="cta" class="ctapulse">DOWNLOAD HOLAFLY</button>
+    <button id="eother">onbeperkte bundels in 270+ bestemmingen</button>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,done=false,running=false,AC=null;
+var DUR=40000,PLAN=6.90,elapsed=0,last=0,tickId=null,bill=0,TICK=100;
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type="sine";o.frequency.value=hi?784:392;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.13,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.22);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.26);
+  }catch(e){}
+}
+
+function fmtTime(ms){
+  var s=Math.max(0,Math.ceil(ms/1000)),m=Math.floor(s/60);s=s%60;
+  return m+":"+(s<10?"0":"")+s;
+}
+
+function loop(){
+  if(!running||done)return;
+  var now=new Date().getTime(),dt=now-last;last=now;
+  if(dt>500)dt=500; /* clamp after throttled/background gaps */
+  elapsed+=dt;
+  var sec=elapsed/1000;
+  bill=0.35*sec*sec; /* accelerating roaming meter */
+  document.getElementById("bill").textContent="€"+Math.floor(bill);
+  var pct=Math.min(100,bill/420*100);
+  document.getElementById("fill").style.width=pct+"%";
+  var remain=DUR-elapsed;
+  document.getElementById("timer").innerHTML="Rekening loopt nog <b>"+fmtTime(remain)+"</b>";
+  if(remain<=0){expire();return;}
+}
+
+function startLoop(){
+  if(done||running)return;
+  running=true;last=new Date().getTime();
+  document.getElementById("switch").className="pulse";
+  tickId=setInterval(loop,TICK);
+}
+function stopLoop(){running=false;if(tickId){clearInterval(tickId);tickId=null;}}
+
+function switchNow(){
+  if(!started||done)return;
+  done=true;stopLoop();
+  ding(true);
+  var saved=Math.max(0,Math.round(bill-PLAN));
+  document.getElementById("eheadline").textContent="Rekening bevroren!";
+  document.getElementById("esub").textContent="Je stapte over naar Holafly, stopte de meter en ontweek zo'n €"+saved+".";
+  document.getElementById("endcard").className="show";
+}
+
+function expire(){
+  if(done)return;
+  done=true;stopLoop();
+  ding(false);
+  document.getElementById("bill").className="shake";
+  var ec=document.getElementById("endcard");
+  ec.className="fail";
+  document.getElementById("rbadge").textContent="😱";
+  document.getElementById("eheadline").textContent="Roaming had €"+Math.floor(bill)+" gekost";
+  document.getElementById("esub").textContent="Dat is een echte roamingrekening voor één dag in het buitenland. Overstappen kan altijd nog.";
+  document.getElementById("eplan").innerHTML="Holafly: €6.90/dag · <b>onbeperkt data</b> · €0 roaming";
+  ec.className="fail show";
+}
+
+function bind(){
+  document.getElementById("switch").addEventListener("click",switchNow,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("eother").addEventListener("click",openStore,false);
+}
+
+function showAd(){started=true;document.body.className="";startLoop();}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();if(!done)startLoop();}
+function pauseAd(){document.body.className="paused";stopLoop();if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

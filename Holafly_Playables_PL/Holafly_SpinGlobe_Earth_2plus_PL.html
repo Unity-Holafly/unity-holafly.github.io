@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly Playable · Zakręć globusem</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0A1424;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#globe{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px;pointer-events:none}
+#brand span{display:block;color:#A9C4E4;font-size:13.5px;font-weight:700;margin-top:3px}
+#destpill{position:absolute;top:13%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(255,91,110,.14);border:1px solid rgba(255,91,110,.55);color:#FFAAB4;font-size:12.5px;font-weight:700;border-radius:16px;padding:6px 14px;white-space:nowrap;pointer-events:none}
+#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8FB0D4;font-size:13px;font-weight:700;pointer-events:none}
+/* plan sheet */
+#sheet{position:absolute;left:0;right:0;bottom:0;background:#FFFDF9;border-radius:22px 22px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.5);-webkit-transform:translateY(112%);transform:translateY(112%);-webkit-transition:-webkit-transform .35s cubic-bezier(.2,.9,.3,1);transition:transform .35s cubic-bezier(.2,.9,.3,1);padding:12px 20px 18px;max-width:420px;margin:0 auto}
+#sheet.on{-webkit-transform:translateY(0);transform:translateY(0)}
+#grab{width:44px;height:5px;border-radius:3px;background:#E5DED2;margin:0 auto 8px}
+#shx{position:absolute;top:12px;right:14px;width:30px;height:30px;border-radius:50%;border:0;background:#F1EBDF;color:#8A94A6;font-size:15px;font-weight:800;cursor:pointer;line-height:1}
+#sflag{width:56px;height:56px;border-radius:50%;background:#F4EFE6;margin:0 auto;text-align:center;line-height:56px;font-size:30px}
+#sname{text-align:center;font-size:22px;color:#14213D;font-weight:800;margin-top:6px}
+#ssub{text-align:center;font-size:11.5px;color:#8A94A6;font-weight:700;margin-top:2px}
+#ssub b{color:#16A06B}
+#schecks{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;margin:10px 0 4px}
+#schecks span{font-size:11px;color:#187A4B;font-weight:800;margin:0 7px;white-space:nowrap}
+.srow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between;margin-top:10px}
+.slab b{display:block;font-size:13.5px;color:#14213D;font-weight:800}
+.slab span{font-size:10.5px;color:#8A94A6;font-weight:600}
+.ctrl{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;background:#F4EFE6;border-radius:12px}
+.step{width:40px;height:40px;border:0;background:none;color:#FF5B6E;font-size:22px;font-weight:800;cursor:pointer;line-height:1}
+.num{width:34px;text-align:center;font-size:17px;color:#14213D;font-weight:800}
+#sprice{margin-top:12px;background:#F4EFE6;border-radius:12px;padding:9px 14px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#spl b{display:block;font-size:13px;color:#14213D;font-weight:800}
+#spl span{font-size:10.5px;color:#16A06B;font-weight:800;background:#DDF5E9;border-radius:8px;padding:2px 7px;display:inline-block;margin-top:3px}
+#spr{text-align:right;font-size:25px;color:#14213D;font-weight:800}
+#spr span{display:block;font-size:9.5px;color:#8A94A6;font-weight:700;letter-spacing:1px}
+#connect{display:block;margin-top:12px;width:100%;padding:15px 10px;border:0;border-radius:14px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+/* success */
+#success{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 40%,circle,#143154 0%,#0A1424 70%);background:radial-gradient(circle at 50% 40%,#143154 0%,#0A1424 70%);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .45s;transition:opacity .45s}
+#success.on{opacity:1;visibility:visible}
+#okball{width:96px;height:96px;border-radius:50%;background:#2EE6A8;color:#0A2A1E;font-size:52px;font-weight:800;text-align:center;line-height:96px;box-shadow:0 0 44px rgba(46,230,168,.5)}
+#oklogo{color:#FF5B6E;font-size:26px;font-weight:800;margin-top:16px}
+#okh{color:#fff;font-size:24px;font-weight:800;margin-top:6px}
+#okd{color:#A9C4E4;font-size:14px;font-weight:700;margin-top:4px}
+#oks{color:#2EE6A8;font-size:13.5px;font-weight:800;margin-top:8px}
+#bars{display:-webkit-flex;display:flex;-webkit-align-items:flex-end;align-items:flex-end;height:34px;margin-top:16px}
+#bars span{width:9px;margin:0 3px;border-radius:2px;background:#2EE6A8;opacity:.25}
+#bars span.lit{opacity:1}
+#dl{margin-top:20px;padding:15px 44px;border:0;border-radius:16px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#more{background:none;border:0;color:#B7A8E0;font-size:13px;font-weight:700;margin-top:12px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{font-size:16px}#brand span{font-size:11px}
+  #destpill{display:none}
+  #sheet{max-width:340px;padding:8px 16px 12px}
+  #sflag{width:40px;height:40px;line-height:40px;font-size:22px}
+  #sname{font-size:17px;margin-top:3px}
+  #schecks{margin:6px 0 0}
+  .srow{margin-top:6px}
+  .step{width:32px;height:32px;font-size:18px}
+  #sprice{margin-top:8px;padding:6px 12px}#spr{font-size:19px}
+  #connect{margin-top:8px;padding:11px 10px}
+  #okball{width:70px;height:70px;line-height:70px;font-size:38px}
+  #okh{font-size:19px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<canvas id="globe"></canvas>
+<div id="brand">Holafly<span>Dokąd lecisz tym razem?</span></div>
+<div id="destpill">&#127760; Internet bez limitu w 270+ kierunkach</div>
+<div id="hint">zakręć globusem &middot; stuknij pinezkę, aby się połączyć</div>
+
+<div id="sheet">
+  <div id="grab"></div>
+  <button id="shx">&#10005;</button>
+  <div id="sflag">🇯🇵</div>
+  <div id="sname">Japonia</div>
+  <div id="ssub">LTE / 5G &middot; <b>Natychmiastowa aktywacja</b></div>
+  <div id="schecks"><span>&#10003; Internet bez limitu</span><span>&#10003; Roaming za &euro;0</span><span>&#10003; 5G / LTE</span></div>
+  <div class="srow">
+    <div class="slab"><b>Dni</b><span>więcej dni, niższa stawka dzienna</span></div>
+    <div class="ctrl"><button class="step" id="dm">&minus;</button><span class="num" id="dn">7</span><button class="step" id="dp">+</button></div>
+  </div>
+  <div class="srow">
+    <div class="slab"><b>Podróżni</b><span>po jednym eSIM na osobę</span></div>
+    <div class="ctrl"><button class="step" id="tm">&minus;</button><span class="num" id="tn">1</span><button class="step" id="tp">+</button></div>
+  </div>
+  <div id="sprice">
+    <div id="spl"><b id="psum">7 dni &middot; 1 eSIM</b><span id="prate">od €5.18/dzień</span></div>
+    <div id="spr"><span>RAZEM</span><span id="ptot" style="display:block;font-size:25px;color:#14213D;font-weight:800">€36.26</span></div>
+  </div>
+  <button id="connect">POŁĄCZ SIĘ &#10142; <span id="cprice">€36.26</span></button>
+</div>
+
+<div id="success">
+  <div id="okball">&#10003;</div>
+  <div id="oklogo">Holafly</div>
+  <div id="okh">Masz połączenie!</div>
+  <div id="okd">Japonia</div>
+  <div id="oks">Połączenie w 3 sekundy &#10003;</div>
+  <div id="bars"><span style="height:10px"></span><span style="height:17px"></span><span style="height:24px"></span><span style="height:32px"></span></div>
+  <button id="dl" class="ctapulse">POBIERZ HOLAFLY</button>
+  <button id="more">odkryj więcej kierunków &#8635;</button>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,sheetOpen=false,doneUp=false,AC=null,tick=null,last=0,bobT=0;
+
+var cv=document.getElementById("globe"),ctx=cv.getContext("2d");
+var W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=W*DPR;cv.height=H*DPR;
+  cv.style.width=W+"px";cv.style.height=H+"px";
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+
+/* ---------- land dots (rough continents on a lat/lon grid) ---------- */
+var BLOBS=[
+  [40,-95,26,34],   /* N America: lat, lon, latR, lonR */
+  [-20,-58,32,22],  /* S America */
+  [50,15,13,26],    /* Europe */
+  [2,20,32,26],     /* Africa */
+  [38,90,28,44],    /* Asia */
+  [-25,133,12,20]   /* Australia */
+];
+var DOTS=[];
+(function(){
+  var lat,lon,i;
+  for(lat=-60;lat<=70;lat+=4.6){
+    for(lon=-180;lon<180;lon+=4.6){
+      for(i=0;i<BLOBS.length;i++){
+        var b=BLOBS[i];
+        var dla=(lat-b[0])/b[2],dlo=(lon-b[1])/b[3];
+        if(dla*dla+dlo*dlo<1){
+          /* soften edges: skip some rim dots for organic coastline */
+          if(dla*dla+dlo*dlo>0.72&&((lat*7+lon*13)%3===0))continue;
+          DOTS.push([lat*Math.PI/180,lon*Math.PI/180]);
+          break;
+        }
+      }
+    }
+  }
+})();
+
+/* ---------- destinations (pins) ---------- */
+var DESTS=[
+  {name:"Japonia",flag:"🇯🇵",lat:35,lon:139,base:6.90},
+  {name:"Włochy",flag:"🇮🇹",lat:42,lon:12,base:4.30},
+  {name:"USA",flag:"🇺🇸",lat:40,lon:-74,base:4.90},
+  {name:"Bali",flag:"🇮🇩",lat:-8,lon:115,base:5.50},
+  {name:"Brazylia",flag:"🇧🇷",lat:-23,lon:-43,base:5.90}
+];
+var rot=0,spinV=0.13,dragging=false,dragMoved=0,lastX=0,screenPins=[];
+var di=0,days=7,trav=1;
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind==="ok"?"triangle":"sine";
+    o.frequency.value=kind==="tick"?740:kind==="ok"?520:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind==="ok"?0.16:0.09,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind==="ok"?0.4:0.1));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.45);
+    if(kind==="ok"){
+      var o2=AC.createOscillator(),g2=AC.createGain();
+      o2.type="triangle";o2.frequency.value=784;
+      g2.gain.setValueAtTime(0.0001,t+0.16);
+      g2.gain.exponentialRampToValueAtTime(0.14,t+0.18);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.5);
+      o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.16);o2.stop(t+0.55);
+    }
+  }catch(e){}
+}
+
+/* ---------- pricing ---------- */
+function rate(){var d=Math.min(0.45,(days-1)*0.018);return DESTS[di].base*(1-d);}
+function money(n){return "€"+(Math.round(n*100)/100).toFixed(2);}
+function renderSheet(){
+  var D=DESTS[di],r=rate(),tot=r*days*trav;
+  document.getElementById("sflag").textContent=D.flag;
+  document.getElementById("sname").textContent=D.name;
+  document.getElementById("dn").textContent=days;
+  document.getElementById("tn").textContent=trav;
+  document.getElementById("psum").innerHTML=days+(days===1?" dzień":" dni")+" &middot; "+trav+(trav===1?" eSIM":(trav<5?" eSIM-y":" eSIM-ów"));
+  document.getElementById("prate").textContent="od "+money(r)+"/dzień";
+  document.getElementById("ptot").textContent=money(tot);
+  document.getElementById("cprice").textContent=money(tot);
+}
+
+/* ---------- globe drawing ---------- */
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  /* space glow */
+  var bg=ctx.createRadialGradient(W/2,H*0.47,10,W/2,H*0.47,Math.max(W,H)*0.75);
+  bg.addColorStop(0,"#122A4A");bg.addColorStop(0.6,"#0A1424");bg.addColorStop(1,"#070E1C");
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  /* stars */
+  var i;
+  ctx.fillStyle="rgba(255,255,255,.5)";
+  for(i=0;i<40;i++){
+    var sx=((i*971)%100)/100*W,sy=((i*563)%100)/100*H;
+    var a=0.15+0.4*Math.abs(Math.sin(bobT*1.4+i));
+    ctx.globalAlpha=a;
+    ctx.fillRect(sx,sy,2,2);
+  }
+  ctx.globalAlpha=1;
+
+  var R=Math.min(W,H)*0.37,cx=W/2,cy=H*0.47;
+  /* atmosphere glow */
+  var ag=ctx.createRadialGradient(cx,cy,R*0.92,cx,cy,R*1.35);
+  ag.addColorStop(0,"rgba(110,190,255,.30)");
+  ag.addColorStop(0.5,"rgba(90,160,255,.10)");
+  ag.addColorStop(1,"rgba(90,160,255,0)");
+  ctx.fillStyle=ag;
+  ctx.beginPath();ctx.arc(cx,cy,R*1.35,0,6.283);ctx.fill();
+  /* ocean */
+  var og=ctx.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.1,cx,cy,R);
+  og.addColorStop(0,"#4FA3E0");og.addColorStop(0.55,"#2E6FB5");og.addColorStop(1,"#1B4A85");
+  ctx.fillStyle=og;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
+
+  /* clean parallels only (no pole clutter) */
+  ctx.strokeStyle="rgba(220,240,255,.16)";ctx.lineWidth=1;
+  var gg;
+  for(gg=-60;gg<=60;gg+=30){
+    var sy=cy-R*Math.sin(gg*Math.PI/180)*0.96;
+    var hw=R*Math.cos(gg*Math.PI/180)*0.985;
+    ctx.globalAlpha=gg===0?0.22:0.13;
+    ctx.beginPath();ctx.moveTo(cx-hw,sy);ctx.lineTo(cx+hw,sy);ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+
+  /* land dots (orthographic projection, real earth greens) */
+  for(i=0;i<DOTS.length;i++){
+    var lat=DOTS[i][0],lon=DOTS[i][1]+rot;
+    var cosl=Math.cos(lat);
+    var x3=cosl*Math.sin(lon),z3=cosl*Math.cos(lon),y3=Math.sin(lat);
+    if(z3<=0.02)continue;
+    var px=cx+x3*R*0.96,py=cy-y3*R*0.96;
+    /* deep green base + leafy core, warmer near the equator */
+    var warm=1-Math.min(1,Math.abs(lat)/1.05);
+    ctx.fillStyle="rgba(24,110,60,"+(0.35+0.3*z3)+")";
+    ctx.beginPath();ctx.arc(px,py,3.1+2.6*z3,0,6.283);ctx.fill();
+    ctx.fillStyle="rgba("+Math.round(96+60*warm)+","+Math.round(190+20*warm)+","+Math.round(96-20*warm)+","+(0.75+0.25*z3)+")";
+    ctx.beginPath();ctx.arc(px,py,1.8+2.0*z3,0,6.283);ctx.fill();
+  }
+
+  /* soft day-side light + gentle night edge */
+  var tg=ctx.createRadialGradient(cx-R*0.5,cy-R*0.35,R*0.2,cx+R*0.25,cy+R*0.15,R*1.25);
+  tg.addColorStop(0,"rgba(255,255,255,.09)");tg.addColorStop(0.55,"rgba(0,0,0,0)");tg.addColorStop(1,"rgba(8,4,20,.32)");
+  ctx.fillStyle=tg;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.fill();
+  ctx.strokeStyle="rgba(180,220,255,.55)";ctx.lineWidth=2;
+  ctx.beginPath();ctx.arc(cx,cy,R,0,6.283);ctx.stroke();
+
+  /* pins */
+  screenPins=[];
+  for(i=0;i<DESTS.length;i++){
+    var D=DESTS[i];
+    var la=D.lat*Math.PI/180,lo=D.lon*Math.PI/180+rot;
+    var cl=Math.cos(la);
+    var X=cl*Math.sin(lo),Z=cl*Math.cos(lo),Y=Math.sin(la);
+    if(Z<=0.05)continue;
+    var px2=cx+X*R*0.96,py2=cy-Y*R*0.96;
+    var s=0.8+0.5*Z;
+    /* ripple */
+    var rp=(bobT*1.2+i*0.7)%1;
+    ctx.strokeStyle="rgba(255,91,110,"+(0.5*(1-rp))+")";
+    ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(px2,py2-10*s,(8+16*rp)*s,0,6.283);ctx.stroke();
+    /* pin */
+    ctx.fillStyle="#FF5B6E";
+    ctx.beginPath();ctx.arc(px2,py2-10*s,8*s,0,6.283);ctx.fill();
+    ctx.beginPath();ctx.moveTo(px2-6*s,py2-6*s);ctx.lineTo(px2,py2+4*s);ctx.lineTo(px2+6*s,py2-6*s);ctx.closePath();ctx.fill();
+    ctx.fillStyle="#fff";
+    ctx.beginPath();ctx.arc(px2,py2-10*s,3.2*s,0,6.283);ctx.fill();
+    /* country label pill */
+    if(Z>0.25){
+      var la2=0.35+0.65*Z;
+      ctx.font="bold 11px -apple-system,Segoe UI,Arial";
+      var tw=ctx.measureText(D.name).width,lw=tw+14,lh=18;
+      var lx=px2+12*s,ly=py2-10*s-lh/2;
+      if(lx+lw>W-6)lx=px2-12*s-lw;
+      ctx.globalAlpha=la2;
+      rr2(lx,ly,lw,lh,9);
+      ctx.fillStyle="#FFFDF9";ctx.fill();
+      ctx.fillStyle="#14213D";ctx.textAlign="left";
+      ctx.fillText(D.name,lx+7,ly+13);
+      ctx.globalAlpha=1;
+    }
+    screenPins.push({x:px2,y:py2-10*s,r:24*s,i:i});
+  }
+}
+
+function rr2(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+}
+
+/* ---------- interaction ---------- */
+function onDown(ev){
+  if(!started||sheetOpen||doneUp)return;
+  dragging=true;dragMoved=0;
+  lastX=ev.touches?ev.touches[0].clientX:ev.clientX;
+}
+function onMove(ev){
+  if(!dragging)return;
+  var x=ev.touches?ev.touches[0].clientX:ev.clientX;
+  var dx=x-lastX;lastX=x;
+  dragMoved+=Math.abs(dx);
+  rot+=dx*0.006;
+  spinV=dx*0.12;
+  ev.preventDefault&&ev.preventDefault();
+}
+function onUp(ev){
+  if(!dragging)return;
+  dragging=false;
+  if(dragMoved<9){
+    var t=ev.changedTouches?ev.changedTouches[0]:ev;
+    var x=t.clientX,y=t.clientY,i,best=-1,bd=1e9;
+    for(i=0;i<screenPins.length;i++){
+      var p=screenPins[i],dx=p.x-x,dy=p.y-y,d=dx*dx+dy*dy;
+      if(d<p.r*p.r&&d<bd){bd=d;best=p.i;}
+    }
+    if(best>=0){openSheet(best);}
+  }
+}
+function openSheet(i){
+  di=i;days=7;trav=1;
+  renderSheet();
+  sheetOpen=true;
+  snd("pick");
+  document.getElementById("sheet").className="on";
+  document.getElementById("hint").style.opacity="0";
+}
+function closeSheet(){
+  sheetOpen=false;
+  document.getElementById("sheet").className="";
+  document.getElementById("hint").style.opacity="";
+}
+function connect(){
+  if(doneUp)return;
+  doneUp=true;
+  document.getElementById("sheet").className="";
+  document.getElementById("okd").textContent=DESTS[di].name;
+  document.getElementById("success").className="on";
+  snd("ok");
+  var bars=document.querySelectorAll("#bars span"),i;
+  for(i=0;i<bars.length;i++){
+    (function(b,idx){setTimeout(function(){b.className="lit";},350+idx*260);})(bars[i],i);
+  }
+}
+function again(){
+  doneUp=false;sheetOpen=false;
+  document.getElementById("success").className="";
+  var bars=document.querySelectorAll("#bars span"),i;
+  for(i=0;i<bars.length;i++){bars[i].className="";}
+  document.getElementById("hint").style.opacity="";
+}
+
+function bind(){
+  cv.addEventListener("touchstart",onDown,false);
+  cv.addEventListener("mousedown",onDown,false);
+  document.addEventListener("touchmove",onMove,false);
+  document.addEventListener("mousemove",onMove,false);
+  document.addEventListener("touchend",onUp,false);
+  document.addEventListener("mouseup",onUp,false);
+  document.getElementById("shx").addEventListener("click",closeSheet,false);
+  document.getElementById("dm").addEventListener("click",function(){if(days>1){days--;snd("tick");renderSheet();}},false);
+  document.getElementById("dp").addEventListener("click",function(){if(days<30){days++;snd("tick");renderSheet();}},false);
+  document.getElementById("tm").addEventListener("click",function(){if(trav>1){trav--;snd("tick");renderSheet();}},false);
+  document.getElementById("tp").addEventListener("click",function(){if(trav<6){trav++;snd("tick");renderSheet();}},false);
+  document.getElementById("connect").addEventListener("click",connect,false);
+  document.getElementById("dl").addEventListener("click",openStore,false);
+  document.getElementById("more").addEventListener("click",again,false);
+}
+
+/* ---------- loop ---------- */
+function step(dt){
+  if(W!==window.innerWidth||H!==window.innerHeight){resize();}
+  bobT+=dt;
+  if(!dragging){
+    rot+=spinV*dt;
+    /* ease back to idle speed */
+    spinV+=(0.13-spinV)*Math.min(1,dt*1.4);
+  }
+  draw();
+}
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt>0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function showAd(){started=true;document.body.className="";startLoop();}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className="paused";stopLoop();if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  resize();bind();renderSheet();draw();
+  window.addEventListener("resize",resize,false);
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>

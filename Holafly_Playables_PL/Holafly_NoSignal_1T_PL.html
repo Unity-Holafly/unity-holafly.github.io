@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly Playable · Od braku zasięgu do połączenia</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0E1830;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;touch-action:manipulation}
+#loc{position:absolute;top:5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#AEB9D0;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+#loc b{color:#fff}
+#ring{width:190px;height:190px;border-radius:50%;background:#182545;border:3px solid #2A3A63;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-transition:background .5s,border-color .5s;transition:background .5s,border-color .5s}
+#ring.ok{background:#0E3A2C;border-color:#16C784}
+#bars{display:-webkit-flex;display:flex;-webkit-align-items:flex-end;align-items:flex-end;height:56px}
+.bar{width:14px;margin:0 4px;border-radius:3px;background:#3A4A72;-webkit-transition:background .25s;transition:background .25s}
+.bar.b1{height:22px}.bar.b2{height:34px}.bar.b3{height:46px}.bar.b4{height:56px}
+.bar.lit{background:#16C784}
+#status{margin-top:12px;font-size:16px;font-weight:800;color:#FF6B6B;-webkit-transition:color .4s;transition:color .4s}
+#status.ok{color:#16C784}
+#warn{margin-top:20px;background:rgba(255,77,69,.14);border:1px solid rgba(255,107,107,.5);color:#FFC1BD;border-radius:12px;padding:9px 16px;font-size:13.5px;font-weight:700;text-align:center;line-height:1.4;-webkit-transition:opacity .3s;transition:opacity .3s}
+#warn.hide{opacity:0}
+#goodchip{position:absolute;margin-top:20px;background:rgba(22,199,132,.16);border:1px solid rgba(22,199,132,.6);color:#9BF0D0;border-radius:12px;padding:9px 16px;font-size:13.5px;font-weight:800;text-align:center;opacity:0;-webkit-transition:opacity .4s;transition:opacity .4s}
+#goodchip.show{opacity:1}
+#activate{position:absolute;left:50%;bottom:12%;-webkit-transform:translateX(-50%);transform:translateX(-50%);padding:17px 34px;border:0;border-radius:16px;background:#FF4E45;box-shadow:0 5px 0 #C9362E;color:#fff;font-size:17px;font-weight:800;letter-spacing:.6px;cursor:pointer;white-space:nowrap}
+#activate.busy{background:#8A94AD;box-shadow:0 5px 0 #6B7488;pointer-events:none}
+#hint{position:absolute;bottom:8%;left:0;right:0;text-align:center;color:#8A94AD;font-size:12px;font-weight:600;opacity:0;-webkit-transition:opacity .3s;transition:opacity .3s}
+#endcard{position:absolute;top:0;left:0;right:0;bottom:0;background:#FF4E45;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .4s ease;transition:opacity .4s ease}
+#endcard.show{opacity:1;visibility:visible}
+#endcard .col{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;text-align:center}
+#rbadge{font-size:58px;line-height:1.1}
+#eheadline{color:#fff;font-size:26px;font-weight:800;margin:8px 8% 6px;text-align:center}
+#esub{color:#FFDAD6;font-size:15px;font-weight:600;margin:0 10% 20px;text-align:center;max-width:330px;line-height:1.5}
+#cta{padding:16px 40px;border:0;border-radius:16px;background:#fff;box-shadow:0 5px 0 #C9362E;color:#FF4E45;font-size:18px;font-weight:800;letter-spacing:1px;cursor:pointer}
+#eother{background:none;border:0;color:#FFDAD6;font-size:13px;font-weight:700;margin-top:14px;text-decoration:underline;cursor:pointer}
+.pulse{-webkit-animation:pulse 1.3s ease-in-out infinite;animation:pulse 1.3s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:translateX(-50%) scale(1)}50%{-webkit-transform:translateX(-50%) scale(1.05)}}
+@keyframes pulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05)}}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.spin{-webkit-animation:spin .8s linear infinite;animation:spin .8s linear infinite}
+@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #ring{width:150px;height:150px}
+  #bars{height:44px}.bar.b4{height:44px}.bar.b3{height:36px}.bar.b2{height:27px}.bar.b1{height:18px}
+  #activate{bottom:10%}
+  #endcard{-webkit-flex-direction:row;flex-direction:row}
+  #endcard .col{max-width:56%}
+  #rbadge{font-size:48px;margin-right:3%}
+  #eheadline{font-size:21px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="stage">
+  <div id="loc">📍 Właśnie lądujesz w <b>Tokio</b></div>
+  <div id="ring">
+    <div id="bars"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span><span class="bar b4"></span></div>
+    <div id="status">Brak zasięgu ✕</div>
+  </div>
+  <div id="warn">⚠️ Roaming aktywny: <b>€15/MB</b><br>Jedna mapa + kilka relacji = paskudny rachunek.</div>
+  <div id="goodchip">Roaming za €0 · Internet bez limitu</div>
+  <button id="activate" class="pulse">Aktywuj eSIM Holafly</button>
+  <div id="hint">stuknij, aby się połączyć</div>
+</div>
+<div id="endcard">
+  <div id="rbadge">🎉</div>
+  <div class="col">
+    <div id="eheadline">Masz połączenie!</div>
+    <div id="esub">Internet bez limitu w Japonii od chwili lądowania. Bez roamingu, bez wymiany karty SIM, bez szoku na rachunku.</div>
+    <button id="cta" class="ctapulse">POŁĄCZ SIĘ</button>
+    <button id="eother">działa w 270+ kierunkach</button>
+  </div>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,busy=false,done=false,AC=null,timers=[];
+
+function T(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
+function clearTimers(){var i;for(i=0;i<timers.length;i++)clearTimeout(timers[i]);timers=[];}
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function ding(hi){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type="sine";o.frequency.value=hi?880:587.33;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(0.14,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.2);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.24);
+  }catch(e){}
+}
+
+function activate(){
+  if(!started||busy||done)return;
+  busy=true;
+  var btn=document.getElementById("activate");
+  btn.className="";btn.classList.add("busy");
+  btn.innerHTML='<span class="spin" style="display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;vertical-align:-2px"></span>&nbsp; Aktywowanie…';
+  document.getElementById("warn").className="hide";
+  document.getElementById("hint").style.opacity="0";
+  var bars=document.querySelectorAll(".bar"),i;
+  for(i=0;i<bars.length;i++){
+    (function(b,idx){T(function(){b.classList.add("lit");ding(idx>=2);},700+idx*260);})(bars[i],i);
+  }
+  T(function(){
+    document.getElementById("ring").className="ok";
+    document.getElementById("status").className="ok";
+    document.getElementById("status").textContent="Holafly · Bez limitu";
+    document.getElementById("goodchip").className="show";
+    ding(true);
+  },700+4*260);
+  T(finish,700+4*260+900);
+}
+
+function finish(){
+  done=true;
+  document.getElementById("endcard").className="show";
+}
+
+function bind(){
+  document.getElementById("activate").addEventListener("click",activate,false);
+  document.getElementById("cta").addEventListener("click",openStore,false);
+  document.getElementById("eother").addEventListener("click",openStore,false);
+}
+
+function showAd(){started=true;document.body.className="";}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();}
+function pauseAd(){document.body.className="paused";if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+</body>
+</html>
