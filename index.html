@@ -45,9 +45,842 @@ footer{margin-top:28px;font-size:12px;color:#AFAFAF;line-height:1.7}
 <body>
 <div class="wrap">
 <h1><span class="brand">Holafly</span> × Unity Ads · Playable Creative Board</h1>
-<p class="sub">11 playable ads built for Holafly. <b>All demos below are live, tap and play them right here.</b> MRAID 3.0 · single file · under 5 MB · portrait and landscape · iOS and Android store links wired. August 2026</p>
+<p class="sub">14 playable ads built for Holafly. <b>All demos below are live, tap and play them right here.</b> MRAID 3.0 · single file · under 5 MB · portrait and landscape · iOS and Android store links wired. Updated September 2026</p>
 <div class="stats"><div class="stat"><b>up to 16x</b><span>conversion vs static and video formats (2025 playable benchmarks)</span></div><div class="stat"><b>2 to 3x</b><span>CTR vs standard video and display</span></div><div class="stat"><b>15 to 80s</b><span>time people actually spend playing, vs 5 to 7 seconds on a skippable video</span></div><div class="stat"><b>+30 to 40%</b><span>post install retention when users try the value before installing</span></div></div>
-<h2>Your flyer, rebuilt and evolved for Unity</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;
+<h2>Wave 2 · built from your live performance data</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf0" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable · Wheel of Destinations&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#150D2E;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#sky{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 30%,circle,#241647 0%,#150D2E 65%);background:radial-gradient(circle at 50% 30%,#241647 0%,#150D2E 65%)}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px;pointer-events:none}
+#brand span{display:block;color:#B7A8E0;font-size:13.5px;font-weight:700;margin-top:3px}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
+#wheelwrap{position:relative;width:82vmin;max-width:340px;height:82vmin;max-height:340px}
+#wheel{width:100%;height:100%;-webkit-transform:rotate(0deg);transform:rotate(0deg)}
+#pointer{position:absolute;top:-12px;left:50%;margin-left:-16px;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:26px solid #FF5B6E;z-index:3;-webkit-filter:drop-shadow(0 3px 5px rgba(0,0,0,.5));filter:drop-shadow(0 3px 5px rgba(0,0,0,.5))}
+#hub{position:absolute;top:50%;left:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:#FF5B6E;box-shadow:0 4px 0 #D93A50,0 0 30px rgba(255,91,110,.5);color:#fff;font-size:15px;font-weight:800;letter-spacing:1px;text-align:center;line-height:76px;cursor:pointer;z-index:2;border:4px solid #FFFDF9}
+#hub.spun{background:#3D2C6E;box-shadow:none;pointer-events:none;border-color:rgba(255,255,255,.3)}
+#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8F7FC0;font-size:13px;font-weight:700;pointer-events:none}
+.pulse{-webkit-animation:pulse 1.2s ease-in-out infinite;animation:pulse 1.2s ease-in-out infinite}
+@-webkit-keyframes pulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.08)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+/* plan sheet (winning Boarding Pass DNA) */
+#sheet{position:absolute;left:0;right:0;bottom:0;background:#FFFDF9;border-radius:22px 22px 0 0;box-shadow:0 -12px 40px rgba(0,0,0,.5);-webkit-transform:translateY(112%);transform:translateY(112%);-webkit-transition:-webkit-transform .35s cubic-bezier(.2,.9,.3,1);transition:transform .35s cubic-bezier(.2,.9,.3,1);padding:12px 20px 18px;max-width:420px;margin:0 auto;z-index:5}
+#sheet.on{-webkit-transform:translateY(0);transform:translateY(0)}
+#grab{width:44px;height:5px;border-radius:3px;background:#E5DED2;margin:0 auto 8px}
+#won{text-align:center;font-size:11px;color:#16A06B;font-weight:800;letter-spacing:1.5px}
+#sflag{width:56px;height:56px;border-radius:50%;background:#F4EFE6;margin:6px auto 0;text-align:center;line-height:56px;font-size:30px}
+#sname{text-align:center;font-size:22px;color:#14213D;font-weight:800;margin-top:6px}
+#schecks{display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;margin:10px 0 4px}
+#schecks span{font-size:11px;color:#187A4B;font-weight:800;margin:0 7px;white-space:nowrap}
+.srow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between;margin-top:10px}
+.slab b{display:block;font-size:13.5px;color:#14213D;font-weight:800}
+.slab span{font-size:10.5px;color:#8A94A6;font-weight:600}
+.ctrl{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;background:#F4EFE6;border-radius:12px}
+.step{width:40px;height:40px;border:0;background:none;color:#FF5B6E;font-size:22px;font-weight:800;cursor:pointer;line-height:1}
+.num{width:34px;text-align:center;font-size:17px;color:#14213D;font-weight:800}
+#sprice{margin-top:12px;background:#F4EFE6;border-radius:12px;padding:9px 14px;display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center}
+#spl b{display:block;font-size:13px;color:#14213D;font-weight:800}
+#spl span{font-size:10.5px;color:#16A06B;font-weight:800;background:#DDF5E9;border-radius:8px;padding:2px 7px;display:inline-block;margin-top:3px}
+#spr{text-align:right;font-size:25px;color:#14213D;font-weight:800}
+#spr span{display:block;font-size:9.5px;color:#8A94A6;font-weight:700;letter-spacing:1px}
+#connect{display:block;margin-top:12px;width:100%;padding:15px 10px;border:0;border-radius:14px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+/* success */
+#success{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 40%,circle,#241647 0%,#150D2E 70%);background:radial-gradient(circle at 50% 40%,#241647 0%,#150D2E 70%);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .45s;transition:opacity .45s;z-index:6}
+#success.on{opacity:1;visibility:visible}
+#okball{width:96px;height:96px;border-radius:50%;background:#2EE6A8;color:#0A2A1E;font-size:52px;font-weight:800;text-align:center;line-height:96px;box-shadow:0 0 44px rgba(46,230,168,.5)}
+#okh{color:#fff;font-size:24px;font-weight:800;margin-top:14px}
+#okd{color:#B7A8E0;font-size:14px;font-weight:700;margin-top:5px;text-align:center;padding:0 10%}
+#dl{margin-top:20px;padding:15px 44px;border:0;border-radius:16px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#again{background:none;border:0;color:#B7A8E0;font-size:13px;font-weight:700;margin-top:12px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.pulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{font-size:16px}#brand span{font-size:11px}
+  #wheelwrap{max-width:250px;max-height:250px}
+  #hub{width:60px;height:60px;margin:-30px 0 0 -30px;line-height:52px;font-size:13px}
+  #sheet{max-width:340px;padding:8px 16px 12px}
+  #sflag{width:40px;height:40px;line-height:40px;font-size:22px}
+  #sname{font-size:17px}
+  .step{width:32px;height:32px;font-size:18px}
+  #connect{margin-top:8px;padding:11px 10px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;if(!window.mraid){window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};}&lt;/script&gt;
+&lt;div id=&quot;sky&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;brand&quot;&gt;Holafly&lt;span&gt;Spin the wheel, win your trip online&lt;/span&gt;&lt;/div&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;wheelwrap&quot;&gt;
+    &lt;div id=&quot;pointer&quot;&gt;&lt;/div&gt;
+    &lt;svg id=&quot;wheel&quot; viewBox=&quot;0 0 200 200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;&lt;/svg&gt;
+    &lt;div id=&quot;hub&quot; class=&quot;pulse&quot;&gt;SPIN&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;hint&quot;&gt;tap SPIN, then build your plan&lt;/div&gt;
+
+&lt;div id=&quot;sheet&quot;&gt;
+  &lt;div id=&quot;grab&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;won&quot;&gt;&amp;#127881; YOUR DESTINATION&lt;/div&gt;
+  &lt;div id=&quot;sflag&quot;&gt;🗼&lt;/div&gt;
+  &lt;div id=&quot;sname&quot;&gt;Japan&lt;/div&gt;
+  &lt;div id=&quot;schecks&quot;&gt;&lt;span&gt;&amp;#10003; Unlimited data&lt;/span&gt;&lt;span&gt;&amp;#10003; &amp;euro;0 roaming&lt;/span&gt;&lt;span&gt;&amp;#10003; 5G / LTE&lt;/span&gt;&lt;/div&gt;
+  &lt;div class=&quot;srow&quot;&gt;
+    &lt;div class=&quot;slab&quot;&gt;&lt;b&gt;Days&lt;/b&gt;&lt;span&gt;more days, lower daily rate&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;ctrl&quot;&gt;&lt;button class=&quot;step&quot; id=&quot;dm&quot;&gt;&amp;minus;&lt;/button&gt;&lt;span class=&quot;num&quot; id=&quot;dn&quot;&gt;7&lt;/span&gt;&lt;button class=&quot;step&quot; id=&quot;dp&quot;&gt;+&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;srow&quot;&gt;
+    &lt;div class=&quot;slab&quot;&gt;&lt;b&gt;Travelers&lt;/b&gt;&lt;span&gt;one eSIM each&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&quot;ctrl&quot;&gt;&lt;button class=&quot;step&quot; id=&quot;tm&quot;&gt;&amp;minus;&lt;/button&gt;&lt;span class=&quot;num&quot; id=&quot;tn&quot;&gt;1&lt;/span&gt;&lt;button class=&quot;step&quot; id=&quot;tp&quot;&gt;+&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;sprice&quot;&gt;
+    &lt;div id=&quot;spl&quot;&gt;&lt;b id=&quot;psum&quot;&gt;7 days &amp;middot; 1 eSIM&lt;/b&gt;&lt;span id=&quot;prate&quot;&gt;from $5.18/day&lt;/span&gt;&lt;/div&gt;
+    &lt;div id=&quot;spr&quot;&gt;&lt;span&gt;TOTAL&lt;/span&gt;&lt;span id=&quot;ptot&quot; style=&quot;display:block;font-size:25px;color:#14213D;font-weight:800&quot;&gt;$36.26&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button id=&quot;connect&quot;&gt;CONNECT &amp;#10142; &lt;span id=&quot;cprice&quot;&gt;$36.26&lt;/span&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;success&quot;&gt;
+  &lt;div id=&quot;okball&quot;&gt;&amp;#10003;&lt;/div&gt;
+  &lt;div id=&quot;okh&quot;&gt;You&amp;rsquo;re connected!&lt;/div&gt;
+  &lt;div id=&quot;okd&quot;&gt;Unlimited data the minute you land. No roaming, no SIM swap.&lt;/div&gt;
+  &lt;button id=&quot;dl&quot; class=&quot;ctapulse&quot;&gt;GET HOLAFLY&lt;/button&gt;
+  &lt;button id=&quot;again&quot;&gt;spin another destination &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,spinning=false,spun=false,doneUp=false,AC=null,tick=null,last=0,bobT=0;
+
+var SEGS=[
+  {em:&quot;🗼&quot;,name:&quot;Japan&quot;,base:6.90,c:&quot;#3D2C6E&quot;},
+  {em:&quot;🏝️&quot;,name:&quot;Bali&quot;,base:5.50,c:&quot;#2C2058&quot;},
+  {em:&quot;🍕&quot;,name:&quot;Italy&quot;,base:4.30,c:&quot;#3D2C6E&quot;},
+  {em:&quot;🗽&quot;,name:&quot;USA&quot;,base:4.90,c:&quot;#2C2058&quot;},
+  {em:&quot;🥐&quot;,name:&quot;France&quot;,base:4.50,c:&quot;#3D2C6E&quot;},
+  {em:&quot;🏜️&quot;,name:&quot;Dubai&quot;,base:6.20,c:&quot;#2C2058&quot;},
+  {em:&quot;⚽&quot;,name:&quot;Brazil&quot;,base:5.90,c:&quot;#3D2C6E&quot;},
+  {em:&quot;🎤&quot;,name:&quot;South Korea&quot;,base:6.50,c:&quot;#2C2058&quot;}
+];
+var FLAGS={&quot;Japan&quot;:&quot;🇯🇵&quot;,&quot;Bali&quot;:&quot;🇮🇩&quot;,&quot;Italy&quot;:&quot;🇮🇹&quot;,&quot;USA&quot;:&quot;🇺🇸&quot;,&quot;France&quot;:&quot;🇫🇷&quot;,&quot;Dubai&quot;:&quot;🇦🇪&quot;,&quot;Brazil&quot;:&quot;🇧🇷&quot;,&quot;South Korea&quot;:&quot;🇰🇷&quot;};
+var di=0,days=7,trav=1,rot=0,spinV=0,targetRot=0,idleV=8; /* degrees */
+
+/* stars */
+(function(){
+  var sky=document.getElementById(&quot;sky&quot;),i;
+  for(i=0;i&lt;40;i++){
+    var s=document.createElement(&quot;div&quot;);
+    s.className=&quot;star&quot;;
+    s.style.left=(Math.random()*100)+&quot;%&quot;;
+    s.style.top=(Math.random()*100)+&quot;%&quot;;
+    s.style.opacity=(0.15+Math.random()*0.55);
+    sky.appendChild(s);
+  }
+})();
+
+/* build wheel svg */
+(function(){
+  var svg=document.getElementById(&quot;wheel&quot;),n=SEGS.length,i;
+  var parts=['&lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;99&quot; fill=&quot;#1D1440&quot;/&gt;'];
+  for(i=0;i&lt;n;i++){
+    var a0=(i*360/n-90-360/(2*n))*Math.PI/180,a1=((i+1)*360/n-90-360/(2*n))*Math.PI/180;
+    var x0=100+96*Math.cos(a0),y0=100+96*Math.sin(a0),x1=100+96*Math.cos(a1),y1=100+96*Math.sin(a1);
+    parts.push('&lt;path d=&quot;M100,100 L'+x0.toFixed(1)+','+y0.toFixed(1)+' A96,96 0 0,1 '+x1.toFixed(1)+','+y1.toFixed(1)+' Z&quot; fill=&quot;'+SEGS[i].c+'&quot; stroke=&quot;#150D2E&quot; stroke-width=&quot;1.5&quot;/&gt;');
+    var am=(i*360/n-90)*Math.PI/180;
+    var tx=100+62*Math.cos(am),ty=100+62*Math.sin(am);
+    parts.push('&lt;text x=&quot;'+tx.toFixed(1)+'&quot; y=&quot;'+(ty+7).toFixed(1)+'&quot; font-size=&quot;20&quot; text-anchor=&quot;middle&quot;&gt;'+SEGS[i].em+'&lt;/text&gt;');
+    var lx=100+82*Math.cos(am),ly=100+82*Math.sin(am);
+    parts.push('&lt;text x=&quot;'+lx.toFixed(1)+'&quot; y=&quot;'+(ly+3).toFixed(1)+'&quot; font-size=&quot;6.5&quot; font-weight=&quot;bold&quot; fill=&quot;#B7A8E0&quot; text-anchor=&quot;middle&quot;&gt;'+SEGS[i].name.toUpperCase()+'&lt;/text&gt;');
+  }
+  parts.push('&lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;99&quot; fill=&quot;none&quot; stroke=&quot;#FF5B6E&quot; stroke-width=&quot;2&quot; opacity=&quot;0.6&quot;/&gt;');
+  svg.innerHTML=parts.join(&quot;&quot;);
+})();
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind===&quot;win&quot;?&quot;triangle&quot;:&quot;sine&quot;;
+    o.frequency.value=kind===&quot;tick&quot;?740:kind===&quot;win&quot;?520:659.25;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;win&quot;?0.16:0.09,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;win&quot;?0.4:0.1));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.45);
+    if(kind===&quot;win&quot;){
+      var o2=AC.createOscillator(),g2=AC.createGain();
+      o2.type=&quot;triangle&quot;;o2.frequency.value=784;
+      g2.gain.setValueAtTime(0.0001,t+0.15);
+      g2.gain.exponentialRampToValueAtTime(0.14,t+0.17);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.5);
+      o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.15);o2.stop(t+0.55);
+    }
+  }catch(e){}
+}
+
+/* pricing (same model as Boarding Pass) */
+function rate(){var d=Math.min(0.45,(days-1)*0.018);return SEGS[di].base*(1-d);}
+function money(n){return &quot;$&quot;+(Math.round(n*100)/100).toFixed(2);}
+function renderSheet(){
+  var D=SEGS[di],r=rate(),tot=r*days*trav;
+  document.getElementById(&quot;sflag&quot;).textContent=FLAGS[D.name]||D.em;
+  document.getElementById(&quot;sname&quot;).textContent=D.name;
+  document.getElementById(&quot;dn&quot;).textContent=days;
+  document.getElementById(&quot;tn&quot;).textContent=trav;
+  document.getElementById(&quot;psum&quot;).innerHTML=days+(days===1?&quot; day&quot;:&quot; days&quot;)+&quot; &amp;middot; &quot;+trav+(trav===1?&quot; eSIM&quot;:&quot; eSIMs&quot;);
+  document.getElementById(&quot;prate&quot;).textContent=&quot;from &quot;+money(r)+&quot;/day&quot;;
+  document.getElementById(&quot;ptot&quot;).textContent=money(tot);
+  document.getElementById(&quot;cprice&quot;).textContent=money(tot);
+}
+
+function spin(){
+  if(!started||spinning||spun)return;
+  spinning=true;
+  document.getElementById(&quot;hub&quot;).className=&quot;spun&quot;;
+  document.getElementById(&quot;hub&quot;).textContent=&quot;...&quot;;
+  document.getElementById(&quot;hint&quot;).style.opacity=&quot;0&quot;;
+  di=Math.floor(Math.random()*SEGS.length);
+  /* land segment di under the pointer (pointer at top = -rot direction) */
+  var segAngle=360/SEGS.length;
+  targetRot=rot+1440+(360-((di*segAngle)+ (rot%360)))%360;
+  spinV=1; /* progress 0..1 driven in step */
+  spinStart=rot;spinT=0;
+}
+var spinStart=0,spinT=0,SPIN_DUR=3.4,lastTickSeg=-1;
+
+function easeOut(t){return 1-Math.pow(1-t,3);}
+
+function step(dt){
+  bobT+=dt;
+  if(spinning){
+    spinT+=dt;
+    var p=Math.min(1,spinT/SPIN_DUR);
+    rot=spinStart+(targetRot-spinStart)*easeOut(p);
+    var seg=Math.floor(((360-(rot%360))%360)/(360/SEGS.length)+0.5)%SEGS.length;
+    if(seg!==lastTickSeg){snd(&quot;tick&quot;);lastTickSeg=seg;}
+    if(p&gt;=1){
+      spinning=false;spun=true;
+      snd(&quot;win&quot;);
+      renderSheet();
+      setTimeout(function(){document.getElementById(&quot;sheet&quot;).className=&quot;on&quot;;},450);
+    }
+  }else if(!spun){
+    rot+=idleV*dt; /* slow idle rotation so the wheel is alive from frame one */
+  }
+  document.getElementById(&quot;wheel&quot;).style.webkitTransform=&quot;rotate(&quot;+rot+&quot;deg)&quot;;
+  document.getElementById(&quot;wheel&quot;).style.transform=&quot;rotate(&quot;+rot+&quot;deg)&quot;;
+}
+
+function connect(){
+  if(doneUp)return;
+  doneUp=true;
+  document.getElementById(&quot;sheet&quot;).className=&quot;&quot;;
+  document.getElementById(&quot;okd&quot;).textContent=&quot;Unlimited data in &quot;+SEGS[di].name+&quot; the minute you land. No roaming, no SIM swap.&quot;;
+  document.getElementById(&quot;success&quot;).className=&quot;on&quot;;
+  snd(&quot;win&quot;);
+}
+function again(){
+  doneUp=false;spun=false;days=7;trav=1;
+  document.getElementById(&quot;success&quot;).className=&quot;&quot;;
+  var hub=document.getElementById(&quot;hub&quot;);
+  hub.className=&quot;pulse&quot;;hub.textContent=&quot;SPIN&quot;;
+  document.getElementById(&quot;hint&quot;).style.opacity=&quot;&quot;;
+}
+
+function bind(){
+  document.getElementById(&quot;hub&quot;).addEventListener(&quot;click&quot;,spin,false);
+  document.getElementById(&quot;dm&quot;).addEventListener(&quot;click&quot;,function(){if(days&gt;1){days--;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;dp&quot;).addEventListener(&quot;click&quot;,function(){if(days&lt;30){days++;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;tm&quot;).addEventListener(&quot;click&quot;,function(){if(trav&gt;1){trav--;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;tp&quot;).addEventListener(&quot;click&quot;,function(){if(trav&lt;6){trav++;snd(&quot;tick&quot;);renderSheet();}},false);
+  document.getElementById(&quot;connect&quot;).addEventListener(&quot;click&quot;,connect,false);
+  document.getElementById(&quot;dl&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;again&quot;).addEventListener(&quot;click&quot;,again,false);
+}
+
+function startLoop(){
+  if(tick)return;
+  last=new Date().getTime();
+  tick=setInterval(function(){
+    var now=new Date().getTime(),dt=(now-last)/1000;last=now;
+    if(dt&gt;0.1)dt=0.1;
+    step(dt);
+  },16);
+}
+function stopLoop(){if(tick){clearInterval(tick);tick=null;}}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;startLoop();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();startLoop();}
+function pauseAd(){document.body.className=&quot;paused&quot;;stopLoop();if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();renderSheet();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Wheel of Destinations<span class="live">LIVE</span></div><div class="fmt hot">SPIN & WIN · LIVE PRICING</div><div class="hook">Spin the wheel, land on your next trip, then build the plan with days and travelers while the price updates live. The spin gets the tap, the configurator closes it. Built on the Boarding Pass results, your top performer of round one.</div><div class="thesis"><b>Tests:</b> chance hook + the configurator that already wins. Does the spin lift CTR on top of it?</div><div class="file">Holafly_WheelDestinations_2plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable · Merge to Unlimited&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#150D2E;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#sky{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 35%,circle,#241647 0%,#150D2E 65%);background:radial-gradient(circle at 50% 35%,#241647 0%,#150D2E 65%)}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px;pointer-events:none}
+#brand span{display:block;color:#B7A8E0;font-size:13.5px;font-weight:700;margin-top:3px}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
+#board{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;width:86vmin;max-width:330px;-webkit-justify-content:center;justify-content:center}
+.cell{width:29%;margin:2%;position:relative}
+.cell:before{content:&quot;&quot;;display:block;padding-top:118%}
+.sim{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:14px;cursor:pointer;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-transition:-webkit-transform .18s,box-shadow .18s;transition:transform .18s,box-shadow .18s;border:2.5px solid rgba(255,255,255,.16)}
+.sim .chip{width:34%;height:22%;border-radius:5px;background:#E8B23A;border:1.5px solid rgba(120,80,10,.5)}
+.sim .lb{margin-top:9%;font-size:14px;font-weight:800;color:#fff}
+.sim .gb{font-size:10px;font-weight:700;color:rgba(255,255,255,.75);margin-top:2px}
+.sim.l1{background:#4A5568}
+.sim.l2{background:#2E6FB5}
+.sim.l3{background:#7C4DBE}
+.sim.sel{-webkit-transform:scale(1.09);transform:scale(1.09);box-shadow:0 0 0 3px #2EE6A8,0 8px 22px rgba(46,230,168,.35)}
+.sim.hintp{-webkit-animation:hintp 1.3s ease-in-out infinite;animation:hintp 1.3s ease-in-out infinite}
+@-webkit-keyframes hintp{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.05)}}
+@keyframes hintp{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.sim.shake{-webkit-animation:shk .3s;animation:shk .3s}
+@-webkit-keyframes shk{0%,100%{-webkit-transform:translateX(0)}30%{-webkit-transform:translateX(-6px)}60%{-webkit-transform:translateX(6px)}}
+@keyframes shk{0%,100%{transform:translateX(0)}30%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+.sim.gone{opacity:0;-webkit-transform:scale(.4);transform:scale(.4);pointer-events:none}
+#meter{position:absolute;top:13.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#B7A8E0;font-size:13px;font-weight:800;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:6px 16px;white-space:nowrap}
+#meter b{color:#2EE6A8}
+#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8F7FC0;font-size:13px;font-weight:700}
+/* final card + end panel */
+#final{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .5s;transition:opacity .5s;background:-webkit-radial-gradient(50% 40%,circle,#241647 0%,#150D2E 70%);background:radial-gradient(circle at 50% 40%,#241647 0%,#150D2E 70%);z-index:5}
+#final.on{opacity:1;visibility:visible}
+#bigsim{width:150px;height:180px;border-radius:22px;background:-webkit-linear-gradient(315deg,#FF5B6E,#FF8E6E);background:linear-gradient(135deg,#FF5B6E,#FF8E6E);box-shadow:0 0 60px rgba(255,91,110,.65);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;border:3px solid #FFFDF9}
+#bigsim .chip{width:52px;height:38px;border-radius:8px;background:#E8B23A;border:2px solid rgba(120,80,10,.5)}
+#bigsim .inf{font-size:44px;font-weight:800;color:#fff;line-height:1.1;margin-top:10px}
+#bigsim .cap{font-size:12px;font-weight:800;color:rgba(255,255,255,.9);letter-spacing:2px}
+#fh{color:#fff;font-size:23px;font-weight:800;margin-top:18px;text-align:center;padding:0 8%}
+#fs{color:#B7A8E0;font-size:14px;font-weight:700;margin-top:6px;text-align:center;padding:0 10%}
+#dl{margin-top:20px;padding:15px 44px;border:0;border-radius:16px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#again{background:none;border:0;color:#B7A8E0;font-size:13px;font-weight:700;margin-top:12px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.bigpulse{-webkit-animation:bigp 1.6s ease-in-out infinite;animation:bigp 1.6s ease-in-out infinite}
+@-webkit-keyframes bigp{0%,100%{-webkit-transform:scale(1) rotate(-2deg)}50%{-webkit-transform:scale(1.05) rotate(2deg)}}
+@keyframes bigp{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.05) rotate(2deg)}}
+.confetti{position:absolute;width:10px;height:10px;border-radius:2px;pointer-events:none;opacity:0;z-index:7}
+.confetti.go{-webkit-animation:conf 1s ease-out forwards;animation:conf 1s ease-out forwards}
+@-webkit-keyframes conf{0%{opacity:1;-webkit-transform:translate(0,0) rotate(0)}100%{opacity:0;-webkit-transform:translate(0,-90px) rotate(200deg)}}
+@keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(0,-90px) rotate(200deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.hintp,.ctapulse,.bigpulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{font-size:16px}#brand span{font-size:11px}
+  #board{max-width:250px}
+  #meter{top:16%}
+  #bigsim{width:110px;height:132px}
+  #bigsim .inf{font-size:30px}
+  #fh{font-size:18px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;if(!window.mraid){window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};}&lt;/script&gt;
+&lt;div id=&quot;sky&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;brand&quot;&gt;Holafly&lt;span&gt;Merge your SIMs into one eSIM&lt;/span&gt;&lt;/div&gt;
+&lt;div id=&quot;meter&quot;&gt;Merges to Unlimited: &lt;b id=&quot;left&quot;&gt;3&lt;/b&gt;&lt;/div&gt;
+&lt;div id=&quot;stage&quot;&gt;
+  &lt;div id=&quot;board&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;hint&quot;&gt;tap two matching SIM cards to merge them&lt;/div&gt;
+
+&lt;div id=&quot;final&quot;&gt;
+  &lt;div id=&quot;bigsim&quot; class=&quot;bigpulse&quot;&gt;&lt;div class=&quot;chip&quot;&gt;&lt;/div&gt;&lt;div class=&quot;inf&quot;&gt;&amp;infin;&lt;/div&gt;&lt;div class=&quot;cap&quot;&gt;UNLIMITED eSIM&lt;/div&gt;&lt;/div&gt;
+  &lt;div id=&quot;fh&quot;&gt;One eSIM instead of a pile of SIMs&lt;/div&gt;
+  &lt;div id=&quot;fs&quot;&gt;Unlimited data in 270+ destinations. Activates in one minute, &amp;euro;0 roaming.&lt;/div&gt;
+  &lt;button id=&quot;dl&quot; class=&quot;ctapulse&quot;&gt;GET HOLAFLY&lt;/button&gt;
+  &lt;button id=&quot;again&quot;&gt;merge again &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,doneUp=false,AC=null,busy=false;
+
+/* levels: 1 = Local SIM 1GB, 2 = Travel SIM 5GB, 3 = Big SIM 25GB, 4 = final unlimited */
+var LVL={1:{lb:&quot;Local SIM&quot;,gb:&quot;1 GB&quot;},2:{lb:&quot;Travel SIM&quot;,gb:&quot;5 GB&quot;},3:{lb:&quot;Mega SIM&quot;,gb:&quot;25 GB&quot;}};
+var cells=[],sel=-1;
+
+(function(){
+  var sky=document.getElementById(&quot;sky&quot;),i;
+  for(i=0;i&lt;36;i++){
+    var s=document.createElement(&quot;div&quot;);
+    s.className=&quot;star&quot;;
+    s.style.left=(Math.random()*100)+&quot;%&quot;;
+    s.style.top=(Math.random()*100)+&quot;%&quot;;
+    s.style.opacity=(0.15+Math.random()*0.55);
+    sky.appendChild(s);
+  }
+})();
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind===&quot;final&quot;?&quot;triangle&quot;:&quot;sine&quot;;
+    o.frequency.value=kind===&quot;pick&quot;?600:kind===&quot;merge&quot;?880:kind===&quot;bad&quot;?220:520;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;final&quot;?0.18:0.1,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;final&quot;?0.45:0.15));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.5);
+    if(kind===&quot;final&quot;){
+      var f=[659.25,784,1046.5],i;
+      for(i=0;i&lt;f.length;i++){
+        var o2=AC.createOscillator(),g2=AC.createGain();
+        o2.type=&quot;triangle&quot;;o2.frequency.value=f[i];
+        g2.gain.setValueAtTime(0.0001,t+0.12*i+0.1);
+        g2.gain.exponentialRampToValueAtTime(0.12,t+0.12*i+0.12);
+        g2.gain.exponentialRampToValueAtTime(0.0001,t+0.12*i+0.4);
+        o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.12*i+0.1);o2.stop(t+0.12*i+0.45);
+      }
+    }
+  }catch(e){}
+}
+
+function confetti(x,y){
+  if(window.matchMedia&amp;&amp;matchMedia(&quot;(prefers-reduced-motion: reduce)&quot;).matches)return;
+  var colors=[&quot;#FF5B6E&quot;,&quot;#2EE6A8&quot;,&quot;#FFC542&quot;,&quot;#7C4DBE&quot;,&quot;#fff&quot;],i;
+  for(i=0;i&lt;14;i++){
+    var d=document.createElement(&quot;div&quot;);
+    d.className=&quot;confetti&quot;;
+    d.style.background=colors[i%colors.length];
+    d.style.left=(x+(Math.random()*120-60))+&quot;px&quot;;
+    d.style.top=(y+(Math.random()*30-15))+&quot;px&quot;;
+    document.body.appendChild(d);
+    d.className=&quot;confetti go&quot;;
+    (function(el){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1100);})(d);
+  }
+}
+
+/* board: 6 cells, levels [1,1,2,2,3,3] shuffled-ish so 3 merges finish it */
+function buildBoard(){
+  cells=[{l:1},{l:2},{l:1},{l:3},{l:2},{l:3}];
+  sel=-1;busy=false;
+  var b=document.getElementById(&quot;board&quot;);b.innerHTML=&quot;&quot;;
+  var i;
+  for(i=0;i&lt;cells.length;i++){
+    var c=document.createElement(&quot;div&quot;);c.className=&quot;cell&quot;;
+    var s=document.createElement(&quot;div&quot;);
+    s.className=&quot;sim l&quot;+cells[i].l;
+    s.setAttribute(&quot;data-i&quot;,i);
+    s.innerHTML='&lt;div class=&quot;chip&quot;&gt;&lt;/div&gt;&lt;div class=&quot;lb&quot;&gt;'+LVL[cells[i].l].lb+'&lt;/div&gt;&lt;div class=&quot;gb&quot;&gt;'+LVL[cells[i].l].gb+'&lt;/div&gt;';
+    s.addEventListener(&quot;click&quot;,onSim,false);
+    c.appendChild(s);b.appendChild(c);
+  }
+  updateMeter();hintPair();
+}
+function el(i){return document.querySelector('.sim[data-i=&quot;'+i+'&quot;]');}
+function alive(){var a=[],i;for(i=0;i&lt;cells.length;i++)if(cells[i].l&gt;0)a.push(i);return a;}
+function updateMeter(){
+  var lv={},i,a=alive();
+  for(i=0;i&lt;a.length;i++){lv[cells[a[i]].l]=(lv[cells[a[i]].l]||0)+1;}
+  var merges=0,k;
+  for(k in lv)merges+=Math.floor(lv[k]/2);
+  /* remaining merges until single unlimited: with our chain it is pairs left */
+  var left=0;
+  if(a.length===6)left=3;else if(a.length===5)left=2;else if(a.length===4)left=2;else if(a.length===3)left=1;else left=0;
+  document.getElementById(&quot;left&quot;).textContent=Math.max(1,left);
+}
+function hintPair(){
+  var i,j,a=alive();
+  for(i=0;i&lt;a.length;i++)el(a[i]).classList.remove(&quot;hintp&quot;);
+  for(i=0;i&lt;a.length;i++)for(j=i+1;j&lt;a.length;j++){
+    if(cells[a[i]].l===cells[a[j]].l){
+      el(a[i]).classList.add(&quot;hintp&quot;);el(a[j]).classList.add(&quot;hintp&quot;);
+      return;
+    }
+  }
+}
+function onSim(ev){
+  if(!started||busy||doneUp)return;
+  var i=parseInt(ev.currentTarget.getAttribute(&quot;data-i&quot;),10);
+  if(cells[i].l&lt;=0)return;
+  if(sel===-1){sel=i;el(i).classList.add(&quot;sel&quot;);snd(&quot;pick&quot;);return;}
+  if(sel===i){el(i).classList.remove(&quot;sel&quot;);sel=-1;return;}
+  if(cells[sel].l===cells[i].l){merge(sel,i);}
+  else{
+    el(i).classList.add(&quot;shake&quot;);snd(&quot;bad&quot;);
+    (function(n){setTimeout(function(){el(n).classList.remove(&quot;shake&quot;);},320);})(i);
+    el(sel).classList.remove(&quot;sel&quot;);sel=i;el(i).classList.add(&quot;sel&quot;);snd(&quot;pick&quot;);
+  }
+}
+function merge(a,b){
+  busy=true;
+  var lvl=cells[a].l;
+  var ea=el(a),eb=el(b);
+  ea.classList.remove(&quot;sel&quot;);
+  ea.classList.add(&quot;gone&quot;);
+  snd(&quot;merge&quot;);
+  var r=eb.getBoundingClientRect();
+  confetti(r.left+r.width/2,r.top+r.height/2);
+  setTimeout(function(){
+    cells[a].l=0;sel=-1;
+    if(lvl&gt;=3){
+      /* final merge → unlimited */
+      cells[b].l=0;
+      eb.classList.add(&quot;gone&quot;);
+      setTimeout(finish,350);
+      return;
+    }
+    cells[b].l=lvl+1;
+    eb.className=&quot;sim l&quot;+cells[b].l;
+    eb.innerHTML='&lt;div class=&quot;chip&quot;&gt;&lt;/div&gt;&lt;div class=&quot;lb&quot;&gt;'+LVL[cells[b].l].lb+'&lt;/div&gt;&lt;div class=&quot;gb&quot;&gt;'+LVL[cells[b].l].gb+'&lt;/div&gt;';
+    busy=false;
+    updateMeter();hintPair();
+  },230);
+}
+function finish(){
+  doneUp=true;busy=false;
+  snd(&quot;final&quot;);
+  document.getElementById(&quot;final&quot;).className=&quot;on&quot;;
+  confetti(window.innerWidth/2,window.innerHeight/3);
+}
+function again(){
+  doneUp=false;
+  document.getElementById(&quot;final&quot;).className=&quot;&quot;;
+  buildBoard();
+}
+
+function bind(){
+  document.getElementById(&quot;dl&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;again&quot;).addEventListener(&quot;click&quot;,again,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();}
+function pauseAd(){document.body.className=&quot;paused&quot;;if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  buildBoard();bind();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Merge to Unlimited<span class="live">LIVE</span></div><div class="fmt hot">MERGE GAME · 3 TAPS</div><div class="hook">Merge local SIMs into bigger ones until they fuse into the glowing Unlimited eSIM. One eSIM instead of a pile of SIMs, told as the most addictive mechanic in mobile right now. Built on the collection DNA of SIM Flight and your HolaMan.</div><div class="thesis"><b>Tests:</b> the merge trend meets your product story. Three taps, big payoff.</div><div class="file">Holafly_MergeUnlimited_3plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no&quot;&gt;
+&lt;title&gt;Holafly Playable · The Group Chat&lt;/title&gt;
+&lt;style&gt;
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#150D2E;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif}
+#wrap{position:absolute;top:0;left:0;right:0;bottom:0;max-width:420px;margin:0 auto;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;background:#1B1236}
+#top{background:#241647;padding:12px 16px 10px;border-bottom:1px solid rgba(255,255,255,.08)}
+#trow{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center}
+#gpic{width:38px;height:38px;border-radius:50%;background:#FF5B6E;color:#fff;font-size:17px;text-align:center;line-height:38px;-webkit-flex-shrink:0;flex-shrink:0}
+#gname{margin-left:11px}
+#gname b{display:block;color:#fff;font-size:15px;font-weight:800}
+#gname span{display:block;color:#8F7FC0;font-size:11px;font-weight:600;margin-top:1px}
+#netbar{margin-top:9px;background:rgba(255,77,69,.16);border:1px solid rgba(255,107,107,.5);color:#FFB3AD;font-size:11.5px;font-weight:800;border-radius:9px;padding:5px 10px;text-align:center;-webkit-transition:all .4s;transition:all .4s}
+#netbar.ok{background:rgba(46,230,168,.14);border-color:rgba(46,230,168,.55);color:#8FF2CD}
+#chat{-webkit-flex:1;flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 12px 6px;position:relative}
+.msg{max-width:78%;margin-bottom:9px;padding:8px 11px;border-radius:14px;font-size:13.5px;line-height:1.45;position:relative;opacity:0;-webkit-transform:translateY(8px);transform:translateY(8px);-webkit-transition:opacity .25s,-webkit-transform .25s;transition:opacity .25s,transform .25s;word-wrap:break-word}
+.msg.in{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}
+.them{background:#2C2058;color:#EDE8FA;border-bottom-left-radius:4px;float:left;clear:both}
+.them .who{display:block;font-size:10.5px;font-weight:800;margin-bottom:2px}
+.me{background:#FF5B6E;color:#fff;border-bottom-right-radius:4px;float:right;clear:both}
+.me .st{display:block;text-align:right;font-size:10px;margin-top:3px;font-weight:700;color:rgba(255,255,255,.85)}
+.me.failed{background:#5A2430}
+.me.failed .st{color:#FFB3AD}
+.sys{clear:both;float:none;max-width:88%;margin:6px auto 10px;background:rgba(255,255,255,.07);color:#B7A8E0;font-size:11px;font-weight:700;text-align:center;border-radius:10px;padding:6px 10px}
+.typing{float:left;clear:both;background:#2C2058;border-radius:14px;border-bottom-left-radius:4px;padding:10px 14px;margin-bottom:9px;opacity:0;-webkit-transition:opacity .2s;transition:opacity .2s}
+.typing.in{opacity:1}
+.typing i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8F7FC0;margin:0 2px;-webkit-animation:tp 1s infinite;animation:tp 1s infinite}
+.typing i:nth-child(2){-webkit-animation-delay:.15s;animation-delay:.15s}
+.typing i:nth-child(3){-webkit-animation-delay:.3s;animation-delay:.3s}
+@-webkit-keyframes tp{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes tp{0%,100%{opacity:.3}50%{opacity:1}}
+#dock{padding:10px 12px 16px;background:#241647;border-top:1px solid rgba(255,255,255,.08)}
+#docklab{color:#8F7FC0;font-size:10.5px;font-weight:800;letter-spacing:1px;margin-bottom:8px;text-align:center}
+.chip{display:block;width:100%;margin-bottom:8px;padding:12px 14px;border:0;border-radius:12px;background:#FF5B6E;box-shadow:0 3px 0 #D93A50;color:#fff;font-size:14px;font-weight:800;cursor:pointer;text-align:center}
+.chip.alt{background:rgba(255,255,255,.1);box-shadow:none;color:#B7A8E0;border:1.5px solid rgba(255,255,255,.18)}
+.chip.holafly{background:#2EE6A8;box-shadow:0 3px 0 #17A97A;color:#0A2A1E}
+.chip:disabled{opacity:.45;pointer-events:none}
+.chippulse{-webkit-animation:cp 1.3s ease-in-out infinite;animation:cp 1.3s ease-in-out infinite}
+@-webkit-keyframes cp{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.03)}}
+@keyframes cp{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+/* end overlay */
+#endov{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(21,13,46,.94);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .5s;transition:opacity .5s;z-index:9;padding:0 8%}
+#endov.on{opacity:1;visibility:visible}
+#okball{width:88px;height:88px;border-radius:50%;background:#2EE6A8;color:#0A2A1E;font-size:46px;font-weight:800;text-align:center;line-height:88px;box-shadow:0 0 44px rgba(46,230,168,.5)}
+#eh{color:#fff;font-size:23px;font-weight:800;margin-top:16px;text-align:center}
+#es{color:#B7A8E0;font-size:14px;font-weight:700;margin-top:7px;text-align:center;line-height:1.5}
+#dl{margin-top:20px;padding:15px 44px;border:0;border-radius:16px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#again{background:none;border:0;color:#B7A8E0;font-size:13px;font-weight:700;margin-top:12px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctp 1.4s ease-in-out infinite;animation:ctp 1.4s ease-in-out infinite}
+@-webkit-keyframes ctp{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctp{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.chippulse,.ctapulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  .msg{font-size:12px;margin-bottom:6px;padding:6px 10px}
+  .chip{padding:8px 12px;font-size:12.5px;margin-bottom:5px}
+  #okball{width:64px;height:64px;line-height:64px;font-size:34px}
+  #eh{font-size:18px}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;paused&quot;&gt;&lt;script&gt;if(!window.mraid){window.mraid={_l:{},getState:function(){return &quot;default&quot;},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,&quot;_blank&quot;)}};}&lt;/script&gt;
+&lt;div id=&quot;wrap&quot;&gt;
+  &lt;div id=&quot;top&quot;&gt;
+    &lt;div id=&quot;trow&quot;&gt;
+      &lt;div id=&quot;gpic&quot;&gt;🍜&lt;/div&gt;
+      &lt;div id=&quot;gname&quot;&gt;&lt;b&gt;Tokyo Crew 🇯🇵&lt;/b&gt;&lt;span id=&quot;gsub&quot;&gt;Maya, Leo, Sofia +2&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;netbar&quot;&gt;&amp;#9888;&amp;#65039; No data connection &amp;middot; Roaming $15/MB&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;chat&quot;&gt;&lt;/div&gt;
+  &lt;div id=&quot;dock&quot;&gt;
+    &lt;div id=&quot;docklab&quot;&gt;TAP TO REPLY&lt;/div&gt;
+    &lt;div id=&quot;chips&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;endov&quot;&gt;
+  &lt;div id=&quot;okball&quot;&gt;&amp;#10003;&lt;/div&gt;
+  &lt;div id=&quot;eh&quot;&gt;Never miss the moment&lt;/div&gt;
+  &lt;div id=&quot;es&quot;&gt;Unlimited data in 270+ destinations. Connected the minute you land, &amp;euro;0 roaming.&lt;/div&gt;
+  &lt;button id=&quot;dl&quot; class=&quot;ctapulse&quot;&gt;GET HOLAFLY&lt;/button&gt;
+  &lt;button id=&quot;again&quot;&gt;replay the landing &amp;#8635;&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+(function(){
+&quot;use strict&quot;;
+var STORE_URLS={Android:&quot;https://play.google.com/store/apps/details?id=com.holafly.holafly&quot;,iOS:&quot;https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786&quot;};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,doneUp=false,AC=null,timers=[],stage=0,connected=false;
+
+function T(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
+function clearTimers(){var i;for(i=0;i&lt;timers.length;i++)clearTimeout(timers[i]);timers=[];}
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&amp;&amp;mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state===&quot;suspended&quot;&amp;&amp;AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=&quot;sine&quot;;
+    o.frequency.value=kind===&quot;pop&quot;?740:kind===&quot;fail&quot;?220:kind===&quot;send&quot;?600:880;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind===&quot;fail&quot;?0.14:0.09,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind===&quot;fail&quot;?0.3:0.13));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.35);
+  }catch(e){}
+}
+
+var chat=document.getElementById(&quot;chat&quot;);
+var WHO_COLORS={&quot;Maya&quot;:&quot;#FFC542&quot;,&quot;Leo&quot;:&quot;#2EE6A8&quot;,&quot;Sofia&quot;:&quot;#7FB3FF&quot;};
+function scrollBottom(){chat.scrollTop=chat.scrollHeight+500;}
+function addThem(who,txt,delay){
+  T(function(){
+    var d=document.createElement(&quot;div&quot;);
+    d.className=&quot;msg them&quot;;
+    d.innerHTML='&lt;span class=&quot;who&quot; style=&quot;color:'+(WHO_COLORS[who]||&quot;#FFC542&quot;)+'&quot;&gt;'+who+'&lt;/span&gt;'+txt;
+    chat.appendChild(d);
+    setTimeout(function(){d.className=&quot;msg them in&quot;;},30);
+    snd(&quot;pop&quot;);scrollBottom();
+  },delay);
+}
+function addSys(txt,delay){
+  T(function(){
+    var d=document.createElement(&quot;div&quot;);
+    d.className=&quot;msg sys in&quot;;
+    d.innerHTML=txt;
+    chat.appendChild(d);scrollBottom();
+  },delay);
+}
+function addMe(txt,willFail,cb){
+  var d=document.createElement(&quot;div&quot;);
+  d.className=&quot;msg me&quot;;
+  d.innerHTML=txt+'&lt;span class=&quot;st&quot;&gt;&amp;#128337; sending...&lt;/span&gt;';
+  chat.appendChild(d);
+  setTimeout(function(){d.className=&quot;msg me in&quot;;},30);
+  snd(&quot;send&quot;);scrollBottom();
+  T(function(){
+    var st=d.querySelector(&quot;.st&quot;);
+    if(willFail){
+      d.className=&quot;msg me in failed&quot;;
+      st.innerHTML=&quot;&amp;#10060; Not delivered &amp;middot; no connection&quot;;
+      snd(&quot;fail&quot;);
+    }else{
+      st.innerHTML=&quot;&amp;#10003;&amp;#10003; Delivered&quot;;
+      snd(&quot;pop&quot;);
+    }
+    if(cb)cb();
+  },willFail?1400:700);
+}
+function typing(delay,dur){
+  T(function(){
+    var d=document.createElement(&quot;div&quot;);
+    d.className=&quot;typing&quot;;
+    d.innerHTML=&quot;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&lt;i&gt;&lt;/i&gt;&quot;;
+    chat.appendChild(d);
+    setTimeout(function(){d.className=&quot;typing in&quot;;},30);
+    scrollBottom();
+    T(function(){if(d.parentNode)d.parentNode.removeChild(d);},dur);
+  },delay);
+}
+
+function setChips(list){
+  var c=document.getElementById(&quot;chips&quot;);c.innerHTML=&quot;&quot;;
+  var i;
+  for(i=0;i&lt;list.length;i++){
+    var b=document.createElement(&quot;button&quot;);
+    b.className=&quot;chip&quot;+(list[i].cls?&quot; &quot;+list[i].cls:&quot;&quot;);
+    b.innerHTML=list[i].t;
+    b.setAttribute(&quot;data-a&quot;,list[i].a);
+    b.addEventListener(&quot;click&quot;,onChip,false);
+    c.appendChild(b);
+  }
+}
+function onChip(ev){
+  if(!started||doneUp)return;
+  var a=ev.currentTarget.getAttribute(&quot;data-a&quot;);
+  setChips([]);
+  if(a===&quot;reply1&quot;){
+    addMe(&quot;Just landed!! omw 🏃&quot;,true,function(){
+      addSys(&quot;Your message could not be sent. You have no data connection.&quot;,300);
+      T(function(){
+        setChips([{t:&quot;Try again 🔄&quot;,a:&quot;reply2&quot;},{t:&quot;Find WiFi somewhere 😩&quot;,a:&quot;reply2&quot;,cls:&quot;alt&quot;}]);
+      },900);
+    });
+  }else if(a===&quot;reply2&quot;){
+    addMe(&quot;Guys wait for me!! 🙏&quot;,true,function(){
+      addSys(&quot;Still no connection. Roaming would cost $15/MB.&quot;,300);
+      typing(900,1400);
+      addThem(&quot;Maya&quot;,&quot;should we just order without them? 😅&quot;,2400);
+      T(function(){
+        setChips([{t:&quot;&amp;#9889; Activate Holafly eSIM&quot;,a:&quot;holafly&quot;,cls:&quot;holafly chippulse&quot;}]);
+      },2900);
+    });
+  }else if(a===&quot;holafly&quot;){
+    connected=true;
+    var nb=document.getElementById(&quot;netbar&quot;);
+    nb.className=&quot;ok&quot;;
+    nb.innerHTML=&quot;&amp;#128246; Holafly eSIM active &amp;middot; Unlimited data &amp;middot; &amp;euro;0 roaming&quot;;
+    snd(&quot;pop&quot;);
+    addSys(&quot;&amp;#9889; Holafly eSIM activated. Connected in 3 seconds.&quot;,300);
+    T(function(){
+      addMe(&quot;I'M HERE!! table for 6 😤🍜&quot;,false,function(){
+        typing(500,1100);
+        addThem(&quot;Leo&quot;,&quot;YOOO you're alive 😂🎉&quot;,1700);
+        addThem(&quot;Sofia&quot;,&quot;we're in the back, come!! 🙌&quot;,2600);
+        addThem(&quot;Maya&quot;,&quot;ordering you the spicy one 🌶️&quot;,3500);
+        T(finish,4700);
+      });
+    },800);
+  }
+}
+
+function finish(){
+  doneUp=true;
+  document.getElementById(&quot;endov&quot;).className=&quot;on&quot;;
+  snd(&quot;pop&quot;);
+}
+function again(){
+  doneUp=false;stage=0;connected=false;
+  clearTimers();
+  document.getElementById(&quot;endov&quot;).className=&quot;&quot;;
+  chat.innerHTML=&quot;&quot;;
+  var nb=document.getElementById(&quot;netbar&quot;);
+  nb.className=&quot;&quot;;
+  nb.innerHTML=&quot;&amp;#9888;&amp;#65039; No data connection &amp;middot; Roaming $15/MB&quot;;
+  opening();
+}
+
+function opening(){
+  addSys(&quot;&amp;#9992;&amp;#65039; You just landed in Tokyo&quot;,200);
+  addThem(&quot;Maya&quot;,&quot;did you land?? we're at the ramen place 🍜&quot;,900);
+  addThem(&quot;Leo&quot;,&quot;hurry, the line is INSANE rn 😳&quot;,2100);
+  typing(3000,1200);
+  addThem(&quot;Sofia&quot;,&quot;sending you the pin 📍&quot;,4400);
+  T(function(){
+    setChips([{t:&quot;Just landed!! omw 🏃&quot;,a:&quot;reply1&quot;},{t:&quot;Wait for me!! 🙏&quot;,a:&quot;reply1&quot;,cls:&quot;alt&quot;}]);
+  },5000);
+}
+
+function bind(){
+  document.getElementById(&quot;dl&quot;).addEventListener(&quot;click&quot;,openStore,false);
+  document.getElementById(&quot;again&quot;).addEventListener(&quot;click&quot;,again,false);
+}
+
+function showAd(){started=true;document.body.className=&quot;&quot;;opening();}
+function resumeAd(){document.body.className=&quot;&quot;;if(AC&amp;&amp;AC.resume)AC.resume();}
+function pauseAd(){document.body.className=&quot;paused&quot;;if(AC&amp;&amp;AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener(&quot;viewableChange&quot;,onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  bind();
+  if(window.mraid){
+    if(mraid.getState()===&quot;loading&quot;){mraid.addEventListener(&quot;ready&quot;,onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener(&quot;visibilitychange&quot;,function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">The Group Chat<span class="live">LIVE</span></div><div class="fmt hot">STORY · TAP TO REPLY</div><div class="hook">You land in Tokyo and the group chat is blowing up, but your replies will not send. Two failed messages later one tap activates Holafly and everything whooshes through. The roaming pain told as a story everyone has lived.</div><div class="thesis"><b>Tests:</b> our first narrative creative. Do chat stories hold attention longer than games?</div><div class="file">Holafly_GroupChat_3plus.html</div></div></div></div><h2>Your flyer, rebuilt and evolved for Unity</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -697,7 +1530,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf0');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">SIM Flight: Unlimited<span class="live">LIVE</span></div><div class="fmt hot">FLY & COLLECT · UNLIMITED MODE</div><div class="hook">The flyer your travelers already know from your current creatives, now Unity native. Tap to fly from Istanbul to Marrakesh to Tokyo, and every 3rd SIM kicks in Unlimited Mode: golden glow, magnet SIMs, faster skies. Unlimited data becomes the power up you chase.</div><div class="thesis"><b>Tests:</b> your proven mechanic on Unity inventory, plus a streak loop the original does not have.</div><div class="file">Holafly_SIMFlight_Game.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf1" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">SIM Flight: Unlimited<span class="live">LIVE</span></div><div class="fmt hot">FLY & COLLECT · UNLIMITED MODE</div><div class="hook">The flyer your travelers already know from your current creatives, now Unity native. Tap to fly from Istanbul to Marrakesh to Tokyo, and every 3rd SIM kicks in Unlimited Mode: golden glow, magnet SIMs, faster skies. Unlimited data becomes the power up you chase.</div><div class="thesis"><b>Tests:</b> your proven mechanic on Unity inventory, plus a streak loop the original does not have.</div><div class="file">Holafly_SIMFlight_Game.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -1162,7 +1995,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf1');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">The Roaming Bill Balloon<span class="live">LIVE</span></div><div class="fmt hot">GAME · WEIGHT = BILL</div><div class="hook">Your plane drags a balloon that inflates with the roaming bill. The bigger the bill, the heavier you fly. Grab a green Holafly eSIM and it pops back to $0, the sky calms down, and flying feels light again.</div><div class="thesis"><b>Tests:</b> does feeling the roaming pain convert better than reading about it?</div><div class="file">Holafly_BillBalloon_Game.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf2" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">The Roaming Bill Balloon<span class="live">LIVE</span></div><div class="fmt hot">GAME · WEIGHT = BILL</div><div class="hook">Your plane drags a balloon that inflates with the roaming bill. The bigger the bill, the heavier you fly. Grab a green Holafly eSIM and it pops back to $0, the sky calms down, and flying feels light again.</div><div class="thesis"><b>Tests:</b> does feeling the roaming pain convert better than reading about it?</div><div class="file">Holafly_BillBalloon_Game.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf5" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -1624,7 +2457,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf2');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Choose Your Skies<span class="live">LIVE</span></div><div class="fmt hot">GAME · YOUR FLIGHT PICKS THE TRIP</div><div class="hook">Fork gates in the sky. Fly high for Tokyo, dive low for Bali, then nightlife or culture, street food or scenic views. The sky changes with every pick, and the end card matches the traveler with the right Holafly plan for that trip.</div><div class="thesis"><b>Tests:</b> the quiz hook, played instead of tapped. Every route ends on a plan.</div><div class="file">Holafly_RouteForks_Game.html</div></div></div></div><h2>The roaming moment, made playable</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf3" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Choose Your Skies<span class="live">LIVE</span></div><div class="fmt hot">GAME · YOUR FLIGHT PICKS THE TRIP</div><div class="hook">Fork gates in the sky. Fly high for Tokyo, dive low for Bali, then nightlife or culture, street food or scenic views. The sky changes with every pick, and the end card matches the traveler with the right Holafly plan for that trip.</div><div class="thesis"><b>Tests:</b> the quiz hook, played instead of tapped. Every route ends on a plan.</div><div class="file">Holafly_RouteForks_Game.html</div></div></div></div><h2>The roaming moment, made playable</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf6" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -1806,7 +2639,7 @@ function renderQ(){
   for(i=0;i&lt;q.o.length;i++){
     var b=document.createElement(&quot;button&quot;);
     b.className=&quot;opt&quot;;
-    b.innerHTML=&#x27;&lt;span class=&quot;em&quot;&gt;&#x27;+q.o[i].em+&#x27;&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;&#x27;+q.o[i].lb+&#x27;&lt;/span&gt;&#x27;;
+    b.innerHTML='&lt;span class=&quot;em&quot;&gt;'+q.o[i].em+'&lt;/span&gt;&lt;span class=&quot;lb&quot;&gt;'+q.o[i].lb+'&lt;/span&gt;';
     if(q.type===&quot;dest&quot;){b.setAttribute(&quot;data-d&quot;,q.o[i].d);}
     else{b.setAttribute(&quot;data-k&quot;,q.o[i].k);}
     b.addEventListener(&quot;click&quot;,onOpt,false);
@@ -1873,7 +2706,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf3');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Where Are You Going?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Pick a destination, a travel style and a landing habit. Three taps later you get your traveler type and a Holafly plan matched to the trip you just described.</div><div class="thesis"><b>Tests:</b> does a personal result drive more installs than a product walkthrough?</div><div class="file">Holafly_DestinationQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf4" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf6');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Where Are You Going?<span class="live">LIVE</span></div><div class="fmt hot">PERSONALITY QUIZ · 3 TAPS</div><div class="hook">Pick a destination, a travel style and a landing habit. Three taps later you get your traveler type and a Holafly plan matched to the trip you just described.</div><div class="thesis"><b>Tests:</b> does a personal result drive more installs than a product walkthrough?</div><div class="file">Holafly_DestinationQuiz_3T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf7" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -1981,7 +2814,7 @@ function activate(){
   busy=true;
   var btn=document.getElementById(&quot;activate&quot;);
   btn.className=&quot;&quot;;btn.classList.add(&quot;busy&quot;);
-  btn.innerHTML=&#x27;&lt;span class=&quot;spin&quot; style=&quot;display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;vertical-align:-2px&quot;&gt;&lt;/span&gt;&amp;nbsp; Activating…&#x27;;
+  btn.innerHTML='&lt;span class=&quot;spin&quot; style=&quot;display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;vertical-align:-2px&quot;&gt;&lt;/span&gt;&amp;nbsp; Activating…';
   document.getElementById(&quot;warn&quot;).className=&quot;hide&quot;;
   document.getElementById(&quot;hint&quot;).style.opacity=&quot;0&quot;;
   var bars=document.querySelectorAll(&quot;.bar&quot;),i;
@@ -2031,7 +2864,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf4');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">No Signal, Then Connected<span class="live">LIVE</span></div><div class="fmt hot">RELIEF MOMENT · 1 TAP</div><div class="hook">You just landed in Tokyo. No Service, roaming at $15/MB. One tap activates Holafly and the bars fill green: unlimited data, €0 roaming. The moment every traveler dreads, fixed in a second.</div><div class="thesis"><b>Tests:</b> the strongest emotional payoff of an eSIM, in a single tap.</div><div class="file">Holafly_NoSignal_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf5" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf7');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">No Signal, Then Connected<span class="live">LIVE</span></div><div class="fmt hot">RELIEF MOMENT · 1 TAP</div><div class="hook">You just landed in Tokyo. No Service, roaming at $15/MB. One tap activates Holafly and the bars fill green: unlimited data, €0 roaming. The moment every traveler dreads, fixed in a second.</div><div class="thesis"><b>Tests:</b> the strongest emotional payoff of an eSIM, in a single tap.</div><div class="file">Holafly_NoSignal_1T.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf8" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -2172,8 +3005,8 @@ function expire(){
   var ec=document.getElementById(&quot;endcard&quot;);
   ec.className=&quot;fail&quot;;
   document.getElementById(&quot;rbadge&quot;).textContent=&quot;😱&quot;;
-  document.getElementById(&quot;eheadline&quot;).textContent=&quot;Roaming would&#x27;ve cost $&quot;+Math.floor(bill);
-  document.getElementById(&quot;esub&quot;).textContent=&quot;That&#x27;s a real carrier roaming bill for one day abroad. It&#x27;s never too late to switch.&quot;;
+  document.getElementById(&quot;eheadline&quot;).textContent=&quot;Roaming would've cost $&quot;+Math.floor(bill);
+  document.getElementById(&quot;esub&quot;).textContent=&quot;That's a real carrier roaming bill for one day abroad. It's never too late to switch.&quot;;
   document.getElementById(&quot;eplan&quot;).innerHTML=&quot;Holafly: $6.90/day · &lt;b&gt;unlimited data&lt;/b&gt; · €0 roaming&quot;;
   ec.className=&quot;fail show&quot;;
 }
@@ -2206,7 +3039,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf5');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Roaming Bill<span class="live">LIVE</span></div><div class="fmt hot">URGENCY · 1 TAP</div><div class="hook">A roaming meter runs up a real bill on a 40 second timer, $0 to $500 and climbing. Tap to freeze it with a $6.90/day unlimited plan. Even when the timer runs out, the scary number makes the case.</div><div class="thesis"><b>Tests:</b> urgency and price anchoring, a climbing bill against one flat daily rate.</div><div class="file">Holafly_BeatRoaming_1T.html</div></div></div></div><h2>Product demo</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf6" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf8');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Beat the Roaming Bill<span class="live">LIVE</span></div><div class="fmt hot">URGENCY · 1 TAP</div><div class="hook">A roaming meter runs up a real bill on a 40 second timer, $0 to $500 and climbing. Tap to freeze it with a $6.90/day unlimited plan. Even when the timer runs out, the scary number makes the case.</div><div class="thesis"><b>Tests:</b> urgency and price anchoring, a climbing bill against one flat daily rate.</div><div class="file">Holafly_BeatRoaming_1T.html</div></div></div></div><h2>Product demo</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf9" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -2525,7 +3358,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf6');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Boarding Pass<span class="live">LIVE</span></div><div class="fmt hot">TRIP BUILDER · LIVE PRICING</div><div class="hook">Inspired by your top AppLovin performer, rebuilt as a boarding pass. Pick a destination, drag the trip length slider and watch the daily rate drop, add travelers, then LOCK IT IN and the pass gets stamped CONNECTED. You build your own plan before you ever see the store.</div><div class="thesis"><b>Tests:</b> the plan configurator hook from your best converting creative, in a new body. Does building the plan beat watching a demo?</div><div class="file">Holafly_BoardingPass_3plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf7" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf9');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Boarding Pass<span class="live">LIVE</span></div><div class="fmt hot">TRIP BUILDER · LIVE PRICING</div><div class="hook">Inspired by your top AppLovin performer, rebuilt as a boarding pass. Pick a destination, drag the trip length slider and watch the daily rate drop, add travelers, then LOCK IT IN and the pass gets stamped CONNECTED. You build your own plan before you ever see the store.</div><div class="thesis"><b>Tests:</b> the plan configurator hook from your best converting creative, in a new body. Does building the plan beat watching a demo?</div><div class="file">Holafly_BoardingPass_3plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf10" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -2762,7 +3595,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf7');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Install in 60 Seconds<span class="live">LIVE</span></div><div class="fmt">SCAN & GO · 2 TAPS</div><div class="hook">Pick a destination, scan the QR, watch the eSIM install and the data go live. The real Holafly onboarding, compressed into a few seconds of play.</div><div class="thesis"><b>Tests:</b> showing how fast setup is removes the biggest hesitation before install.</div><div class="file">Holafly_ScanGo_2plus.html</div></div></div></div><h2>Coverage</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf8" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf10');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Install in 60 Seconds<span class="live">LIVE</span></div><div class="fmt">SCAN & GO · 2 TAPS</div><div class="hook">Pick a destination, scan the QR, watch the eSIM install and the data go live. The real Holafly onboarding, compressed into a few seconds of play.</div><div class="thesis"><b>Tests:</b> showing how fast setup is removes the biggest hesitation before install.</div><div class="file">Holafly_ScanGo_2plus.html</div></div></div></div><h2>Coverage</h2><div class="grid"><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf11" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -3201,7 +4034,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf8');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Spin the Globe · Earth<span class="live">LIVE</span></div><div class="fmt hot">GLOBE · YOUR PROVEN FLOW</div><div class="hook">The flow from your best AppLovin creative, brought to Unity. Spin the earth, blue oceans and green continents, tap a coral pin, build your plan with days and travelers while the price updates live, then connect: "You're connected in 3 seconds."</div><div class="thesis"><b>Tests:</b> your top converting flow on Unity inventory, in real world colors.</div><div class="file">Holafly_SpinGlobe_Earth_2plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf9" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf11');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Spin the Globe · Earth<span class="live">LIVE</span></div><div class="fmt hot">GLOBE · YOUR PROVEN FLOW</div><div class="hook">The flow from your best AppLovin creative, brought to Unity. Spin the earth, blue oceans and green continents, tap a coral pin, build your plan with days and travelers while the price updates live, then connect: "You're connected in 3 seconds."</div><div class="thesis"><b>Tests:</b> your top converting flow on Unity inventory, in real world colors.</div><div class="file">Holafly_SpinGlobe_Earth_2plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf12" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -3640,7 +4473,7 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf9');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Spin the Globe · Night<span class="live">LIVE</span></div><div class="fmt">GLOBE · NIGHT PALETTE</div><div class="hook">Same globe, same flow, different mood: violet space, continents glowing gold like city lights at night. A premium night-flight feel for the exact same journey.</div><div class="thesis"><b>Tests:</b> pure palette A/B against the Earth version. Same flow, does the mood change the click?</div><div class="file">Holafly_SpinGlobe_Night_2plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf10" srcdoc="&lt;!DOCTYPE html&gt;
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf12');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Spin the Globe · Night<span class="live">LIVE</span></div><div class="fmt">GLOBE · NIGHT PALETTE</div><div class="hook">Same globe, same flow, different mood: violet space, continents glowing gold like city lights at night. A premium night-flight feel for the exact same journey.</div><div class="thesis"><b>Tests:</b> pure palette A/B against the Earth version. Same flow, does the mood change the click?</div><div class="file">Holafly_SpinGlobe_Night_2plus.html</div></div></div><div class="card"><div class="phonewrap"><div class="phone"><iframe id="pf13" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -3833,8 +4666,8 @@ start();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf10');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap the pins and light up the map. Every pin shows unlimited data with the local daily price, and the counter climbs to 270+ destinations.</div><div class="thesis"><b>Tests:</b> coverage as something you play with, not a claim you read.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
-<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A · Friction</td><td>No Signal 1T vs Scan & Go 2T</td><td>One tap of relief or the full setup walkthrough, which converts better?</td><td>IPM → install rate</td></tr><tr><td>B · Hook</td><td>Destination Quiz vs Beat the Roaming Bill</td><td>Identity or urgency, which framing gets the tap?</td><td>CTR → CVR</td></tr><tr><td>C · Promise</td><td>No Signal vs Tap the World</td><td>Sell the single moment of relief or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D · Geo</td><td>Quiz and Scan destination cards</td><td>Which destinations pull the highest intent travelers?</td><td>CVR by destination</td></tr><tr><td>E · Format</td><td>SIM Flight vs your best static and video</td><td>Does the flyer win on Unity the way it wins on your current channels?</td><td>IPM → CPA parity</td></tr><tr><td>F · Game twist</td><td>SIM Flight vs Bill Balloon vs Choose Your Skies</td><td>Straight rebuild, the bill balloon or the route forks. Which flyer wins?</td><td>CTR → CVR → D7</td></tr><tr><td>G · Configurator</td><td>Boarding Pass vs Scan & Go</td><td>Building your own plan vs watching the setup. Which drives more purchases?</td><td>CVR → purchase rate</td></tr><tr><td>H · Proven flow</td><td>Spin the Globe vs Boarding Pass</td><td>Your AppLovin flow in a fresh skin vs our boarding pass twist. Which configurator wins on Unity?</td><td>CTR → CVR → purchase rate</td></tr><tr><td>I · Palette</td><td>Globe Earth vs Globe Night</td><td>Identical flow, two moods. Does real earth or night glow convert better?</td><td>CTR → CVR</td></tr></table>
+" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe></div><button class="replay" onclick="var f=document.getElementById('pf13');f.srcdoc=f.srcdoc;">&#8635;&nbsp;REPLAY</button></div><div class="meta"><div class="name">Tap the World<span class="live">LIVE</span></div><div class="fmt">COVERAGE MAP · 2+ TAPS</div><div class="hook">Tap the pins and light up the map. Every pin shows unlimited data with the local daily price, and the counter climbs to 270+ destinations.</div><div class="thesis"><b>Tests:</b> coverage as something you play with, not a claim you read.</div><div class="file">Holafly_TapWorld_2plus.html</div></div></div></div>
+<h2>Suggested test matrix</h2><table><tr><th>Cell</th><th>Creatives</th><th>Question it answers</th><th>Primary KPI</th></tr><tr><td>A · Friction</td><td>No Signal 1T vs Scan & Go 2T</td><td>One tap of relief or the full setup walkthrough, which converts better?</td><td>IPM → install rate</td></tr><tr><td>B · Hook</td><td>Destination Quiz vs Beat the Roaming Bill</td><td>Identity or urgency, which framing gets the tap?</td><td>CTR → CVR</td></tr><tr><td>C · Promise</td><td>No Signal vs Tap the World</td><td>Sell the single moment of relief or the breadth of coverage?</td><td>CVR → purchase rate</td></tr><tr><td>D · Geo</td><td>Quiz and Scan destination cards</td><td>Which destinations pull the highest intent travelers?</td><td>CVR by destination</td></tr><tr><td>E · Format</td><td>SIM Flight vs your best static and video</td><td>Does the flyer win on Unity the way it wins on your current channels?</td><td>IPM → CPA parity</td></tr><tr><td>F · Game twist</td><td>SIM Flight vs Bill Balloon vs Choose Your Skies</td><td>Straight rebuild, the bill balloon or the route forks. Which flyer wins?</td><td>CTR → CVR → D7</td></tr><tr><td>G · Configurator</td><td>Boarding Pass vs Scan & Go</td><td>Building your own plan vs watching the setup. Which drives more purchases?</td><td>CVR → purchase rate</td></tr><tr><td>H · Proven flow</td><td>Spin the Globe vs Boarding Pass</td><td>Your AppLovin flow in a fresh skin vs our boarding pass twist. Which configurator wins on Unity?</td><td>CTR → CVR → purchase rate</td></tr><tr><td>I · Palette</td><td>Globe Earth vs Globe Night</td><td>Identical flow, two moods. Does real earth or night glow convert better?</td><td>CTR → CVR</td></tr><tr><td>J · Wave 2</td><td>Wheel vs Merge vs Group Chat</td><td>Chance, merge or story. Which new mechanic beats the round one winners?</td><td>IPM → CVR → D7</td></tr></table>
 <div class="note"><b>About these builds:</b> everything on this page is a working concept. Final versions ship with Holafly's official brand assets and approved copy (logo, brand colors, real plan prices). Store links are already wired for iOS and Android, and every creative meets Unity spec: MRAID 3.0, single file, under 5 MB, both orientations. Once you approve concepts, these move straight into campaign QA.</div>
 <footer>Benchmarks: AppAgent State of Playable Ads 2025 · Admiral Media playable UA guide. Prices shown are placeholders until we plug in Holafly's current rates. &nbsp;·&nbsp; <a href="languages.html" style="color:#D93A31;font-weight:700">All creatives in 6 languages →</a></footer>
 </div>
