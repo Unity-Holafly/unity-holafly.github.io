@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Holafly プレイアブル · マージで無制限</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#150D2E;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+#sky{position:absolute;top:0;left:0;right:0;bottom:0;background:-webkit-radial-gradient(50% 35%,circle,#241647 0%,#150D2E 65%);background:radial-gradient(circle at 50% 35%,#241647 0%,#150D2E 65%)}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff}
+#brand{position:absolute;top:4%;left:0;right:0;text-align:center;color:#FF5B6E;font-size:22px;font-weight:800;letter-spacing:-.5px;pointer-events:none}
+#brand span{display:block;color:#B7A8E0;font-size:13.5px;font-weight:700;margin-top:3px}
+#stage{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
+#board{display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;width:86vmin;max-width:330px;-webkit-justify-content:center;justify-content:center}
+.cell{width:29%;margin:2%;position:relative}
+.cell:before{content:"";display:block;padding-top:118%}
+.sim{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:14px;cursor:pointer;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-transition:-webkit-transform .18s,box-shadow .18s;transition:transform .18s,box-shadow .18s;border:2.5px solid rgba(255,255,255,.16)}
+.sim .chip{width:34%;height:22%;border-radius:5px;background:#E8B23A;border:1.5px solid rgba(120,80,10,.5)}
+.sim .lb{margin-top:9%;font-size:14px;font-weight:800;color:#fff}
+.sim .gb{font-size:10px;font-weight:700;color:rgba(255,255,255,.75);margin-top:2px}
+.sim.l1{background:#4A5568}
+.sim.l2{background:#2E6FB5}
+.sim.l3{background:#7C4DBE}
+.sim.sel{-webkit-transform:scale(1.09);transform:scale(1.09);box-shadow:0 0 0 3px #2EE6A8,0 8px 22px rgba(46,230,168,.35)}
+.sim.hintp{-webkit-animation:hintp 1.3s ease-in-out infinite;animation:hintp 1.3s ease-in-out infinite}
+@-webkit-keyframes hintp{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.05)}}
+@keyframes hintp{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.sim.shake{-webkit-animation:shk .3s;animation:shk .3s}
+@-webkit-keyframes shk{0%,100%{-webkit-transform:translateX(0)}30%{-webkit-transform:translateX(-6px)}60%{-webkit-transform:translateX(6px)}}
+@keyframes shk{0%,100%{transform:translateX(0)}30%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+.sim.gone{opacity:0;-webkit-transform:scale(.4);transform:scale(.4);pointer-events:none}
+#meter{position:absolute;top:13.5%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);color:#B7A8E0;font-size:13px;font-weight:800;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:6px 16px;white-space:nowrap}
+#meter b{color:#2EE6A8}
+#hint{position:absolute;bottom:5.5%;left:0;right:0;text-align:center;color:#8F7FC0;font-size:13px;font-weight:700}
+/* final card + end panel */
+#final{position:absolute;top:0;left:0;right:0;bottom:0;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;opacity:0;visibility:hidden;-webkit-transition:opacity .5s;transition:opacity .5s;background:-webkit-radial-gradient(50% 40%,circle,#241647 0%,#150D2E 70%);background:radial-gradient(circle at 50% 40%,#241647 0%,#150D2E 70%);z-index:5}
+#final.on{opacity:1;visibility:visible}
+#bigsim{width:150px;height:180px;border-radius:22px;background:-webkit-linear-gradient(315deg,#FF5B6E,#FF8E6E);background:linear-gradient(135deg,#FF5B6E,#FF8E6E);box-shadow:0 0 60px rgba(255,91,110,.65);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;border:3px solid #FFFDF9}
+#bigsim .chip{width:52px;height:38px;border-radius:8px;background:#E8B23A;border:2px solid rgba(120,80,10,.5)}
+#bigsim .inf{font-size:44px;font-weight:800;color:#fff;line-height:1.1;margin-top:10px}
+#bigsim .cap{font-size:12px;font-weight:800;color:rgba(255,255,255,.9);letter-spacing:2px}
+#fh{color:#fff;font-size:23px;font-weight:800;margin-top:18px;text-align:center;padding:0 8%}
+#fs{color:#B7A8E0;font-size:14px;font-weight:700;margin-top:6px;text-align:center;padding:0 10%}
+#dl{margin-top:20px;padding:15px 44px;border:0;border-radius:16px;background:#FF5B6E;box-shadow:0 4px 0 #D93A50;color:#fff;font-size:16px;font-weight:800;letter-spacing:.8px;cursor:pointer}
+#again{background:none;border:0;color:#B7A8E0;font-size:13px;font-weight:700;margin-top:12px;text-decoration:underline;cursor:pointer}
+.ctapulse{-webkit-animation:ctapulse 1.4s ease-in-out infinite;animation:ctapulse 1.4s ease-in-out infinite}
+@-webkit-keyframes ctapulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.06)}}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.bigpulse{-webkit-animation:bigp 1.6s ease-in-out infinite;animation:bigp 1.6s ease-in-out infinite}
+@-webkit-keyframes bigp{0%,100%{-webkit-transform:scale(1) rotate(-2deg)}50%{-webkit-transform:scale(1.05) rotate(2deg)}}
+@keyframes bigp{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.05) rotate(2deg)}}
+.confetti{position:absolute;width:10px;height:10px;border-radius:2px;pointer-events:none;opacity:0;z-index:7}
+.confetti.go{-webkit-animation:conf 1s ease-out forwards;animation:conf 1s ease-out forwards}
+@-webkit-keyframes conf{0%{opacity:1;-webkit-transform:translate(0,0) rotate(0)}100%{opacity:0;-webkit-transform:translate(0,-90px) rotate(200deg)}}
+@keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(0,-90px) rotate(200deg)}}
+body.paused *{-webkit-animation-play-state:paused !important;animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.hintp,.ctapulse,.bigpulse{-webkit-animation:none;animation:none}}
+@media (orientation:landscape){
+  #brand{font-size:16px}#brand span{font-size:11px}
+  #board{max-width:250px}
+  #meter{top:16%}
+  #bigsim{width:110px;height:132px}
+  #bigsim .inf{font-size:30px}
+  #fh{font-size:18px}
+}
+</style>
+</head>
+<body class="paused"><script>if(!window.mraid){window.mraid={_l:{},getState:function(){return "default"},isViewable:function(){return true},addEventListener:function(e,f){this._l[e]=f},removeEventListener:function(){},open:function(u){window.open(u,"_blank")}};}</script>
+<div id="sky"></div>
+<div id="brand">Holafly<span>SIMをまとめて1枚のeSIMに</span></div>
+<div id="meter">無制限まであと<b id="left">3</b>回</div>
+<div id="stage">
+  <div id="board"></div>
+</div>
+<div id="hint">同じSIMカードを2枚タップしてマージ</div>
+
+<div id="final">
+  <div id="bigsim" class="bigpulse"><div class="chip"></div><div class="inf">&infin;</div><div class="cap">無制限eSIM</div></div>
+  <div id="fh">SIMの山はもう不要。eSIM 1枚でOK</div>
+  <div id="fs">270以上の渡航先でデータ無制限。1分で開通、ローミング料&yen;0。</div>
+  <button id="dl" class="ctapulse">Holaflyをダウンロード</button>
+  <button id="again">もう一度マージ &#8635;</button>
+</div>
+<script>
+(function(){
+"use strict";
+var STORE_URLS={Android:"https://play.google.com/store/apps/details?id=com.holafly.holafly",iOS:"https://apps.apple.com/us/app/holafly-esim-unlimited-data/id1629600786"};
+var IS_IOS=/iP(hone|od|ad)/.test(navigator.userAgent);
+var started=false,doneUp=false,AC=null,busy=false;
+
+/* levels: 1 = Local SIM 1GB, 2 = Travel SIM 5GB, 3 = Big SIM 25GB, 4 = final unlimited */
+var LVL={1:{lb:"現地SIM",gb:"1 GB"},2:{lb:"旅行SIM",gb:"5 GB"},3:{lb:"メガSIM",gb:"25 GB"}};
+var cells=[],sel=-1;
+
+(function(){
+  var sky=document.getElementById("sky"),i;
+  for(i=0;i<36;i++){
+    var s=document.createElement("div");
+    s.className="star";
+    s.style.left=(Math.random()*100)+"%";
+    s.style.top=(Math.random()*100)+"%";
+    s.style.opacity=(0.15+Math.random()*0.55);
+    sky.appendChild(s);
+  }
+})();
+
+function openStore(){var u=IS_IOS?STORE_URLS.iOS:STORE_URLS.Android;if(window.mraid&&mraid.open){mraid.open(u);}}
+
+function snd(kind){
+  try{
+    var Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return;
+    if(!AC)AC=new Ctx();
+    if(AC.state==="suspended"&&AC.resume)AC.resume();
+    var t=AC.currentTime,o=AC.createOscillator(),g=AC.createGain();
+    o.type=kind==="final"?"triangle":"sine";
+    o.frequency.value=kind==="pick"?600:kind==="merge"?880:kind==="bad"?220:520;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(kind==="final"?0.18:0.1,t+0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(kind==="final"?0.45:0.15));
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+0.5);
+    if(kind==="final"){
+      var f=[659.25,784,1046.5],i;
+      for(i=0;i<f.length;i++){
+        var o2=AC.createOscillator(),g2=AC.createGain();
+        o2.type="triangle";o2.frequency.value=f[i];
+        g2.gain.setValueAtTime(0.0001,t+0.12*i+0.1);
+        g2.gain.exponentialRampToValueAtTime(0.12,t+0.12*i+0.12);
+        g2.gain.exponentialRampToValueAtTime(0.0001,t+0.12*i+0.4);
+        o2.connect(g2);g2.connect(AC.destination);o2.start(t+0.12*i+0.1);o2.stop(t+0.12*i+0.45);
+      }
+    }
+  }catch(e){}
+}
+
+function confetti(x,y){
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var colors=["#FF5B6E","#2EE6A8","#FFC542","#7C4DBE","#fff"],i;
+  for(i=0;i<14;i++){
+    var d=document.createElement("div");
+    d.className="confetti";
+    d.style.background=colors[i%colors.length];
+    d.style.left=(x+(Math.random()*120-60))+"px";
+    d.style.top=(y+(Math.random()*30-15))+"px";
+    document.body.appendChild(d);
+    d.className="confetti go";
+    (function(el){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},1100);})(d);
+  }
+}
+
+/* board: 6 cells, levels [1,1,2,2,3,3] shuffled-ish so 3 merges finish it */
+function buildBoard(){
+  cells=[{l:1},{l:2},{l:1},{l:3},{l:2},{l:3}];
+  sel=-1;busy=false;
+  var b=document.getElementById("board");b.innerHTML="";
+  var i;
+  for(i=0;i<cells.length;i++){
+    var c=document.createElement("div");c.className="cell";
+    var s=document.createElement("div");
+    s.className="sim l"+cells[i].l;
+    s.setAttribute("data-i",i);
+    s.innerHTML='<div class="chip"></div><div class="lb">'+LVL[cells[i].l].lb+'</div><div class="gb">'+LVL[cells[i].l].gb+'</div>';
+    s.addEventListener("click",onSim,false);
+    c.appendChild(s);b.appendChild(c);
+  }
+  updateMeter();hintPair();
+}
+function el(i){return document.querySelector('.sim[data-i="'+i+'"]');}
+function alive(){var a=[],i;for(i=0;i<cells.length;i++)if(cells[i].l>0)a.push(i);return a;}
+function updateMeter(){
+  var lv={},i,a=alive();
+  for(i=0;i<a.length;i++){lv[cells[a[i]].l]=(lv[cells[a[i]].l]||0)+1;}
+  var merges=0,k;
+  for(k in lv)merges+=Math.floor(lv[k]/2);
+  /* remaining merges until single unlimited: with our chain it is pairs left */
+  var left=0;
+  if(a.length===6)left=3;else if(a.length===5)left=2;else if(a.length===4)left=2;else if(a.length===3)left=1;else left=0;
+  document.getElementById("left").textContent=Math.max(1,left);
+}
+function hintPair(){
+  var i,j,a=alive();
+  for(i=0;i<a.length;i++)el(a[i]).classList.remove("hintp");
+  for(i=0;i<a.length;i++)for(j=i+1;j<a.length;j++){
+    if(cells[a[i]].l===cells[a[j]].l){
+      el(a[i]).classList.add("hintp");el(a[j]).classList.add("hintp");
+      return;
+    }
+  }
+}
+function onSim(ev){
+  if(!started||busy||doneUp)return;
+  var i=parseInt(ev.currentTarget.getAttribute("data-i"),10);
+  if(cells[i].l<=0)return;
+  if(sel===-1){sel=i;el(i).classList.add("sel");snd("pick");return;}
+  if(sel===i){el(i).classList.remove("sel");sel=-1;return;}
+  if(cells[sel].l===cells[i].l){merge(sel,i);}
+  else{
+    el(i).classList.add("shake");snd("bad");
+    (function(n){setTimeout(function(){el(n).classList.remove("shake");},320);})(i);
+    el(sel).classList.remove("sel");sel=i;el(i).classList.add("sel");snd("pick");
+  }
+}
+function merge(a,b){
+  busy=true;
+  var lvl=cells[a].l;
+  var ea=el(a),eb=el(b);
+  ea.classList.remove("sel");
+  ea.classList.add("gone");
+  snd("merge");
+  var r=eb.getBoundingClientRect();
+  confetti(r.left+r.width/2,r.top+r.height/2);
+  setTimeout(function(){
+    cells[a].l=0;sel=-1;
+    if(lvl>=3){
+      /* final merge → unlimited */
+      cells[b].l=0;
+      eb.classList.add("gone");
+      setTimeout(finish,350);
+      return;
+    }
+    cells[b].l=lvl+1;
+    eb.className="sim l"+cells[b].l;
+    eb.innerHTML='<div class="chip"></div><div class="lb">'+LVL[cells[b].l].lb+'</div><div class="gb">'+LVL[cells[b].l].gb+'</div>';
+    busy=false;
+    updateMeter();hintPair();
+  },230);
+}
+function finish(){
+  doneUp=true;busy=false;
+  snd("final");
+  document.getElementById("final").className="on";
+  confetti(window.innerWidth/2,window.innerHeight/3);
+}
+function again(){
+  doneUp=false;
+  document.getElementById("final").className="";
+  buildBoard();
+}
+
+function bind(){
+  document.getElementById("dl").addEventListener("click",openStore,false);
+  document.getElementById("again").addEventListener("click",again,false);
+}
+
+function showAd(){started=true;document.body.className="";}
+function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();}
+function pauseAd(){document.body.className="paused";if(AC&&AC.suspend)AC.suspend();}
+
+function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
+function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
+function start(){
+  buildBoard();bind();
+  if(window.mraid){
+    if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
+    else{onSdkReady();}
+  }
+}
+document.addEventListener("visibilitychange",function(){
+  if(document.hidden){pauseAd();}
+  else if(!window.mraid||mraid.isViewable()){if(started)resumeAd();}
+},false);
+start();
+})();
+</script>
+<div style="position:fixed;bottom:6px;left:50%;z-index:999;pointer-events:none;transform:translateX(-50%);-webkit-transform:translateX(-50%);font-family:-apple-system,Segoe UI,Arial,sans-serif;font-size:10.5px;font-weight:800;letter-spacing:2px;color:rgba(255,255,255,.85);background:rgba(20,15,40,.55);padding:5px 14px;border-radius:10px;white-space:nowrap">UNITY ADS &middot; CONCEPT</div></body>
+</html>
