@@ -257,6 +257,7 @@ function pickDest(ev){
     document.getElementById("p1").className="panel";
     document.getElementById("p2").className="panel on";
     document.getElementById("pill").style.display="none";
+    fit();
   },420);
 }
 
@@ -267,7 +268,7 @@ function lockIn(){
   document.getElementById("stamp").className="on";
   document.getElementById("lock").style.opacity="0.35";
   document.getElementById("lock").style.pointerEvents="none";
-  setTimeout(function(){document.getElementById("after").className="on";},450);
+  setTimeout(function(){document.getElementById("after").className="on";fit();},450);
 }
 
 function retry(){
@@ -281,7 +282,7 @@ function retry(){
   document.getElementById("p2").className="panel";
   document.getElementById("p1").className="panel on";
   document.getElementById("pill").style.display="";
-  render();
+  render();fit();
 }
 
 function bind(){
@@ -295,14 +296,26 @@ function bind(){
   bindSlider();
 }
 
-function showAd(){started=true;document.body.className="";}
+function fit(){
+  var vw=window.innerWidth,vh=window.innerHeight;
+  var onP2=document.getElementById("p2").className.indexOf("on")>=0;
+  document.getElementById("brand").style.display=(onP2&&vw>vh)?"none":"";
+  var p=document.getElementById(onP2?"p2":"p1");
+  p.style.webkitTransform="none";p.style.transform="none";
+  var h=p.offsetHeight,w=p.offsetWidth;
+  if(!h||!vh)return;
+  var sc=Math.min(1,(vh-14)/h,(vw-10)/w);
+  if(sc<1){p.style.webkitTransform="scale("+sc+")";p.style.transform="scale("+sc+")";}
+}
+window.addEventListener("resize",function(){fit();setTimeout(fit,120);},false);
+function showAd(){started=true;document.body.className="";fit();}
 function resumeAd(){document.body.className="";if(AC&&AC.resume)AC.resume();}
 function pauseAd(){document.body.className="paused";if(AC&&AC.suspend)AC.suspend();}
 
 function onViewableChange(v){if(v){started?resumeAd():showAd();}else{pauseAd();}}
 function onSdkReady(){mraid.addEventListener("viewableChange",onViewableChange);if(mraid.isViewable())showAd();}
 function start(){
-  bind();render();
+  bind();render();fit();
   if(window.mraid){
     if(mraid.getState()==="loading"){mraid.addEventListener("ready",onSdkReady);}
     else{onSdkReady();}
